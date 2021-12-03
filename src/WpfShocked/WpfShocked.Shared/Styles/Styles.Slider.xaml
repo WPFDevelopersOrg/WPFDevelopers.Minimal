@@ -13,8 +13,8 @@
     
     <ControlTemplate x:Key="SliderThumbHorizontalTop" TargetType="{x:Type Thumb}">
         <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
-                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+            <Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}"
                     SnapsToDevicePixels="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
@@ -32,8 +32,8 @@
     </ControlTemplate>
     <ControlTemplate x:Key="SliderThumbHorizontalBottom" TargetType="{x:Type Thumb}">
         <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
-                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+            <Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}"
                     SnapsToDevicePixels="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
@@ -70,8 +70,8 @@
             </Storyboard>
         </ControlTemplate.Resources>
         <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
-                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+            <Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}"
                     SnapsToDevicePixels="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
@@ -113,8 +113,8 @@
     </Style>
     <ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
         <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
-                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+            <Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}"
                     SnapsToDevicePixels="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
@@ -159,14 +159,14 @@
                 <Track x:Name="PART_Track" Grid.Row="1">
                     <Track.DecreaseRepeatButton>
                         <RepeatButton Command="{x:Static Slider.DecreaseLarge}" 
-                                          Style="{StaticResource RepeatButtonTransparent}" 
-                                          Background="{StaticResource PrimaryPressedSolidColorBrush}" 
+                                          Style="{DynamicResource RepeatButtonTransparent}" 
+                                          Background="{DynamicResource PrimaryPressedSolidColorBrush}" 
                                           Height="{StaticResource RepeatButtonSize}"/>
                     </Track.DecreaseRepeatButton>
                     <Track.IncreaseRepeatButton>
                         <RepeatButton Command="{x:Static Slider.IncreaseLarge}" 
                                       Style="{StaticResource RepeatButtonTransparent}"
-                                      Background="{StaticResource LightSolidColorBrush}" 
+                                      Background="{DynamicResource LightSolidColorBrush}" 
                                       Height="{StaticResource RepeatButtonSize}"/>
                     </Track.IncreaseRepeatButton>
                     <Track.Thumb>
@@ -197,14 +197,14 @@
                 <Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible"/>
             </Trigger>
             <Trigger Property="IsKeyboardFocused" Value="true">
-                <Setter Property="Foreground" TargetName="Thumb" Value="{StaticResource PrimaryPressedSolidColorBrush}"/>
+                <Setter Property="Foreground" TargetName="Thumb" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
     <ControlTemplate x:Key="SliderThumbVerticalLeft" TargetType="{x:Type Thumb}">
         <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
-                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+            <Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}"
                     SnapsToDevicePixels="True" UseLayoutRounding="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
@@ -222,8 +222,8 @@
     </ControlTemplate>
     <ControlTemplate x:Key="SliderThumbVerticalRight" TargetType="{x:Type Thumb}">
         <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
-                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}"
+            <Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}"
                     SnapsToDevicePixels="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
@@ -241,8 +241,8 @@
     </ControlTemplate>
     <ControlTemplate x:Key="SliderThumbVerticalDefault" TargetType="{x:Type Thumb}">
         <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
-                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" 
+            <Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" 
                     SnapsToDevicePixels="True" UseLayoutRounding="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
@@ -279,8 +279,8 @@
             </Storyboard>
         </ControlTemplate.Resources>
         <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-            <Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" 
-                    BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" 
+            <Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" 
+                    BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" 
                     SnapsToDevicePixels="True" UseLayoutRounding="True"
                     Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1"
                     Name="PART_Border" RenderTransformOrigin=".5,.5">
@@ -329,13 +329,13 @@
                     <Track.DecreaseRepeatButton>
                         <RepeatButton Command="{x:Static Slider.DecreaseLarge}"
                                           Style="{StaticResource RepeatButtonTransparent}"
-                                          Background="{StaticResource PrimaryPressedSolidColorBrush}" 
+                                          Background="{DynamicResource PrimaryPressedSolidColorBrush}" 
                                           Width="{StaticResource RepeatButtonSize}"/>
                     </Track.DecreaseRepeatButton>
                     <Track.IncreaseRepeatButton>
                         <RepeatButton Command="{x:Static Slider.IncreaseLarge}" 
                                           Style="{StaticResource RepeatButtonTransparent}"
-                                          Background="{StaticResource LightSolidColorBrush}" 
+                                          Background="{DynamicResource LightSolidColorBrush}" 
                                           Width="{StaticResource RepeatButtonSize}"/>
                     </Track.IncreaseRepeatButton>
                     <Track.Thumb>
@@ -372,7 +372,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Foreground" Value="{StaticResource PrimaryPressedSolidColorBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
         <Setter Property="Template" Value="{StaticResource SliderHorizontal}"/>
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Vertical">

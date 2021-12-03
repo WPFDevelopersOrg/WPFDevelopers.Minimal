@@ -6,7 +6,7 @@
     <SharedGUID>ec75cb3a-cf72-4496-bcf7-ff7c9da01f44</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>WpfShocked.Shared</Import_RootNamespace>
+    <Import_RootNamespace>WpfShocked</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Styles\Styles.Buttons.xaml">
@@ -51,6 +51,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Shocked.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\WpfShockedLogo.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)Themes\Theme40.txt" />
   </ItemGroup>
   <ItemGroup>

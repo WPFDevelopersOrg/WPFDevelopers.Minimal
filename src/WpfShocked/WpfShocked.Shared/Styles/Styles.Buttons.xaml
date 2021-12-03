@@ -20,7 +20,7 @@
 
     
     <Style x:Key="PrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
-        <Setter Property="Foreground" Value="{StaticResource WhiteSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WhiteSolidColorBrush}" />
         <Setter Property="Template" >
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -29,7 +29,7 @@
                                 CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" 
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                Background="{StaticResource PrimaryNormalSolidColorBrush}">
+                                Background="{DynamicResource PrimaryNormalSolidColorBrush}">
                         </Border>
 
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -53,7 +53,7 @@
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
                                                         Storyboard.TargetName="PART_Border"
-                                                        To="{StaticResource PrimaryMouseOverColor}" 
+                                                        To="{DynamicResource PrimaryMouseOverColor}" 
                                                         EasingFunction="{StaticResource ExponentialEaseOut}"/>
                                     </Storyboard>
                                 </VisualState>
@@ -61,7 +61,7 @@
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
                                                         Storyboard.TargetName="PART_Border"
-                                                        To="{StaticResource PrimaryPressedColor}"
+                                                        To="{DynamicResource PrimaryPressedColor}"
                                                         EasingFunction="{StaticResource ExponentialEaseOut}"/>
                                     </Storyboard>
                                 </VisualState>
@@ -74,7 +74,7 @@
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="PART_Border" Property="Background" 
-                                    Value="{StaticResource PrimaryPressedSolidColorBrush}"/>
+                                    Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -84,8 +84,8 @@
 
 
     <Style x:Key="DefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
-        <Setter Property="Background" Value="{StaticResource WhiteSolidColorBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BaseSolidColorBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource WhiteSolidColorBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
         <Setter Property="Template" >
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -107,17 +107,17 @@
                                         <ColorAnimation Storyboard.TargetName="PART_Border" 
                                                         Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
                                                         EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{StaticResource DefaultBorderBrushColor}"/>
+                                                        To="{DynamicResource DefaultBorderBrushColor}"/>
 
                                         <ColorAnimation Storyboard.TargetName="PART_Border" 
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                         EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{StaticResource DefaultBackgroundColor}"/>
+                                                        To="{DynamicResource DefaultBackgroundColor}"/>
 
                                         <ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
                                                         Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
                                                         EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{StaticResource PrimaryNormalColor}"/>
+                                                        To="{DynamicResource PrimaryNormalColor}"/>
                                     </Storyboard>
                                 </VisualState>
 
@@ -126,17 +126,17 @@
                                         <ColorAnimation Storyboard.TargetName="PART_Border" 
                                                         Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
                                                         EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{StaticResource DefaultBackgroundPressedColor}"/>
+                                                        To="{DynamicResource DefaultBackgroundPressedColor}"/>
 
                                         <ColorAnimation Storyboard.TargetName="PART_Border" 
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                         EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{StaticResource DefaultBackgroundColor}"/>
+                                                        To="{DynamicResource DefaultBackgroundColor}"/>
 
                                         <ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
                                                         Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
                                                         EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{StaticResource DefaultBackgroundPressedColor}"/>
+                                                        To="{DynamicResource DefaultBackgroundPressedColor}"/>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -152,13 +152,13 @@
                                           Margin="{TemplateBinding Padding}" 
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           RecognizesAccessKey="True" 
-                                          TextElement.Foreground="{StaticResource RegularTextSolidColorBrush}"/>
+                                          TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{StaticResource DefaultBorderBrushSolidColorBrush}"/>
-                            <Setter TargetName="PART_Border" Property="Background" Value="{StaticResource DefaultBackgroundSolidColorBrush}"/>
-                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{StaticResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource DefaultBorderBrushSolidColorBrush}"/>
+                            <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />

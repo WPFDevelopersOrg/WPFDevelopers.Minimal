@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
-    <sys:Double x:Key="NormalFontSize">13</sys:Double>
-    <sys:Double x:Key="MediumFontSize">14</sys:Double>
-    <sys:Double x:Key="TitleFontSize">16</sys:Double>
+    <sys:Double x:Key="NormalFontSize">14</sys:Double>
+    <sys:Double x:Key="MediumFontSize">15</sys:Double>
+    <sys:Double x:Key="TitleFontSize">18</sys:Double>
 
     <FontFamily x:Key="NormalFontFamily">
         Helvetica Neue For Number, 

@@ -29,9 +29,9 @@
 	<Color x:Key="BlackColor">#000000</Color>
 	<Color x:Key="CircularSingularColor">#BAE766</Color>
 	<Color x:Key="CircularDualColor">#B0D440</Color>
-	<sys:Double x:Key="NormalFontSize">13</sys:Double>
-	<sys:Double x:Key="MediumFontSize">14</sys:Double>
-	<sys:Double x:Key="TitleFontSize">16</sys:Double>
+	<sys:Double x:Key="NormalFontSize">14</sys:Double>
+	<sys:Double x:Key="MediumFontSize">15</sys:Double>
+	<sys:Double x:Key="TitleFontSize">18</sys:Double>
 	<FontFamily x:Key="NormalFontFamily">
         Helvetica Neue For Number, 
         -apple-system, 
@@ -83,6 +83,27 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type RepeatButton}">
 					<Rectangle Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Fill="{TemplateBinding Background}" />
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="ScrollViewerStyle" TargetType="{x:Type ScrollViewer}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ScrollViewer}">
+					<Grid x:Name="Grid" Background="{TemplateBinding Background}">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="Auto" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="{TemplateBinding Padding}" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
+						<ScrollBar x:Name="PART_VerticalScrollBar" Grid.Row="0" Grid.Column="1" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+						<ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" AutomationProperties.AutomationId="HorizontalScrollBar" Cursor="Arrow" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" ViewportSize="{TemplateBinding ViewportWidth}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
+					</Grid>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -151,12 +172,12 @@
 		<Setter Property="Cursor" Value="Hand" />
 	</Style>
 	<Style x:Key="PrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
-		<Setter Property="Foreground" Value="{StaticResource WhiteSolidColorBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource WhiteSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Button}">
 					<Grid>
-						<Border Name="PART_Border" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{StaticResource PrimaryNormalSolidColorBrush}" />
+						<Border Name="PART_Border" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
@@ -169,12 +190,12 @@
 								<VisualState x:Name="Normal" />
 								<VisualState x:Name="MouseOver">
 									<Storyboard>
-										<ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{StaticResource PrimaryMouseOverColor}" EasingFunction="{StaticResource ExponentialEaseOut}" />
+										<ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{DynamicResource PrimaryMouseOverColor}" EasingFunction="{StaticResource ExponentialEaseOut}" />
 									</Storyboard>
 								</VisualState>
 								<VisualState x:Name="Pressed">
 									<Storyboard>
-										<ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{StaticResource PrimaryPressedColor}" EasingFunction="{StaticResource ExponentialEaseOut}" />
+										<ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{DynamicResource PrimaryPressedColor}" EasingFunction="{StaticResource ExponentialEaseOut}" />
 									</Storyboard>
 								</VisualState>
 							</VisualStateGroup>
@@ -185,7 +206,7 @@
 							<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
 						</Trigger>
 						<Trigger Property="IsFocused" Value="True">
-							<Setter TargetName="PART_Border" Property="Background" Value="{StaticResource PrimaryPressedSolidColorBrush}" />
+							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -193,8 +214,8 @@
 		</Setter>
 	</Style>
 	<Style x:Key="DefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
-		<Setter Property="Background" Value="{StaticResource WhiteSolidColorBrush}" />
-		<Setter Property="BorderBrush" Value="{StaticResource BaseSolidColorBrush}" />
+		<Setter Property="Background" Value="{DynamicResource WhiteSolidColorBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Button}">
@@ -210,28 +231,28 @@
 								<VisualState x:Name="Normal" />
 								<VisualState x:Name="MouseOver">
 									<Storyboard>
-										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{StaticResource DefaultBorderBrushColor}" />
-										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{StaticResource DefaultBackgroundColor}" />
-										<ColorAnimation Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{StaticResource PrimaryNormalColor}" />
+										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource DefaultBorderBrushColor}" />
+										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource DefaultBackgroundColor}" />
+										<ColorAnimation Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource PrimaryNormalColor}" />
 									</Storyboard>
 								</VisualState>
 								<VisualState x:Name="Pressed">
 									<Storyboard>
-										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{StaticResource DefaultBackgroundPressedColor}" />
-										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{StaticResource DefaultBackgroundColor}" />
-										<ColorAnimation Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{StaticResource DefaultBackgroundPressedColor}" />
+										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource DefaultBackgroundPressedColor}" />
+										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource DefaultBackgroundColor}" />
+										<ColorAnimation Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" To="{DynamicResource DefaultBackgroundPressedColor}" />
 									</Storyboard>
 								</VisualState>
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Border x:Name="PART_Border" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
-						<ContentPresenter x:Name="PART_ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" TextElement.Foreground="{StaticResource RegularTextSolidColorBrush}" />
+						<ContentPresenter x:Name="PART_ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}" />
 					</Grid>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsFocused" Value="True">
-							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{StaticResource DefaultBorderBrushSolidColorBrush}" />
-							<Setter TargetName="PART_Border" Property="Background" Value="{StaticResource DefaultBackgroundSolidColorBrush}" />
-							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{StaticResource PrimaryNormalSolidColorBrush}" />
+							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource DefaultBorderBrushSolidColorBrush}" />
+							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
+							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsEnabled" Value="False">
 							<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
@@ -272,13 +293,13 @@
 							<ColumnDefinition Width="Auto" />
 							<ColumnDefinition Width="*" />
 						</Grid.ColumnDefinitions>
-						<Border CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Background="{Binding ElementName=PART_Border,Path=Background}" Margin="1,1,2,1">
+						<Border CornerRadius="{Binding ElementName=PART_Border,Path=CornerRadius}" Background="{Binding ElementName=PART_Border,Path=Background}" Margin="1,1,2,1">
 							<Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="100" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 								<Border.BorderBrush>
-									<SolidColorBrush Color="{StaticResource BaseColor}" />
+									<SolidColorBrush Color="{DynamicResource BaseColor}" />
 								</Border.BorderBrush>
 								<Grid Width="16" Height="16">
-									<Ellipse x:Name="PART_Ellipse" Fill="{StaticResource WhiteSolidColorBrush}" MinWidth="6" MinHeight="6" RenderTransformOrigin=".5,.5">
+									<Ellipse x:Name="PART_Ellipse" Fill="{DynamicResource WhiteSolidColorBrush}" MinWidth="6" MinHeight="6" RenderTransformOrigin=".5,.5">
 										<Ellipse.RenderTransform>
 											<ScaleTransform ScaleX="0" ScaleY="0" />
 										</Ellipse.RenderTransform>
@@ -286,16 +307,16 @@
 								</Grid>
 							</Border>
 						</Border>
-						<ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.Column="1" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" TextElement.Foreground="{StaticResource PrimaryTextSolidColorBrush}" />
+						<ContentPresenter x:Name="PART_ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Grid.Column="1" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" TextElement.Foreground="{DynamicResource PrimaryTextSolidColorBrush}" />
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CheckStates">
 								<VisualState x:Name="Unchecked" />
 								<VisualState x:Name="Indeterminate" />
 								<VisualState x:Name="Checked">
 									<Storyboard>
-										<ColorAnimation Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" To="{StaticResource PrimaryPressedColor}" Duration="00:00:.1" />
-										<ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{StaticResource PrimaryPressedColor}" Duration="00:00:.1" />
-										<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{StaticResource PrimaryPressedColor}" Duration="00:00:.1" />
+										<ColorAnimation Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" To="{DynamicResource PrimaryPressedColor}" Duration="00:00:.1" />
+										<ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{DynamicResource PrimaryPressedColor}" Duration="00:00:.1" />
+										<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{DynamicResource PrimaryPressedColor}" Duration="00:00:.1" />
 										<!--<ThicknessAnimation Storyboard.TargetName="PART_Border"
                                                          Storyboard.TargetProperty="BorderThickness" 
                                                          To="0,0,0,0" Duration="00:00:.1"/>-->
@@ -313,12 +334,15 @@
 								<Condition Property="IsMouseOver" Value="True" />
 							</MultiTrigger.Conditions>
 							<MultiTrigger.EnterActions>
-								<BeginStoryboard>
+								<BeginStoryboard x:Name="PART_BeginStoryboard">
 									<Storyboard>
 										<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{StaticResource PrimaryPressedColor}" Duration="00:00:.1" />
 									</Storyboard>
 								</BeginStoryboard>
 							</MultiTrigger.EnterActions>
+							<MultiTrigger.ExitActions>
+								<RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard" />
+							</MultiTrigger.ExitActions>
 						</MultiTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -332,7 +356,7 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Thumb}">
 					<Border x:Name="PART_Thumbborder">
-						<Rectangle x:Name="PART_Rectangle" Height="{TemplateBinding Height}" Fill="{StaticResource InfoPressedSolidColorBrush}" RadiusX="1" RadiusY="1" />
+						<Rectangle x:Name="PART_Rectangle" Height="{TemplateBinding Height}" Fill="{DynamicResource InfoPressedSolidColorBrush}" RadiusX="1" RadiusY="1" />
 					</Border>
 				</ControlTemplate>
 			</Setter.Value>
@@ -345,7 +369,7 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Thumb}">
 					<Border x:Name="PART_Thumbborder">
-						<Rectangle x:Name="PART_Rectangle" Height="{TemplateBinding Height}" Fill="{StaticResource InfoPressedSolidColorBrush}" RadiusX="1" RadiusY="1" />
+						<Rectangle x:Name="PART_Rectangle" Height="{TemplateBinding Height}" Fill="{DynamicResource InfoPressedSolidColorBrush}" RadiusX="1" RadiusY="1" />
 					</Border>
 				</ControlTemplate>
 			</Setter.Value>
@@ -589,30 +613,9 @@
 			</Trigger>
 		</Style.Triggers>
 	</Style>
-	<Style x:Key="ScrollViewerStyle" TargetType="{x:Type ScrollViewer}">
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type ScrollViewer}">
-					<Grid x:Name="Grid" Background="{TemplateBinding Background}">
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="*" />
-							<ColumnDefinition Width="Auto" />
-						</Grid.ColumnDefinitions>
-						<Grid.RowDefinitions>
-							<RowDefinition Height="*" />
-							<RowDefinition Height="Auto" />
-						</Grid.RowDefinitions>
-						<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="{TemplateBinding Padding}" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" />
-						<ScrollBar x:Name="PART_VerticalScrollBar" Grid.Row="0" Grid.Column="1" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Style="{StaticResource AyScrollBarStyle}" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
-						<ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" AutomationProperties.AutomationId="HorizontalScrollBar" Cursor="Arrow" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" Style="{StaticResource AyScrollBarStyle}" ViewportSize="{TemplateBinding ViewportWidth}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" />
-					</Grid>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
 	<ControlTemplate x:Key="SliderThumbHorizontalTop" TargetType="{x:Type Thumb}">
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5" />
+			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5" />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsMouseOver" Value="true">
@@ -626,7 +629,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SliderThumbHorizontalBottom" TargetType="{x:Type Thumb}">
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5" />
+			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5" />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsMouseOver" Value="true">
@@ -650,7 +653,7 @@
 			</Storyboard>
 		</ControlTemplate.Resources>
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5">
+			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5">
 				<Border.RenderTransform>
 					<ScaleTransform />
 				</Border.RenderTransform>
@@ -669,7 +672,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5" />
+			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5" />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsMouseOver" Value="true">
@@ -698,10 +701,10 @@
 				</Border>
 				<Track x:Name="PART_Track" Grid.Row="1">
 					<Track.DecreaseRepeatButton>
-						<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Background="{StaticResource PrimaryPressedSolidColorBrush}" Height="{StaticResource RepeatButtonSize}" />
+						<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{DynamicResource RepeatButtonTransparent}" Background="{DynamicResource PrimaryPressedSolidColorBrush}" Height="{StaticResource RepeatButtonSize}" />
 					</Track.DecreaseRepeatButton>
 					<Track.IncreaseRepeatButton>
-						<RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Background="{StaticResource LightSolidColorBrush}" Height="{StaticResource RepeatButtonSize}" />
+						<RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Background="{DynamicResource LightSolidColorBrush}" Height="{StaticResource RepeatButtonSize}" />
 					</Track.IncreaseRepeatButton>
 					<Track.Thumb>
 						<Thumb x:Name="Thumb" Focusable="False" OverridesDefaultStyle="True" Template="{StaticResource SliderThumbHorizontal}" VerticalAlignment="Center" />
@@ -728,13 +731,13 @@
 				<Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible" />
 			</Trigger>
 			<Trigger Property="IsKeyboardFocused" Value="true">
-				<Setter Property="Foreground" TargetName="Thumb" Value="{StaticResource PrimaryPressedSolidColorBrush}" />
+				<Setter Property="Foreground" TargetName="Thumb" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<ControlTemplate x:Key="SliderThumbVerticalLeft" TargetType="{x:Type Thumb}">
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Name="PART_Border" RenderTransformOrigin=".5,.5" />
+			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Name="PART_Border" RenderTransformOrigin=".5,.5" />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsMouseOver" Value="true">
@@ -748,7 +751,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SliderThumbVerticalRight" TargetType="{x:Type Thumb}">
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Name="PART_Border" RenderTransformOrigin=".5,.5" />
+			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Name="PART_Border" RenderTransformOrigin=".5,.5" />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsMouseOver" Value="true">
@@ -762,7 +765,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SliderThumbVerticalDefault" TargetType="{x:Type Thumb}">
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1" Name="PART_Border" RenderTransformOrigin=".5,.5" />
+			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1" Name="PART_Border" RenderTransformOrigin=".5,.5" />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsMouseOver" Value="true">
@@ -786,7 +789,7 @@
 			</Storyboard>
 		</ControlTemplate.Resources>
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{StaticResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{StaticResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1" Name="PART_Border" RenderTransformOrigin=".5,.5">
+			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1" Name="PART_Border" RenderTransformOrigin=".5,.5">
 				<Border.RenderTransform>
 					<ScaleTransform />
 				</Border.RenderTransform>
@@ -820,10 +823,10 @@
 				</Border>
 				<Track x:Name="PART_Track" Grid.Column="1">
 					<Track.DecreaseRepeatButton>
-						<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Background="{StaticResource PrimaryPressedSolidColorBrush}" Width="{StaticResource RepeatButtonSize}" />
+						<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Background="{DynamicResource PrimaryPressedSolidColorBrush}" Width="{StaticResource RepeatButtonSize}" />
 					</Track.DecreaseRepeatButton>
 					<Track.IncreaseRepeatButton>
-						<RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Background="{StaticResource LightSolidColorBrush}" Width="{StaticResource RepeatButtonSize}" />
+						<RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Background="{DynamicResource LightSolidColorBrush}" Width="{StaticResource RepeatButtonSize}" />
 					</Track.IncreaseRepeatButton>
 					<Track.Thumb>
 						<Thumb x:Name="Thumb" Focusable="False" OverridesDefaultStyle="True" Template="{StaticResource SliderThumbVertical}" VerticalAlignment="Top" />
@@ -856,7 +859,7 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderBrush" Value="Transparent" />
 		<Setter Property="Cursor" Value="Hand" />
-		<Setter Property="Foreground" Value="{StaticResource PrimaryPressedSolidColorBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
 		<Setter Property="Template" Value="{StaticResource SliderHorizontal}" />
 		<Style.Triggers>
 			<Trigger Property="Orientation" Value="Vertical">

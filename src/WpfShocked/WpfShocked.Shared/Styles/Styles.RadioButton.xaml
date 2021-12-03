@@ -20,7 +20,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Border CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
+                        <Border CornerRadius="{Binding ElementName=PART_Border,Path=CornerRadius}"
                                 Background="{Binding ElementName=PART_Border,Path=Background}"
                                 Margin="1,1,2,1" >
                             <Border x:Name="PART_Border" 
@@ -30,10 +30,10 @@
                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="{StaticResource BaseColor}"/>
+                                    <SolidColorBrush Color="{DynamicResource BaseColor}"/>
                                 </Border.BorderBrush>
                                 <Grid Width="16" Height="16">
-                                    <Ellipse x:Name="PART_Ellipse" Fill="{StaticResource WhiteSolidColorBrush}" 
+                                    <Ellipse x:Name="PART_Ellipse" Fill="{DynamicResource WhiteSolidColorBrush}" 
                                          MinWidth="6" MinHeight="6"
                                          RenderTransformOrigin=".5,.5">
                                         <Ellipse.RenderTransform>
@@ -52,7 +52,7 @@
                                           RecognizesAccessKey="True" 
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          TextElement.Foreground="{StaticResource PrimaryTextSolidColorBrush}"/>
+                                          TextElement.Foreground="{DynamicResource PrimaryTextSolidColorBrush}"/>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Unchecked"/>
@@ -61,15 +61,15 @@
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
                                                         Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        To="{StaticResource PrimaryPressedColor}"
+                                                        To="{DynamicResource PrimaryPressedColor}"
                                                         Duration="00:00:.1"/>
                                         <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
                                                         Storyboard.TargetName="PART_Border"
-                                                        To="{StaticResource PrimaryPressedColor}" 
+                                                        To="{DynamicResource PrimaryPressedColor}" 
                                                         Duration="00:00:.1"/>
                                         <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
                                                         Storyboard.TargetName="PART_Border"
-                                                        To="{StaticResource PrimaryPressedColor}" 
+                                                        To="{DynamicResource PrimaryPressedColor}" 
                                                         Duration="00:00:.1"/>
                                         <!--<ThicknessAnimation Storyboard.TargetName="PART_Border"
                                                          Storyboard.TargetProperty="BorderThickness" 
@@ -96,7 +96,7 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
                             <MultiTrigger.EnterActions>
-                                <BeginStoryboard>
+                                <BeginStoryboard x:Name="PART_BeginStoryboard">
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
                                                         Storyboard.TargetName="PART_Border"
@@ -105,6 +105,9 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard"></RemoveStoryboard>
+                            </MultiTrigger.ExitActions>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

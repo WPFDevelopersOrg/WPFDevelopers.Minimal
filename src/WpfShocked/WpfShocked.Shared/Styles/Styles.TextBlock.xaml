@@ -6,7 +6,7 @@
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
+
     
-    
-    
+
 </ResourceDictionary>

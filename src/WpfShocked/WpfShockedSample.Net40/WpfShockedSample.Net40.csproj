@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86C7221C-07A6-48ED-A8ED-2E44BEC7E2CC}</ProjectGuid>
-    <OutputType>library</OutputType>
-    <RootNamespace>WpfShocked</RootNamespace>
-    <AssemblyName>WpfShocked</AssemblyName>
+    <ProjectGuid>{0204FBCC-C05F-4280-8331-41283909E5E2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WpfShockedSample.Net40</RootNamespace>
+    <AssemblyName>WpfShockedSample.Net40</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -15,6 +15,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,6 +25,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,8 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>../WpfShocked.Shared/Resources/Shocked.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -74,14 +75,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Themes\Generic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
+    <ProjectReference Include="..\WpfShocked.Net40\WpfShocked.Net40.csproj">
+      <Project>{86c7221c-07a6-48ed-a8ed-2e44bec7e2cc}</Project>
+      <Name>WpfShocked.Net40</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="..\WpfShocked.Shared\WpfShocked.Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <Resource Include="Resources\WpfShockedLogo.png" />
+  </ItemGroup>
+  <Import Project="..\WpfShockedSample.Shared\WpfShockedSample.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir)WpfShocked.Shared\Themes\XamlCombine.exe $(SolutionDir)WpfShocked.Shared\Themes\Theme40.txt $(ProjectDir)Themes\Generic.xaml</PreBuildEvent>
-  </PropertyGroup>
 </Project>
