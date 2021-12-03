@@ -14,6 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfShocked.Net40", "WpfShoc
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		WpfShocked.Shared\WpfShocked.Shared.projitems*{86c7221c-07a6-48ed-a8ed-2e44bec7e2cc}*SharedItemsImports = 4
 		WpfShocked.Shared\WpfShocked.Shared.projitems*{ec75cb3a-cf72-4496-bcf7-ff7c9da01f44}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

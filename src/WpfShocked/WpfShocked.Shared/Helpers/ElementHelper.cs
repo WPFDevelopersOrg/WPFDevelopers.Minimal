@@ -17,3 +17,4 @@ namespace WpfShocked.Helpers
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ElementHelper), new PropertyMetadata(new CornerRadius(3)));
     }
+}
