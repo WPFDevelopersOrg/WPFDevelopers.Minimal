@@ -1,0 +1,99 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <!--字体颜色-->
+    <Color x:Key="PrimaryTextColor">#303133</Color>
+    <SolidColorBrush x:Key="PrimaryTextSolidColorBrush" Color="{StaticResource PrimaryTextColor}"></SolidColorBrush>
+    <Color x:Key="RegularTextColor">#606266</Color>
+    <SolidColorBrush x:Key="RegularTextSolidColorBrush" Color="{StaticResource RegularTextColor}"></SolidColorBrush>
+    <Color x:Key="SecondaryTextColor">#909399</Color>
+    <SolidColorBrush x:Key="SecondaryTextSolidColorBrush" Color="{StaticResource SecondaryTextColor}"></SolidColorBrush>
+    <Color x:Key="PlaceholderTextColor">#C0C4CC</Color>
+    <SolidColorBrush x:Key="PlaceholderTextSolidColorBrush" Color="{StaticResource PlaceholderTextColor}"></SolidColorBrush>
+
+    <!--Default颜色-->
+    <Color x:Key="DefaultBorderBrushColor">#FFC6E2FF</Color>
+    <SolidColorBrush x:Key="DefaultBorderBrushSolidColorBrush" Color="{StaticResource DefaultBorderBrushColor}"></SolidColorBrush>
+    <Color x:Key="DefaultBackgroundColor">#FFEBF4FF</Color>
+    <SolidColorBrush x:Key="DefaultBackgroundSolidColorBrush" Color="{StaticResource DefaultBackgroundColor}"></SolidColorBrush>
+    <Color x:Key="DefaultBackgroundPressedColor">#FF398DE6</Color>
+    <SolidColorBrush x:Key="DefaultBackgroundPressedSolidColorBrush" Color="{StaticResource DefaultBackgroundPressedColor}"></SolidColorBrush>
+    <!--Primary颜色-->
+    <Color x:Key="PrimaryNormalColor">#409EFF</Color>
+    <SolidColorBrush x:Key="PrimaryNormalSolidColorBrush" Color="{StaticResource PrimaryNormalColor}"></SolidColorBrush>
+
+    <Color x:Key="PrimaryMouseOverColor">#66B1FF</Color>
+    <SolidColorBrush x:Key="PrimaryMouseOverSolidColorBrush" Color="{StaticResource PrimaryMouseOverColor}"></SolidColorBrush>
+
+    <Color x:Key="PrimaryPressedColor">#3A8EE6</Color>
+    <SolidColorBrush x:Key="PrimaryPressedSolidColorBrush" Color="{StaticResource PrimaryPressedColor}"></SolidColorBrush>
+
+    <!--Success颜色-->
+    <Color x:Key="SuccessColor">#67C23A</Color>
+    <SolidColorBrush x:Key="SuccessSolidColorBrush" Color="{StaticResource SuccessColor}"></SolidColorBrush>
+
+    <Color x:Key="SuccessMouseOverColor">#85CE61</Color>
+    <SolidColorBrush x:Key="SuccessMouseOverSolidColorBrush" Color="{StaticResource SuccessMouseOverColor}"></SolidColorBrush>
+
+    <Color x:Key="SuccessPressedColor">#5DAF34</Color>
+    <SolidColorBrush x:Key="SuccessPressedSolidColorBrush" Color="{StaticResource SuccessPressedColor}"></SolidColorBrush>
+
+    <!--Warning颜色-->
+    <Color x:Key="WarningColor">#E6A23C</Color>
+    <SolidColorBrush x:Key="WarningSolidColorBrush" Color="{StaticResource WarningColor}"></SolidColorBrush>
+
+    <Color x:Key="WarningMouseOverColor">#EBB563</Color>
+    <SolidColorBrush x:Key="WarningMouseOverSolidColorBrush" Color="{StaticResource WarningMouseOverColor}"></SolidColorBrush>
+
+    <Color x:Key="WarningPressedColor">#CF9236</Color>
+    <SolidColorBrush x:Key="WarningPressedSolidColorBrush" Color="{StaticResource WarningPressedColor}"></SolidColorBrush>
+    
+
+    <!--Danger颜色-->
+    <Color x:Key="DangerColor">#F56C6C</Color>
+    <SolidColorBrush x:Key="DangerSolidColorBrush" Color="{StaticResource DangerColor}"></SolidColorBrush>
+
+    <Color x:Key="DangerMouseOverColor">#F78989</Color>
+    <SolidColorBrush x:Key="DangerMouseOverSolidColorBrush" Color="{StaticResource DangerMouseOverColor}"></SolidColorBrush>
+
+    <Color x:Key="DangerPressedColor">#DD6161</Color>
+    <SolidColorBrush x:Key="DangerPressedSolidColorBrush" Color="{StaticResource DangerPressedColor}"></SolidColorBrush>
+
+    <!--Info颜色-->
+    <Color x:Key="InfoColor">#909399</Color>
+    <SolidColorBrush x:Key="InfoSolidColorBrush" Color="{StaticResource InfoColor}"></SolidColorBrush>
+
+    <Color x:Key="InfoMouseOverColor">#A6A9AD</Color>
+    <SolidColorBrush x:Key="InfoMouseOverSolidColorBrush" Color="{StaticResource InfoMouseOverColor}"></SolidColorBrush>
+
+    <Color x:Key="InfoPressedColor">#82848A</Color>
+    <SolidColorBrush x:Key="InfoPressedSolidColorBrush" Color="{StaticResource InfoPressedColor}"></SolidColorBrush>
+
+    <!--白色-->
+    <Color x:Key="WhiteColor">#FFFFFF</Color>
+    <SolidColorBrush x:Key="WhiteSolidColorBrush" Color="{StaticResource WhiteColor}"></SolidColorBrush>
+
+    <Color x:Key="ExtralightColor">#F2F6FC</Color>
+    <SolidColorBrush x:Key="ExtralightSolidColorBrush" Color="{StaticResource ExtralightColor}"></SolidColorBrush>
+    
+    <Color x:Key="LighterColor">#EBEEF5</Color>
+    <SolidColorBrush x:Key="LighterSolidColorBrush" Color="{StaticResource LighterColor}"></SolidColorBrush>
+
+    <Color x:Key="LightColor">#E4E7ED</Color>
+    <SolidColorBrush x:Key="LightSolidColorBrush" Color="{StaticResource LightColor}"></SolidColorBrush>
+
+    <Color x:Key="BaseColor">#DCDFE6</Color>
+    <SolidColorBrush x:Key="BaseSolidColorBrush" Color="{StaticResource BaseColor}"></SolidColorBrush>
+    
+    <Color x:Key="BlackColor">#000000</Color>
+    <SolidColorBrush x:Key="BlackSolidColorBrush" Color="{StaticResource BlackColor}"></SolidColorBrush>
+
+    <!--CircularMenu-->
+    <Color x:Key="CircularSingularColor">#BAE766</Color>
+    <SolidColorBrush x:Key="CircularSingularSolidColorBrush" Color="{StaticResource CircularSingularColor}"></SolidColorBrush>
+
+    <Color x:Key="CircularDualColor">#B0D440</Color>
+    <SolidColorBrush x:Key="CircularDualSolidColorBrush" Color="{StaticResource CircularDualColor}"></SolidColorBrush>
+
+</ResourceDictionary>

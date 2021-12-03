@@ -1,0 +1,6 @@
+E:\Git\WpfShocked\src\WpfShocked\.vs\WpfShocked\Intermediate\WpfShocked.Net40\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Git\WpfShocked\src\WpfShocked\.vs\WpfShocked\Intermediate\WpfShocked.Net40\Debug\WpfShocked_MarkupCompile.cache
+E:\Git\WpfShocked\src\WpfShocked\.vs\WpfShocked\Intermediate\WpfShocked.Net40\Debug\WpfShocked_MarkupCompile.lref
+E:\Git\WpfShocked\src\WpfShocked\.vs\WpfShocked\Intermediate\WpfShocked.Net40\Debug\WpfShocked.dll
+E:\Git\WpfShocked\src\WpfShocked\.vs\WpfShocked\Intermediate\WpfShocked.Net40\Debug\WpfShocked.pdb
+E:\Git\WpfShocked\src\WpfShocked\.vs\WpfShocked\Intermediate\WpfShocked.Net40\Debug\WpfShocked.Net40.csprojAssemblyReference.cache
