@@ -9,7 +9,7 @@
 
     <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Background" Value="{StaticResource WhiteSolidColorBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource WhiteSolidColorBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -22,7 +22,7 @@
                         </Grid.ColumnDefinitions>
                         <Border CornerRadius="{Binding ElementName=PART_Border,Path=CornerRadius}"
                                 Background="{Binding ElementName=PART_Border,Path=Background}"
-                                Margin="1,1,2,1" >
+                                Margin="1,1,2,1">
                             <Border x:Name="PART_Border" 
                                     BorderThickness="{TemplateBinding BorderThickness}" 
                                     Background="{TemplateBinding Background}" 
