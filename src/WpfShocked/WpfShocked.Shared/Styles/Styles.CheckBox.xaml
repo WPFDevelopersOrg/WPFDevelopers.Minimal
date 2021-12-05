@@ -101,6 +101,9 @@
                         </VisualStateManager.VisualStateGroups>
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+                        </Trigger>
                         <Trigger Property="IsChecked" Value="{x:Null}">
                             <Trigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_BeginStoryboardIsCheckedNull">

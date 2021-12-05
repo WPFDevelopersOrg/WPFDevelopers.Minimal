@@ -314,6 +314,9 @@
 						</VisualStateManager.VisualStateGroups>
 					</Grid>
 					<ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
 								<Condition Property="IsChecked" Value="False" />
@@ -851,6 +854,9 @@
 			<Trigger Property="Orientation" Value="Vertical">
 				<Setter Property="Template" Value="{StaticResource SliderVertical}" />
 			</Trigger>
+			<Trigger Property="IsEnabled" Value="False">
+				<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+			</Trigger>
 		</Style.Triggers>
 	</Style>
 	<Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ControlBasicStyle}">
@@ -913,6 +919,9 @@
 						</VisualStateManager.VisualStateGroups>
 					</BulletDecorator>
 					<ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+						</Trigger>
 						<Trigger Property="IsChecked" Value="{x:Null}">
 							<Trigger.EnterActions>
 								<BeginStoryboard x:Name="PART_BeginStoryboardIsCheckedNull">

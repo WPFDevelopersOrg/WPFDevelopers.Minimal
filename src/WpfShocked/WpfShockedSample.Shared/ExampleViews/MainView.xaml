@@ -26,23 +26,28 @@
                 <TextBlock Text="Button" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
                     <Button Content="Default"/>
-                    <Button Content="Primary" Style="{StaticResource PrimaryButton}" Margin="10,0"/>
+                    <Button Content="Default" Margin="10,0" IsEnabled="False"/>
+                    <Button Content="Primary" Style="{StaticResource PrimaryButton}"/>
+                    <Button Content="Primary" Style="{StaticResource PrimaryButton}" Margin="10,0" IsEnabled="False"/>
                 </WrapPanel>
                 <TextBlock Text="Radio" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
                     <RadioButton Content="Option A"/>
                     <RadioButton Content="Option B" Margin="10,0" IsChecked="True"/>
+                    <RadioButton Content="Option C" IsEnabled="False"/>
                 </WrapPanel>
                 <TextBlock Text="Checkbox" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
                     <CheckBox Content="Option A"/>
                     <CheckBox Content="Option B" Margin="10,0" IsChecked="True"/>
                     <CheckBox Content="Option C" IsChecked="{x:Null}"/>
+                    <CheckBox Content="Option D" Margin="10,0" IsEnabled="False"/>
                 </WrapPanel>
                 <TextBlock Text="Slider" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
                     <Slider Width="200"/>
-                    <Slider Width="200" Value="50" Maximum="100"/>
+                    <Slider Width="200" Value="50" Maximum="100"  Margin="10,0"/>
+                    <Slider Width="200" Value="50" Maximum="100" IsEnabled="False"/>
                 </WrapPanel>
             </VirtualizingStackPanel>
         </Grid>

@@ -378,6 +378,9 @@
             <Trigger Property="Orientation" Value="Vertical">
                 <Setter Property="Template" Value="{StaticResource SliderVertical}"/>
             </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 

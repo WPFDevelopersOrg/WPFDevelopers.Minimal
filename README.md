@@ -1,4 +1,4 @@
-<div align="center"><img src="/src/WpfShocked/WpfShockedSample.Net40/Resources/WpfShockedLogo.png"/></div>
+<div align="center"><img src="https://gitee.com/yanjinhua/WPFDevelopers/raw/master/resources/Logo.png"/></div>
 
 ## Welcome to WpfShocked  
 
