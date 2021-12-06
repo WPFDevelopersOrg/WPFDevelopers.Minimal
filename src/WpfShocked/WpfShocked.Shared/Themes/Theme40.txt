@@ -13,3 +13,4 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.Slider.xaml
 ..\Styles\Styles.TextBlock.xaml
 ..\Styles\Styles.CheckBox.xaml
+..\Styles\Styles.TextBox.xaml
