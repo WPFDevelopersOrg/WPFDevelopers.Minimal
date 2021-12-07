@@ -83,9 +83,6 @@
   <ItemGroup>
     <Resource Include="Resources\ShockedLogo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Shocked.ico" />
-  </ItemGroup>
   <Import Project="..\WpfShockedSample.Shared\WpfShockedSample.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

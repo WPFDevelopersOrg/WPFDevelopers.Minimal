@@ -19,7 +19,7 @@
                 <WrapPanel Margin="0,10">
                     <Image Source="/WpfShockedSample.Net40;component/Resources/ShockedLogo.png"
                        RenderOptions.BitmapScalingMode="HighQuality"
-                       Width="38" Height="38"/>
+                       Width="100" Height="100"/>
                     <TextBlock Text="WpfShocked" FontSize="20" Margin="10,0"
                                Foreground="{StaticResource PrimaryNormalSolidColorBrush}"/>
                 </WrapPanel>
