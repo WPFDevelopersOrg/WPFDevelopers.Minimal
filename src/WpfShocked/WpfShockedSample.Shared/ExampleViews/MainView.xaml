@@ -50,12 +50,31 @@
                     <TextBox Margin="10,0" ws:ElementHelper.Watermark="请输入内容"/>
                     <TextBox IsEnabled="False"/>
                 </WrapPanel>
+                <TextBlock Text="ComboBox" FontSize="20" Margin="0,20,0,0"/>
+                <WrapPanel Margin="0,10">
+                    <ComboBox Width="200">
+                        <ComboBoxItem>Option 1</ComboBoxItem>
+                        <ComboBoxItem>Option 2</ComboBoxItem>
+                        <ComboBoxItem>Option 3</ComboBoxItem>
+                        <ComboBoxItem>Option 4</ComboBoxItem>
+                        <ComboBoxItem>Option 5</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox Width="200" Margin="10,0" IsEnabled="False"/>
+                    <ComboBox Width="200" IsEditable="True">
+                        <ComboBoxItem>Option 1</ComboBoxItem>
+                        <ComboBoxItem>Option 2</ComboBoxItem>
+                        <ComboBoxItem>Option 3</ComboBoxItem>
+                        <ComboBoxItem>Option 4</ComboBoxItem>
+                        <ComboBoxItem>Option 5</ComboBoxItem>
+                    </ComboBox>
+                </WrapPanel>
                 <TextBlock Text="Slider" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
                     <Slider Width="200"/>
                     <Slider Width="200" Value="50" Maximum="100"  Margin="10,0"/>
                     <Slider Width="200" Value="50" Maximum="100" IsEnabled="False"/>
                 </WrapPanel>
+                
             </VirtualizingStackPanel>
         </Grid>
        

@@ -59,7 +59,7 @@
                                 <VisualState x:Name="Indeterminate"/>
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
+                                        <!--<ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
                                                         Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
                                                         To="{DynamicResource PrimaryPressedColor}"
                                                         Duration="00:00:.1"/>
@@ -70,7 +70,7 @@
                                         <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
                                                         Storyboard.TargetName="PART_Border"
                                                         To="{DynamicResource PrimaryPressedColor}" 
-                                                        Duration="00:00:.1"/>
+                                                        Duration="00:00:.1"/>-->
                                         <!--<ThicknessAnimation Storyboard.TargetName="PART_Border"
                                                          Storyboard.TargetProperty="BorderThickness" 
                                                          To="0,0,0,0" Duration="00:00:.1"/>-->
@@ -93,12 +93,18 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
                         </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                        </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsChecked" Value="False" />
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <MultiTrigger.EnterActions>
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <!--<MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_BeginStoryboard">
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
@@ -110,7 +116,7 @@
                             </MultiTrigger.EnterActions>
                             <MultiTrigger.ExitActions>
                                 <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard"></RemoveStoryboard>
-                            </MultiTrigger.ExitActions>
+                            </MultiTrigger.ExitActions>-->
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

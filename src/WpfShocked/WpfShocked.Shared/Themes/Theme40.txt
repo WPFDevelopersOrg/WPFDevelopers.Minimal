@@ -14,3 +14,4 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.TextBlock.xaml
 ..\Styles\Styles.CheckBox.xaml
 ..\Styles\Styles.TextBox.xaml
+..\Styles\Styles.ComboBox.xaml

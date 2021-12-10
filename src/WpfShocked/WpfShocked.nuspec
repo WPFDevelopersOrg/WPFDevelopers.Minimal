@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>WpfShocked</id>
+    <!--Nuget包名称-->
+    <version>1.0.0</version>
+    <!--Nuget包版本-->
+    <title>WpfShocked</title>
+    <!--Nuget包显示名称-->
+    <authors>WpfShocked</authors>
+    <!--作者-->
+    <owners>闫驚鏵</owners>
+    <!--所有者-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>http://drea.cc/favicon.ico</iconUrl>
+    <description>
+      1.0.0 原始版本<!--描述（升级记录）-->
+    </description>
+    <summary>https://github.com/yanjinhuagood</summary>
+    <!--简介-->
+    <copyright>©2021 WpfShocked</copyright>
+    <!--版权-->
+    <language>zh-CN</language>
+    <!--语言-->
+    <tags>asp.net;asp.net mvc;boilerplate;application framework;web framework;framework;domain driven design;automapper;object mapper</tags>
+    <!--标签-->
+    <dependencies>
+      <!--项目依赖-->
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Drea.Core" version="1.0.0" />
+        <dependency id="AutoMapper" version="6.2.1" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\Abp.AutoMapper\bin\Debug\netstandard2.0\Abp.AutoMapper.dll" target="lib\netstandard2.0\Abp.AutoMapper.dll" />
+    <!--目标Dll所在路径-->
+  </files>
+</package>

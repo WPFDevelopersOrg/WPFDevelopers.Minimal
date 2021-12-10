@@ -30,6 +30,8 @@
 
     <sys:Double x:Key="EnabledOpacity">0.5</sys:Double>
     <sys:Double x:Key="NormalCornerRadius">4</sys:Double>
+    <sys:Double x:Key="MinHeight">40</sys:Double>
 
     <DropShadowEffect x:Key="NormalShadowDepth" BlurRadius="5" ShadowDepth="1" Direction="270" Color="#AA000000" Opacity=".42" RenderingBias="Performance" />
+    <DropShadowEffect x:Key="PopupShadowDepth" BlurRadius="12" ShadowDepth="2" Color="{StaticResource BlackColor}" Opacity="0.1" />
 </ResourceDictionary>

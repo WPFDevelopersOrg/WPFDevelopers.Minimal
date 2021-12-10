@@ -14,7 +14,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="6,0"/>
         <Setter Property="AllowDrop" Value="true" />
-        <Setter Property="MinHeight" Value="40"/>
+        <Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
         <Setter Property="MinWidth" Value="180"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -99,6 +99,9 @@
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
                         </Trigger>
                         <Trigger Property="Text" Value="">
+                            <Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
                             <Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible"/>
                         </Trigger>
                         <!--<Trigger Property="IsFocused" Value="True">

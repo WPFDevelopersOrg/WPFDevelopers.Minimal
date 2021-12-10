@@ -49,6 +49,7 @@
 	<FontStyle x:Key="NormalFontStyle">Normal</FontStyle>
 	<FontWeight x:Key="NormalFontWeight">Normal</FontWeight>
 	<Geometry x:Key="PathCheckMark" po:Freeze="True">M384 690l452-452 60 60-512 512-238-238 60-60z</Geometry>
+	<Geometry x:Key="PathComboBoxToggleButton" po:Freeze="True">M998 352c0 -8 -4 -17 -10 -23l-50 -50c-6 -6 -14 -10 -23 -10c-8 0 -17 4 -23 10l-393 393l-393 -393c-6 -6 -15 -10 -23 -10s-17 4 -23 10l-50 50c-6 6 -10 15 -10 23s4 17 10 23l466 466c6 6 15 10 23 10s17 -4 23 -10l466 -466c6 -6 10 -15 10 -23z</Geometry>
 	<Geometry x:Key="PathMetroWindowMaximize" po:Freeze="True">M0.99999994,0.99999994 L0.99999994,9 9,9 9,0.99999994 z M0,0 L10,0 10,10 0,10 z</Geometry>
 	<Geometry x:Key="PathMetroWindowRestore" po:Freeze="True">M1,3 L1,9 7,9 7,3 z M3,0.99999994 L3,2 8,2 8,7 9,7 9,0.99999994 z M2,0 L10,0 10,8 8,8 8,10 0,10 0,2 2,2 z</Geometry>
 	<Geometry x:Key="PathMetroWindowClose" po:Freeze="True">M 1301 69.6875 L 1305.3049 74 L 1300.9375 78.5313 L 1301.6324 79.2263 L 1306 74.735 L 1310.4263 79.2613 L 1311.1563 78.5313 L 1306.7 74 L 1310.9375 69.6875 L 1310.2075 68.9575 L 1306 73.265 L 1301.6949 68.9925 L 1301 69.6875 Z</Geometry>
@@ -59,6 +60,7 @@
 	<SineEase x:Key="SineEaseInOut" EasingMode="EaseInOut" />
 	<sys:Double x:Key="EnabledOpacity">0.5</sys:Double>
 	<sys:Double x:Key="NormalCornerRadius">4</sys:Double>
+	<sys:Double x:Key="MinHeight">40</sys:Double>
 	<DropShadowEffect x:Key="NormalShadowDepth" BlurRadius="5" ShadowDepth="1" Direction="270" Color="#AA000000" Opacity=".42" RenderingBias="Performance" />
 	<Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
 		<Setter Property="OverridesDefaultStyle" Value="True" />
@@ -97,6 +99,9 @@
 	<sys:Double x:Key="ThumbWidth">16</sys:Double>
 	<sys:Double x:Key="ThumbCornerRadius">8</sys:Double>
 	<sys:Double x:Key="RepeatButtonSize">5</sys:Double>
+	<ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
+		<Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+	</ControlTemplate>
 	<SolidColorBrush x:Key="PrimaryTextSolidColorBrush" Color="{StaticResource PrimaryTextColor}" />
 	<SolidColorBrush x:Key="RegularTextSolidColorBrush" Color="{StaticResource RegularTextColor}" />
 	<SolidColorBrush x:Key="SecondaryTextSolidColorBrush" Color="{StaticResource SecondaryTextColor}" />
@@ -147,6 +152,7 @@
 		<Setter Property="UseLayoutRounding" Value="True" />
 		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
 	</Style>
+	<DropShadowEffect x:Key="PopupShadowDepth" BlurRadius="12" ShadowDepth="2" Color="{StaticResource BlackColor}" Opacity="0.1" />
 	<Style x:Key="BaseButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
 		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
@@ -300,9 +306,18 @@
 								<VisualState x:Name="Indeterminate" />
 								<VisualState x:Name="Checked">
 									<Storyboard>
-										<ColorAnimation Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" To="{DynamicResource PrimaryPressedColor}" Duration="00:00:.1" />
-										<ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{DynamicResource PrimaryPressedColor}" Duration="00:00:.1" />
-										<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{DynamicResource PrimaryPressedColor}" Duration="00:00:.1" />
+										<!--<ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
+                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                        To="{DynamicResource PrimaryPressedColor}"
+                                                        Duration="00:00:.1"/>
+                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                                        Storyboard.TargetName="PART_Border"
+                                                        To="{DynamicResource PrimaryPressedColor}" 
+                                                        Duration="00:00:.1"/>
+                                        <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
+                                                        Storyboard.TargetName="PART_Border"
+                                                        To="{DynamicResource PrimaryPressedColor}" 
+                                                        Duration="00:00:.1"/>-->
 										<!--<ThicknessAnimation Storyboard.TargetName="PART_Border"
                                                          Storyboard.TargetProperty="BorderThickness" 
                                                          To="0,0,0,0" Duration="00:00:.1"/>-->
@@ -317,21 +332,30 @@
 						<Trigger Property="IsEnabled" Value="False">
 							<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
 						</Trigger>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
 								<Condition Property="IsChecked" Value="False" />
 								<Condition Property="IsMouseOver" Value="True" />
 							</MultiTrigger.Conditions>
-							<MultiTrigger.EnterActions>
-								<BeginStoryboard x:Name="PART_BeginStoryboard">
-									<Storyboard>
-										<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{StaticResource PrimaryPressedColor}" Duration="00:00:.1" />
-									</Storyboard>
-								</BeginStoryboard>
-							</MultiTrigger.EnterActions>
-							<MultiTrigger.ExitActions>
-								<RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard" />
-							</MultiTrigger.ExitActions>
+							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<!--<MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="PART_BeginStoryboard">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
+                                                        Storyboard.TargetName="PART_Border"
+                                                        To="{StaticResource PrimaryPressedColor}" 
+                                                        Duration="00:00:.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard"></RemoveStoryboard>
+                            </MultiTrigger.ExitActions>-->
 						</MultiTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -868,23 +892,14 @@
 					<BulletDecorator Background="Transparent">
 						<BulletDecorator.Bullet>
 							<Border CornerRadius="{Binding ElementName=PART_Border,Path=CornerRadius}" Background="{Binding ElementName=PART_Border,Path=Background}">
-								<Border x:Name="PART_Border" Width="16" Height="16" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource BaseSolidColorBrush}">
-									<Border.Background>
-										<SolidColorBrush Color="{DynamicResource WhiteColor}" />
-									</Border.Background>
+								<Border x:Name="PART_Border" Width="16" Height="16" CornerRadius="3" BorderThickness="1" BorderBrush="{DynamicResource BaseSolidColorBrush}" Background="{DynamicResource WhiteSolidColorBrush}">
 									<Grid>
-										<Path x:Name="PART_CheckMark" SnapsToDevicePixels="False" VerticalAlignment="Center" HorizontalAlignment="Center" Data="{StaticResource PathCheckMark}" RenderTransformOrigin=".5,.5" Stretch="Fill">
-											<Path.Fill>
-												<SolidColorBrush Color="{DynamicResource WhiteColor}" />
-											</Path.Fill>
+										<Path x:Name="PART_CheckMark" SnapsToDevicePixels="False" VerticalAlignment="Center" HorizontalAlignment="Center" Data="{StaticResource PathCheckMark}" RenderTransformOrigin=".5,.5" Stretch="Fill" Fill="{DynamicResource WhiteSolidColorBrush}">
 											<Path.RenderTransform>
 												<ScaleTransform ScaleX="0" ScaleY="0" />
 											</Path.RenderTransform>
 										</Path>
-										<Rectangle Width="6" Height="2" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="PART_InderminateMark" RenderTransformOrigin=".5,.5">
-											<Rectangle.Fill>
-												<SolidColorBrush Color="{DynamicResource PrimaryPressedColor}" />
-											</Rectangle.Fill>
+										<Rectangle Width="6" Height="2" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="PART_InderminateMark" RenderTransformOrigin=".5,.5" Fill="{DynamicResource PrimaryPressedSolidColorBrush}">
 											<Rectangle.RenderTransform>
 												<ScaleTransform ScaleX="0" />
 											</Rectangle.RenderTransform>
@@ -893,22 +908,29 @@
 								</Border>
 							</Border>
 						</BulletDecorator.Bullet>
-						<ContentPresenter x:Name="PART_ContentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="2,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-							<TextElement.Foreground>
-								<SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
-							</TextElement.Foreground>
-						</ContentPresenter>
+						<ContentPresenter x:Name="PART_ContentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="2,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" TextElement.Foreground="{DynamicResource PrimaryTextSolidColorBrush}" />
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CheckStates">
 								<VisualState x:Name="Checked">
 									<Storyboard>
-										<ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-											<EasingColorKeyFrame KeyTime="0" Value="{StaticResource PrimaryPressedColor}" />
-										</ColorAnimationUsingKeyFrames>
-										<ColorAnimation Storyboard.TargetName="PART_ContentPresenter" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" To="{StaticResource PrimaryPressedColor}" Duration="00:00:.1" />
-										<ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
-											<EasingColorKeyFrame KeyTime="0" Value="{StaticResource PrimaryPressedColor}" />
-										</ColorAnimationUsingKeyFrames>
+										<!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_Border"
+                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource PrimaryPressedColor}" />
+                                        </ColorAnimationUsingKeyFrames>-->
+										<!--<ColorAnimation Storyboard.TargetName="PART_Border"
+                                                        Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                        To="{DynamicResource PrimaryPressedColor}"
+                                                        Duration="00:00:.1"/>-->
+										<!--<ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
+                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                        To="{DynamicResource PrimaryPressedColor}"
+                                                        Duration="00:00:.1"/>-->
+										<!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_Border"
+                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource PrimaryPressedColor}" />
+                                        </ColorAnimationUsingKeyFrames>-->
 										<DoubleAnimation Storyboard.TargetName="PART_CheckMark" Storyboard.TargetProperty="(Path.RenderTransform).(ScaleTransform.ScaleX)" To=".7" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
 										<DoubleAnimation Storyboard.TargetName="PART_CheckMark" Storyboard.TargetProperty="(Path.RenderTransform).(ScaleTransform.ScaleY)" To=".5" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
 									</Storyboard>
@@ -921,6 +943,11 @@
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsEnabled" Value="False">
 							<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+						</Trigger>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsChecked" Value="{x:Null}">
 							<Trigger.EnterActions>
@@ -939,16 +966,21 @@
 								<Condition Property="IsChecked" Value="False" />
 								<Condition Property="IsMouseOver" Value="True" />
 							</MultiTrigger.Conditions>
-							<MultiTrigger.EnterActions>
-								<BeginStoryboard x:Name="PART_BeginStoryboard">
-									<Storyboard>
-										<ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="PART_Border" To="{StaticResource PrimaryPressedColor}" Duration="00:00:.1" />
-									</Storyboard>
-								</BeginStoryboard>
-							</MultiTrigger.EnterActions>
-							<MultiTrigger.ExitActions>
-								<RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard" />
-							</MultiTrigger.ExitActions>
+							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<!--本来使用动画，但是动画会导致无法修改主题颜色-->
+							<!--<MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="PART_BeginStoryboard">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
+                                                        Storyboard.TargetName="PART_Border"
+                                                        To="{DynamicResource PrimaryPressedColor}" 
+                                                        Duration="00:00:.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard"></RemoveStoryboard>
+                            </MultiTrigger.ExitActions>-->
 						</MultiTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -961,7 +993,7 @@
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Padding" Value="6,0" />
 		<Setter Property="AllowDrop" Value="true" />
-		<Setter Property="MinHeight" Value="40" />
+		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
 		<Setter Property="MinWidth" Value="180" />
 		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
@@ -1032,6 +1064,9 @@
 						<Trigger Property="Text" Value="">
 							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
 						</Trigger>
+						<Trigger Property="Text" Value="{x:Null}">
+							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
+						</Trigger>
 						<!--<Trigger Property="IsFocused" Value="True">
                             <Setter Property="BorderBrush" TargetName="PART_Border">
                                 <Setter.Value>
@@ -1039,6 +1074,211 @@
                                 </Setter.Value>
                             </Setter>
                         </Trigger>-->
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+		<Border x:Name="PART_Border" Padding="6,0" BorderThickness="0" SnapsToDevicePixels="true">
+			<Grid Background="Transparent">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition Width="30" />
+				</Grid.ColumnDefinitions>
+				<Rectangle Grid.Column="1" Cursor="Hand" Fill="Transparent" Height="Auto" Width="30" />
+				<Path x:Name="PART_Arrow" Grid.Column="1" Stretch="Fill" Height="6" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Data="{StaticResource PathComboBoxToggleButton}" RenderTransformOrigin=".5,.5">
+					<Path.Fill>
+						<SolidColorBrush Color="{DynamicResource PlaceholderTextColor}" />
+					</Path.Fill>
+					<Path.RenderTransform>
+						<RotateTransform Angle="0" />
+					</Path.RenderTransform>
+				</Path>
+			</Grid>
+			<VisualStateManager.VisualStateGroups>
+				<VisualStateGroup x:Name="CommonStates">
+					<VisualState x:Name="Normal" />
+					<VisualState x:Name="MouseOver" />
+					<VisualState x:Name="Pressed" />
+					<VisualState x:Name="Disabled" />
+				</VisualStateGroup>
+				<VisualStateGroup x:Name="CheckStates">
+					<VisualState x:Name="Checked">
+						<Storyboard>
+							<DoubleAnimation Storyboard.TargetName="PART_Arrow" Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)" To="-180" Duration="00:00:.3" EasingFunction="{StaticResource ExponentialEaseOut}" />
+						</Storyboard>
+					</VisualState>
+					<VisualState x:Name="Unchecked">
+						<Storyboard>
+							<DoubleAnimation Storyboard.TargetName="PART_Arrow" Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)" To="0" Duration="00:00:.3" EasingFunction="{StaticResource ExponentialEaseOut}" />
+						</Storyboard>
+					</VisualState>
+					<VisualState x:Name="Indeterminate" />
+				</VisualStateGroup>
+			</VisualStateManager.VisualStateGroups>
+		</Border>
+	</ControlTemplate>
+	<Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+		<Setter Property="MinWidth" Value="120" />
+		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ComboBox}">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="OpenStoryboard">
+							<DoubleAnimation Storyboard.TargetName="PART_DropDown" Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
+						</Storyboard>
+						<Storyboard x:Key="CloseStoryboard">
+							<DoubleAnimation Storyboard.TargetName="PART_DropDown" Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)" To="0" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<Grid>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="MouseOver">
+									<Storyboard>
+										<ColorAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" EasingFunction="{StaticResource ExponentialEaseOut}" Duration="00:00:.1" To="{DynamicResource PrimaryMouseOverColor}" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Disabled" />
+							</VisualStateGroup>
+							<VisualStateGroup x:Name="EditStates">
+								<VisualState x:Name="Editable" />
+								<VisualState x:Name="Uneditable" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Grid.Column="2" Focusable="False" ClickMode="Press" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+						<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" HorizontalAlignment="Left" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="4,3,30,3" />
+						<!--<TextBox x:Name="PART_EditableTextBox"  
+                                 HorizontalAlignment="Left"
+                                 Margin="2,3,30,3"
+                                 Focusable="True"
+                                 Background="Transparent" 
+                                 Visibility="Hidden"  
+                                 Text="{TemplateBinding ComboBox.SelectionBoxItem}"
+                                 Template="{StaticResource ComboBoxTextBox}"
+                                 IsReadOnly="{TemplateBinding IsReadOnly}" />-->
+						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,3,30,3" Focusable="True" Background="Transparent" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}" />
+						<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" StaysOpen="False">
+							<Grid x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" RenderTransformOrigin="0.5,0" SnapsToDevicePixels="True">
+								<Grid.RenderTransform>
+									<ScaleTransform />
+								</Grid.RenderTransform>
+								<Border Background="{DynamicResource WhiteSolidColorBrush}" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" Effect="{StaticResource PopupShadowDepth}" />
+								<Border Name="PART_DropDownBorder" Background="{DynamicResource WhiteSolidColorBrush}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+								<ScrollViewer Padding="0,8" ScrollViewer.VerticalScrollBarVisibility="Auto">
+									<ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+								</ScrollViewer>
+							</Grid>
+						</Popup>
+						<Border x:Name="PART_Border" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" SnapsToDevicePixels="True" />
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="BeginStoryboardOpenStoryboard" Storyboard="{StaticResource OpenStoryboard}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="BeginStoryboardOpenStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+						<Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="False">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="BeginStoryboardCloseStoryboard" Storyboard="{StaticResource CloseStoryboard}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="BeginStoryboardCloseStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+						<Trigger Property="HasItems" Value="False">
+							<Setter TargetName="PART_DropDownBorder" Property="MinHeight" Value="95" />
+						</Trigger>
+						<Trigger Property="IsGrouping" Value="True">
+							<Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+						</Trigger>
+						<Trigger SourceName="PART_Popup" Property="AllowsTransparency" Value="True">
+							<Setter TargetName="PART_DropDownBorder" Property="CornerRadius" Value="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" />
+							<Setter TargetName="PART_DropDownBorder" Property="Margin" Value="0,2,0,0" />
+						</Trigger>
+						<Trigger Property="ComboBox.IsEditable" Value="True">
+							<Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+							<Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible" />
+							<Setter TargetName="ContentSite" Property="UIElement.Visibility" Value="Hidden" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Padding" Value="20,0" />
+		<Setter Property="Height" Value="34" />
+		<Setter Property="Margin" Value="1,0" />
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="FontSize" Value="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ComboBoxItem}">
+					<Grid>
+						<!--<VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="SelectionStates">
+                                <VisualState x:Name="Unselected">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="PART_ContentPresenter" 
+                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource RegularTextColor}"
+                                                        Duration="00:00:.1"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Selected">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="PART_RectangleSelected" 
+                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource BaseColor}"
+                                                        Duration="00:00:.3"/>
+                                        <ColorAnimation Storyboard.TargetName="PART_ContentPresenter" 
+                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource PrimaryPressedColor}"
+                                                        Duration="00:00:.1"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="SelectedUnfocused"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>-->
+						<Rectangle x:Name="PART_RectangleMouseOver" Fill="{StaticResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+						<Rectangle x:Name="PART_RectangleSelected" Fill="{StaticResource BaseSolidColorBrush}" Visibility="Collapsed" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentPresenter" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}" />
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource BaseSolidColorBrush}" />
+						</Trigger>
+						<Trigger Property="IsSelected" Value="True">
+							<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource BaseSolidColorBrush}" />
+							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter TargetName="PART_RectangleMouseOver" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_RectangleSelected" Property="Visibility" Value="Visible" />
+							<Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold" />
+						</Trigger>
+						<Trigger Property="IsFocused" Value="True">
+							<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource BaseSolidColorBrush}" />
+						</Trigger>
+						<Trigger Property="IsEnabled" Value="False">
+							<Setter Property="Opacity" Value="{StaticResource DisabledOpacity}" />
+						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
