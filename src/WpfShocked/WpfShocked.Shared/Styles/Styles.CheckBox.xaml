@@ -59,12 +59,7 @@
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
-                                        <!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_Border"
-                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                         Value="{DynamicResource PrimaryPressedColor}" />
-                                        </ColorAnimationUsingKeyFrames>-->
-
+                                        
                                         <!--<ColorAnimation Storyboard.TargetName="PART_Border"
                                                         Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
                                                         To="{DynamicResource PrimaryPressedColor}"
@@ -74,11 +69,7 @@
                                                         Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
                                                         To="{DynamicResource PrimaryPressedColor}"
                                                         Duration="00:00:.1"/>-->
-                                        <!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_Border"
-                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                         Value="{StaticResource PrimaryPressedColor}" />
-                                        </ColorAnimationUsingKeyFrames>-->
+                                        
 
                                         <DoubleAnimation Storyboard.TargetName="PART_CheckMark"
                                                          Storyboard.TargetProperty="(Path.RenderTransform).(ScaleTransform.ScaleX)" 

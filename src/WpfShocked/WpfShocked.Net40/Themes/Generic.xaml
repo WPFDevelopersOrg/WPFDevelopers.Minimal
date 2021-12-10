@@ -913,11 +913,6 @@
 							<VisualStateGroup x:Name="CheckStates">
 								<VisualState x:Name="Checked">
 									<Storyboard>
-										<!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_Border"
-                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                         Value="{DynamicResource PrimaryPressedColor}" />
-                                        </ColorAnimationUsingKeyFrames>-->
 										<!--<ColorAnimation Storyboard.TargetName="PART_Border"
                                                         Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
                                                         To="{DynamicResource PrimaryPressedColor}"
@@ -926,11 +921,6 @@
                                                         Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
                                                         To="{DynamicResource PrimaryPressedColor}"
                                                         Duration="00:00:.1"/>-->
-										<!--<ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_Border"
-                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0"
-                                         Value="{StaticResource PrimaryPressedColor}" />
-                                        </ColorAnimationUsingKeyFrames>-->
 										<DoubleAnimation Storyboard.TargetName="PART_CheckMark" Storyboard.TargetProperty="(Path.RenderTransform).(ScaleTransform.ScaleX)" To=".7" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
 										<DoubleAnimation Storyboard.TargetName="PART_CheckMark" Storyboard.TargetProperty="(Path.RenderTransform).(ScaleTransform.ScaleY)" To=".5" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
 									</Storyboard>
@@ -1154,7 +1144,7 @@
 								<VisualState x:Name="Uneditable" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Grid.Column="2" Focusable="False" ClickMode="Press" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Style="{x:Null}" Grid.Column="2" Focusable="False" ClickMode="Press" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
 						<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" HorizontalAlignment="Left" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="4,3,30,3" />
 						<!--<TextBox x:Name="PART_EditableTextBox"  
                                  HorizontalAlignment="Left"
@@ -1279,6 +1269,78 @@
 						<Trigger Property="IsEnabled" Value="False">
 							<Setter Property="Opacity" Value="{StaticResource DisabledOpacity}" />
 						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Focusable" Value="False" />
+		<!--<Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="20" />-->
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ToggleButton}">
+					<!--<ControlTemplate.Resources>
+                        <Storyboard x:Key="TrueStoryboard">
+                            <DoubleAnimation Storyboard.TargetName="PART_Ellipse"
+                                             Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" 
+                                             To="{Binding RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}, Mode=FindAncestor}, Path=ActualWidth}"
+                                             Duration="00:00:1"
+                                             EasingFunction="{StaticResource ExponentialEaseOut}"/>
+                        </Storyboard>
+                        <Storyboard x:Key="FalseStoryboard">
+                            <DoubleAnimation Storyboard.TargetName="PART_Ellipse"
+                                             Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" 
+                                             To="0" Duration="00:00:1"
+                                             EasingFunction="{StaticResource ExponentialEaseOut}"/>
+                        </Storyboard>
+                    </ControlTemplate.Resources>-->
+					<Border x:Name="PART_Border" Width="40" Height="20" Background="{DynamicResource BaseSolidColorBrush}" CornerRadius="10">
+						<Ellipse x:Name="PART_Ellipse" Width="16" Height="16" Margin="2,0" VerticalAlignment="Center" HorizontalAlignment="Left" Fill="{DynamicResource WhiteSolidColorBrush}">
+							<Ellipse.RenderTransform>
+								<TranslateTransform />
+							</Ellipse.RenderTransform>
+						</Ellipse>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CheckStates">
+								<VisualState x:Name="Checked">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="PART_Ellipse" Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" To="20" Duration="00:00:.5" EasingFunction="{StaticResource CubicEaseInOut}" />
+										<ColorAnimation Duration="00:00:0.5" Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="{StaticResource PrimaryPressedColor}" EasingFunction="{StaticResource CubicEaseInOut}" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unchecked">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="PART_Ellipse" Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" To="0" Duration="00:00:.5" EasingFunction="{StaticResource CubicEaseInOut}" />
+										<ColorAnimation Duration="00:00:0.5" Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="{StaticResource BaseColor}" EasingFunction="{StaticResource CubicEaseInOut}" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Indeterminate" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+					</Border>
+					<ControlTemplate.Triggers>
+						<!--<Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource DefaultBackgroundPressedSolidColorBrush}"/>
+                        </Trigger>-->
+						<!-- <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="BeginStoryboardTrueStoryboard" Storyboard="{StaticResource TrueStoryboard}" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="BeginStoryboardTrueStoryboard" />
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="BeginStoryboardFalseStoryboard" Storyboard="{StaticResource FalseStoryboard}" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="BeginStoryboardFalseStoryboard" />
+                            </Trigger.ExitActions>
+                        </Trigger>-->
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>

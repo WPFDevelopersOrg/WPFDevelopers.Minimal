@@ -121,6 +121,7 @@
                         </VisualStateManager.VisualStateGroups>
                         <ToggleButton x:Name="PART_ToggleButton"
                         Template="{StaticResource ComboBoxToggleButton}"
+                        Style="{x:Null}"
                         Grid.Column="2"
                         Focusable="False"
                         ClickMode="Press"
