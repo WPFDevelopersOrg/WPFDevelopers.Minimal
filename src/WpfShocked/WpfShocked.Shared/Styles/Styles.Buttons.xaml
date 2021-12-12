@@ -69,9 +69,9 @@
                         </VisualStateManager.VisualStateGroups>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
+                        <!--<Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-                        </Trigger>
+                        </Trigger>-->
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="PART_Border" Property="Background" 
                                     Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
@@ -160,9 +160,9 @@
                             <Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
                             <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
+                        <!--<Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-                        </Trigger>
+                        </Trigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

@@ -26,6 +26,11 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <sys:Double x:Key="EnabledOpacity">0.5</sys:Double>

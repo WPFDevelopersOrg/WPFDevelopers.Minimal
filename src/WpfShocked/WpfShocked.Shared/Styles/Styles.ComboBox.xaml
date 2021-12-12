@@ -167,7 +167,7 @@
                                   RenderTransformOrigin="0.5,0"
                                   SnapsToDevicePixels="True">
                                 <Grid.RenderTransform>
-                                    <ScaleTransform/>
+                                    <ScaleTransform ScaleY="0"/>
                                 </Grid.RenderTransform>
                                 <Border Background="{DynamicResource WhiteSolidColorBrush}" 
                                         CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" 

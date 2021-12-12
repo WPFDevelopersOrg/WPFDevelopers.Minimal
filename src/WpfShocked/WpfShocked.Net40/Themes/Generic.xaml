@@ -151,6 +151,11 @@
 		<Setter Property="SnapsToDevicePixels" Value="True" />
 		<Setter Property="UseLayoutRounding" Value="True" />
 		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+		<Style.Triggers>
+			<Trigger Property="IsEnabled" Value="False">
+				<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+			</Trigger>
+		</Style.Triggers>
 	</Style>
 	<DropShadowEffect x:Key="PopupShadowDepth" BlurRadius="12" ShadowDepth="2" Color="{StaticResource BlackColor}" Opacity="0.1" />
 	<Style x:Key="BaseButton" TargetType="{x:Type Button}" BasedOn="{StaticResource ControlBasicStyle}">
@@ -194,9 +199,9 @@
 						</VisualStateManager.VisualStateGroups>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-						</Trigger>
+						<!--<Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+                        </Trigger>-->
 						<Trigger Property="IsFocused" Value="True">
 							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
 						</Trigger>
@@ -246,9 +251,9 @@
 							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
 							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-						</Trigger>
+						<!--<Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+                        </Trigger>-->
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -329,9 +334,9 @@
 						</VisualStateManager.VisualStateGroups>
 					</Grid>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-						</Trigger>
+						<!--<Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+                        </Trigger>-->
 						<Trigger Property="IsChecked" Value="True">
 							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
 							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
@@ -878,9 +883,9 @@
 			<Trigger Property="Orientation" Value="Vertical">
 				<Setter Property="Template" Value="{StaticResource SliderVertical}" />
 			</Trigger>
-			<Trigger Property="IsEnabled" Value="False">
-				<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-			</Trigger>
+			<!--<Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+            </Trigger>-->
 		</Style.Triggers>
 	</Style>
 	<Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ControlBasicStyle}">
@@ -931,9 +936,9 @@
 						</VisualStateManager.VisualStateGroups>
 					</BulletDecorator>
 					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-						</Trigger>
+						<!--<Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+                        </Trigger>-->
 						<Trigger Property="IsChecked" Value="True">
 							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
 							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
@@ -1048,9 +1053,9 @@
                                 <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard"></RemoveStoryboard>
                             </MultiTrigger.ExitActions>
                         </MultiTrigger>-->
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-						</Trigger>
+						<!--<Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
+                        </Trigger>-->
 						<Trigger Property="Text" Value="">
 							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
 						</Trigger>
@@ -1159,7 +1164,7 @@
 						<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" StaysOpen="False">
 							<Grid x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" RenderTransformOrigin="0.5,0" SnapsToDevicePixels="True">
 								<Grid.RenderTransform>
-									<ScaleTransform />
+									<ScaleTransform ScaleY="0" />
 								</Grid.RenderTransform>
 								<Border Background="{DynamicResource WhiteSolidColorBrush}" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" Effect="{StaticResource PopupShadowDepth}" />
 								<Border Name="PART_DropDownBorder" Background="{DynamicResource WhiteSolidColorBrush}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
@@ -1307,7 +1312,7 @@
 							<VisualStateGroup x:Name="CheckStates">
 								<VisualState x:Name="Checked">
 									<Storyboard>
-										<DoubleAnimation Storyboard.TargetName="PART_Ellipse" Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" To="20" Duration="00:00:.5" EasingFunction="{StaticResource CubicEaseInOut}" />
+										<DoubleAnimation Storyboard.TargetName="PART_Ellipse" Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" To="20.5" Duration="00:00:.5" EasingFunction="{StaticResource CubicEaseInOut}" />
 										<ColorAnimation Duration="00:00:0.5" Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="{StaticResource PrimaryPressedColor}" EasingFunction="{StaticResource CubicEaseInOut}" />
 									</Storyboard>
 								</VisualState>

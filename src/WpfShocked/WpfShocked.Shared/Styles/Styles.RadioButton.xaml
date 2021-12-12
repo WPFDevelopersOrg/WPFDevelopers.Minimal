@@ -90,9 +90,9 @@
                         </VisualStateManager.VisualStateGroups>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
+                        <!--<Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-                        </Trigger>
+                        </Trigger>-->
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
                             <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>

@@ -49,7 +49,7 @@
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="PART_Ellipse"
                                                          Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" 
-                                                         To="20" 
+                                                         To="20.5" 
                                                          Duration="00:00:.5"
                                                          EasingFunction="{StaticResource CubicEaseInOut}"/>
                                         <ColorAnimation Duration="00:00:0.5"

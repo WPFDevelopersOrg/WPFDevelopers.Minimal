@@ -95,9 +95,9 @@
                                 <RemoveStoryboard BeginStoryboardName="PART_BeginStoryboard"></RemoveStoryboard>
                             </MultiTrigger.ExitActions>
                         </MultiTrigger>-->
-                        <Trigger Property="IsEnabled" Value="False">
+                        <!--<Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-                        </Trigger>
+                        </Trigger>-->
                         <Trigger Property="Text" Value="">
                             <Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible"/>
                         </Trigger>
