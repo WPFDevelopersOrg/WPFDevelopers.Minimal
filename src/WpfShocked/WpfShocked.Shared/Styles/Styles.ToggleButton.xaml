@@ -64,9 +64,9 @@
                                         <DoubleAnimation Storyboard.TargetName="PART_Ellipse"
                                                          Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" 
                                                          To="0" 
-                                                         Duration="00:00:.5"
+                                                         Duration="00:00:.3"
                                                          EasingFunction="{StaticResource CubicEaseInOut}"/>
-                                        <ColorAnimation Duration="00:00:0.5" 
+                                        <ColorAnimation Duration="00:00:0.3" 
                                                         Storyboard.TargetName="PART_Border"
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                         To="{StaticResource BaseColor}"
