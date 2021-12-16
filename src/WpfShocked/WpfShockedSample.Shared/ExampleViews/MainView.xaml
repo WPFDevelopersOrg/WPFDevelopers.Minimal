@@ -46,7 +46,7 @@
                 </WrapPanel>
                 <TextBlock Text="TextBox" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
-                    <TextBox />
+                    <TextBox/>
                     <TextBox Margin="10,0" ws:ElementHelper.Watermark="请输入内容"/>
                     <TextBox IsEnabled="False"/>
                 </WrapPanel>
@@ -75,13 +75,22 @@
                     <ToggleButton IsChecked="True"/>
                 </WrapPanel>
 
+                <TextBlock Text="DatePicker" FontSize="20" Margin="0,20,0,0"/>
+                <WrapPanel Margin="0,10">
+                    <DatePicker Width="200"/>
+                    <DatePicker Width="200" SelectedDateFormat="Long" Margin="10,0"/>
+                    <DatePicker Width="200" IsEnabled="False"/>
+                </WrapPanel>
+
                 <TextBlock Text="Slider" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
                     <Slider Width="200"/>
                     <Slider Width="200" Value="50" Maximum="100"  Margin="10,0"/>
                     <Slider Width="200" Value="50" Maximum="100" IsEnabled="False"/>
                 </WrapPanel>
+
                 
+
             </VirtualizingStackPanel>
         </Grid>
        

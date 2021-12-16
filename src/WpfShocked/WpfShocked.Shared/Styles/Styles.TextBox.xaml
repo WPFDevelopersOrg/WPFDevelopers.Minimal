@@ -15,6 +15,7 @@
         <Setter Property="Padding" Value="6,0"/>
         <Setter Property="AllowDrop" Value="true" />
         <Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
+        <!--<Setter Property="SelectionBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
         <Setter Property="MinWidth" Value="180"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">

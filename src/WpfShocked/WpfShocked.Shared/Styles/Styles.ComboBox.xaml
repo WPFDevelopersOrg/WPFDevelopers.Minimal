@@ -154,6 +154,7 @@
                                  Background="Transparent"
                                  Visibility="Hidden"
                                  IsReadOnly="{TemplateBinding IsReadOnly}" />
+                        <!--SelectionBrush="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
                         <Popup x:Name="PART_Popup" 
                                MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
                                MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}"
