@@ -8,6 +8,7 @@ Basic\ControlBasic.xaml
 
 # ---¿Ø¼þ---
 ..\Styles\Styles.Menu.xaml
+..\Styles\Styles.ContextMenu.xaml
 ..\Styles\Styles.Buttons.xaml
 ..\Styles\Styles.RadioButton.xaml
 ..\Styles\Styles.ScrollBar.xaml
