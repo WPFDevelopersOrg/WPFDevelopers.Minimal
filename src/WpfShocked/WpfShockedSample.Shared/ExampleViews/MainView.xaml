@@ -35,6 +35,7 @@
                         <MenuItem Header="MenuItem 1">
                             <MenuItem Header="MenuItem 1.1">
                                 <MenuItem Header="MenuItem 1.1.1"/>
+                                <MenuItem Header="MenuItem 1.1.2"/>
                             </MenuItem>
                             <Separator/>
                             <MenuItem Header="MenuItem 1.2"/>
