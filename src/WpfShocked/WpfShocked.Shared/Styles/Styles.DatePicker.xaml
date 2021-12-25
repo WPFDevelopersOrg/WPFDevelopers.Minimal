@@ -9,8 +9,13 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="CalendarDayButton" x:Key="CalendarDayButtonStyle" BasedOn="{StaticResource ControlBasicStyle}">
+<<<<<<< HEAD
         <Setter Property="Width"  Value="35" />
         <Setter Property="Height" Value="35" />
+=======
+        <Setter Property="Width"  Value="32" />
+        <Setter Property="Height" Value="32" />
+>>>>>>> a5a2df9def52ae0d2c7a99d6f795dc76a426fdca
         <Setter Property="FontSize"  Value="10" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -563,7 +568,7 @@
                                        Fill="{DynamicResource RegularTextSolidColorBrush}"
                                        Stroke="{DynamicResource RegularTextSolidColorBrush}">
                             </Rectangle>
-                            <Path Fill="#FF2F2F2F" Grid.Row="1"
+                            <Path Fill="{DynamicResource RegularTextSolidColorBrush}" Grid.Row="1"
                                   Grid.Column="0"
                                   Grid.RowSpan="3"
                                   Grid.ColumnSpan="4"

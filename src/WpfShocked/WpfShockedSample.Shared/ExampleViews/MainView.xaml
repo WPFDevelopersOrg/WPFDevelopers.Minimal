@@ -24,6 +24,30 @@
                     <TextBlock Text="WpfShocked" FontSize="20" Margin="10,0"
                                Foreground="{StaticResource PrimaryNormalSolidColorBrush}"/>
                 </WrapPanel>
+                <TextBlock Text="Menu" FontSize="20" Margin="0,20,0,0"/>
+                <WrapPanel Margin="0,10">
+                    <WrapPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="1323"/>
+                        </ContextMenu>
+                    </WrapPanel.ContextMenu>
+                    <Menu>
+                        <MenuItem Header="MenuItem 1">
+                            <MenuItem Header="MenuItem 1.1">
+                                <MenuItem Header="MenuItem 1.1.1"/>
+                            </MenuItem>
+                            <Separator/>
+                            <MenuItem Header="MenuItem 1.2"/>
+                            <MenuItem Header="MenuItem 1.3"/>
+                            <MenuItem Header="MenuItem 1.4"/>
+                            <MenuItem Header="MenuItem 1.5"/>
+                        </MenuItem>
+                        <MenuItem Header="MenuItem 2"/>
+                        <MenuItem Header="MenuItem 3"/>
+                        <MenuItem Header="MenuItem 4"/>
+                    </Menu>
+                    <Menu  IsEnabled="False"/>
+                </WrapPanel>
                 <TextBlock Text="Button" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
                     <Button Content="Default"/>
