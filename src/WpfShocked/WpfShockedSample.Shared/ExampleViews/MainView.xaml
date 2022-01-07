@@ -4,8 +4,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:ws="https://github.com/yanjinhuagood/WpfShocked"
-		xmlns:local="clr-namespace:WpfShockedSample"
-        Height="{x:Static local:App.Height}" Width="{x:Static local:App.Wdith}"
+		xmlns:local="clr-namespace:WpfShockedSample.ExampleViews"
+        xmlns:app ="clr-namespace:WpfShockedSample"
+        Height="{x:Static app:App.Height}" Width="{x:Static app:App.Wdith}"
         WindowStartupLocation="CenterScreen" Title="WpfShocked">
 	<Window.Resources>
         <Style TargetType="{x:Type TextBlock}">
@@ -114,7 +115,49 @@
                     <Slider Width="200" Value="50" Maximum="100" IsEnabled="False"/>
                 </WrapPanel>
 
-                
+                <TextBlock Text="DataGrid" FontSize="20" Margin="0,20,0,0"/>
+                <WrapPanel Margin="0,10">
+                    <DataGrid AutoGenerateColumns="False"
+                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn CanUserResize="False">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainView}, Path=AllSelected}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding IsChecked}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid AutoGenerateColumns="False" BorderThickness="0" IsEnabled="False"
+                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn CanUserResize="False">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainView}, Path=AllSelected}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding IsChecked}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </WrapPanel>
 
             </VirtualizingStackPanel>
         </Grid>
