@@ -19,3 +19,4 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.ComboBox.xaml
 ..\Styles\Styles.ToggleButton.xaml
 ..\Styles\Styles.DatePicker.xaml
+..\Styles\Styles.TabControl.xaml

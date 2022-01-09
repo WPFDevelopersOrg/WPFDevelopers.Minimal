@@ -114,7 +114,59 @@
                     <Slider Width="200" Value="50" Maximum="100" IsEnabled="False"/>
                 </WrapPanel>
 
-                
+                <TextBlock Text="TabControl" FontSize="20" Margin="0,20,0,0"/>
+                <StackPanel Margin="0,10">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Rectangle}">
+                            <Setter Property="Width" Value="{x:Static SystemParameters.PrimaryScreenWidth}"/>
+                            <Setter Property="Height" Value="400"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <TabControl>
+                        <TabItem Header="TabItem1">
+                            <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"/>
+                        </TabItem>
+                        <TabItem Header="TabItem2">
+                            <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                        </TabItem>
+                        <TabItem Header="TabItem3" >
+                            <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                        </TabItem>
+                    </TabControl>
+                    <TabControl TabStripPlacement="Bottom">
+                        <TabItem Header="TabItem1">
+                            <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                        </TabItem>
+                        <TabItem Header="TabItem2">
+                            <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"/>
+                        </TabItem>
+                        <TabItem Header="TabItem3" >
+                            <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                        </TabItem>
+                    </TabControl>
+                    <TabControl TabStripPlacement="Left">
+                        <TabItem Header="TabItem1">
+                            <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                        </TabItem>
+                        <TabItem Header="TabItem2">
+                            <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                        </TabItem>
+                        <TabItem Header="TabItem3" >
+                            <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"/>
+                        </TabItem>
+                    </TabControl>
+                    <TabControl TabStripPlacement="Right">
+                        <TabItem Header="TabItem1">
+                            <Rectangle Fill="{DynamicResource SuccessSolidColorBrush}"/>
+                        </TabItem>
+                        <TabItem Header="TabItem2">
+                            <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                        </TabItem>
+                        <TabItem Header="TabItem3" >
+                            <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                        </TabItem>
+                    </TabControl>
+                </StackPanel>
 
             </VirtualizingStackPanel>
         </Grid>

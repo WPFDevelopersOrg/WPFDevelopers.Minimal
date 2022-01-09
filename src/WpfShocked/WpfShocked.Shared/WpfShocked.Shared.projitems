@@ -58,6 +58,7 @@
     <None Include="$(MSBuildThisFileDirectory)Themes\XamlCombine.exe" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementConvert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +79,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.TabControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
