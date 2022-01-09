@@ -87,6 +87,9 @@
     <Color x:Key="BaseColor" po:Freeze="True">#DCDFE6</Color>
     <SolidColorBrush x:Key="BaseSolidColorBrush" Color="{StaticResource BaseColor}" po:Freeze="True"></SolidColorBrush>
     
+    <Color x:Key="BaseMoveColor" po:Freeze="True">#F5F7FA</Color>
+    <SolidColorBrush x:Key="BaseMoveColorSolidColorBrush" Color="{StaticResource BaseMoveColor}" po:Freeze="True"></SolidColorBrush>
+
     <Color x:Key="BlackColor" po:Freeze="True">#000000</Color>
     <SolidColorBrush x:Key="BlackSolidColorBrush" Color="{StaticResource BlackColor}" po:Freeze="True"></SolidColorBrush>
 

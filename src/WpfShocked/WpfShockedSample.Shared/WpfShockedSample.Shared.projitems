@@ -25,5 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UserModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModelBase.cs" />
   </ItemGroup>
 </Project>

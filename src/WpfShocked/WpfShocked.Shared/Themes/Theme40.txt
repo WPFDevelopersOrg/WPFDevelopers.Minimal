@@ -1,12 +1,10 @@
 
-# ---»ù´¡---
 Basic\Colors.xaml
 Basic\Font.xaml
 Basic\Geometrys.xaml
 Basic\Animations.xaml
 Basic\ControlBasic.xaml
 
-# ---¿Ø¼þ---
 ..\Styles\Styles.Menu.xaml
 ..\Styles\Styles.ContextMenu.xaml
 ..\Styles\Styles.Buttons.xaml
@@ -19,4 +17,5 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.ComboBox.xaml
 ..\Styles\Styles.ToggleButton.xaml
 ..\Styles\Styles.DatePicker.xaml
+..\Styles\Styles.DataGrid.xaml
 ..\Styles\Styles.TabControl.xaml
