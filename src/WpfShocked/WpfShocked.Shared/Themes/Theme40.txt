@@ -19,3 +19,4 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.DatePicker.xaml
 ..\Styles\Styles.DataGrid.xaml
 ..\Styles\Styles.TabControl.xaml
+..\Styles\Styles.PasswordBox.xaml
