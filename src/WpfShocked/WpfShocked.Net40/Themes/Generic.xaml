@@ -164,11 +164,13 @@
 		<Setter Property="TextElement.FontStyle" Value="{DynamicResource NormalFontStyle}" />
 		<Setter Property="TextElement.FontWeight" Value="{DynamicResource NormalFontWeight}" />
 		<Setter Property="TextElement.FontStretch" Value="{DynamicResource NormalFontStretch}" />
+		<Setter Property="TextElement.Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 		<Setter Property="TextBlock.FontSize" Value="{DynamicResource NormalFontSize}" />
 		<Setter Property="TextBlock.FontFamily" Value="{DynamicResource NormalFontFamily}" />
 		<Setter Property="TextBlock.FontStyle" Value="{DynamicResource NormalFontStyle}" />
 		<Setter Property="TextBlock.FontWeight" Value="{DynamicResource NormalFontWeight}" />
 		<Setter Property="TextBlock.FontStretch" Value="{DynamicResource NormalFontStretch}" />
+		<Setter Property="TextBlock.Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 		<Setter Property="SnapsToDevicePixels" Value="True" />
 		<Setter Property="UseLayoutRounding" Value="True" />
 		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
@@ -2087,6 +2089,7 @@
 		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
+		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="ValidationErrorTemplate">
 			<Setter.Value>
 				<ControlTemplate>
@@ -2516,6 +2519,205 @@
 					<ControlTemplate.Triggers>
 						<Trigger Property="wpfs:PasswordBoxHelper.PasswordLength" Value="0">
 							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<ControlTemplate x:Key="ExpanderToggleButton" TargetType="{x:Type ToggleButton}">
+		<Border x:Name="Border" Background="Transparent">
+			<VisualStateManager.VisualStateGroups>
+				<VisualStateGroup x:Name="CommonStates">
+					<VisualState x:Name="Normal" />
+					<VisualState x:Name="MouseOver" />
+					<VisualState x:Name="Pressed" />
+					<VisualState x:Name="Disabled" />
+				</VisualStateGroup>
+				<VisualStateGroup x:Name="CheckStates">
+					<VisualState x:Name="Checked">
+						<Storyboard>
+							<DoubleAnimation Duration="00:00:.2" To="90" Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)" Storyboard.TargetName="ExpandededArrow" />
+						</Storyboard>
+					</VisualState>
+					<VisualState x:Name="Unchecked">
+						<Storyboard>
+							<DoubleAnimation Duration="00:00:.2" To="0" Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)" Storyboard.TargetName="ExpandededArrow" />
+						</Storyboard>
+					</VisualState>
+					<VisualState x:Name="Indeterminate" />
+				</VisualStateGroup>
+			</VisualStateManager.VisualStateGroups>
+			<Path x:Name="ExpandededArrow" Stretch="Fill" Height="10" Width="6" Data="{StaticResource PathNext}" RenderTransformOrigin=".5,.5">
+				<Path.Fill>
+					<SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
+				</Path.Fill>
+				<Path.RenderTransform>
+					<RotateTransform />
+				</Path.RenderTransform>
+			</Path>
+		</Border>
+	</ControlTemplate>
+	<Style TargetType="{x:Type Expander}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Expander}">
+					<!--<ControlTemplate.Resources>
+<Storyboard x:Key="Storyboard_Open">
+<DoubleAnimation Storyboard.TargetName="ContentRow"
+Storyboard.TargetProperty="Height"
+To="{Binding Height, ElementName=Content}"
+Duration="00:00:.3"/>
+</Storyboard>
+</ControlTemplate.Resources>-->
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition x:Name="ContentRow" Height="0" />
+						</Grid.RowDefinitions>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="MouseOver" />
+								<VisualState x:Name="Disabled" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Border x:Name="Border" Grid.Row="0" BorderThickness="1">
+							<Border.BorderBrush>
+								<SolidColorBrush Color="{DynamicResource BaseColor}" />
+							</Border.BorderBrush>
+							<Border.Background>
+								<SolidColorBrush Color="{DynamicResource LighterColor}" />
+							</Border.Background>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="20" />
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+								<ToggleButton OverridesDefaultStyle="True" Template="{StaticResource ExpanderToggleButton}" IsChecked="{Binding IsExpanded, Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}" />
+								<ContentPresenter Grid.Column="1" Margin="0,10" ContentSource="Header" RecognizesAccessKey="True" />
+							</Grid>
+						</Border>
+						<Border x:Name="Content" Grid.Row="1" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="0" SnapsToDevicePixels="True">
+							<Border.Background>
+								<SolidColorBrush Color="{DynamicResource WhiteColor}" />
+							</Border.Background>
+							<ContentPresenter Margin="4" />
+						</Border>
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsExpanded" Value="True">
+							<Setter TargetName="ContentRow" Property="Height" Value="{Binding Height, ElementName=Content}" />
+							<Setter TargetName="Content" Property="BorderThickness" Value="1,0,1,1" />
+							<!--<Trigger.ExitActions>
+<StopStoryboard BeginStoryboardName="StoryboardIsExpanded" />
+</Trigger.ExitActions>
+<Trigger.EnterActions>
+<BeginStoryboard x:Name="StoryboardIsExpanded" Storyboard="{StaticResource Storyboard_Open}" />
+</Trigger.EnterActions>-->
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type GroupBox}">
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Border Grid.Row="0" BorderThickness="1">
+							<Border.BorderBrush>
+								<SolidColorBrush Color="{DynamicResource BaseColor}" />
+							</Border.BorderBrush>
+							<Border.Background>
+								<SolidColorBrush Color="{DynamicResource LighterColor}" />
+							</Border.Background>
+							<ContentPresenter Margin="10" ContentSource="Header" RecognizesAccessKey="True" />
+						</Border>
+						<Border Grid.Row="1" BorderThickness="1,0,1,1" SnapsToDevicePixels="True">
+							<Border.BorderBrush>
+								<SolidColorBrush Color="{StaticResource BaseColor}" />
+							</Border.BorderBrush>
+							<Border.Background>
+								<SolidColorBrush Color="{DynamicResource WhiteColor}" />
+							</Border.Background>
+							<ContentPresenter Margin="4" />
+						</Border>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+		<Setter Property="MinWidth" Value="120" />
+		<Setter Property="MinHeight" Value="95" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="ListBox">
+					<Border Name="Border" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BaseSolidColorBrush}">
+						<ScrollViewer Focusable="False">
+							<VirtualizingStackPanel IsItemsHost="True" />
+						</ScrollViewer>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsGrouping" Value="True">
+							<Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
+		<Setter Property="MinHeight" Value="48" />
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="ListBoxItem">
+					<Grid>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="SelectionStates">
+								<VisualState x:Name="Unselected" />
+								<VisualState x:Name="Selected">
+									<Storyboard>
+										<DoubleAnimation Storyboard.TargetName="PART_Rectangle" Duration="0:0:0.3" Storyboard.TargetProperty="(Rectangle.RenderTransform).(ScaleTransform.ScaleX)" To="1" FillBehavior="Stop" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="SelectedUnfocused" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Border x:Name="PART_Border" Padding="2" SnapsToDevicePixels="True" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BaseSolidColorBrush}">
+							<Border.Background>
+								<SolidColorBrush Color="{DynamicResource WhiteColor}" />
+							</Border.Background>
+							<ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+						</Border>
+						<Rectangle x:Name="PART_Rectangle" Height="2" VerticalAlignment="Bottom" Fill="{DynamicResource PrimaryMouseOverSolidColorBrush}" RenderTransformOrigin=".5,.5">
+							<Rectangle.RenderTransform>
+								<ScaleTransform ScaleX="0" ScaleY="1" />
+							</Rectangle.RenderTransform>
+						</Rectangle>
+					</Grid>
+					<ControlTemplate.Triggers>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsSelected" Value="False" />
+								<Condition Property="IsMouseOver" Value="True" />
+							</MultiTrigger.Conditions>
+							<Setter TargetName="PART_Border" Property="Background" Value="{DynamicResource BaseMoveColorSolidColorBrush}" />
+						</MultiTrigger>
+						<Trigger Property="IsSelected" Value="True">
+							<Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" TargetName="PART_Border" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>

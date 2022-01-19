@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:wpfs="clr-namespace:WpfShocked.Helpers">
     
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
@@ -36,7 +37,7 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}"
-                                    RenderTransformOrigin=".5,.5">
+                                RenderTransformOrigin=".5,.5">
                             <Border.RenderTransform>
                                 <ScaleTransform ScaleX="0" ScaleY="1"/>
                             </Border.RenderTransform>
@@ -88,7 +89,7 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Border x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}"
-                                    RenderTransformOrigin=".5,.5">
+                                RenderTransformOrigin=".5,.5">
                             <Border.RenderTransform>
                                 <ScaleTransform ScaleX="1" ScaleY="0"/>
                             </Border.RenderTransform>

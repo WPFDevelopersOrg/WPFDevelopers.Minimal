@@ -18,11 +18,13 @@
         <Setter Property="TextElement.FontStyle" Value="{DynamicResource NormalFontStyle}" />
         <Setter Property="TextElement.FontWeight" Value="{DynamicResource NormalFontWeight}" />
         <Setter Property="TextElement.FontStretch" Value="{DynamicResource NormalFontStretch}" />
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
         <Setter Property="TextBlock.FontSize" Value="{DynamicResource NormalFontSize}" />
         <Setter Property="TextBlock.FontFamily" Value="{DynamicResource NormalFontFamily}"  />
         <Setter Property="TextBlock.FontStyle" Value="{DynamicResource NormalFontStyle}" />
         <Setter Property="TextBlock.FontWeight" Value="{DynamicResource NormalFontWeight}" />
         <Setter Property="TextBlock.FontStretch" Value="{DynamicResource NormalFontStretch}" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />

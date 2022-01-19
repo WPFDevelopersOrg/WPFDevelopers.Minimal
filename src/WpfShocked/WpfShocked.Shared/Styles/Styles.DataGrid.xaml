@@ -204,6 +204,7 @@
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="ValidationErrorTemplate">
             <Setter.Value>
                 <ControlTemplate>

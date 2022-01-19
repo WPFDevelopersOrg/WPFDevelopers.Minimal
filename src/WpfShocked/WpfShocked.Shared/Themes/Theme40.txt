@@ -20,3 +20,6 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.DataGrid.xaml
 ..\Styles\Styles.TabControl.xaml
 ..\Styles\Styles.PasswordBox.xaml
+..\Styles\Styles.Expander.xaml
+..\Styles\Styles.GroupBox.xaml
+..\Styles\Styles.ListBox.xaml
