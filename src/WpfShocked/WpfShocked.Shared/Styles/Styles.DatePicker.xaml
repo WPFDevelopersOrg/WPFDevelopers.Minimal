@@ -8,10 +8,10 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="CalendarDayButton" x:Key="CalendarDayButtonStyle" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style TargetType="{x:Type CalendarDayButton}" x:Key="CalendarDayButtonStyle" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Width"  Value="32" />
         <Setter Property="Height" Value="32" />
-        <Setter Property="FontSize"  Value="10" />
+        <Setter Property="FontSize"  Value="12" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Cursor" Value="Hand"/>
@@ -81,8 +81,7 @@
                         </Ellipse>
                         <ContentPresenter x:Name="NormalText"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Margin="8,10">
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <TextElement.Foreground>
                                 <SolidColorBrush Color="{DynamicResource RegularTextColor}" />
                             </TextElement.Foreground>
@@ -119,7 +118,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="CalendarButton" x:Key="CalendarButtonStyle" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style TargetType="{x:Type CalendarButton}" x:Key="CalendarButtonStyle" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="MinWidth" Value="48" />
         <Setter Property="MinHeight"  Value="32" />
         <Setter Property="FontSize" Value="12" />

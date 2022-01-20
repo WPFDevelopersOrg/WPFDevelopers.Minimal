@@ -242,8 +242,34 @@
 
                 <TextBlock Text="ListBox" FontSize="20" Margin="0,20,0,0"/>
                 <UniformGrid Margin="0,10" Columns="2">
-                    <ListBox>                        <ListBoxItem>CommonStates</ListBoxItem>                        <ListBoxItem>FocusStates</ListBoxItem>                        <ListBoxItem>SelectionStates</ListBoxItem>                    </ListBox>                    <ListBox IsEnabled="False" Margin="10,0">                        <ListBoxItem>CommonStates</ListBoxItem>                        <ListBoxItem>FocusStates</ListBoxItem>                        <ListBoxItem>SelectionStates</ListBoxItem>                    </ListBox>
+                    <ListBox DisplayMemberPath="Name" IsEnabled="False"                        ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <!--<ListBoxItem>CommonStates</ListBoxItem>                        <ListBoxItem>FocusStates</ListBoxItem>                        <ListBoxItem>SelectionStates</ListBoxItem>-->                    </ListBox>                    <ListBox  Margin="10,0"                             ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <UniformGrid Columns="3">
+                                    <TextBlock Text="{Binding Date}"/>
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding Address}"/>
+                                </UniformGrid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>                        <!--<ListBoxItem>CommonStates</ListBoxItem>                        <ListBoxItem>FocusStates</ListBoxItem>                        <ListBoxItem>SelectionStates</ListBoxItem>-->                    </ListBox>
                 </UniformGrid>
+
+                <TextBlock Text="ListView" FontSize="20" Margin="0,20,0,0"/>
+                <UniformGrid Margin="0,10" Columns="2">
+                    <ListView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
+                            </GridView>
+                        </ListView.View>                    </ListView>                    <ListView IsEnabled="False" Margin="10,0" BorderThickness="0"                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
+                            </GridView>
+                        </ListView.View>                    </ListView>
+                </UniformGrid>
+
             </VirtualizingStackPanel>
         </Grid>
        

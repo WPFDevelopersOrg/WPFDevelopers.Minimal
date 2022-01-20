@@ -80,10 +80,14 @@
                             <ScrollViewer.Template>
                                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
                                     <Grid>
-                                        <Grid.ColumnDefinitions>
+                                        <!--<Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>-->
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
@@ -116,7 +120,7 @@
                                           CanContentScroll="{TemplateBinding CanContentScroll}" />
 
                                         <ScrollBar x:Name="PART_VerticalScrollBar"
-                             Grid.Column="2"
+                             Grid.Column="1" HorizontalAlignment="Right"
                              Grid.Row="1"
                              Orientation="Vertical"
                              ViewportSize="{TemplateBinding ViewportHeight}"
@@ -392,7 +396,7 @@
     <!--Style and template for the resize control on the DataGridColumnHeader.-->
     <Style x:Key="ColumnHeaderGripperStyle"
        TargetType="{x:Type Thumb}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Width"
+        <!--<Setter Property="Width"
           Value="8" />
         <Setter Property="Background"
           Value="Transparent" />
@@ -403,6 +407,23 @@
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border Background="{TemplateBinding Background}"
                 Padding="{TemplateBinding Padding}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>-->
+        <Setter Property="Width" Value="8" />
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="SizeWE" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border Padding="{TemplateBinding Padding}" Background="Transparent">
+                        <Rectangle HorizontalAlignment="Center" Width="1"  Fill="{TemplateBinding Background}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

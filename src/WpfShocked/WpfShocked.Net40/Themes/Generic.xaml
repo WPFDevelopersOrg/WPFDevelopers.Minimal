@@ -662,10 +662,10 @@
 						<ControlTemplate TargetType="{x:Type ScrollBar}">
 							<ControlTemplate.Resources>
 								<Storyboard x:Key="ScrollMouseOutHeight">
-									<DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1" Storyboard.TargetProperty="Width" To="2" />
+									<DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1" Storyboard.TargetProperty="Height" To="2" />
 								</Storyboard>
 								<Storyboard x:Key="ScrollMouseOverHeight">
-									<DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1" Storyboard.TargetProperty="Width" To="10" />
+									<DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1" Storyboard.TargetProperty="Height" To="10" />
 								</Storyboard>
 							</ControlTemplate.Resources>
 							<Grid Height="{TemplateBinding Height}" Background="Transparent" SnapsToDevicePixels="True">
@@ -1534,10 +1534,10 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style TargetType="CalendarDayButton" x:Key="CalendarDayButtonStyle" BasedOn="{StaticResource ControlBasicStyle}">
+	<Style TargetType="{x:Type CalendarDayButton}" x:Key="CalendarDayButtonStyle" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Width" Value="32" />
 		<Setter Property="Height" Value="32" />
-		<Setter Property="FontSize" Value="10" />
+		<Setter Property="FontSize" Value="12" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Cursor" Value="Hand" />
@@ -1602,7 +1602,7 @@
 								<SolidColorBrush Color="{DynamicResource PrimaryPressedColor}" />
 							</Ellipse.Fill>
 						</Ellipse>
-						<ContentPresenter x:Name="NormalText" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="8,10">
+						<ContentPresenter x:Name="NormalText" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 							<TextElement.Foreground>
 								<SolidColorBrush Color="{DynamicResource RegularTextColor}" />
 							</TextElement.Foreground>
@@ -1636,7 +1636,7 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style TargetType="CalendarButton" x:Key="CalendarButtonStyle" BasedOn="{StaticResource ControlBasicStyle}">
+	<Style TargetType="{x:Type CalendarButton}" x:Key="CalendarButtonStyle" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="MinWidth" Value="48" />
 		<Setter Property="MinHeight" Value="32" />
 		<Setter Property="FontSize" Value="12" />
@@ -2017,10 +2017,14 @@
 							<ScrollViewer.Template>
 								<ControlTemplate TargetType="{x:Type ScrollViewer}">
 									<Grid>
+										<!--<Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>-->
 										<Grid.ColumnDefinitions>
 											<ColumnDefinition Width="Auto" />
 											<ColumnDefinition Width="*" />
-											<ColumnDefinition Width="Auto" />
 										</Grid.ColumnDefinitions>
 										<Grid.RowDefinitions>
 											<RowDefinition Height="Auto" />
@@ -2030,7 +2034,7 @@
 										<Button Focusable="false" Command="{x:Static DataGrid.SelectAllCommand}" Style="{DynamicResource {ComponentResourceKey &#xD;&#xA;                      ResourceId=DataGridSelectAllButtonStyle, &#xD;&#xA;                      TypeInTargetAssembly={x:Type DataGrid}}}" Visibility="{Binding HeadersVisibility, &#xD;&#xA;                      ConverterParameter={x:Static DataGridHeadersVisibility.All}, &#xD;&#xA;                      Converter={x:Static DataGrid.HeadersVisibilityConverter}, &#xD;&#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Width="{Binding CellsPanelHorizontalOffset, &#xD;&#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
 										<DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1" Visibility="{Binding HeadersVisibility, &#xD;&#xA;                      ConverterParameter={x:Static DataGridHeadersVisibility.Column}, &#xD;&#xA;                      Converter={x:Static DataGrid.HeadersVisibilityConverter}, &#xD;&#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
 										<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.ColumnSpan="2" Grid.Row="1" CanContentScroll="{TemplateBinding CanContentScroll}" />
-										<ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="2" Grid.Row="1" Orientation="Vertical" ViewportSize="{TemplateBinding ViewportHeight}" Maximum="{TemplateBinding ScrollableHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, &#xD;&#xA;                      RelativeSource={RelativeSource TemplatedParent}}" />
+										<ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="1" Orientation="Vertical" ViewportSize="{TemplateBinding ViewportHeight}" Maximum="{TemplateBinding ScrollableHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, &#xD;&#xA;                      RelativeSource={RelativeSource TemplatedParent}}" />
 										<Grid Grid.Column="1" Grid.Row="2">
 											<Grid.ColumnDefinitions>
 												<ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, &#xD;&#xA;                          RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
@@ -2227,13 +2231,34 @@
 		</Setter>
 	</Style>
 	<Style x:Key="ColumnHeaderGripperStyle" TargetType="{x:Type Thumb}" BasedOn="{StaticResource ControlBasicStyle}">
+		<!--<Setter Property="Width"
+          Value="8" />
+        <Setter Property="Background"
+          Value="Transparent" />
+        <Setter Property="Cursor"
+          Value="SizeWE" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border Background="{TemplateBinding Background}"
+                Padding="{TemplateBinding Padding}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>-->
 		<Setter Property="Width" Value="8" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="Cursor" Value="SizeWE" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Thumb}">
-					<Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" />
+					<Border Padding="{TemplateBinding Padding}" Background="Transparent">
+						<Rectangle HorizontalAlignment="Center" Width="1" Fill="{TemplateBinding Background}" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Background" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -2718,6 +2743,202 @@ Duration="00:00:.3"/>
 						</MultiTrigger>
 						<Trigger Property="IsSelected" Value="True">
 							<Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" TargetName="PART_Border" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="{x:Static GridView.GridViewScrollViewerStyleKey}" TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ScrollViewer}">
+					<Grid Background="{TemplateBinding Background}">
+						<!--<Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>-->
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<DockPanel Margin="{TemplateBinding Padding}">
+							<ScrollViewer DockPanel.Dock="Top" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Focusable="False">
+								<GridViewHeaderRowPresenter Columns="{Binding Path=TemplatedParent.View.Columns,&#xD;&#xA;                RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderContainerStyle="{Binding&#xD;&#xA;                Path=TemplatedParent.View.ColumnHeaderContainerStyle,&#xD;&#xA;                RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderTemplate="{Binding&#xD;&#xA;                Path=TemplatedParent.View.ColumnHeaderTemplate,&#xD;&#xA;                RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderTemplateSelector="{Binding &#xD;&#xA;                Path=TemplatedParent.View.ColumnHeaderTemplateSelector,&#xD;&#xA;                RelativeSource={RelativeSource TemplatedParent}}" AllowsColumnReorder="{Binding&#xD;&#xA;                Path=TemplatedParent.View.AllowsColumnReorder,&#xD;&#xA;                RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderContextMenu="{Binding&#xD;&#xA;                Path=TemplatedParent.View.ColumnHeaderContextMenu,&#xD;&#xA;                RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderToolTip="{Binding&#xD;&#xA;                Path=TemplatedParent.View.ColumnHeaderToolTip,&#xD;&#xA;                RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="{TemplateBinding&#xD;&#xA;                SnapsToDevicePixels}" />
+							</ScrollViewer>
+							<ScrollContentPresenter Name="PART_ScrollContentPresenter" KeyboardNavigation.DirectionalNavigation="Local" CanContentScroll="True" CanHorizontallyScroll="False" CanVerticallyScroll="False" />
+						</DockPanel>
+						<ScrollBar Name="PART_HorizontalScrollBar" Orientation="Horizontal" Grid.Row="1" Maximum="{TemplateBinding ScrollableWidth}" ViewportSize="{TemplateBinding ViewportWidth}" Value="{TemplateBinding HorizontalOffset}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" />
+						<!--<ScrollBar Name="PART_VerticalScrollBar"
+                     Grid.Column="1"
+                     Maximum="{TemplateBinding ScrollableHeight}"
+                     ViewportSize="{TemplateBinding ViewportHeight}"
+                     Value="{TemplateBinding VerticalOffset}"
+                     Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" />-->
+						<ScrollBar Name="PART_VerticalScrollBar" HorizontalAlignment="Right" Maximum="{TemplateBinding ScrollableHeight}" ViewportSize="{TemplateBinding ViewportHeight}" Value="{TemplateBinding VerticalOffset}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="GridViewColumnHeaderGripper" TargetType="{x:Type Thumb}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Width" Value="18" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Thumb}">
+					<Border Padding="{TemplateBinding Padding}" Background="Transparent">
+						<Rectangle HorizontalAlignment="Center" Width="1" Fill="{TemplateBinding Background}" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Background" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+					<Grid>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="MouseOver">
+									<Storyboard />
+								</VisualState>
+								<VisualState x:Name="Pressed" />
+								<VisualState x:Name="Disabled" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Border x:Name="HeaderBorder" Background="{DynamicResource WhiteSolidColorBrush}" Padding="10" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BaseSolidColorBrush}">
+							<ContentPresenter x:Name="HeaderContent" Margin="0,0,0,1" TextElement.FontWeight="ExtraBlack" RecognizesAccessKey="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						</Border>
+						<Thumb x:Name="PART_HeaderGripper" HorizontalAlignment="Right" Margin="0,0,-9,0" Style="{StaticResource GridViewColumnHeaderGripper}" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<!--<Trigger Property="Role"
+             Value="Floating">
+                    <Setter Property="Opacity"
+              Value="0.7" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="GridViewColumnHeader">
+                                <Canvas Name="PART_FloatingHeaderCanvas">
+                                    <Rectangle Fill="#60000000"
+                         Width="{TemplateBinding ActualWidth}"
+                         Height="{TemplateBinding ActualHeight}" />
+                                </Canvas>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>-->
+			<!--<Trigger Property="Role"
+             Value="Padding">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="GridViewColumnHeader">
+                                <Border Name="HeaderBorder"
+                    BorderThickness="0,1,0,1">
+                                    <Border.Background>
+                                        <SolidColorBrush Color="{DynamicResource ControlLightColor}" />
+                                    </Border.Background>
+                                    <Border.BorderBrush>
+                                        <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="0,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStopCollection>
+                                                    <GradientStop Color="{DynamicResource BorderLightColor}"
+                                    Offset="0.0" />
+                                                    <GradientStop Color="{DynamicResource BorderDarkColor}"
+                                    Offset="1.0" />
+                                                </GradientStopCollection>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Border.BorderBrush>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>-->
+		</Style.Triggers>
+	</Style>
+	<Style TargetType="{x:Type ListView}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ListView}">
+					<Border Name="Border" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BaseSolidColorBrush}">
+						<ScrollViewer Style="{DynamicResource&#xD;&#xA;                        {x:Static GridView.GridViewScrollViewerStyleKey}}">
+							<ItemsPresenter />
+						</ScrollViewer>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsGrouping" Value="True">
+							<Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="MinHeight" Value="48" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ListViewItem}">
+					<Border x:Name="Border" Padding="2" SnapsToDevicePixels="True" Background="{TemplateBinding Background}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="0,0,0,1">
+						<!--<VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver" />
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).
+                    (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource SelectedBackgroundColor}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedUnfocused">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).
+                    (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource SelectedUnfocusedColor}" />
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>-->
+						<GridViewRowPresenter />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsSelected" Value="True">
+							<Setter Property="Background" Value="{DynamicResource BaseMoveColorSolidColorBrush}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>

@@ -127,13 +127,13 @@
                                 <Storyboard x:Key="ScrollMouseOutHeight">
 
                                     <DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1"
-                                                     Storyboard.TargetProperty="Width"
+                                                     Storyboard.TargetProperty="Height"
                                                      To="2"/>
                                 </Storyboard>
                                 <Storyboard x:Key="ScrollMouseOverHeight">
 
                                     <DoubleAnimation Storyboard.TargetName="PART_Track" Duration="00:00:0.1"
-                                                     Storyboard.TargetProperty="Width"
+                                                     Storyboard.TargetProperty="Height"
                                                      To="10"/>
                                 </Storyboard>
                             </ControlTemplate.Resources>
