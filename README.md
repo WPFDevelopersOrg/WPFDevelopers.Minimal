@@ -1,4 +1,4 @@
-<div align="center"><img src="https://gitee.com/yanjinhua/WpfShocked/raw/main/src/WpfShocked/WpfShockedSample.Net40/Resources/ShockedLogo.png"/></div>  
+<div align="center"><img src="https://gitee.com/yanjinhua/WPFDevelopers.Minimal/raw/main/src/WPFDevelopers.Minimal/WpfShockedSample.Net40/Resources/WPFDevelopers.Minimal.png"/></div>  
 
 ## Welcome to WPFDevelopers.Minimal  
 
