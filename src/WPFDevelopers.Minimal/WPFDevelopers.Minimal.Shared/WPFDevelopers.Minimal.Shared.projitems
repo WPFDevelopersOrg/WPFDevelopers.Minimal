@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>81d06e90-d6a6-4198-ae6d-f62942247f91</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>WPFDevelopers.Minimal</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Shocked.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Themes\Theme40.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Themes\XamlCombine.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.CheckBox.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.ComboBox.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.ContextMenu.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.DataGrid.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.DatePicker.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.Expander.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.GroupBox.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.ListBox.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.ListView.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.Menu.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.PasswordBox.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.RadioButton.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.ScrollBar.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.Slider.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.TabControl.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.TextBlock.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.TextBox.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.ToggleButton.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Animations.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\ControlBasic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Font.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Geometrys.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementConvert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\PasswordBoxHelper.cs" />
+  </ItemGroup>
+</Project>

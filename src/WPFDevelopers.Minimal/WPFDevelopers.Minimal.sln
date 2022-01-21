@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1B628126-D045-45A8-BF85-FA0D28B6BA1B}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{139DAF8C-D160-4BB2-9495-1E0C03B8A9EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFDevelopers.Minimal.Net40", "WPFDevelopers.Minimal.Net40\WPFDevelopers.Minimal.Net40.csproj", "{86C7221C-07A6-48ED-A8ED-2E44BEC7E2CC}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WPFDevelopers.Minimal.Sample.Shared", "WPFDevelopers.Minimal.Sample.Shared\WPFDevelopers.Minimal.Sample.Shared.shproj", "{018B1A33-3924-46FD-9429-6EAC6ECC9AAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFDevelopers.Minimal.Sample.Net40", "WPFDevelopers.Minimal.Sample.Net40\WPFDevelopers.Minimal.Sample.Net40.csproj", "{0204FBCC-C05F-4280-8331-41283909E5E2}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WPFDevelopers.Minimal.Shared", "WPFDevelopers.Minimal.Shared\WPFDevelopers.Minimal.Shared.shproj", "{81D06E90-D6A6-4198-AE6D-F62942247F91}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		WPFDevelopers.Minimal.Sample.Shared\WPFDevelopers.Minimal.Sample.Shared.projitems*{018b1a33-3924-46fd-9429-6eac6ecc9aad}*SharedItemsImports = 13
+		WPFDevelopers.Minimal.Sample.Shared\WPFDevelopers.Minimal.Sample.Shared.projitems*{0204fbcc-c05f-4280-8331-41283909e5e2}*SharedItemsImports = 4
+		WPFDevelopers.Minimal.Shared\WPFDevelopers.Minimal.Shared.projitems*{81d06e90-d6a6-4198-ae6d-f62942247f91}*SharedItemsImports = 13
+		WPFDevelopers.Minimal.Shared\WPFDevelopers.Minimal.Shared.projitems*{86c7221c-07a6-48ed-a8ed-2e44bec7e2cc}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86C7221C-07A6-48ED-A8ED-2E44BEC7E2CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86C7221C-07A6-48ED-A8ED-2E44BEC7E2CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86C7221C-07A6-48ED-A8ED-2E44BEC7E2CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86C7221C-07A6-48ED-A8ED-2E44BEC7E2CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0204FBCC-C05F-4280-8331-41283909E5E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0204FBCC-C05F-4280-8331-41283909E5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0204FBCC-C05F-4280-8331-41283909E5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0204FBCC-C05F-4280-8331-41283909E5E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0204FBCC-C05F-4280-8331-41283909E5E2} = {139DAF8C-D160-4BB2-9495-1E0C03B8A9EB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {577B9E56-3325-4093-9D4D-E68C4AD13154}
+	EndGlobalSection
+EndGlobal
