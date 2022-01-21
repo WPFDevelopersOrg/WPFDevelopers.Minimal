@@ -9,7 +9,6 @@
     <Import_RootNamespace>WPFDevelopers.Minimal</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Resources\Shocked.ico" />
     <Content Include="$(MSBuildThisFileDirectory)Themes\Theme40.txt" />
   </ItemGroup>
   <ItemGroup>

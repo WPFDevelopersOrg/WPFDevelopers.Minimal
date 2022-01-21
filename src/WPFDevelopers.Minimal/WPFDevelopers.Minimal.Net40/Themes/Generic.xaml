@@ -1964,10 +1964,11 @@
 		</Setter>
 	</Style>
 	<Style TargetType="{x:Type Button}" x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, &#xD;&#xA;  TypeInTargetAssembly={x:Type DataGrid}}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type Button}">
-					<Grid>
+					<Border Background="{DynamicResource WhiteSolidColorBrush}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BaseSolidColorBrush}">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
 								<VisualState x:Name="Normal" />
@@ -1975,13 +1976,28 @@
 								<VisualState x:Name="Pressed" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<Rectangle x:Name="Border" SnapsToDevicePixels="True" Fill="{DynamicResource WhiteSolidColorBrush}" Stroke="{DynamicResource WhiteSolidColorBrush}" />
-						<Polygon x:Name="Arrow" HorizontalAlignment="Right" Margin="8,8,3,3" Opacity="0.15" Points="0,10 10,10 10,0" Stretch="Uniform" VerticalAlignment="Bottom">
+						<!--<Polygon x:Name="Arrow"
+                   HorizontalAlignment="Right"
+                   Margin="8,8,3,3"
+                   Opacity="0.15"
+                   Points="0,10 10,10 10,0"
+                   Stretch="Uniform"
+                   VerticalAlignment="Bottom">
+                            <Polygon.Fill>
+                                <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
+                            </Polygon.Fill>
+                        </Polygon>-->
+						<Polygon x:Name="Arrow" Opacity="1" Margin="0,2,0,0" Points="0,10 10,10 10,0" Stretch="Uniform" VerticalAlignment="Center">
 							<Polygon.Fill>
 								<SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
 							</Polygon.Fill>
 						</Polygon>
-					</Grid>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Fill" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}" TargetName="Arrow" />
+						</Trigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -2031,7 +2047,7 @@
 											<RowDefinition Height="*" />
 											<RowDefinition Height="Auto" />
 										</Grid.RowDefinitions>
-										<Button Focusable="false" Command="{x:Static DataGrid.SelectAllCommand}" Style="{DynamicResource {ComponentResourceKey &#xD;&#xA;                      ResourceId=DataGridSelectAllButtonStyle, &#xD;&#xA;                      TypeInTargetAssembly={x:Type DataGrid}}}" Visibility="{Binding HeadersVisibility, &#xD;&#xA;                      ConverterParameter={x:Static DataGridHeadersVisibility.All}, &#xD;&#xA;                      Converter={x:Static DataGrid.HeadersVisibilityConverter}, &#xD;&#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Width="{Binding CellsPanelHorizontalOffset, &#xD;&#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+										<Button Focusable="False" Command="{x:Static DataGrid.SelectAllCommand}" Style="{DynamicResource {ComponentResourceKey &#xD;&#xA;                      ResourceId=DataGridSelectAllButtonStyle, &#xD;&#xA;                      TypeInTargetAssembly={x:Type DataGrid}}}" Visibility="{Binding HeadersVisibility, &#xD;&#xA;                      ConverterParameter={x:Static DataGridHeadersVisibility.All}, &#xD;&#xA;                      Converter={x:Static DataGrid.HeadersVisibilityConverter}, &#xD;&#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Width="{Binding CellsPanelHorizontalOffset, &#xD;&#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
 										<DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1" Visibility="{Binding HeadersVisibility, &#xD;&#xA;                      ConverterParameter={x:Static DataGridHeadersVisibility.Column}, &#xD;&#xA;                      Converter={x:Static DataGrid.HeadersVisibilityConverter}, &#xD;&#xA;                      RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
 										<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.ColumnSpan="2" Grid.Row="1" CanContentScroll="{TemplateBinding CanContentScroll}" />
 										<ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="1" Orientation="Vertical" ViewportSize="{TemplateBinding ViewportHeight}" Maximum="{TemplateBinding ScrollableHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, &#xD;&#xA;                      RelativeSource={RelativeSource TemplatedParent}}" />
@@ -2196,7 +2212,7 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DataGridRowHeader}">
-					<Grid>
+					<Grid HorizontalAlignment="Center">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
 								<VisualState x:Name="Normal" />
@@ -2217,7 +2233,7 @@
 								<VisualState x:Name="Normal_Selected" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<Border x:Name="rowHeaderBorder" Width="10" Background="{DynamicResource WhiteSolidColorBrush}">
+						<Border x:Name="rowHeaderBorder" Background="Transparent">
 							<StackPanel Orientation="Horizontal">
 								<ContentPresenter VerticalAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 								<Control SnapsToDevicePixels="false" Template="{Binding ValidationErrorTemplate, &#xD;&#xA;                  RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" Visibility="{Binding (Validation.HasError), &#xD;&#xA;                  Converter={StaticResource bool2VisibilityConverter}, &#xD;&#xA;                  RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />

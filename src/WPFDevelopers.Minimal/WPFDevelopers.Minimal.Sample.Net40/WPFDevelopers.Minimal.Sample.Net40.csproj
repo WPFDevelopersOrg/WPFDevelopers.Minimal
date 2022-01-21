@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>../WPFDevelopers.Minimal.Shared/Resources/Shocked.ico</ApplicationIcon>
+    <ApplicationIcon>../WPFDevelopers.Minimal.Sample.Shared/Resources/WPFDevelopers.Minimal.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -81,7 +81,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ShockedLogo.png" />
+    <Resource Include="Resources\WPFDevelopers.Minimal.png" />
   </ItemGroup>
   <Import Project="..\WPFDevelopers.Minimal.Sample.Shared\WPFDevelopers.Minimal.Sample.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

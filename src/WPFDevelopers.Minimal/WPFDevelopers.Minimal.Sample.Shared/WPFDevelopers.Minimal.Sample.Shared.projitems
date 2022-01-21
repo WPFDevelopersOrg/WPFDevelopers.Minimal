@@ -28,4 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\UserModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModelBase.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\WPFDevelopers.Minimal.ico" />
+  </ItemGroup>
 </Project>

@@ -19,7 +19,7 @@
         <Grid Margin="20,10">
             <VirtualizingStackPanel>
                 <WrapPanel Margin="0,10">
-                    <Image Source="/WPFDevelopers.Minimal.Sample.Net40;component/Resources/ShockedLogo.png"
+                    <Image Source="/WPFDevelopers.Minimal.Sample.Net40;component/Resources/WPFDevelopers.Minimal.png"
                        RenderOptions.BitmapScalingMode="HighQuality"
                        Width="100" Height="100"/>
                     <TextBlock Text="WPFDevelopers.Minimal" FontSize="20" Margin="10,0"
@@ -122,48 +122,129 @@
                 </WrapPanel>
 
                 <TextBlock Text="DataGrid" FontSize="20" Margin="0,20,0,0"/>
+                <TabControl Margin="0,10">
+                    <TabItem Header="Mode 1">
+                        <DataGrid AutoGenerateColumns="False" HeadersVisibility="All" RowHeaderWidth="40"
+                                  ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}"
+                                  Margin="0,10">
+                            <DataGrid.RowHeaderTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
+                                </DataTemplate>
+                            </DataGrid.RowHeaderTemplate>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Mode 2">
+                        <DataGrid AutoGenerateColumns="False" 
+                                  ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}"
+                                  Margin="0,10">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn CanUserResize="False">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainView}, Path=AllSelected}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding IsChecked}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Mode 3">
+                        <DataGrid AutoGenerateColumns="False" BorderThickness="0" IsEnabled="False" Margin="0,10"
+                                  ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn CanUserResize="False">
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainView}, Path=AllSelected}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding IsChecked}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                </TabControl>
+                <!--<UniformGrid Margin="0,10" Columns="2">
+                    
+                    
+                   
+                </UniformGrid>-->
+                
+                <TextBlock Text="ListBox" FontSize="20" Margin="0,20,0,0"/>
                 <UniformGrid Margin="0,10" Columns="2">
-                    <DataGrid AutoGenerateColumns="False"
-                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn CanUserResize="False">
-                                <DataGridTemplateColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainView}, Path=AllSelected}" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.HeaderTemplate>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <CheckBox IsChecked="{Binding IsChecked}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <DataGrid AutoGenerateColumns="False" BorderThickness="0" IsEnabled="False"
-                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn CanUserResize="False">
-                                <DataGridTemplateColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainView}, Path=AllSelected}" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.HeaderTemplate>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <CheckBox IsChecked="{Binding IsChecked}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <ListBox DisplayMemberPath="Name" IsEnabled="False"                        ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                    </ListBox>                    <ListBox  Margin="10,0"                             ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <UniformGrid Columns="3">
+                                    <TextBlock Text="{Binding Date}"/>
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding Address}"/>
+                                </UniformGrid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>                    </ListBox>
                 </UniformGrid>
+
+                <TextBlock Text="ListView" FontSize="20" Margin="0,20,0,0"/>
+                <UniformGrid Margin="0,10" Columns="2">
+                    <ListView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
+                            </GridView>
+                        </ListView.View>                    </ListView>                    <ListView IsEnabled="False" Margin="10,0" BorderThickness="0"                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                                <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
+                            </GridView>
+                        </ListView.View>                    </ListView>
+                </UniformGrid>
+
+                <TextBlock Text="Expander" FontSize="20" Margin="0,20,0,0"/>
+                <UniformGrid Margin="0,10" Columns="2">
+                    <Expander Header="Expander1">
+                        <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"
+                                   Width="400" Height="300"/>
+                    </Expander>
+                    <Expander Header="Expander1" Margin="10,0" FlowDirection="RightToLeft" IsExpanded="True">
+                        <Rectangle Fill="{DynamicResource LightSolidColorBrush}"
+                                   Width="400" Height="300"/>
+                    </Expander>
+                </UniformGrid>
+                <TextBlock Text="GroupBox" FontSize="20" Margin="0,20,0,0"/>
+                <UniformGrid Margin="0,10" Columns="2">
+                    <GroupBox Header="GroupBox1">
+                        <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"
+                                   Width="400" Height="300"/>
+                    </GroupBox>
+                    <GroupBox Header="GroupBox1" Margin="10,0" IsEnabled="False">
+                        <Rectangle Fill="{DynamicResource LightSolidColorBrush}"
+                                   Width="400" Height="300"/>
+                    </GroupBox>
+                </UniformGrid>
+                
+                
                 <TextBlock Text="TabControl" FontSize="20" Margin="0,20,0,0"/>
                 <UniformGrid Columns="2" Rows="2" Margin="0,10">
                     <UniformGrid.Resources>
@@ -217,63 +298,6 @@
                         </TabItem>
                     </TabControl>
                 </UniformGrid>
-                <TextBlock Text="Expander" FontSize="20" Margin="0,20,0,0"/>
-                <UniformGrid Margin="0,10" Columns="2">
-                    <Expander Header="Expander1">
-                        <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"
-                                   Width="400" Height="300"/>
-                    </Expander>
-                    <Expander Header="Expander1" Margin="10,0" FlowDirection="RightToLeft" IsExpanded="True">
-                        <Rectangle Fill="{DynamicResource LightSolidColorBrush}"
-                                   Width="400" Height="300"/>
-                    </Expander>
-                </UniformGrid>
-                <TextBlock Text="GroupBox" FontSize="20" Margin="0,20,0,0"/>
-                <UniformGrid Margin="0,10" Columns="2">
-                    <GroupBox Header="GroupBox1">
-                        <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"
-                                   Width="400" Height="300"/>
-                    </GroupBox>
-                    <GroupBox Header="GroupBox1" Margin="10,0" IsEnabled="False">
-                        <Rectangle Fill="{DynamicResource LightSolidColorBrush}"
-                                   Width="400" Height="300"/>
-                    </GroupBox>
-                </UniformGrid>
-
-                <TextBlock Text="ListBox" FontSize="20" Margin="0,20,0,0"/>
-                <UniformGrid Margin="0,10" Columns="2">
-                    <ListBox DisplayMemberPath="Name" IsEnabled="False"                        ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <!--<ListBoxItem>CommonStates</ListBoxItem>
-                        <ListBoxItem>FocusStates</ListBoxItem>
-                        <ListBoxItem>SelectionStates</ListBoxItem>-->                    </ListBox>                    <ListBox  Margin="10,0"                             ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <UniformGrid Columns="3">
-                                    <TextBlock Text="{Binding Date}"/>
-                                    <TextBlock Text="{Binding Name}"/>
-                                    <TextBlock Text="{Binding Address}"/>
-                                </UniformGrid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>                        <!--<ListBoxItem>CommonStates</ListBoxItem>
-                        <ListBoxItem>FocusStates</ListBoxItem>
-                        <ListBoxItem>SelectionStates</ListBoxItem>-->                    </ListBox>
-                </UniformGrid>
-
-                <TextBlock Text="ListView" FontSize="20" Margin="0,20,0,0"/>
-                <UniformGrid Margin="0,10" Columns="2">
-                    <ListView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
-                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                                <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
-                            </GridView>
-                        </ListView.View>                    </ListView>                    <ListView IsEnabled="False" Margin="10,0" BorderThickness="0"                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
-                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                                <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
-                            </GridView>
-                        </ListView.View>                    </ListView>
-                </UniformGrid>
-
             </VirtualizingStackPanel>
         </Grid>
        
