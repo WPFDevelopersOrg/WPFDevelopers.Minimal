@@ -62,7 +62,7 @@
                                         <ColorAnimation Duration="00:00:0.3"
                                                         Storyboard.TargetName="PART_Border"
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                        To="{StaticResource PrimaryPressedColor}"
+                                                        To="{StaticResource PrimaryNormalColor}"
                                                         EasingFunction="{StaticResource CubicEaseInOut}"/>
                                     </Storyboard>
                                 </VisualState>

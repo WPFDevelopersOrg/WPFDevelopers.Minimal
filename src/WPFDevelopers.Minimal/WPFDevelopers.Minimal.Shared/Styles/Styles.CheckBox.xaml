@@ -38,7 +38,7 @@
                                                        HorizontalAlignment="Center"
                                                        x:Name="PART_InderminateMark"
                                                        RenderTransformOrigin=".5,.5"
-                                                       Fill="{DynamicResource PrimaryPressedSolidColorBrush}">
+                                                       Fill="{DynamicResource PrimaryNormalSolidColorBrush}">
                                             <Rectangle.RenderTransform>
                                                 <ScaleTransform ScaleX="0"/>
                                             </Rectangle.RenderTransform>
@@ -93,9 +93,9 @@
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
                         </Trigger>-->
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
-                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
-                            <Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="{x:Null}">
                             <Trigger.EnterActions>
@@ -117,7 +117,7 @@
                                 <Condition Property="IsChecked" Value="False" />
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}"/>
                             <!--本来使用动画，但是动画会导致无法修改主题颜色-->
                             <!--<MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_BeginStoryboard">

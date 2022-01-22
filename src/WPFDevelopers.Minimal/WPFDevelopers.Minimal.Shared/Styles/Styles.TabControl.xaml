@@ -47,12 +47,12 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
                             <!--<Setter Property="FontWeight" Value="Black"/>-->
-                            <Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -99,12 +99,12 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
                             <!--<Setter Property="FontWeight" Value="Black"/>-->
-                            <Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

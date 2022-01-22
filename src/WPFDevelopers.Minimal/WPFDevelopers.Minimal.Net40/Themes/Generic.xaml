@@ -122,6 +122,17 @@
 			<ContentPresenter x:Name="PART_ButtonContent" Margin="1,4,1,9" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" TextElement.Foreground="#FF333333" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 		</Grid>
 	</ControlTemplate>
+	<Style x:Key="TreeViewItemFocusVisual">
+		<Setter Property="Control.Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Border>
+						<Rectangle Margin="0,0,0,0" StrokeThickness="5" Stroke="Black" StrokeDashArray="1 2" Opacity="0" />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 	<SolidColorBrush x:Key="PrimaryTextSolidColorBrush" Color="{StaticResource PrimaryTextColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="RegularTextSolidColorBrush" Color="{StaticResource RegularTextColor}" po:Freeze="True" />
 	<SolidColorBrush x:Key="SecondaryTextSolidColorBrush" Color="{StaticResource SecondaryTextColor}" po:Freeze="True" />
@@ -540,16 +551,16 @@
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
                         </Trigger>-->
 						<Trigger Property="IsChecked" Value="True">
-							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
-							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
-							<Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+							<Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
 								<Condition Property="IsChecked" Value="False" />
 								<Condition Property="IsMouseOver" Value="True" />
 							</MultiTrigger.Conditions>
-							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}" />
 							<!--<MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_BeginStoryboard">
                                     <Storyboard>
@@ -823,7 +834,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SliderThumbHorizontalBottom" TargetType="{x:Type Thumb}">
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5" />
+			<Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5" />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsMouseOver" Value="true">
@@ -847,7 +858,7 @@
 			</Storyboard>
 		</ControlTemplate.Resources>
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5">
+			<Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5">
 				<Border.RenderTransform>
 					<ScaleTransform />
 				</Border.RenderTransform>
@@ -866,7 +877,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5" />
+			<Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="-1,0,0,0" Name="PART_Border" RenderTransformOrigin=".5,.5" />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsMouseOver" Value="true">
@@ -895,7 +906,7 @@
 				</Border>
 				<Track x:Name="PART_Track" Grid.Row="1">
 					<Track.DecreaseRepeatButton>
-						<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{DynamicResource RepeatButtonTransparent}" Background="{DynamicResource PrimaryPressedSolidColorBrush}" Height="{StaticResource RepeatButtonSize}" />
+						<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{DynamicResource RepeatButtonTransparent}" Background="{DynamicResource PrimaryNormalSolidColorBrush}" Height="{StaticResource RepeatButtonSize}" />
 					</Track.DecreaseRepeatButton>
 					<Track.IncreaseRepeatButton>
 						<RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Background="{DynamicResource LightSolidColorBrush}" Height="{StaticResource RepeatButtonSize}" />
@@ -925,13 +936,13 @@
 				<Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible" />
 			</Trigger>
 			<Trigger Property="IsKeyboardFocused" Value="true">
-				<Setter Property="Foreground" TargetName="Thumb" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+				<Setter Property="Foreground" TargetName="Thumb" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<ControlTemplate x:Key="SliderThumbVerticalLeft" TargetType="{x:Type Thumb}">
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Name="PART_Border" RenderTransformOrigin=".5,.5" />
+			<Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Name="PART_Border" RenderTransformOrigin=".5,.5" />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsMouseOver" Value="true">
@@ -945,7 +956,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SliderThumbVerticalRight" TargetType="{x:Type Thumb}">
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Name="PART_Border" RenderTransformOrigin=".5,.5" />
+			<Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Name="PART_Border" RenderTransformOrigin=".5,.5" />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsMouseOver" Value="true">
@@ -959,7 +970,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SliderThumbVerticalDefault" TargetType="{x:Type Thumb}">
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1" Name="PART_Border" RenderTransformOrigin=".5,.5" />
+			<Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1" Name="PART_Border" RenderTransformOrigin=".5,.5" />
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsMouseOver" Value="true">
@@ -983,7 +994,7 @@
 			</Storyboard>
 		</ControlTemplate.Resources>
 		<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
-			<Border BorderBrush="{DynamicResource PrimaryPressedSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1" Name="PART_Border" RenderTransformOrigin=".5,.5">
+			<Border BorderBrush="{DynamicResource PrimaryNormalSolidColorBrush}" BorderThickness="2" Background="{DynamicResource WhiteSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" Height="{StaticResource ThumbWidth}" Width="{StaticResource ThumbWidth}" CornerRadius="8" Margin="0,0,0,-1" Name="PART_Border" RenderTransformOrigin=".5,.5">
 				<Border.RenderTransform>
 					<ScaleTransform />
 				</Border.RenderTransform>
@@ -1017,7 +1028,7 @@
 				</Border>
 				<Track x:Name="PART_Track" Grid.Column="1">
 					<Track.DecreaseRepeatButton>
-						<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Background="{DynamicResource PrimaryPressedSolidColorBrush}" Width="{StaticResource RepeatButtonSize}" />
+						<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Background="{DynamicResource PrimaryNormalSolidColorBrush}" Width="{StaticResource RepeatButtonSize}" />
 					</Track.DecreaseRepeatButton>
 					<Track.IncreaseRepeatButton>
 						<RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource RepeatButtonTransparent}" Background="{DynamicResource LightSolidColorBrush}" Width="{StaticResource RepeatButtonSize}" />
@@ -1053,7 +1064,7 @@
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="BorderBrush" Value="Transparent" />
 		<Setter Property="Cursor" Value="Hand" />
-		<Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 		<Setter Property="Template" Value="{StaticResource SliderHorizontal}" />
 		<Style.Triggers>
 			<Trigger Property="Orientation" Value="Vertical">
@@ -1080,7 +1091,7 @@
 												<ScaleTransform ScaleX="0" ScaleY="0" />
 											</Path.RenderTransform>
 										</Path>
-										<Rectangle Width="6" Height="2" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="PART_InderminateMark" RenderTransformOrigin=".5,.5" Fill="{DynamicResource PrimaryPressedSolidColorBrush}">
+										<Rectangle Width="6" Height="2" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="PART_InderminateMark" RenderTransformOrigin=".5,.5" Fill="{DynamicResource PrimaryNormalSolidColorBrush}">
 											<Rectangle.RenderTransform>
 												<ScaleTransform ScaleX="0" />
 											</Rectangle.RenderTransform>
@@ -1116,9 +1127,9 @@
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
                         </Trigger>-->
 						<Trigger Property="IsChecked" Value="True">
-							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
-							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
-							<Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+							<Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsChecked" Value="{x:Null}">
 							<Trigger.EnterActions>
@@ -1137,7 +1148,7 @@
 								<Condition Property="IsChecked" Value="False" />
 								<Condition Property="IsMouseOver" Value="True" />
 							</MultiTrigger.Conditions>
-							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}" />
 							<!--本来使用动画，但是动画会导致无法修改主题颜色-->
 							<!--<MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_BeginStoryboard">
@@ -1200,7 +1211,7 @@
 								<VisualState x:Name="ReadOnly" />
 								<VisualState x:Name="MouseOver">
 									<Storyboard>
-										<ColorAnimation Duration="00:00:0.3" Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="{StaticResource PrimaryPressedColor}" />
+										<ColorAnimation Duration="00:00:0.3" Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="{StaticResource PrimaryNormalColor}" />
 									</Storyboard>
 								</VisualState>
 							</VisualStateGroup>
@@ -1340,7 +1351,7 @@
 						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,3,30,3" Focusable="True" Background="Transparent" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}" />
 						<!--SelectionBrush="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
 						<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" StaysOpen="False">
-							<Grid x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" RenderTransformOrigin="0.5,0" SnapsToDevicePixels="True">
+							<Grid x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 								<Grid.RenderTransform>
 									<ScaleTransform ScaleY="0" />
 								</Grid.RenderTransform>
@@ -1441,7 +1452,7 @@
 						</Trigger>
 						<Trigger Property="IsSelected" Value="True">
 							<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource BaseSolidColorBrush}" />
-							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 							<Setter TargetName="PART_RectangleMouseOver" Property="Visibility" Value="Collapsed" />
 							<Setter TargetName="PART_RectangleSelected" Property="Visibility" Value="Visible" />
 							<Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold" />
@@ -1496,7 +1507,7 @@
                                                          To="{Binding ElementName=PART_Border,Path=ActualWidth,Converter={StaticResource WidthConvert}}" 
                                                          Duration="00:00:.3"
                                                          EasingFunction="{StaticResource CubicEaseInOut}"/>-->
-										<ColorAnimation Duration="00:00:0.3" Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="{StaticResource PrimaryPressedColor}" EasingFunction="{StaticResource CubicEaseInOut}" />
+										<ColorAnimation Duration="00:00:0.3" Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="{StaticResource PrimaryNormalColor}" EasingFunction="{StaticResource CubicEaseInOut}" />
 									</Storyboard>
 								</VisualState>
 								<VisualState x:Name="Unchecked">
@@ -1599,7 +1610,7 @@
 						<Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" />
 						<Ellipse x:Name="DayButtonFocusVisual" Visibility="Collapsed" IsHitTestVisible="False">
 							<Ellipse.Fill>
-								<SolidColorBrush Color="{DynamicResource PrimaryPressedColor}" />
+								<SolidColorBrush Color="{DynamicResource PrimaryNormalColor}" />
 							</Ellipse.Fill>
 						</Ellipse>
 						<ContentPresenter x:Name="NormalText" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
@@ -1619,7 +1630,7 @@
 						</MultiTrigger>
 						<Trigger Property="IsToday" Value="True">
 							<Setter TargetName="NormalText" Property="TextElement.FontWeight" Value="Bold" />
-							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsSelected" Value="True">
 							<Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WhiteSolidColorBrush}" />
@@ -1670,7 +1681,7 @@
 								<VisualState Name="Selected">
 									<Storyboard>
 										<ColorAnimationUsingKeyFrames Storyboard.TargetName="NormalText" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
-											<EasingColorKeyFrame KeyTime="0" Value="{DynamicResource PrimaryPressedColor}" />
+											<EasingColorKeyFrame KeyTime="0" Value="{DynamicResource PrimaryNormalColor}" />
 										</ColorAnimationUsingKeyFrames>
 									</Storyboard>
 								</VisualState>
@@ -1689,7 +1700,7 @@
 								<VisualState Name="CalendarButtonFocused">
 									<Storyboard>
 										<ColorAnimationUsingKeyFrames Storyboard.TargetName="NormalText" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
-											<EasingColorKeyFrame KeyTime="0" Value="{DynamicResource PrimaryPressedColor}" />
+											<EasingColorKeyFrame KeyTime="0" Value="{DynamicResource PrimaryNormalColor}" />
 										</ColorAnimationUsingKeyFrames>
 									</Storyboard>
 								</VisualState>
@@ -1956,7 +1967,7 @@
 					</Border>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsDropDownOpen" Value="True">
-							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{StaticResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -2387,12 +2398,12 @@
 					</Grid>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsSelected" Value="True">
-							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 							<!--<Setter Property="FontWeight" Value="Black"/>-->
-							<Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsMouseOver" Value="True">
-							<Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -2433,12 +2444,12 @@
 					</Grid>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsSelected" Value="True">
-							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 							<!--<Setter Property="FontWeight" Value="Black"/>-->
-							<Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 						<Trigger Property="IsMouseOver" Value="True">
-							<Setter Property="Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}" />
+							<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
@@ -2546,7 +2557,7 @@
 								<VisualState x:Name="Disabled" />
 								<VisualState x:Name="MouseOver">
 									<Storyboard>
-										<ColorAnimation Duration="00:00:0.3" Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="{StaticResource PrimaryPressedColor}" />
+										<ColorAnimation Duration="00:00:0.3" Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="{StaticResource PrimaryNormalColor}" />
 									</Storyboard>
 								</VisualState>
 							</VisualStateGroup>
@@ -2743,7 +2754,7 @@ Duration="00:00:.3"/>
 							</Border.Background>
 							<ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
 						</Border>
-						<Rectangle x:Name="PART_Rectangle" Height="2" VerticalAlignment="Bottom" Fill="{DynamicResource PrimaryMouseOverSolidColorBrush}" RenderTransformOrigin=".5,.5">
+						<Rectangle x:Name="PART_Rectangle" Height="2" VerticalAlignment="Bottom" Fill="{DynamicResource PrimaryNormalSolidColorBrush}" RenderTransformOrigin=".5,.5">
 							<Rectangle.RenderTransform>
 								<ScaleTransform ScaleX="0" ScaleY="1" />
 							</Rectangle.RenderTransform>
@@ -2956,6 +2967,212 @@ Duration="00:00:.3"/>
 						<Trigger Property="IsSelected" Value="True">
 							<Setter Property="Background" Value="{DynamicResource BaseMoveColorSolidColorBrush}" />
 						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Foreground">
+			<Setter.Value>
+				<DrawingBrush Viewport="0,0,20,6" TileMode="Tile" ViewportUnits="Absolute" Stretch="None">
+					<DrawingBrush.Transform>
+						<TransformGroup>
+							<RotateTransform Angle="20" />
+							<TranslateTransform X="0" />
+						</TransformGroup>
+					</DrawingBrush.Transform>
+					<DrawingBrush.Drawing>
+						<GeometryDrawing>
+							<GeometryDrawing.Brush>
+								<LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+									<GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0" />
+									<GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0.5" />
+									<GradientStop Color="Transparent" Offset="0.5" />
+									<GradientStop Color="Transparent" Offset="1" />
+								</LinearGradientBrush>
+							</GeometryDrawing.Brush>
+							<GeometryDrawing.Geometry>
+								<RectangleGeometry Rect="0,0,20,6" />
+							</GeometryDrawing.Geometry>
+						</GeometryDrawing>
+					</DrawingBrush.Drawing>
+				</DrawingBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Height" Value="6" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ProgressBar}">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="LoadedStoryboard" RepeatBehavior="Forever">
+							<DoubleAnimation Storyboard.TargetProperty="(Border.Background).(Brush.Transform).(TransformGroup.Children)[1].(TranslateTransform.X)" Storyboard.TargetName="Indicator" To="21" Duration="00:00:0.45" />
+						</Storyboard>
+						<Storyboard x:Key="IsIndeterminate" RepeatBehavior="Forever">
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Animation">
+								<EasingDoubleKeyFrame KeyTime="0" Value="0.25" />
+								<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25" />
+								<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25" />
+							</DoubleAnimationUsingKeyFrames>
+							<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="Animation">
+								<EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5" />
+								<EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5" />
+								<EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5" />
+							</PointAnimationUsingKeyFrames>
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<Border x:Name="PART_Border" Background="{DynamicResource BaseSolidColorBrush}" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
+						<Grid ClipToBounds="True">
+							<Border x:Name="PART_Track" />
+							<Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
+								<Border x:Name="Indicator" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Foreground}" />
+							</Decorator>
+							<Rectangle x:Name="Animation" Visibility="Collapsed" Fill="{DynamicResource PrimaryNormalSolidColorBrush}">
+								<Rectangle.RenderTransform>
+									<TransformGroup>
+										<ScaleTransform />
+									</TransformGroup>
+								</Rectangle.RenderTransform>
+							</Rectangle>
+						</Grid>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="Orientation" Value="Vertical">
+							<Setter Property="Height" Value="{x:Static sys:Double.NaN}" />
+							<Setter Property="LayoutTransform" TargetName="PART_Border">
+								<Setter.Value>
+									<RotateTransform Angle="-90" />
+								</Setter.Value>
+							</Setter>
+						</Trigger>
+						<Trigger Property="IsIndeterminate" Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard Storyboard="{StaticResource IsIndeterminate}" />
+							</Trigger.EnterActions>
+							<Setter Property="Visibility" TargetName="PART_Indicator" Value="Collapsed" />
+							<Setter Property="Visibility" TargetName="Animation" Value="Visible" />
+							<Setter Property="CornerRadius" TargetName="PART_Border" Value="0" />
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="LoadedBeginStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+						<EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="Indicator">
+							<BeginStoryboard x:Name="LoadedBeginStoryboard" Storyboard="{StaticResource LoadedStoryboard}" />
+						</EventTrigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type TreeView}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="TreeView">
+					<Border Name="Border" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BaseSolidColorBrush}" Background="{DynamicResource WhiteSolidColorBrush}">
+						<ScrollViewer Focusable="False" CanContentScroll="False" Padding="4">
+							<ItemsPresenter />
+						</ScrollViewer>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="ExpandCollapseToggleStyle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Focusable" Value="False" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="ToggleButton">
+					<Grid Width="15" Height="13" Background="Transparent">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CheckStates">
+								<VisualState x:Name="Checked">
+									<Storyboard>
+										<DoubleAnimation Duration="00:00:.2" To="90" Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)" Storyboard.TargetName="Expanded" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unchecked">
+									<Storyboard>
+										<DoubleAnimation Duration="00:00:.2" To="0" Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)" Storyboard.TargetName="Expanded" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Indeterminate" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Path x:Name="Expanded" Stretch="Fill" Height="10" Width="6" Data="{StaticResource PathNext}" RenderTransformOrigin=".5,.5">
+							<Path.Fill>
+								<SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
+							</Path.Fill>
+							<Path.RenderTransform>
+								<RotateTransform />
+							</Path.RenderTransform>
+						</Path>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource ControlBasicStyle}">
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+		<Setter Property="Padding" Value="10" />
+		<Setter Property="Cursor" Value="Hand" />
+		<Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type TreeViewItem}">
+					<Grid>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="ExpansionStates">
+								<VisualState x:Name="Expanded">
+									<Storyboard>
+										<DoubleAnimation Duration="00:00:.2" To="1" Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)" Storyboard.TargetName="PART_ItemsHost" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Collapsed" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Border x:Name="PART_Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+							<DockPanel LastChildFill="True">
+								<ToggleButton x:Name="Expander" ClickMode="Press" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ExpandCollapseToggleStyle}" />
+								<ContentPresenter VerticalAlignment="Center" x:Name="PART_Header" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+							</DockPanel>
+						</Border>
+						<Border Grid.Row="1" RenderTransformOrigin=".5,0" x:Name="PART_ItemsHost">
+							<Border.RenderTransform>
+								<ScaleTransform ScaleY="0" />
+							</Border.RenderTransform>
+							<ItemsPresenter x:Name="ItemsHost" />
+						</Border>
+						<!--<ItemsPresenter x:Name="ItemsHost" Grid.Row="1"/>-->
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" SourceName="PART_Border" Value="True">
+							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource BaseMoveColorSolidColorBrush}" />
+						</Trigger>
+						<Trigger Property="IsExpanded" Value="False">
+							<Setter Property="Visibility" TargetName="ItemsHost" Value="Collapsed" />
+						</Trigger>
+						<Trigger Property="HasItems" Value="False">
+							<Setter Property="Visibility" TargetName="Expander" Value="Hidden" />
+						</Trigger>
+						<Trigger Property="IsSelected" Value="True">
+							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource BaseSolidColorBrush}" />
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsSelected" Value="True" />
+								<Condition Property="IsSelectionActive" Value="False" />
+							</MultiTrigger.Conditions>
+							<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource WhiteSolidColorBrush}" />
+						</MultiTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>

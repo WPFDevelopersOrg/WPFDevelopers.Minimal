@@ -78,7 +78,7 @@
                 </WrapPanel>
                 <TextBlock Text="PasswordBox" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
-                    <PasswordBox/>
+                    <PasswordBox />
                     <PasswordBox Margin="10,0" ws:ElementHelper.Watermark="请输入密码"/>
                     <PasswordBox IsEnabled="False"/>
                 </WrapPanel>
@@ -119,6 +119,15 @@
                     <Slider Width="200"/>
                     <Slider Width="200" Value="50" Maximum="100"  Margin="10,0"/>
                     <Slider Width="200" Value="50" Maximum="100" IsEnabled="False"/>
+                </WrapPanel>
+
+                <TextBlock Text="ProgressBar" FontSize="20" Margin="0,20,0,0"/>
+                <WrapPanel Margin="0,10">
+                    <ProgressBar Width="200" Value="50" />
+                    <ProgressBar Width="200" Margin="10,0"  Value="80" />
+                    <ProgressBar Width="200" Margin="10,0" Height="6" IsIndeterminate="True" Value="10"/>
+                    <!--<ProgressBar Width="6" Value="40" Orientation="Vertical"/>
+                    <ProgressBar Width="6" Height="200" Margin="10,0" Orientation="Vertical" Value="80"/>-->
                 </WrapPanel>
 
                 <TextBlock Text="DataGrid" FontSize="20" Margin="0,20,0,0"/>
@@ -219,6 +228,23 @@
                                 <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
                             </GridView>
                         </ListView.View>                    </ListView>
+                </UniformGrid>
+
+                <TextBlock Text="TreeView" FontSize="20" Margin="0,20,0,0"/>
+                <UniformGrid Margin="0,10" Columns="2">
+                    <TreeView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                <Border>
+                                    <TextBlock Text="{Binding Path=Name}"/>
+                                </Border>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>                    </TreeView>                    <TreeView IsEnabled="False" Margin="10,0" BorderThickness="0"                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                <Border>
+                                    <TextBlock Text="{Binding Path=Name}"/>
+                                </Border>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>                    </TreeView>
                 </UniformGrid>
 
                 <TextBlock Text="Expander" FontSize="20" Margin="0,20,0,0"/>

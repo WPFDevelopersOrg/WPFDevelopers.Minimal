@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WPFDevelopers.Minimal.Sample.Models
 {
@@ -17,5 +18,6 @@ namespace WPFDevelopers.Minimal.Sample.Models
         public DateTime Date { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+        public List<UserModel> Children { get; set; }
     }
 }

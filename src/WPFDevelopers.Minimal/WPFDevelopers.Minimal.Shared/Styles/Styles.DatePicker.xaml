@@ -76,7 +76,7 @@
                         <Ellipse x:Name="DayButtonFocusVisual" Visibility="Collapsed"
                      IsHitTestVisible="False">
                             <Ellipse.Fill>
-                                <SolidColorBrush Color="{DynamicResource PrimaryPressedColor}" />
+                                <SolidColorBrush Color="{DynamicResource PrimaryNormalColor}" />
                             </Ellipse.Fill>
                         </Ellipse>
                         <ContentPresenter x:Name="NormalText"
@@ -100,7 +100,7 @@
                         </MultiTrigger>
                         <Trigger Property="IsToday" Value="True">
                             <Setter TargetName="NormalText" Property="TextElement.FontWeight" Value="Bold"/>
-                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WhiteSolidColorBrush}"/>
@@ -155,7 +155,7 @@
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="NormalText" 
                                                                           Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource PrimaryPressedColor}" >
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource PrimaryNormalColor}" >
                                             </EasingColorKeyFrame>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
@@ -176,7 +176,7 @@
                                     <Storyboard>
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="NormalText" 
                                                                           Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
-                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource PrimaryPressedColor}" >
+                                            <EasingColorKeyFrame KeyTime="0" Value="{DynamicResource PrimaryNormalColor}" >
                                             </EasingColorKeyFrame>
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
@@ -694,7 +694,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDropDownOpen" Value="True">
-                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{StaticResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

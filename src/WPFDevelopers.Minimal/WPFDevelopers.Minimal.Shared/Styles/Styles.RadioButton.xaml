@@ -94,16 +94,16 @@
                             <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
                         </Trigger>-->
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
-                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
-                            <Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsChecked" Value="False" />
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}"/>
                             <!--<MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_BeginStoryboard">
                                     <Storyboard>

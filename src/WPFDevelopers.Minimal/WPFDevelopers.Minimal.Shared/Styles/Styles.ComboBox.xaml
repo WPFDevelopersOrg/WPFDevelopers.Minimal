@@ -165,7 +165,7 @@
                             <Grid x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
                                   Margin="24,2,24,24"
                                   MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}"
-                                  RenderTransformOrigin="0.5,0"
+                                  RenderTransformOrigin=".5,0"
                                   SnapsToDevicePixels="True">
                                 <Grid.RenderTransform>
                                     <ScaleTransform ScaleY="0"/>
@@ -292,7 +292,7 @@
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource BaseSolidColorBrush}"/>
-                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                             <Setter TargetName="PART_RectangleMouseOver" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_RectangleSelected" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold"/>

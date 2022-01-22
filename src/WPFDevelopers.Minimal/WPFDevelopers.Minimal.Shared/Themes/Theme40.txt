@@ -24,3 +24,5 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.GroupBox.xaml
 ..\Styles\Styles.ListBox.xaml
 ..\Styles\Styles.ListView.xaml
+..\Styles\Styles.ProgressBar.xaml
+..\Styles\Styles.TreeView.xaml

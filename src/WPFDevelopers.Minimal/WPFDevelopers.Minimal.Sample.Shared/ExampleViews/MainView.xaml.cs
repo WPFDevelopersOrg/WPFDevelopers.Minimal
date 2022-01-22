@@ -39,6 +39,7 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
         }
 
         #endregion
+
         public MainView()
         {
             InitializeComponent();
@@ -51,7 +52,21 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
             UserCollection = new ObservableCollection<UserModel>();
             for (int i = 0; i < 4; i++)
             {
-                UserCollection.Add(new UserModel { Date = time, Name = "WPFDevelopers", Address = "No. 189, Grove St, Los Angeles" });
+                UserCollection.Add(new UserModel
+                {
+                    Date = time,
+                    Name = "WPFDevelopers",
+                    Address = "No. 189, Grove St, Los Angeles",
+                    Children = new System.Collections.Generic.List<UserModel>()
+                    {
+                         new UserModel { Name= "WPFDevelopers.Minimal1.1" },
+                         new UserModel { Name = "WPFDevelopers.Minimal1.2" },
+                         new UserModel { Name = "WPFDevelopers.Minimal1.3" },
+                          new UserModel { Name= "WPFDevelopers.Minimal1.4" },
+                         new UserModel { Name = "WPFDevelopers.Minimal1.5" },
+                         new UserModel { Name = "WPFDevelopers.Minimal1.6" },
+                    }
+                });
                 time = time.AddDays(2);
             }
         }
