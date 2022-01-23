@@ -51,6 +51,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Window.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -78,10 +79,15 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
+    <Page Include="Themes\Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="..\WPFDevelopers.Minimal.Shared\WPFDevelopers.Minimal.Shared.projitems" Label="Shared" />
+  <Import Project="..\Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir)WPFDevelopers.Minimal.Shared\Themes\XamlCombine.exe $(SolutionDir)WPFDevelopers.Minimal.Shared\Themes\Theme40.txt $(ProjectDir)Themes\Generic.xaml</PreBuildEvent>
+    <PreBuildEvent>$(SolutionDir)WPFDevelopers.Minimal.Shared\Themes\XamlCombine.exe $(SolutionDir)WPFDevelopers.Minimal.Shared\Themes\Theme40.txt $(ProjectDir)Themes\Theme.xaml</PreBuildEvent>
   </PropertyGroup>
 </Project>

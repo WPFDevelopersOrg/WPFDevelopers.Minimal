@@ -1,11 +1,12 @@
-﻿<Window x:Class="WPFDevelopers.Minimal.Sample.ExampleViews.MainView"
+﻿<ws:Window x:Class="WPFDevelopers.Minimal.Sample.ExampleViews.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:ws="https://github.com/WPFDevelopersOrg"
+        xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"
 		xmlns:local="clr-namespace:WPFDevelopers.Minimal.Sample.ExampleViews"
         xmlns:app ="clr-namespace:WPFDevelopers.Minimal.Sample"
+        Icon="/WPFDevelopers.Minimal.Sample.Net40;component/Resources/WPFDevelopers.Minimal.png"
         Height="{x:Static app:App.Height}" Width="{x:Static app:App.Wdith}"
         WindowStartupLocation="CenterScreen" Title="WPFDevelopers.Minimal">
 	<Window.Resources>
@@ -125,7 +126,7 @@
                 <WrapPanel Margin="0,10">
                     <ProgressBar Width="200" Value="50" />
                     <ProgressBar Width="200" Margin="10,0"  Value="80" />
-                    <ProgressBar Width="200" Margin="10,0" Height="6" IsIndeterminate="True" Value="10"/>
+                    <ProgressBar Width="200" Margin="10,0" Height="10" IsIndeterminate="True" Value="10"/>
                     <!--<ProgressBar Width="6" Value="40" Orientation="Vertical"/>
                     <ProgressBar Width="6" Height="200" Margin="10,0" Orientation="Vertical" Value="80"/>-->
                 </WrapPanel>
@@ -328,4 +329,4 @@
         </Grid>
        
     </ScrollViewer>
-</Window>
+</ws:Window>

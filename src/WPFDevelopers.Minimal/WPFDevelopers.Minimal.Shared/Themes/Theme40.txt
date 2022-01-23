@@ -5,6 +5,8 @@ Basic\Geometrys.xaml
 Basic\Animations.xaml
 Basic\ControlBasic.xaml
 
+..\..\WPFDevelopers.Minimal.Net40\Themes\Generic.xaml
+
 ..\Styles\Styles.Menu.xaml
 ..\Styles\Styles.ContextMenu.xaml
 ..\Styles\Styles.Buttons.xaml
@@ -26,3 +28,4 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.ListView.xaml
 ..\Styles\Styles.ProgressBar.xaml
 ..\Styles\Styles.TreeView.xaml
+

@@ -6,7 +6,7 @@ using WPFDevelopers.Minimal.Sample.Models;
 
 namespace WPFDevelopers.Minimal.Sample.ExampleViews
 {
-    public partial class MainView : Window
+    public partial class MainView : WPFDevelopers.Minimal.Net40.Window
     {
         #region DataSource
         public ObservableCollection<UserModel> UserCollection

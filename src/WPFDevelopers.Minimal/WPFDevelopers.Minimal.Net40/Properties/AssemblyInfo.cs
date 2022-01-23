@@ -41,9 +41,10 @@ using System.Windows.Markup;
                                       //、应用程序或任何主题专用资源字典中找到时使用)
 )]
 
-[assembly: XmlnsPrefix("https://github.com/WPFDevelopersOrg", "WPFDevelopers.Minimal")]
-[assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg", "WPFDevelopers.Minimal")]
-[assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg", "WPFDevelopers.Minimal.Helpers")]
+[assembly: XmlnsPrefix("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "WPFDevelopers.Minimal")]
+[assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "WPFDevelopers.Minimal")]
+[assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "WPFDevelopers.Minimal.Helpers")]
+[assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "WPFDevelopers.Minimal.Net40")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
