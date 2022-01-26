@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <AssemblyName>WPFDevelopers.Minimal</AssemblyName>
+    <RootNamespace>WPFDevelopers.Minimal</RootNamespace>
+    <TargetFrameworks>net45;net46;net47;net48;net5.0-windows;netcoreapp3.0</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+    <OutputPath></OutputPath>
+  </PropertyGroup>
+  <Import Project="..\WPFDevelopers.Minimal.Shared\WPFDevelopers.Minimal.Shared.projitems" Label="Shared" />
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="$(SolutionDir)WPFDevelopers.Minimal.Shared\Themes\XamlCombine.exe $(SolutionDir)WPFDevelopers.Minimal.Shared\Themes\Theme45x.txt $(ProjectDir)Themes\Theme.xaml" />
+  </Target>
+</Project>

@@ -20,10 +20,13 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WPFDevelopers.Minimal.Share
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Microsoft.Windows.Shell", "Microsoft.Windows.Shell\Microsoft.Windows.Shell.shproj", "{572D11B9-7EA8-4A04-849A-BB2B0371786F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFDevelopers.Minimal.Net45x", "WPFDevelopers.Minimal.Net45x\WPFDevelopers.Minimal.Net45x.csproj", "{267504E7-DB8E-4EF8-BE50-983663C2D472}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		WPFDevelopers.Minimal.Sample.Shared\WPFDevelopers.Minimal.Sample.Shared.projitems*{018b1a33-3924-46fd-9429-6eac6ecc9aad}*SharedItemsImports = 13
 		WPFDevelopers.Minimal.Sample.Shared\WPFDevelopers.Minimal.Sample.Shared.projitems*{0204fbcc-c05f-4280-8331-41283909e5e2}*SharedItemsImports = 4
+		WPFDevelopers.Minimal.Shared\WPFDevelopers.Minimal.Shared.projitems*{267504e7-db8e-4ef8-be50-983663c2d472}*SharedItemsImports = 5
 		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{572d11b9-7ea8-4a04-849a-bb2b0371786f}*SharedItemsImports = 13
 		WPFDevelopers.Minimal.Shared\WPFDevelopers.Minimal.Shared.projitems*{81d06e90-d6a6-4198-ae6d-f62942247f91}*SharedItemsImports = 13
 		Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems*{86c7221c-07a6-48ed-a8ed-2e44bec7e2cc}*SharedItemsImports = 4
@@ -42,6 +45,10 @@ Global
 		{0204FBCC-C05F-4280-8331-41283909E5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0204FBCC-C05F-4280-8331-41283909E5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0204FBCC-C05F-4280-8331-41283909E5E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{267504E7-DB8E-4EF8-BE50-983663C2D472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{267504E7-DB8E-4EF8-BE50-983663C2D472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{267504E7-DB8E-4EF8-BE50-983663C2D472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{267504E7-DB8E-4EF8-BE50-983663C2D472}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

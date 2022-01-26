@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Themes\Theme40.txt" />
+    <Content Include="$(MSBuildThisFileDirectory)Themes\Theme45x.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Themes\XamlCombine.exe" />
