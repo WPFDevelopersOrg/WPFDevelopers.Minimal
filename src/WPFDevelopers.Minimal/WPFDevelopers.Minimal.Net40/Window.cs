@@ -26,7 +26,6 @@ namespace WPFDevelopers.Minimal.Net40
 
         public Window()
         {
-            DefaultStyleKey = typeof(Window);
             this.Loaded += Window_Loaded;
             CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, CloseWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, MaximizeWindow, CanResizeWindow));

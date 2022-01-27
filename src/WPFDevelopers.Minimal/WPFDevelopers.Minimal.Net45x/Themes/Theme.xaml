@@ -235,7 +235,7 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style TargetType="{x:Type wpfdev:Window}" BasedOn="{x:Null}">
+	<Style x:Key="WPFDevelopersWindow" TargetType="{x:Type wpfdev:Window}" BasedOn="{x:Null}">
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource WhiteSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
@@ -247,10 +247,8 @@
 		<Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
 		<Setter Property="WindowStyle" Value="None" />
 		<Setter Property="MaxHeight" Value="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}" />
-		<!--<Setter Property="MaxWidth" Value="{x:Static SystemParameters.MaximizedPrimaryScreenWidth}"/>-->
+		<Setter Property="MaxWidth" Value="{x:Static SystemParameters.MaximizedPrimaryScreenWidth}" />
 		<Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
-		<!--<Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>-->
-		<!--<Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>-->
 		<Setter Property="WindowChrome.WindowChrome">
 			<Setter.Value>
 				<WindowChrome GlassFrameThickness="0,0,0,1" UseAeroCaptionButtons="False" CaptionHeight="{Binding TitleHeight,RelativeSource={RelativeSource AncestorType=wpfdev:Window}}" />
@@ -271,7 +269,6 @@
 									<ColumnDefinition Width="Auto" />
 									<ColumnDefinition Width="*" />
 									<ColumnDefinition Width="Auto" MinWidth="30" />
-									<!--<ColumnDefinition Width="Auto" MinWidth="95"/>-->
 								</Grid.ColumnDefinitions>
 								<Image Source="{TemplateBinding Icon}" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Left" Width="30" Height="30" Margin="14,0,4,0" RenderOptions.BitmapScalingMode="HighQuality" />
 								<TextBlock Text="{TemplateBinding Title}" x:Name="PART_Title" Foreground="{DynamicResource WhiteSolidColorBrush}" Grid.Column="1" VerticalAlignment="Center" FontSize="{DynamicResource TitleFontSize}" />
