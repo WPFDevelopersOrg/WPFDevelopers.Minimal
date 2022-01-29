@@ -1,5 +1,4 @@
 <div align="center"><img src="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal/raw/main/src/WPFDevelopers.Minimal/WPFDevelopers.Minimal.Sample.Net40/Resources/WPFDevelopers.Minimal.png"/></div>    
-
 ##  Welcome to WPFDevelopers.Minimal  
 
 ![.net >= 4.0](https://img.shields.io/badge/.net-%3E%3D4.0-blue) ![Visual Studio 2019](https://img.shields.io/badge/Visual%20Studio%20-2019-blueviolet) 
@@ -38,10 +37,27 @@ Install-Package WPFDevelopers.Minimal
 
 `xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"`  
 
+[如何使用Window](#Window 窗体)  
+
+
+
+
 ###  效果展示  
 
-
 ![0](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/0.png)  
+
+
+### Window 窗体
+
+XAML  
+``` XML
+ws:Window x:Class="WpfApp.MainWindow"
+```
+去除.cs文件中的继承  
+``` C#
+public partial class MainWindow 
+```
+
 ![1](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/1.png)  
 ![2](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/2.png)  
 ![3](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/3.png)  
@@ -51,3 +67,4 @@ Install-Package WPFDevelopers.Minimal
 ![7](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/7.png)  
 ![8](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/8.png)  
 ![9](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/9.png)  
+
