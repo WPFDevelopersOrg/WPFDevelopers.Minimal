@@ -74,6 +74,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.MessageBox.xaml">
+      <SubType>Designer</SubType>
+    </None>
     <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ProgressBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,8 +107,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WPFMessageBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementConvert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\MaskAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\PasswordBoxHelper.cs" />
   </ItemGroup>
 </Project>
