@@ -3,60 +3,6 @@
                     xmlns:shell="clr-namespace:Microsoft.Windows.Shell"
                     xmlns:wpfdev="clr-namespace:WPFDevelopers.Minimal.Net40">
 
-
-    <Style x:Key="WindowButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}"/>
-        <Setter Property="Padding" Value="3"/>
-        <Setter Property="Margin" Value="0"/>
-        <Setter Property="MinWidth" Value="30"/>
-        <Setter Property="MinHeight" Value="28"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid Background="Transparent">
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal"/>
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <DoubleAnimation Duration="0" To="1" 
-                                                         Storyboard.TargetProperty="(UIElement.Opacity)"
-                                                         Storyboard.TargetName="PART_ContentPresenter" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <DoubleAnimation Duration="0" To="1" 
-                                                         Storyboard.TargetProperty="(UIElement.Opacity)" 
-                                                         Storyboard.TargetName="PART_ContentPresenter" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard>
-                                        <DoubleAnimation Duration="0" To="0.3" 
-                                                         Storyboard.TargetProperty="(UIElement.Opacity)"
-                                                         Storyboard.TargetName="PART_ContentPresenter"/>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                            <VisualStateGroup x:Name="FocusStates">
-                                <VisualState x:Name="Focused"/>
-                                <VisualState x:Name="Unfocused"/>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        <Rectangle Fill="Transparent"/>
-                        <ContentPresenter x:Name="PART_ContentPresenter" Opacity="0.7" 
-                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                          Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
-                                          Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style TargetType="{x:Type wpfdev:Window}" BasedOn="{x:Null}">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
         <Setter Property="Background"  Value="{DynamicResource WhiteSolidColorBrush}" />
@@ -108,7 +54,7 @@
                                 <WrapPanel Grid.Column="2" shell:WindowChrome.IsHitTestVisibleInChrome="True">
                                     <WrapPanel x:Name="PART_MinAndMax">
                                         <Button Name="PART_MinimizeButton"  IsTabStop="False"   Padding="0" Margin="0,6" 
-                                            Style="{StaticResource WindowButtonStyle}" ToolTip="Minimize"
+                                            Style="{DynamicResource WindowButtonStyle}" ToolTip="Minimize"
                                             Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}">
                                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Rectangle x:Name="MinimizeGlyph"  Width="10"  Height="1"   Margin="0 7 0 0" 
@@ -116,7 +62,7 @@
                                             </Grid>
                                         </Button>
                                         <Button Name="PART_MaximizeButton" IsTabStop="False"  Padding="0"
-                                            Style="{StaticResource WindowButtonStyle}" Margin="0,6"
+                                            Style="{DynamicResource WindowButtonStyle}" Margin="0,6"
                                             ToolTip="Maximize"
                                             Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}">
                                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -127,7 +73,7 @@
                                             </Grid>
                                         </Button>
                                         <Button Name="PART_RestoreButton" IsTabStop="False"  Padding="0"
-                                            Style="{StaticResource WindowButtonStyle}" Margin="0,6"
+                                            Style="{DynamicResource WindowButtonStyle}" Margin="0,6"
                                             ToolTip="Restore"
                                             Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}"
                                             Visibility="Collapsed">
@@ -142,7 +88,7 @@
 
                                     <Button Name="PART_CloseButton" Margin="0,6" 
                                             ToolTip="Close"
-                                            IsTabStop="False" Style="{StaticResource WindowButtonStyle}"
+                                            IsTabStop="False" Style="{DynamicResource WindowButtonStyle}"
                                             Command="{Binding Source={x:Static shell:SystemCommands.CloseWindowCommand}}">
                                         <Path Width="10" Height="10"
                               HorizontalAlignment="Center"

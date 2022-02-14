@@ -8,12 +8,14 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
+    <Thickness x:Key="BorderThickness">0,0,0,2</Thickness>
+    
     <Style x:Key="BaseTAndBTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="MinHeight" Value="48"/>
         <Setter Property="MinWidth" Value="100"/>
-        <Setter Property="BorderThickness" Value="0,0,0,4"/>
+        <Setter Property="BorderThickness" Value="{StaticResource BorderThickness}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
@@ -48,6 +50,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
                             <!--<Setter Property="FontWeight" Value="Black"/>-->
                             <Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
@@ -65,7 +68,7 @@
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="MinHeight" Value="48"/>
         <Setter Property="MinWidth" Value="100"/>
-        <Setter Property="BorderThickness" Value="0,0,0,4"/>
+        <Setter Property="BorderThickness" Value="{StaticResource BorderThickness}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
@@ -100,6 +103,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+                            <Setter Property="Background" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
                             <!--<Setter Property="FontWeight" Value="Black"/>-->
                             <Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
@@ -113,18 +117,18 @@
     </Style>
 
     <Style x:Key="LeftTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource BaseLAndRTabItem}">
-        <Setter Property="BorderThickness" Value="0,0,4,0"/>
+        <Setter Property="BorderThickness" Value="0,0,2,0"/>
     </Style>
 
     <Style x:Key="RightTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource BaseLAndRTabItem}">
-        <Setter Property="BorderThickness" Value="4,0,0,0"/>
+        <Setter Property="BorderThickness" Value="2,0,0,0"/>
     </Style>
 
     <Style x:Key="TopTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource BaseTAndBTabItem}">
-        <Setter Property="BorderThickness" Value="0,0,0,4"/>
+        <Setter Property="BorderThickness" Value="0,0,0,2"/>
     </Style>
     <Style x:Key="BottomTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource BaseTAndBTabItem}">
-        <Setter Property="BorderThickness" Value="0,4,0,0"/>
+        <Setter Property="BorderThickness" Value="0,2,0,0"/>
     </Style>
 
     <Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource ControlBasicStyle}">

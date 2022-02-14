@@ -45,6 +45,7 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "WPFDevelopers.Minimal")]
 [assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "WPFDevelopers.Minimal.Helpers")]
 [assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "WPFDevelopers.Minimal.Net40")]
+[assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "WPFDevelopers.Minimal.Controls")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

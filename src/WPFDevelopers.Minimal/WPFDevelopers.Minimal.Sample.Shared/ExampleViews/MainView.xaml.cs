@@ -70,5 +70,10 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
                 time = time.AddDays(2);
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WPFDevelopers.Minimal.Controls.MessageBox.Show("44");
+        }
     }
 }
