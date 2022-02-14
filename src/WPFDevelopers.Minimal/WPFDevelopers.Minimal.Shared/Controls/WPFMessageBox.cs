@@ -22,6 +22,9 @@ namespace WPFDevelopers.Minimal.Controls
         private const string ButtonCancelTemplateName = "PART_ButtonCancel";
         private const string ButtonOKTemplateName = "PART_ButtonOK";
 
+        private string _messageString;
+        private string _titleString;
+
         private TextBlock _title;
         private TextBlock _message;
         private Button _closeButton;
@@ -32,13 +35,31 @@ namespace WPFDevelopers.Minimal.Controls
         static WPFMessageBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(WPFMessageBox), new FrameworkPropertyMetadata(typeof(WPFMessageBox)));
+            //DefaultStyleKeyProperty.OverrideMetadata(typeof(WPFMessageBox), new FrameworkPropertyMetadata(GetResourceKey<Style>("MessageBoxKey")));
         }
-       
+
+        //static T GetResourceKey<T>(string key)
+        //{
+        //    if (Application.Current.TryFindResource(key) is T resource)
+        //    {
+        //        return resource;
+        //    }
+
+        //    return default;
+        //}
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             _title = GetTemplateChild(TitleTemplateName) as TextBlock;
             _message = GetTemplateChild(MessageTemplateName) as TextBlock;
+
+            if (_title == null || _message == null)
+                throw new InvalidOperationException("the title or message control is null!");
+
+            _title.Text = _titleString;
+            _message.Text = _messageString;
+
             _closeButton = GetTemplateChild(CloseButtonTemplateName) as Button;
             _buttonCancel = GetTemplateChild(ButtonCancelTemplateName) as Button;
             _buttonOK = GetTemplateChild(ButtonOKTemplateName) as Button;
@@ -59,13 +80,16 @@ namespace WPFDevelopers.Minimal.Controls
         {
             //Message = message;
             //DisplayButtons(MessageBoxButton.OK);
-            _message.Text = message;
+            //_message.Text = message;
+            _messageString = message;
         }
 
         public WPFMessageBox(string message, string caption)
         {
-            _title.Text = caption;
-            _message.Text = message;
+            _titleString = caption;
+            _messageString = message;
+            //_title.Text = caption;
+            //_message.Text = message;
             //Message = message;
             //Caption = caption;
             //DisplayButtons(MessageBoxButton.OK);
