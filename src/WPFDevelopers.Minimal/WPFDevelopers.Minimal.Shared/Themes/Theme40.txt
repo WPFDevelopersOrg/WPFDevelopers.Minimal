@@ -31,4 +31,5 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.ListView.xaml
 ..\Styles\Styles.ProgressBar.xaml
 ..\Styles\Styles.TreeView.xaml
+..\Styles\Styles.MessageBox.xaml
 
