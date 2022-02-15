@@ -13,15 +13,41 @@ namespace WPFDevelopers.Minimal.Controls
         public static MessageBoxResult Show(string messageBoxText)
         {
             var msg = new WPFMessageBox(messageBoxText);
+            return GetWindow(msg);
+        }
+        public static MessageBoxResult Show(string messageBoxText, string caption)
+        {
+            var msg = new WPFMessageBox(messageBoxText, caption);
+            return GetWindow(msg);
+        }
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button)
+        {
+            var msg = new WPFMessageBox(messageBoxText, caption, button);
+            return GetWindow(msg);
+        }
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxImage icon)
+        {
+            var msg = new WPFMessageBox(messageBoxText, caption, icon);
+            return GetWindow(msg);
+        }
+        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon)
+        {
+            var msg = new WPFMessageBox(messageBoxText, caption,button,icon);
+            return GetWindow(msg);
+        }
+
+        static MessageBoxResult GetWindow(WPFMessageBox msg)
+        {
+            msg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             Window win = null;
             if (Application.Current.Windows.Count > 0)
                 win = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
             if (win != null)
             {
-                Grid layer = new Grid() { Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0)) };
+                var layer = new Grid() { Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0)) };
                 UIElement original = win.Content as UIElement;
                 win.Content = null;
-                Grid container = new Grid();
+                var container = new Grid();
                 container.Children.Add(original);
                 container.Children.Add(layer);
                 win.Content = container;

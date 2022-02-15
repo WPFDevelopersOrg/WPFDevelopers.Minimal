@@ -73,7 +73,7 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            WPFDevelopers.Minimal.Controls.MessageBox.Show("44");
+            WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在。","提示");
         }
     }
 }

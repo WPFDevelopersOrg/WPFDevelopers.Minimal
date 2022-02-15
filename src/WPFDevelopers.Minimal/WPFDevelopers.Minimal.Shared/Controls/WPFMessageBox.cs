@@ -61,8 +61,15 @@ namespace WPFDevelopers.Minimal.Controls
             _message.Text = _messageString;
 
             _closeButton = GetTemplateChild(CloseButtonTemplateName) as Button;
+            if(_closeButton != null)
+                _closeButton.Click += _closeButton_Click;
             _buttonCancel = GetTemplateChild(ButtonCancelTemplateName) as Button;
             _buttonOK = GetTemplateChild(ButtonOKTemplateName) as Button;
+        }
+
+        private void _closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
 
         protected override void OnClosed(EventArgs e)

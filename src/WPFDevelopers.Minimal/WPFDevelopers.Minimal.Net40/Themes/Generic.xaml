@@ -35,7 +35,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
+                                <!--<RowDefinition Height="Auto" />-->
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" Height="{TemplateBinding TitleHeight}" 
                                   Background="{TemplateBinding BorderBrush}">
@@ -99,14 +99,13 @@
                                     </Button>
                                 </WrapPanel>
                             </Grid>
-                            <AdornerDecorator Grid.Row="1" KeyboardNavigation.IsTabStop="False"
-                                              Margin="4">
+                            <AdornerDecorator Grid.Row="1" KeyboardNavigation.IsTabStop="False">
                                 <ContentPresenter x:Name="MainContentPresenter"/>
                             </AdornerDecorator>
                             <ResizeGrip x:Name="ResizeGrip" 
                                         HorizontalAlignment="Right" 
                                         VerticalAlignment="Bottom" 
-                                        Grid.Row="2" IsTabStop="False"
+                                        Grid.Row="1" IsTabStop="False"
                                         Visibility="Collapsed"/>
                         </Grid>
                     </Border>

@@ -7,7 +7,6 @@ Basic\ControlBasic.xaml
 
 
 ..\Styles\Styles.Buttons.xaml
-..\Styles\Styles.MessageBox.xaml
 ..\..\WPFDevelopers.Minimal.Net40\Themes\Generic.xaml
 
 ..\Styles\Styles.Menu.xaml

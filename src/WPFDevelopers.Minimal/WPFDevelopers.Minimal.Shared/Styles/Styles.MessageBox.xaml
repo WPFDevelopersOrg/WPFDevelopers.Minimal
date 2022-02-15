@@ -20,46 +20,48 @@
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
         <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
-        <Setter Property="WindowStyle"  Value="SingleBorderWindow" />
+        <Setter Property="WindowStyle"  Value="None" />
         <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type wpfsc:WPFMessageBox}">
-                    <Grid>
+                    <Grid Background="{TemplateBinding Background}">
                         <Grid.RowDefinitions>
+                            <RowDefinition/>
                             <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <DockPanel>
+                            <DockPanel Margin="10">
                                 <TextBlock x:Name="PART_Title"
-                                           Width="Auto" VerticalAlignment="Center" 
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center" 
                                            FontSize="{DynamicResource TitleFontSize}"
-                                           Foreground="{DynamicResource PrimaryTextSolidColorBrush}"/>
+                                           Foreground="{DynamicResource BlackSolidColorBrush}"/>
                                 <Button Name="PART_CloseButton" Margin="0,6" 
-                                            ToolTip="Close"
+                                            ToolTip="Close" HorizontalAlignment="Right"
                                             IsTabStop="False" Style="{DynamicResource WindowButtonStyle}">
                                     <Path Width="10" Height="10"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Data="{DynamicResource PathMetroWindowClose}"
-                              Fill="{DynamicResource WhiteSolidColorBrush}"
+                              Fill="{DynamicResource PrimaryTextSolidColorBrush}"
                               Stretch="Fill" />
                                 </Button>
                             </DockPanel>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <DockPanel>
+                            <DockPanel Margin="10">
                                 <TextBlock x:Name="PART_Message" TextWrapping="Wrap" 
                                            MaxWidth="500" Width="Auto" VerticalAlignment="Center"
-                                           Foreground="{DynamicResource BaseSolidColorBrush}"/>
+                                           Foreground="{DynamicResource PrimaryTextSolidColorBrush}"/>
                             </DockPanel>
                         </Grid>
                         <Grid Grid.Row="2">
-                            <DockPanel Margin="5,0">
-                                <Button x:Name="PART_ButtonCancel" HorizontalAlignment="Right" Content="Cancel"/>
-                                <Button x:Name="PART_ButtonOK" HorizontalAlignment="Right" Style="{DynamicResource PrimaryButton}" Content="OK"/>
+                            <DockPanel HorizontalAlignment="Right" Margin="10">
+                                <Button x:Name="PART_ButtonCancel" HorizontalAlignment="Right" Content="取消"/>
+                                <Button x:Name="PART_ButtonOK" HorizontalAlignment="Right" Style="{DynamicResource PrimaryButton}" Margin="10,0,0,0"
+                                        Content="确认"/>
                             </DockPanel>
                         </Grid>
                     </Grid>
