@@ -52,6 +52,7 @@ Install-Package WPFDevelopers.Minimal
 
 [数据源](#数据源)     
 [Window](#Window)   
+[MessageBox](#MessageBox)   
 [Menu|ContextMenu](#Menu|ContextMenu)   
 [Button](#Button)   
 [RadioButton](#RadioButton)   
@@ -162,6 +163,17 @@ ws:Window x:Class="WpfApp.MainWindow"
 public partial class MainWindow 
 ```
 ![Window](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Window.png)
+
+### <a id="MessageBox">MessageBox</a>
+
+1）.cs 使用如下    
+``` C#
+WPFDevelopers.Minimal.Controls.MessageBox.Show("文件删除成功。", "消息",MessageBoxButton.OK,MessageBoxImage.Information);
+WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在！", "警告", MessageBoxImage.Warning);
+WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在。", "错误", MessageBoxImage.Error);
+WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继续?", "询问", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+```
+![MessageBox](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/MessageBox.gif)
 
 ### <a id="Menu|ContextMenu">Menu|ContextMenu</a>
 
