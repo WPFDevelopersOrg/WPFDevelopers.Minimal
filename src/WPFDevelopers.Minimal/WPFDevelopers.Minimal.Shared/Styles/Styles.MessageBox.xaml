@@ -32,12 +32,12 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
-                            <DockPanel Margin="10">
+                            <DockPanel Margin="20,0,0,0">
                                 <TextBlock x:Name="PART_Title"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center" 
                                            FontSize="{DynamicResource TitleFontSize}"
-                                           Foreground="{DynamicResource BlackSolidColorBrush}"/>
+                                           Foreground="{DynamicResource PrimaryTextSolidColorBrush}"/>
                                 <Button Name="PART_CloseButton" Margin="0,6" 
                                             ToolTip="Close" HorizontalAlignment="Right"
                                             IsTabStop="False" Style="{DynamicResource WindowButtonStyle}">
@@ -50,19 +50,24 @@
                                 </Button>
                             </DockPanel>
                         </Grid>
-                        <Grid Grid.Row="1">
-                            <DockPanel Margin="10">
+                        <Grid Grid.Row="1" Margin="20">
+                            <DockPanel>
+                                <Path x:Name="PART_Path" Data="{DynamicResource PathInformation}"
+                                      Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
+                                      Height="25" Width="25" Stretch="Fill"></Path>
                                 <TextBlock x:Name="PART_Message" TextWrapping="Wrap" 
                                            MaxWidth="500" Width="Auto" VerticalAlignment="Center"
-                                           Foreground="{DynamicResource PrimaryTextSolidColorBrush}"/>
+                                           FontSize="{DynamicResource NormalFontSize}"
+                                           Padding="10,0"
+                                           Foreground="{DynamicResource RegularTextSolidColorBrush}"/>
                             </DockPanel>
                         </Grid>
-                        <Grid Grid.Row="2">
-                            <DockPanel HorizontalAlignment="Right" Margin="10">
-                                <Button x:Name="PART_ButtonCancel" HorizontalAlignment="Right" Content="取消"/>
-                                <Button x:Name="PART_ButtonOK" HorizontalAlignment="Right" Style="{DynamicResource PrimaryButton}" Margin="10,0,0,0"
-                                        Content="确认"/>
-                            </DockPanel>
+                        <Grid Grid.Row="2" Margin="140,20,10,10">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button x:Name="PART_ButtonCancel" Content="取消" Visibility="Collapsed"/>
+                                <Button x:Name="PART_ButtonOK" Style="{DynamicResource PrimaryButton}" 
+                                        Margin="10,0,0,0" Content="确认"/>
+                            </StackPanel>
                         </Grid>
                     </Grid>
                 </ControlTemplate>

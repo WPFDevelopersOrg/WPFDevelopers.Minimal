@@ -89,6 +89,10 @@
 	<Geometry x:Key="PathMetroWindowMaximize" po:Freeze="True">M0.99999994,0.99999994 L0.99999994,9 9,9 9,0.99999994 z M0,0 L10,0 10,10 0,10 z</Geometry>
 	<Geometry x:Key="PathMetroWindowRestore" po:Freeze="True">M1,3 L1,9 7,9 7,3 z M3,0.99999994 L3,2 8,2 8,7 9,7 9,0.99999994 z M2,0 L10,0 10,8 8,8 8,10 0,10 0,2 2,2 z</Geometry>
 	<Geometry x:Key="PathMetroWindowClose" po:Freeze="True">M 1301 69.6875 L 1305.3049 74 L 1300.9375 78.5313 L 1301.6324 79.2263 L 1306 74.735 L 1310.4263 79.2613 L 1311.1563 78.5313 L 1306.7 74 L 1310.9375 69.6875 L 1310.2075 68.9575 L 1306 73.265 L 1301.6949 68.9925 L 1301 69.6875 Z</Geometry>
+	<Geometry x:Key="PathInformation" po:Freeze="True">M426 726l384-384-60-62-324 324-152-152-60 60zM512 86c236 0 426 190 426 426s-190 426-426 426-426-190-426-426 190-426 426-426z</Geometry>
+	<Geometry x:Key="PathWarning" po:Freeze="True">M512 960c-281.6 0-512-230.4-512-512s230.4-512 512-512 512 230.4 512 512-230.4 512-512 512zM576 128h-128v448h128v-448zM576 640h-128v128h128v-128z</Geometry>
+	<Geometry x:Key="PathQuestion" po:Freeze="True">M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm2-13c0 .28-.21.8-.42 1L10 9.58c-.57.58-1 1.6-1 2.42v1h2v-1c0-.29.21-.8.42-1L13 9.42c.57-.58 1-1.6 1-2.42a4 4 0 1 0-8 0h2a2 2 0 1 1 4 0zm-3 8v2h2v-2H9z</Geometry>
+	<Geometry x:Key="PathError" po:Freeze="True">M264 456Q210 456 164 429 118 402 91 356 64 310 64 256 64 202 91 156 118 110 164 83 210 56 264 56 318 56 364 83 410 110 437 156 464 202 464 256 464 310 437 356 410 402 364 429 318 456 264 456ZM264 288L328 352 360 320 296 256 360 192 328 160 264 224 200 160 168 192 232 256 168 320 200 352 264 288Z</Geometry>
 	<CubicEase x:Key="CubicEaseInOut" EasingMode="EaseInOut" />
 	<PowerEase x:Key="PowerEaseInOut" EasingMode="EaseInOut" />
 	<ExponentialEase x:Key="ExponentialEaseOut" EasingMode="EaseOut" />
@@ -3339,23 +3343,24 @@ Duration="00:00:.3"/>
 							<RowDefinition />
 						</Grid.RowDefinitions>
 						<Grid Grid.Row="0">
-							<DockPanel Margin="10">
-								<TextBlock x:Name="PART_Title" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="{DynamicResource TitleFontSize}" Foreground="{DynamicResource BlackSolidColorBrush}" />
+							<DockPanel Margin="20,0,0,0">
+								<TextBlock x:Name="PART_Title" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="{DynamicResource TitleFontSize}" Foreground="{DynamicResource PrimaryTextSolidColorBrush}" />
 								<Button Name="PART_CloseButton" Margin="0,6" ToolTip="Close" HorizontalAlignment="Right" IsTabStop="False" Style="{DynamicResource WindowButtonStyle}">
 									<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource PathMetroWindowClose}" Fill="{DynamicResource PrimaryTextSolidColorBrush}" Stretch="Fill" />
 								</Button>
 							</DockPanel>
 						</Grid>
-						<Grid Grid.Row="1">
-							<DockPanel Margin="10">
-								<TextBlock x:Name="PART_Message" TextWrapping="Wrap" MaxWidth="500" Width="Auto" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryTextSolidColorBrush}" />
+						<Grid Grid.Row="1" Margin="20">
+							<DockPanel>
+								<Path x:Name="PART_Path" Data="{DynamicResource PathInformation}" Fill="{DynamicResource PrimaryNormalSolidColorBrush}" Height="25" Width="25" Stretch="Fill" />
+								<TextBlock x:Name="PART_Message" TextWrapping="Wrap" MaxWidth="500" Width="Auto" VerticalAlignment="Center" FontSize="{DynamicResource NormalFontSize}" Padding="10,0" Foreground="{DynamicResource RegularTextSolidColorBrush}" />
 							</DockPanel>
 						</Grid>
-						<Grid Grid.Row="2">
-							<DockPanel HorizontalAlignment="Right" Margin="10">
-								<Button x:Name="PART_ButtonCancel" HorizontalAlignment="Right" Content="取消" />
-								<Button x:Name="PART_ButtonOK" HorizontalAlignment="Right" Style="{DynamicResource PrimaryButton}" Margin="10,0,0,0" Content="确认" />
-							</DockPanel>
+						<Grid Grid.Row="2" Margin="140,20,10,10">
+							<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+								<Button x:Name="PART_ButtonCancel" Content="取消" Visibility="Collapsed" />
+								<Button x:Name="PART_ButtonOK" Style="{DynamicResource PrimaryButton}" Margin="10,0,0,0" Content="确认" />
+							</StackPanel>
 						</Grid>
 					</Grid>
 				</ControlTemplate>

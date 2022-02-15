@@ -71,9 +71,21 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnInformation_Click(object sender, RoutedEventArgs e)
         {
-            WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在。","提示");
+            WPFDevelopers.Minimal.Controls.MessageBox.Show("文件删除成功。", "消息",MessageBoxButton.OK,MessageBoxImage.Information);
+        }
+        private void btnWarning_Click(object sender, RoutedEventArgs e)
+        {
+            WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在！", "警告", MessageBoxImage.Warning);
+        }
+        private void btnError_Click(object sender, RoutedEventArgs e)
+        {
+            WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在。", "错误", MessageBoxImage.Error);
+        }
+        private void btnQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继续?", "询问", MessageBoxButton.OKCancel, MessageBoxImage.Question);
         }
     }
 }
