@@ -76,6 +76,11 @@ namespace WPFDevelopers.Minimal.Controls
                 _buttonOK.Visibility = _okVisibility;
                 _buttonOK.Click += _buttonOK_Click;
             }
+            if (Owner == null)
+            {
+                BorderThickness = new Thickness(1);
+                WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            }
         }
 
         private void _buttonOK_Click(object sender, RoutedEventArgs e)
@@ -98,10 +103,12 @@ namespace WPFDevelopers.Minimal.Controls
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            var grid = this.Owner.Content as Grid;
+            if (Owner == null)
+                return;
+            var grid = Owner.Content as Grid;
             UIElement original = VisualTreeHelper.GetChild(grid, 0) as UIElement;
             grid.Children.Remove(original);
-            this.Owner.Content = original;
+            Owner.Content = original;
         }
 
         public MessageBoxResult Result { get; set; }
