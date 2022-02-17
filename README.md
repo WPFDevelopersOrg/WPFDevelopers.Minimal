@@ -22,6 +22,17 @@
 |----|-----|
 |  <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Alipay.png"/>   |   <img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WeChatPay.png"/>   |
 
+### .Net Version
+|  .Net Version   | Status  |
+|  ----  | ----  |
+| Net40  | ✅ |
+| net45  | ✅ |
+| net46  | ✅ |
+| net47  | ✅ |
+| net48  | ✅ |
+| netcoreapp3.0  | ✅ |
+| net5.0-windows  | ✅ |
+
 ###  效果展示  
 
 ![0](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/0.png)  
