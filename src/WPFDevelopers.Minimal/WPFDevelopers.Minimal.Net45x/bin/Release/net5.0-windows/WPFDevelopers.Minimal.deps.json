@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "WPFDevelopers.Minimal/10.1.1.0": {
+      "WPFDevelopers.Minimal/1.0.0.0": {
         "runtime": {
           "WPFDevelopers.Minimal.dll": {}
         }
@@ -14,7 +14,7 @@
     }
   },
   "libraries": {
-    "WPFDevelopers.Minimal/10.1.1.0": {
+    "WPFDevelopers.Minimal/1.0.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

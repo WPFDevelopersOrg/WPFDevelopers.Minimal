@@ -8,9 +8,9 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <Copyright>Copyright © WPFDevelopersOrg 2022</Copyright>
-    <AssemblyVersion>10.1.1.0</AssemblyVersion>
-    <FileVersion>10.1.1.0</FileVersion>
-    <Version>10.1.1.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0.0</Version>
     <RepositoryUrl>https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal</RepositoryUrl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
