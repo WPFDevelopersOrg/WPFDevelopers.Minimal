@@ -59,7 +59,7 @@ Install-Package WPFDevelopers.Minimal
 
 `xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"`  
 
-### 如何方法   
+### 使用方法   
 
 [数据源](#数据源)     
 [Window](#Window)   
