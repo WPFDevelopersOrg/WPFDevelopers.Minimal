@@ -14,7 +14,7 @@
 
 ### 欢迎关注微信公众号  
 
-<img src="https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/wxgzh.jpg"/>  
+<img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/wxgzh.jpg"/>  
 
 ### 捐助
 如果您觉得我们的开源软件对你有所帮助，请扫下方二维码打赏我们一杯咖啡。
