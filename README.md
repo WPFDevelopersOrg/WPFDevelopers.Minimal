@@ -478,18 +478,41 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
 
 1）XAML  
 ``` XML
- <WrapPanel Margin="0,10">
-       <Expander Header="Expander1">
+  <UniformGrid Margin="0,10" Columns="2">
+                    <Expander Header="Expander1">
                         <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"
                                    Width="400" Height="300"/>
                     </Expander>
-                    <Expander Header="Expander1" Margin="10,0" FlowDirection="RightToLeft" IsExpanded="True">
+                    <Expander Header="Expander1" ExpandDirection="Up" Margin="10,0" FlowDirection="RightToLeft" IsExpanded="True">
                         <Rectangle Fill="{DynamicResource LightSolidColorBrush}"
                                    Width="400" Height="300"/>
                     </Expander>
- </WrapPanel>
+                    <Expander ExpandDirection="Right" Margin="0,10">
+                        <Expander.Header>
+                            <TextBlock Text="Expander1">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform Angle="90"/>
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </Expander.Header>
+                        <Rectangle Fill="{DynamicResource CircularSingularSolidColorBrush}"
+                                   Width="400" Height="300"/>
+                    </Expander>
+                    <Expander ExpandDirection="Left" Margin="10" IsExpanded="True">
+                        <Expander.Header>
+                            <TextBlock Text="Expander1">
+                                <TextBlock.LayoutTransform>
+                                    <RotateTransform Angle="90"/>
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </Expander.Header>
+                        <Rectangle Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
+                                   Width="400" Height="300"/>
+                    </Expander>
+                </UniformGrid>
 ```
 ![Expander](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Expander.gif)
+![Expander](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Expander1.gif)
 
 ### <a id="GroupBox">GroupBox</a>
 
