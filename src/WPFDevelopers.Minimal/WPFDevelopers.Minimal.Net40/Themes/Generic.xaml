@@ -9,7 +9,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
         <Setter Property="BorderThickness"  Value="1" />
         <Setter Property="IsTabStop"  Value="False" />
-        <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+        <!--<Setter Property="ResizeMode" Value="CanResizeWithGrip" />-->
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
@@ -21,7 +21,7 @@
         <!--<Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>-->
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
-                <shell:WindowChrome GlassFrameThickness="0,0,0,1" 
+                <shell:WindowChrome GlassFrameThickness="0,0,0,1"
                                     CaptionHeight="{Binding TitleHeight,RelativeSource={RelativeSource AncestorType=wpfdev:Window}}"/>
             </Setter.Value>
         </Setter>
@@ -30,7 +30,8 @@
                 <ControlTemplate TargetType="{x:Type wpfdev:Window}">
                     <Border BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="True">
+                            SnapsToDevicePixels="True"
+                            x:Name="PART_Main">
                         <Grid Background="{TemplateBinding Background}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -113,6 +114,7 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter Property="Visibility" Value="Visible" TargetName="PART_RestoreButton"/>
                             <Setter Property="Visibility" Value="Collapsed" TargetName="PART_MaximizeButton"/>
+                            <Setter Property="Margin" TargetName="PART_Main" Value="7"/>
                         </Trigger>
                         
                         <MultiTrigger>
