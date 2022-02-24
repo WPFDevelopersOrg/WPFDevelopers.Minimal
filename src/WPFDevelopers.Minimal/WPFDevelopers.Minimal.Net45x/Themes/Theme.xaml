@@ -1587,21 +1587,43 @@
 					</Grid>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsMouseOver" Value="True">
-							<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource BaseSolidColorBrush}" />
+							<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
 						</Trigger>
-						<Trigger Property="IsSelected" Value="True">
-							<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource BaseSolidColorBrush}" />
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsSelected" Value="True" />
+								<Condition Property="IsMouseOver" Value="True" />
+							</MultiTrigger.Conditions>
+							<Setter TargetName="PART_RectangleSelected" Property="Visibility" Value="Collapsed" />
 							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
-							<Setter TargetName="PART_RectangleMouseOver" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold" />
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsSelected" Value="True" />
+								<Condition Property="IsMouseOver" Value="False" />
+							</MultiTrigger.Conditions>
+							<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 							<Setter TargetName="PART_RectangleSelected" Property="Visibility" Value="Visible" />
 							<Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold" />
-						</Trigger>
+						</MultiTrigger>
+						<!--<Trigger Property="IsSelected" Value="True">
+                            -->
+						<!--<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>-->
+						<!--
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            -->
+						<!--<Setter TargetName="PART_RectangleMouseOver" Property="Visibility" Value="Collapsed"/>-->
+						<!--
+                            <Setter TargetName="PART_RectangleSelected" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold"/>
+                        </Trigger>-->
 						<Trigger Property="IsFocused" Value="True">
-							<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource BaseSolidColorBrush}" />
+							<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
 						</Trigger>
-						<Trigger Property="IsEnabled" Value="False">
-							<Setter Property="Opacity" Value="{StaticResource DisabledOpacity}" />
-						</Trigger>
+						<!--<Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource DisabledOpacity}"/>
+                        </Trigger>-->
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -2732,6 +2754,7 @@
 							<ToggleButton x:Name="HeaderSite" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" DockPanel.Dock="Top" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" MinWidth="0" MinHeight="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
 								<ToggleButton.Style>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
+										<Setter Property="Cursor" Value="Hand" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -2788,6 +2811,7 @@
 							<Setter Property="Style" TargetName="HeaderSite">
 								<Setter.Value>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
+										<Setter Property="Cursor" Value="Hand" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -2843,6 +2867,7 @@
 							<Setter Property="Style" TargetName="HeaderSite">
 								<Setter.Value>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
+										<Setter Property="Cursor" Value="Hand" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -2893,6 +2918,7 @@
 							<Setter Property="Style" TargetName="HeaderSite">
 								<Setter.Value>
 									<Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
+										<Setter Property="Cursor" Value="Hand" />
 										<Setter Property="Template">
 											<Setter.Value>
 												<ControlTemplate TargetType="{x:Type ToggleButton}">
