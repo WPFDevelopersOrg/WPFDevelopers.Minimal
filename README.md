@@ -11,6 +11,8 @@
 
 ### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg  
 
+### 加入QQ群：458041663
+
 
 ### 欢迎关注微信公众号  
 
