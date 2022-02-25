@@ -25,6 +25,22 @@
                        Width="100" Height="100"/>
                     <TextBlock Text="WPFDevelopers.Minimal" FontSize="20" Margin="10,0"
                                Foreground="{StaticResource PrimaryNormalSolidColorBrush}"/>
+                    <TextBlock Text="微信号公众号:WPFDevelopers" HorizontalAlignment="Center"
+                    Margin="0,0,10,0" FontSize="20" Foreground="{StaticResource PrimaryNormalSolidColorBrush}"/>
+                    <TextBlock FontSize="20"
+                       Foreground="{StaticResource PrimaryNormalSolidColorBrush}">
+            <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.git"
+                       RequestNavigate="GithubHyperlink_RequestNavigate"> Github 源码</Hyperlink>
+            <Run/>
+            <Run/>
+            <Run/>
+            <Hyperlink NavigateUri="https://gitee.com/yanjinhua/WPFDevelopers.git"
+                       RequestNavigate="GiteeHyperlink_RequestNavigate"> 码云源码</Hyperlink>
+                        <Run/>
+            <Run/>
+            <Run/>
+                         <Hyperlink NavigateUri="https://gitee.com/yanjinhua/WPFDevelopers.git" RequestNavigate="QQHyperlink_RequestNavigate"> 加入QQ群：458041663</Hyperlink>
+                    </TextBlock>
                 </WrapPanel>
                 <TextBlock Text="Menu" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">

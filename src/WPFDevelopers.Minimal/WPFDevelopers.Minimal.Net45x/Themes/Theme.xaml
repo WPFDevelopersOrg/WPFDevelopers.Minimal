@@ -104,6 +104,7 @@
 	<sys:Double x:Key="MinDataGridRowHeight">48</sys:Double>
 	<DropShadowEffect x:Key="NormalShadowDepth" BlurRadius="5" ShadowDepth="1" Direction="270" Color="#AA000000" Opacity=".42" RenderingBias="Performance" />
 	<BooleanToVisibilityConverter x:Key="bool2VisibilityConverter" />
+	<wpfs:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter" />
 	<sys:Double x:Key="ThumbWidth">16</sys:Double>
 	<sys:Double x:Key="ThumbCornerRadius">8</sys:Double>
 	<sys:Double x:Key="RepeatButtonSize">5</sys:Double>
@@ -381,12 +382,11 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type wpfdev:Window}">
-					<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True" x:Name="PART_Main">
-						<Grid Background="{TemplateBinding Background}">
+					<Border SnapsToDevicePixels="True" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<Grid Background="{TemplateBinding Background}" x:Name="LayoutRoot">
 							<Grid.RowDefinitions>
 								<RowDefinition Height="Auto" />
 								<RowDefinition Height="*" />
-								<!--<RowDefinition Height="Auto" />-->
 							</Grid.RowDefinitions>
 							<Grid Grid.Row="0" Height="{TemplateBinding TitleHeight}" Background="{TemplateBinding BorderBrush}">
 								<Grid.ColumnDefinitions>
@@ -394,8 +394,8 @@
 									<ColumnDefinition Width="*" />
 									<ColumnDefinition Width="Auto" MinWidth="30" />
 								</Grid.ColumnDefinitions>
-								<Image Source="{TemplateBinding Icon}" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Left" Width="30" Height="30" Margin="14,0,4,0" RenderOptions.BitmapScalingMode="HighQuality" />
-								<TextBlock Text="{TemplateBinding Title}" x:Name="PART_Title" Foreground="{DynamicResource WhiteSolidColorBrush}" Grid.Column="1" VerticalAlignment="Center" FontSize="{DynamicResource TitleFontSize}" />
+								<Image Source="{TemplateBinding Icon}" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Left" Width="30" Height="30" Margin="14,0,0,0" RenderOptions.BitmapScalingMode="HighQuality" Visibility="{TemplateBinding Icon,Converter={StaticResource ObjectNullToVisibilityConverter}}" />
+								<TextBlock Text="{TemplateBinding Title}" x:Name="PART_Title" Margin="6,0" Foreground="{DynamicResource WhiteSolidColorBrush}" Grid.Column="1" VerticalAlignment="Center" FontSize="{DynamicResource TitleFontSize}" />
 								<WrapPanel Grid.Column="2" WindowChrome.IsHitTestVisibleInChrome="True">
 									<WrapPanel x:Name="PART_MinAndMax">
 										<Button Name="PART_MinimizeButton" IsTabStop="False" Padding="0" Margin="0,6" Style="{DynamicResource WindowButtonStyle}" ToolTip="Minimize" Command="SystemCommands.MinimizeWindowCommand">
@@ -429,7 +429,7 @@
 						<Trigger Property="WindowState" Value="Maximized">
 							<Setter Property="Visibility" Value="Visible" TargetName="PART_RestoreButton" />
 							<Setter Property="Visibility" Value="Collapsed" TargetName="PART_MaximizeButton" />
-							<Setter Property="Margin" TargetName="PART_Main" Value="7" />
+							<Setter Property="Margin" TargetName="LayoutRoot" Value="7" />
 						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
