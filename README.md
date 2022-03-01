@@ -1,5 +1,6 @@
-<div align="center"><img src="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal/raw/main/src/WPFDevelopers.Minimal/WPFDevelopers.Minimal.Sample.Net40/Resources/WPFDevelopers.Minimal.png"/></div>  
-[中文](https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal/blob/master/README-zh.md)      
+<div align="center"><img src="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal/raw/main/src/WPFDevelopers.Minimal/WPFDevelopers.Minimal.Sample.Net40/Resources/WPFDevelopers.Minimal.png"/></div> 
+
+[中文](https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal/blob/master/README-zh.md)   
 
 ##  Welcome to WPFDevelopers.Minimal  
 
@@ -36,18 +37,18 @@
 | netcoreapp3.0  | ✅ |
 | net5.0-windows  | ✅ |
 
-###  效果展示  
+###  Preview  
 
 ![0](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/0.png)  
 
-###  第一步: 添加 nuget;
+###  Step 1: add nuget；
 
 ```
 Install-Package WPFDevelopers.Minimal
 ```
 
 
-###  第二步：  App.xaml中增加节点：
+###  Step 2：  App. Add node in Xaml；
 ``` XML
            <Application.Resources>
         <ResourceDictionary>
@@ -58,13 +59,13 @@ Install-Package WPFDevelopers.Minimal
     </Application.Resources>
 ```
 
-###  第三步：添加命名空间：
+###  Step 3: add namespace；
 
 `xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"`  
 
-### 使用方法   
+### Usage Method 
 
-[数据源](#数据源)     
+[Data Source](#Data Source)     
 [Window](#Window)   
 [MessageBox](#MessageBox)   
 [Menu|ContextMenu](#Menu|ContextMenu)   
@@ -87,8 +88,8 @@ Install-Package WPFDevelopers.Minimal
 [TabControl](#TabControl)   
 
 
-###  数据源  
-1）数据源
+###  Data Source 
+1）Data Source
 ``` C#
 using System;
 using System.Collections.ObjectModel;
@@ -172,7 +173,7 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
 ``` XML
 ws:Window x:Class="WpfApp.MainWindow"
 ```
-2）去除.cs文件中的继承  
+2）remove. Inheritance in CS file  
 ``` C#
 public partial class MainWindow 
 ```
@@ -180,7 +181,7 @@ public partial class MainWindow
 
 ### <a id="MessageBox">MessageBox</a>
 
-1）.cs 使用如下    
+1）.cs     
 ``` C#
 WPFDevelopers.Minimal.Controls.MessageBox.Show("文件删除成功。", "消息",MessageBoxButton.OK,MessageBoxImage.Information);
 WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在！", "警告", MessageBoxImage.Warning);
