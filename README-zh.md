@@ -39,7 +39,7 @@
 
 ###  效果展示  
 
-![0](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/0.png)  
+![0](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/0.png)  
 
 ###  第一步: 添加 nuget;
 
@@ -177,7 +177,7 @@ ws:Window x:Class="WpfApp.MainWindow"
 ``` C#
 public partial class MainWindow 
 ```
-![Window](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Window.png)
+![Window](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Window.png)
 
 ### <a id="MessageBox">MessageBox</a>
 
@@ -188,7 +188,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在！", "警�
 WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在。", "错误", MessageBoxImage.Error);
 WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继续?", "询问", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 ```
-![MessageBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/MessageBox.gif)
+![MessageBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/MessageBox.gif)
 
 ### <a id="Menu|ContextMenu">Menu|ContextMenu</a>
 
@@ -219,7 +219,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
 </WrapPanel>
                 
 ```
-![Menu](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Menu.gif)
+![Menu](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Menu.gif)
    
 ### <a id="Button">Button</a>
 
@@ -232,7 +232,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     <Button Content="Primary" Style="{StaticResource PrimaryButton}" Margin="10,0" IsEnabled="False"/>
  </WrapPanel>
 ```
-![Button](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Button.gif)
+![Button](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Button.gif)
 
 ### <a id="RadioButton">RadioButton</a>
 
@@ -244,7 +244,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     <RadioButton Content="Option C" IsEnabled="False"/>
  </WrapPanel>
 ```
-![RadioButton](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/RadioButton.gif)
+![RadioButton](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/RadioButton.gif)
 
 ### <a id="Checkbox">Checkbox</a>
 
@@ -257,7 +257,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                  <CheckBox Content="Option D" Margin="10,0" IsEnabled="False"/>
  </WrapPanel>
 ```
-![Checkbox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Checkbox.gif)
+![Checkbox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Checkbox.gif)
 
 ### <a id="TextBox">TextBox</a>
 
@@ -269,7 +269,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     <TextBox IsEnabled="False"/>
  </WrapPanel>
 ```
-![TextBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/TextBox.gif)
+![TextBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/TextBox.gif)
 
 ### <a id="PasswordBox">PasswordBox</a>
 
@@ -281,7 +281,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     <PasswordBox IsEnabled="False"/>
  </WrapPanel>
 ```
-![PasswordBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/PasswordBox.gif)
+![PasswordBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/PasswordBox.gif)
 
 ### <a id="ComboBox">ComboBox</a>
 
@@ -297,7 +297,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     </ComboBox>
  </WrapPanel>
 ```
-![ComboBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/ComboBox.gif)
+![ComboBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/ComboBox.gif)
 
 ### <a id="ToggleButton">ToggleButton</a>
 
@@ -309,7 +309,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     <ToggleButton IsChecked="True"/>
  </WrapPanel>
 ```
-![ToggleButton](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/ToggleButton.gif)
+![ToggleButton](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/ToggleButton.gif)
 
 ### <a id="DatePicker">DatePicker</a>
 
@@ -321,7 +321,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     <DatePicker Width="200" IsEnabled="False"/>
  </WrapPanel>
 ```
-![DatePicker](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/DatePicker.gif)
+![DatePicker](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/DatePicker.gif)
 
 ### <a id="Slider">Slider</a>
 
@@ -345,7 +345,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     <ProgressBar Width="200" Margin="10,0" Height="10" IsIndeterminate="True" Value="10"/>
  </WrapPanel>
 ```
-![ProgressBar](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/ProgressBar.gif)
+![ProgressBar](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/ProgressBar.gif)
 
 ### <a id="DataGrid">DataGrid</a>
 
@@ -394,7 +394,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                         </DataGrid>
  </WrapPanel>
 ```
-![DataGrid](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/DataGrid.gif)
+![DataGrid](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/DataGrid.gif)
 
 
 ### <a id="ListBox">ListBox</a>
@@ -419,7 +419,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     </ListBox>
  </WrapPanel>
 ```
-![ListBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/ListBox.gif)
+![ListBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/ListBox.gif)
 
 
 ### <a id="ListView">ListView</a>
@@ -448,7 +448,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     </ListView>
  </WrapPanel>
 ```
-![ListView](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/ListView.gif)
+![ListView](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/ListView.gif)
 
 ### <a id="TreeView">TreeView</a>
 
@@ -476,7 +476,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     </TreeView>
  </WrapPanel>
 ```
-![TreeView](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/TreeView.gif)
+![TreeView](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/TreeView.gif)
 
 ### <a id="Expander">Expander</a>
 
@@ -515,8 +515,8 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     </Expander>
                 </UniformGrid>
 ```
-![Expander](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Expander.gif)
-![Expander](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Expander1.gif)
+![Expander](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Expander.gif)
+![Expander](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Expander1.gif)
 
 ### <a id="GroupBox">GroupBox</a>
 
@@ -533,7 +533,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     </GroupBox>
  </WrapPanel>
 ```
-![GroupBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/GroupBox.png)
+![GroupBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/GroupBox.png)
 
 ### <a id="TabControl">TabControl</a>
 
@@ -592,7 +592,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     </TabControl>
                 </UniformGrid>
 ```
-![TabControl](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/TabControl.gif)
+![TabControl](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/TabControl.gif)
 
 
 
