@@ -333,7 +333,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                     <Slider Width="200" Value="50" Maximum="100" IsEnabled="False"/>
  </WrapPanel>
 ```
-![Slider](https://gitee.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Slider.gif)
+![Slider](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Slider.gif)
 
 ### <a id="ProgressBar">ProgressBar</a>
 
