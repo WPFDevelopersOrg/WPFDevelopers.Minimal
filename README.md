@@ -1,4 +1,5 @@
 <div align="center"><img src="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal/raw/main/src/WPFDevelopers.Minimal/WPFDevelopers.Minimal.Sample.Net40/Resources/WPFDevelopers.Minimal.png"/></div>  
+[中文](https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal/blob/master/README-zh.md)      
 
 ##  Welcome to WPFDevelopers.Minimal  
 
