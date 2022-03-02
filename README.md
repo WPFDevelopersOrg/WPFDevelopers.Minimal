@@ -88,7 +88,7 @@ Install-Package WPFDevelopers.Minimal
 [TabControl](#TabControl)   
 
 
-### <a id="DataSource ">DataSource </a>
+### <a id="DataSource">DataSource</a>  
 1）.cs
 ``` C#
 using System;
