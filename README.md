@@ -65,7 +65,7 @@ Install-Package WPFDevelopers.Minimal
 
 ### Usage Method 
 
-[Data Source](#Data Source)     
+[DataSource](#DataSource)     
 [Window](#Window)   
 [MessageBox](#MessageBox)   
 [Menu|ContextMenu](#Menu|ContextMenu)   
@@ -88,8 +88,8 @@ Install-Package WPFDevelopers.Minimal
 [TabControl](#TabControl)   
 
 
-###  Data Source 
-1）Data Source
+### <a id="DataSource ">DataSource </a>
+1）.cs
 ``` C#
 using System;
 using System.Collections.ObjectModel;
