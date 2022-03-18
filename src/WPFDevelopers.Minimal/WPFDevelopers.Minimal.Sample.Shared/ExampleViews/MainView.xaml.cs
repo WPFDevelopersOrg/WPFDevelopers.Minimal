@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
+using System.Windows.Navigation;
 using WPFDevelopers.Minimal.Sample.Models;
 
 namespace WPFDevelopers.Minimal.Sample.ExampleViews
@@ -86,6 +88,23 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
         private void btnQuestion_Click(object sender, RoutedEventArgs e)
         {
             WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继续?", "询问", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+        }
+        private void GithubHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
+        private void GiteeHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+        private void QQHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            var uri = new Uri(@"https://qm.qq.com/cgi-bin/qm/qr?k=f2zl3nvoetItho8kGfe1eys0jDkqvvcL&jump_from=webapi");
+            Process.Start(new ProcessStartInfo(uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }

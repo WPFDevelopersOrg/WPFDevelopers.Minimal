@@ -112,6 +112,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementConvert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MaskAdorner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ObjectNullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\PasswordBoxHelper.cs" />
   </ItemGroup>
 </Project>
