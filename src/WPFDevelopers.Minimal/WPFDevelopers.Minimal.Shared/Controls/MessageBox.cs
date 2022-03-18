@@ -53,6 +53,8 @@ namespace WPFDevelopers.Minimal.Controls
                 win.Content = container;
                 msg.Owner = win;
                 msg.ShowDialog();
+                container.Children.Clear();
+                win.Content = original;
             }
             else
                 msg.Show();
