@@ -67,6 +67,7 @@ Install-Package WPFDevelopers.Minimal
 
 [DataSource](#DataSource)     
 [Window](#Window)   
+[Loading](#Loading)   
 [MessageBox](#MessageBox)   
 [Menu|ContextMenu](#Menu|ContextMenu)   
 [Button](#Button)   
@@ -178,6 +179,24 @@ ws:Window x:Class="WpfApp.MainWindow"
 public partial class MainWindow 
 ```
 ![Window](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Window.png)
+
+### <a id="Loading">Loading</a>
+
+1）.cs     
+``` C#
+var task = new Task(() =>
+{
+   //Things to wait for
+   Thread.Sleep(5000);
+});
+task.ContinueWith((previousTask) =>
+{
+   WPFDevelopers.Minimal.Controls.Loading.Close();
+},TaskScheduler.FromCurrentSynchronizationContext());
+WPFDevelopers.Minimal.Controls.Loading.Show();
+task.Start();
+```
+![Loading](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/loading.gif)  
 
 ### <a id="MessageBox">MessageBox</a>
 
