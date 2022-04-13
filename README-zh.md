@@ -36,6 +36,7 @@
 | net48  | ✅ |
 | netcoreapp3.0  | ✅ |
 | net5.0-windows  | ✅ |
+| net6.0-windows  | ✅ |
 
 ###  效果展示  
 
