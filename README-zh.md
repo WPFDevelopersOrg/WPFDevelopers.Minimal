@@ -41,6 +41,10 @@
 ###  效果展示  
 
 ![0](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/0.png)  
+![Green](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Green.png)  
+![Red](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Red.png)  
+![Orange](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Orange.png)  
+![Purple](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Purple.png) 
 
 ###  第一步: 添加 nuget;
 
@@ -50,16 +54,16 @@ Install-Package WPFDevelopers.Minimal
 
 
 ###  第二步：  App.xaml中增加节点：
-``` XML
-           <Application.Resources>
+``` XAML
+    <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 ```
-
 ###  第三步：添加命名空间：
 
 `xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"`  
