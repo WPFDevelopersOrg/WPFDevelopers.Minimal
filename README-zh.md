@@ -41,10 +41,12 @@
 ###  效果展示  
 
 ![0](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/0.png)  
-![Green](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Green.png)  
-![Red](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Red.png)  
-![Orange](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Orange.png)  
-![Purple](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Purple.png) 
+### Nuget 版本等于 3.2.3 效果展示
+ [Blue](#Blue)     
+ [Green](#Green)     
+ [Red](#Red)     
+ [Orange](#Orange)  
+ [Purple](#Purple)  
 
 ###  第一步: 添加 nuget;
 
@@ -54,6 +56,17 @@ Install-Package WPFDevelopers.Minimal
 
 
 ###  第二步：  App.xaml中增加节点：
+### Nuget 版本小于 3.2.3
+``` XAML
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+```
+### Nuget 版本等于 3.2.3
 ``` XAML
     <Application.Resources>
         <ResourceDictionary>
@@ -618,7 +631,35 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
 ```
 ![TabControl](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/TabControl.gif)
 
+### <a id="Blue">Blue</a>  
+``` XAML
+<ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
+```
+![Blue](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Blue.png)  
 
+### <a id="Green">Green</a> 
+``` XAML
+<ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Green.xaml"/>
+```
+![Green](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Green.png) 
+
+### <a id="Red">Red</a> 
+``` XAML
+<ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Red.xaml"/>
+```
+![Red](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Red.png)  
+
+### <a id="Orange">Orange</a> 
+``` XAML
+<ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Orange.xaml"/>
+```
+![Orange](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Orange.png)   
+
+### <a id="Purple">Purple</a> 
+``` XAML
+<ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Purple.xaml"/>
+```
+![Purple](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/Purple.png)  
 
 [^_^]:
         ![1](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/1.png)  
