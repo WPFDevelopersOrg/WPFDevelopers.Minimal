@@ -40,8 +40,9 @@
 
 ###  Preview  
 
-![0](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/0.png)  
-### Nuget Version = 3.2.3 Preview Theme
+![light](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/0.png)  
+![dark](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/dark.png)  
+### Nuget Version >= 3.2.3 Preview Theme
  [Blue](#Blue)     
  [Green](#Green)     
  [Red](#Red)     
@@ -55,11 +56,15 @@ Install-Package WPFDevelopers.Minimal
 
 
 ###  Step 2：  App. Add node in Xaml；
-### Nuget Version < 3.2.3
+### 2022/06/20 Updater Nuget Version 3.2.4
 ``` XAML
+    xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal" 
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
+                <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤 -->
+                <ws:Resources Theme="Light"/>
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -71,6 +76,16 @@ Install-Package WPFDevelopers.Minimal
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+```
+### Nuget Version < 3.2.3
+``` XAML
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
