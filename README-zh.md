@@ -40,8 +40,9 @@
 
 ###  效果展示  
 
-![0](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/0.png)  
-### Nuget 版本等于 3.2.3 效果展示
+![light](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/0.png)  
+![dark](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/dark.png)  
+### Nuget 版本大于等于 3.2.3 效果展示
  [Blue](#Blue)     
  [Green](#Green)     
  [Red](#Red)     
@@ -56,11 +57,17 @@ Install-Package WPFDevelopers.Minimal
 
 
 ###  第二步：  App.xaml中增加节点：
-### Nuget 版本小于 3.2.3
+
+### 2022/06/20 更新 Nuget 版本 3.2.4
+### App.xaml 添加命名空间 
+`    xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal" `
 ``` XAML
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
+                <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤 -->
+                <ws:Resources Theme="Light"/>
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -72,6 +79,16 @@ Install-Package WPFDevelopers.Minimal
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+```
+### Nuget 版本小于 3.2.3
+``` XAML
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
