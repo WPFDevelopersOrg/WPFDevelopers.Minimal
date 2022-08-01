@@ -7,7 +7,7 @@
 ![.net >= 4.0](https://img.shields.io/badge/.net-%3E%3D4.0-blue) ![Visual Studio 2019](https://img.shields.io/badge/Visual%20Studio%20-2019-blueviolet) 
 <a href="https://www.nuget.org/packages/WPFDevelopers.Minimal/">
         <img alt="nuget-version" src="https://img.shields.io/nuget/v/WPFDevelopers.Minimal.svg"></img>
-    </a>  <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=B61RFy2vvpaKLEDxaW6NsDpPZA-eSyFh&jump_from=webapi"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="WPF开发者" title="WPF开发者"></a>   ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers.Minimal?color=%23409EF)
+    </a>   <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=vqNCZyd2q2j0QvLkYYCNosK-TYXpoDyF&jump_from=webapi"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="WPFDevelopers.Minimal" title="WPFDevelopers.Minimal"></a>   ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers.Minimal?color=%23409EF)
 
 ### [自定义高级控件](https://github.com/WPFDevelopersOrg/WPFDevelopers) https://github.com/WPFDevelopersOrg/WPFDevelopers  
 
@@ -36,10 +36,18 @@
 | net48  | ✅ |
 | netcoreapp3.0  | ✅ |
 | net5.0-windows  | ✅ |
+| net6.0-windows  | ✅ |
 
 ###  效果展示  
 
-![0](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/0.png)  
+![light](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/0.png)  
+![dark](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/dark.png)  
+### Nuget 版本大于等于 3.2.3 效果展示
+ [Blue](#Blue)     
+ [Green](#Green)     
+ [Red](#Red)     
+ [Orange](#Orange)  
+ [Purple](#Purple)  
 
 ###  第一步: 添加 nuget;
 
@@ -49,8 +57,36 @@ Install-Package WPFDevelopers.Minimal
 
 
 ###  第二步：  App.xaml中增加节点：
-``` XML
-           <Application.Resources>
+
+### 2022/06/20 更新 Nuget 版本 3.2.4
+### App.xaml 添加命名空间 
+`    xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal" `
+``` XAML
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
+                <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤 -->
+                <ws:Resources Theme="Light"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+```
+### Nuget 版本等于 3.2.3
+``` XAML
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+```
+### Nuget 版本小于 3.2.3
+``` XAML
+    <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
@@ -58,7 +94,6 @@ Install-Package WPFDevelopers.Minimal
         </ResourceDictionary>
     </Application.Resources>
 ```
-
 ###  第三步：添加命名空间：
 
 `xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"`  
@@ -66,7 +101,8 @@ Install-Package WPFDevelopers.Minimal
 ### 使用方法   
 
 [数据源](#数据源)     
-[Window](#Window)   
+[Window](#Window)  
+[Loading](#Loading)  
 [MessageBox](#MessageBox)   
 [Menu|ContextMenu](#Menu|ContextMenu)   
 [Button](#Button)   
@@ -179,6 +215,24 @@ public partial class MainWindow
 ```
 ![Window](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Window.png)
 
+### <a id="Loading">Loading</a>
+
+1）.cs     
+``` C#
+var task = new Task(() =>
+{
+   //Things to wait for
+   Thread.Sleep(5000);
+});
+task.ContinueWith((previousTask) =>
+{
+   WPFDevelopers.Minimal.Controls.Loading.Close();
+},TaskScheduler.FromCurrentSynchronizationContext());
+WPFDevelopers.Minimal.Controls.Loading.Show();
+task.Start();
+```
+![Loading](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/loading.gif)  
+
 ### <a id="MessageBox">MessageBox</a>
 
 1）.cs 使用如下    
@@ -279,6 +333,11 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                 <PasswordBox />
                     <PasswordBox Margin="10,0" ws:ElementHelper.Watermark="请输入密码"/>
                     <PasswordBox IsEnabled="False"/>
+                       <!--MVVM Binding-->
+                     <PasswordBox ws:PasswordBoxHelper.IsMonitoring="True"
+                         ws:ElementHelper.Watermark="请输入密码"
+                         helpers:PasswordBoxHelper.Attach="True"
+                         helpers:PasswordBoxHelper.Password="{Binding Path=Account.PassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,10"/>
  </WrapPanel>
 ```
 ![PasswordBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/PasswordBox.gif)
@@ -594,7 +653,35 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
 ```
 ![TabControl](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/TabControl.gif)
 
+### <a id="Blue">Blue</a>  
+``` XAML
+<ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
+```
+![Blue](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Blue.png)  
 
+### <a id="Green">Green</a> 
+``` XAML
+<ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Green.xaml"/>
+```
+![Green](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Green.png) 
+
+### <a id="Red">Red</a> 
+``` XAML
+<ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Red.xaml"/>
+```
+![Red](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Red.png)  
+
+### <a id="Orange">Orange</a> 
+``` XAML
+<ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Orange.xaml"/>
+```
+![Orange](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Orange.png)   
+
+### <a id="Purple">Purple</a> 
+``` XAML
+<ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Purple.xaml"/>
+```
+![Purple](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/Purple.png)  
 
 [^_^]:
         ![1](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/1.png)  
