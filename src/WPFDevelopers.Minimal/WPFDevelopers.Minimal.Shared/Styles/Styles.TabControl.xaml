@@ -11,6 +11,8 @@
     <Thickness x:Key="BorderThickness">0,0,0,2</Thickness>
     
     <Style x:Key="BaseTAndBTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="MinHeight" Value="48"/>
@@ -64,6 +66,8 @@
     </Style>
 
     <Style x:Key="BaseLAndRTabItem" TargetType="{x:Type TabItem}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="MinHeight" Value="48"/>
@@ -131,11 +135,11 @@
         <Setter Property="BorderThickness" Value="0,2,0,0"/>
     </Style>
 
-    <Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultTabControl" TargetType="{x:Type TabControl}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="TabStripPlacement" Value="Top" />
         <!--<Setter Property="Margin" Value="2" />-->
         <!--<Setter Property="Padding" Value="2"/>-->
-        <Setter Property="Background" Value="{DynamicResource WhiteSolidColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource TopTabItem}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -154,7 +158,7 @@
                             BorderBrush="{DynamicResource BaseSolidColorBrush}" 
                             BorderThickness="0,0,0,1" 
                             Grid.Row="0"
-                            Background="{DynamicResource WhiteSolidColorBrush}">
+                            Background="{DynamicResource BackgroundSolidColorBrush}">
                             <TabPanel IsItemsHost="True"
                                   Name="HeaderPanel" 
                                   Panel.ZIndex="1"
@@ -174,7 +178,7 @@
                                               ContentSource="SelectedContent" 
                                               Name="PART_SelectedContentHost" 
                                               Margin="2" 
-                                              SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"  />
+                                              SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
                             </Border>
                         </Grid>
                     </Grid>
@@ -214,5 +218,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource DefaultTabControl}" />
 </ResourceDictionary>

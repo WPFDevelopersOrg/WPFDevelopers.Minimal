@@ -10,7 +10,7 @@
 
     <Style TargetType="{x:Type wpfsc:WPFMessageBox}">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
-        <Setter Property="Background"  Value="{DynamicResource WhiteSolidColorBrush}" />
+        <Setter Property="Background"  Value="{DynamicResource BackgroundSolidColorBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
         <Setter Property="SizeToContent"  Value="WidthAndHeight" />
         <Setter Property="ResizeMode" Value="NoResize" />
@@ -57,11 +57,15 @@
                                     <Path x:Name="PART_Path" Data="{DynamicResource PathInformation}"
                                       Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
                                       Height="25" Width="25" Stretch="Fill"></Path>
-                                    <TextBlock x:Name="PART_Message" TextWrapping="Wrap" 
-                                           MaxWidth="500" Width="Auto" VerticalAlignment="Center"
-                                           FontSize="{DynamicResource NormalFontSize}"
-                                           Padding="10,0"
-                                           Foreground="{DynamicResource RegularTextSolidColorBrush}"/>
+                                    <TextBox x:Name="PART_Message" 
+                                             TextWrapping="Wrap" 
+                                             MaxWidth="500" Width="Auto" 
+                                             VerticalAlignment="Center"
+                                             FontSize="{DynamicResource NormalFontSize}"
+                                             Padding="10,0" 
+                                             IsReadOnly="True"
+                                             BorderThickness="0"
+                                             Foreground="{DynamicResource RegularTextSolidColorBrush}"/>
                                 </DockPanel>
                             </Grid>
                             <Grid Grid.Row="2" Margin="140,20,10,10">

@@ -106,7 +106,7 @@
     </Style>
 
 
-    <Style TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultGridViewColumnHeader" TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -126,7 +126,7 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Border x:Name="HeaderBorder"
-                                Background="{DynamicResource WhiteSolidColorBrush}"
+                                Background="{DynamicResource BackgroundSolidColorBrush}"
                                 Padding="10"
                                 BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BaseSolidColorBrush}">
                             <ContentPresenter x:Name="HeaderContent"
@@ -192,7 +192,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultListView" TargetType="{x:Type ListView}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
@@ -220,7 +220,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultListViewItem" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="MinHeight" Value="48"/>
@@ -274,5 +274,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource DefaultGridViewColumnHeader}" />
+    <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource DefaultListView}" />
+    <Style TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource DefaultListViewItem}" />
 </ResourceDictionary>

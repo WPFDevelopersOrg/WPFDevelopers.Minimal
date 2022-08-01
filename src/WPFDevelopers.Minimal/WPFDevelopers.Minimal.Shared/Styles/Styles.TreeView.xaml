@@ -8,7 +8,7 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type TreeView}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultTreeView" TargetType="{x:Type TreeView}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="BorderThickness" Value="1"/>
@@ -17,7 +17,7 @@
                 <ControlTemplate TargetType="TreeView">
                     <Border Name="Border" BorderThickness="{TemplateBinding BorderThickness}"
                             BorderBrush="{DynamicResource BaseSolidColorBrush}"
-                            Background="{DynamicResource WhiteSolidColorBrush}">
+                            Background="{DynamicResource BackgroundSolidColorBrush}">
                         <ScrollViewer Focusable="False"
                                       CanContentScroll="False" 
                                       Padding="4">
@@ -38,13 +38,34 @@
                     <Grid Width="15" Height="13" Background="Transparent">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
-                                <VisualState x:Name="Checked">                                    <Storyboard>                                        <DoubleAnimation Duration="00:00:.2" To="90"                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"                                             Storyboard.TargetName="Expanded"/>                                    </Storyboard>                                </VisualState>                                <VisualState x:Name="Unchecked">                                    <Storyboard>                                        <DoubleAnimation Duration="00:00:.2" To="0"                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"                                             Storyboard.TargetName="Expanded"/>                                    </Storyboard>                                </VisualState>
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="00:00:.2" To="90"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="Expanded"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="00:00:.2" To="0"
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             Storyboard.TargetName="Expanded"/>
+                                    </Storyboard>
+                                </VisualState>
                                 <VisualState x:Name="Indeterminate" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         
                         <Path x:Name="Expanded"
-                              Stretch="Fill" Height="10" Width="6"                              Data="{StaticResource PathNext}"                              RenderTransformOrigin=".5,.5">                            <Path.Fill>                                <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />                            </Path.Fill>                            <Path.RenderTransform>                                <RotateTransform/>                            </Path.RenderTransform>
+                              Stretch="Fill" Height="10" Width="6"
+                              Data="{StaticResource PathNext}"
+                              RenderTransformOrigin=".5,.5">
+                            <Path.Fill>
+                                <SolidColorBrush Color="{DynamicResource PrimaryTextColor}" />
+                            </Path.Fill>
+                            <Path.RenderTransform>
+                                <RotateTransform/>
+                            </Path.RenderTransform>
                         </Path>
                     </Grid>
                 </ControlTemplate>
@@ -66,7 +87,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultTreeViewItem" TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
         <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment,RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
@@ -137,7 +158,7 @@
                                 <Condition Property="IsSelected" Value="True"/>
                                 <Condition Property="IsSelectionActive" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource WhiteSolidColorBrush}"/>
+                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource BackgroundSolidColorBrush}"/>
                         </MultiTrigger>
                        
                     </ControlTemplate.Triggers>
@@ -145,5 +166,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style TargetType="{x:Type TreeView}" BasedOn="{StaticResource DefaultTreeView}" />
+    <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource DefaultTreeViewItem}" />
 </ResourceDictionary>

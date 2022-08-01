@@ -8,9 +8,8 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
         <ResourceDictionary Source="Styles.ScrollBar.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
-    <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource ControlBasicStyle}">
-        <Setter Property="Background" Value="{DynamicResource WhiteSolidColorBrush}"/>
+    <Style x:Key="DefaultContextMenu" TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource ControlBasicStyle}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -21,7 +20,7 @@
                             CornerRadius="3"
                             BorderThickness="1"
                             BorderBrush="{DynamicResource BaseSolidColorBrush}">
-                        <ScrollViewer Padding="0,4">
+                        <ScrollViewer Padding="0,6">
                             <ItemsPresenter/>
                         </ScrollViewer>
                     </Border>
@@ -29,5 +28,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource DefaultContextMenu}" />
 
 </ResourceDictionary>

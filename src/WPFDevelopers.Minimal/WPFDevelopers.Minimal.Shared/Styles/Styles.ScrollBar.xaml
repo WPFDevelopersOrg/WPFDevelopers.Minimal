@@ -60,7 +60,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultScrollBar" TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource ControlBasicStyle}">
         <Style.Resources>
             <Storyboard x:Key="ScrollMouseOut">
 
@@ -280,7 +280,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultScrollViewer" TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollViewer}">
@@ -334,4 +334,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource DefaultScrollBar}" />
+    <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource DefaultScrollViewer}" />
 </ResourceDictionary>

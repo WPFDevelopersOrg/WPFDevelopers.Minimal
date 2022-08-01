@@ -7,42 +7,32 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultRadioButton" TargetType="{x:Type RadioButton}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Background" Value="{DynamicResource WhiteSolidColorBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource WindowForegroundColorBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="2,1"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <Grid SnapsToDevicePixels="True">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Border CornerRadius="{Binding ElementName=PART_Border,Path=CornerRadius}"
-                                Background="{Binding ElementName=PART_Border,Path=Background}"
-                                Margin="1,1,2,1">
-                            <Border x:Name="PART_Border" 
-                                    BorderThickness="{TemplateBinding BorderThickness}" 
-                                    Background="{TemplateBinding Background}" 
-                                    CornerRadius="100"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                <Border.BorderBrush>
-                                    <SolidColorBrush Color="{DynamicResource BaseColor}"/>
-                                </Border.BorderBrush>
-                                <Grid Width="16" Height="16">
-                                    <Ellipse x:Name="PART_Ellipse" Fill="{DynamicResource WhiteSolidColorBrush}" 
+                    <BulletDecorator Background="Transparent">
+                        <BulletDecorator.Bullet>
+                            <Grid MinWidth="16" MinHeight="16" >
+                                <Ellipse x:Name="PART_Border" 
+                                         StrokeThickness="{TemplateBinding BorderThickness}"
+                                         Fill="{TemplateBinding Background}" 
+                                         Stroke="{DynamicResource BaseSolidColorBrush}">
+                                </Ellipse>
+                                <Ellipse x:Name="PART_Ellipse" Fill="{DynamicResource WindowForegroundColorBrush}" 
                                          MinWidth="6" MinHeight="6"
                                          RenderTransformOrigin=".5,.5">
-                                        <Ellipse.RenderTransform>
-                                            <ScaleTransform ScaleX="0" ScaleY="0"/>
-                                        </Ellipse.RenderTransform>
-                                    </Ellipse>
-                                </Grid>
-                            </Border>
-                        </Border>
+                                    <Ellipse.RenderTransform>
+                                        <ScaleTransform ScaleX="0" ScaleY="0"/>
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+                            </Grid>
+                        </BulletDecorator.Bullet>
                         <ContentPresenter x:Name="PART_ContentPresenter" 
                                           ContentTemplate="{TemplateBinding ContentTemplate}" 
                                           Content="{TemplateBinding Content}" Grid.Column="1" 
@@ -59,22 +49,7 @@
                                 <VisualState x:Name="Indeterminate"/>
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
-                                        <!--<ColorAnimation Storyboard.TargetName="PART_ContentPresenter"
-                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        To="{DynamicResource PrimaryPressedColor}"
-                                                        Duration="00:00:.1"/>
-                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                                        Storyboard.TargetName="PART_Border"
-                                                        To="{DynamicResource PrimaryPressedColor}" 
-                                                        Duration="00:00:.1"/>
-                                        <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
-                                                        Storyboard.TargetName="PART_Border"
-                                                        To="{DynamicResource PrimaryPressedColor}" 
-                                                        Duration="00:00:.1"/>-->
-                                        <!--<ThicknessAnimation Storyboard.TargetName="PART_Border"
-                                                         Storyboard.TargetProperty="BorderThickness" 
-                                                         To="0,0,0,0" Duration="00:00:.1"/>-->
-
+                                      
                                         <DoubleAnimation Storyboard.TargetName="PART_Ellipse"
                                                          Storyboard.TargetProperty="(Ellipse.RenderTransform).(ScaleTransform.ScaleX)" 
                                                          To=".4" Duration="00:00:.3"
@@ -88,14 +63,13 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                    </Grid>
+                    </BulletDecorator>
                     <ControlTemplate.Triggers>
-                        <!--<Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="{StaticResource EnabledOpacity}" />
-                        </Trigger>-->
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
-                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <!--<Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
+                            <Setter Property="Fill" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <Setter Property="Stroke" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                             <Setter Property="TextElement.Foreground" TargetName="PART_ContentPresenter" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                         <MultiTrigger>
@@ -103,13 +77,14 @@
                                 <Condition Property="IsChecked" Value="False" />
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}"/>
+                            <Setter Property="Stroke" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                            <!--<Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
                             <!--<MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_BeginStoryboard">
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
                                                         Storyboard.TargetName="PART_Border"
-                                                        To="{StaticResource PrimaryPressedColor}" 
+                                                        To="{StaticResource PrimaryNormalColor}" 
                                                         Duration="00:00:.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -123,4 +98,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource DefaultRadioButton}" />
 </ResourceDictionary>

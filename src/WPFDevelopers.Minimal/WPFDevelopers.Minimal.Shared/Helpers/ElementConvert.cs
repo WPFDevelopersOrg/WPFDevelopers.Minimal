@@ -6,8 +6,8 @@ namespace WPFDevelopers.Minimal.Helpers
 {
     public class ElementConvert
     {
-
     }
+
     public class WidthConvert : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -20,5 +20,4 @@ namespace WPFDevelopers.Minimal.Helpers
             throw new NotImplementedException();
         }
     }
-
 }

@@ -7,40 +7,24 @@
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    <!--<wpfs:WidthConvert x:Key="WidthConvert"/>-->
 
-    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultToggleButton" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Focusable" Value="False" />
-        <!--<Setter Property="Width" Value="40" />
-        <Setter Property="Height" Value="20" />-->
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <!--<ControlTemplate.Resources>
-                        <Storyboard x:Key="TrueStoryboard">
-                            <DoubleAnimation Storyboard.TargetName="PART_Ellipse"
-                                             Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" 
-                                             To="{Binding RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}, Mode=FindAncestor}, Path=ActualWidth}"
-                                             Duration="00:00:1"
-                                             EasingFunction="{StaticResource ExponentialEaseOut}"/>
-                        </Storyboard>
-                        <Storyboard x:Key="FalseStoryboard">
-                            <DoubleAnimation Storyboard.TargetName="PART_Ellipse"
-                                             Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" 
-                                             To="0" Duration="00:00:1"
-                                             EasingFunction="{StaticResource ExponentialEaseOut}"/>
-                        </Storyboard>
-                    </ControlTemplate.Resources>-->
+                   
                     <Border x:Name="PART_Border"
-                        Width="40"
-                        Height="20"
-                        Background="{DynamicResource BaseSolidColorBrush}"
-                        CornerRadius="10">
+                            Width="40"
+                            Height="20"
+                            Background="{DynamicResource BaseSolidColorBrush}"
+                            CornerRadius="10">
+                       
                         <Ellipse x:Name="PART_Ellipse" Width="16" Height="16"
                                  Margin="2,0"
                                  VerticalAlignment="Center" HorizontalAlignment="Left"
-                                 Fill="{DynamicResource WhiteSolidColorBrush}">
+                                 Fill="{DynamicResource WindowForegroundColorBrush}">
                             <Ellipse.RenderTransform>
                                 <TranslateTransform/>
                             </Ellipse.RenderTransform>
@@ -54,16 +38,12 @@
                                                          To="20" 
                                                          Duration="00:00:.3"
                                                          EasingFunction="{StaticResource CubicEaseInOut}"/>
-                                        <!--<DoubleAnimation Storyboard.TargetName="PART_Ellipse"
-                                                         Storyboard.TargetProperty="(Ellipse.RenderTransform).(TranslateTransform.X)" 
-                                                         To="{Binding ElementName=PART_Border,Path=ActualWidth,Converter={StaticResource WidthConvert}}" 
-                                                         Duration="00:00:.3"
-                                                         EasingFunction="{StaticResource CubicEaseInOut}"/>-->
-                                        <ColorAnimation Duration="00:00:0.3"
+                                        
+                                        <!--<ColorAnimation Duration="00:00:0.3"
                                                         Storyboard.TargetName="PART_Border"
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                        To="{StaticResource PrimaryNormalColor}"
-                                                        EasingFunction="{StaticResource CubicEaseInOut}"/>
+                                                        To="{DynamicResource PrimaryNormalColor}"
+                                                        EasingFunction="{StaticResource CubicEaseInOut}"/>-->
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Unchecked">
@@ -73,11 +53,11 @@
                                                          To="0" 
                                                          Duration="00:00:.3"
                                                          EasingFunction="{StaticResource CubicEaseInOut}"/>
-                                        <ColorAnimation Duration="00:00:0.3" 
+                                        <!--<ColorAnimation Duration="00:00:0.3" 
                                                         Storyboard.TargetName="PART_Border"
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                        To="{StaticResource BaseColor}"
-                                                        EasingFunction="{StaticResource CubicEaseInOut}"/>
+                                                        To="{DynamicResource BaseColor}"
+                                                        EasingFunction="{StaticResource CubicEaseInOut}"/>-->
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Indeterminate" />
@@ -85,29 +65,16 @@
                         </VisualStateManager.VisualStateGroups>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <!--<Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource DefaultBackgroundPressedSolidColorBrush}"/>
-                        </Trigger>-->
-                        <!-- <Trigger Property="IsChecked" Value="True">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard x:Name="BeginStoryboardTrueStoryboard" Storyboard="{StaticResource TrueStoryboard}" />
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="BeginStoryboardTrueStoryboard" />
-                            </Trigger.ExitActions>
+                       
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" TargetName="PART_Border" 
+                                    Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
-                        <Trigger Property="IsChecked" Value="False">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard x:Name="BeginStoryboardFalseStoryboard" Storyboard="{StaticResource FalseStoryboard}" />
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <StopStoryboard BeginStoryboardName="BeginStoryboardFalseStoryboard" />
-                            </Trigger.ExitActions>
-                        </Trigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource DefaultToggleButton}" />
 
 </ResourceDictionary>

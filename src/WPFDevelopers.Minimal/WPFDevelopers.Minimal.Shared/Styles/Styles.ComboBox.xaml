@@ -73,7 +73,7 @@
           Background="{TemplateBinding Background}" />
     </ControlTemplate>
 
-    <Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultComboBox" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
@@ -108,7 +108,7 @@
                                                         Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
                                                         EasingFunction="{StaticResource ExponentialEaseOut}"
                                                         Duration="00:00:.1"
-                                                        To="{DynamicResource PrimaryMouseOverColor}"/>
+                                                        To="{DynamicResource PrimaryNormalColor}"/>
 
                                     </Storyboard>
                                 </VisualState>
@@ -170,13 +170,13 @@
                                 <Grid.RenderTransform>
                                     <ScaleTransform ScaleY="0"/>
                                 </Grid.RenderTransform>
-                                <Border Background="{DynamicResource WhiteSolidColorBrush}" 
+                                <Border Background="{DynamicResource BackgroundSolidColorBrush}" 
                                         CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" 
                                         SnapsToDevicePixels="True" 
                                         UseLayoutRounding="True"
                                         Effect="{StaticResource PopupShadowDepth}"/>
 
-                                <Border  Name="PART_DropDownBorder" Background="{DynamicResource WhiteSolidColorBrush}"
+                                <Border  Name="PART_DropDownBorder" Background="{DynamicResource BackgroundSolidColorBrush}"
                                             BorderBrush="{DynamicResource BaseSolidColorBrush}"
                                             BorderThickness="1" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
                                          SnapsToDevicePixels="True" UseLayoutRounding="True" />
@@ -272,11 +272,11 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>-->
                         <Rectangle x:Name="PART_RectangleMouseOver" 
-                                   Fill="{StaticResource WhiteSolidColorBrush}"
+                                   Fill="{DynamicResource BackgroundSolidColorBrush}"
                                    SnapsToDevicePixels="True" UseLayoutRounding="True"/>
 
                         <Rectangle x:Name="PART_RectangleSelected"
-                            Fill="{StaticResource BaseSolidColorBrush}"
+                            Fill="{DynamicResource BaseSolidColorBrush}"
                             Visibility="Collapsed"
                             SnapsToDevicePixels="True" UseLayoutRounding="True"/>
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
@@ -320,5 +320,6 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource DefaultComboBox}" />
 
 </ResourceDictionary>

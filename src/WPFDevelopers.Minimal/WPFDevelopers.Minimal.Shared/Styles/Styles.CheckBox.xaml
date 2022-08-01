@@ -6,8 +6,8 @@
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-
-    <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ControlBasicStyle}">
+    
+    <Style x:Key="DefaultCheckBox"  TargetType="{x:Type CheckBox}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -15,20 +15,19 @@
                 <ControlTemplate TargetType="{x:Type CheckBox}">
                     <BulletDecorator Background="Transparent">
                         <BulletDecorator.Bullet>
-                            <Border CornerRadius="{Binding ElementName=PART_Border,Path=CornerRadius}"
-                                Background="{Binding ElementName=PART_Border,Path=Background}">
+                            <Border CornerRadius="{Binding ElementName=PART_Border,Path=CornerRadius}">
                                 <Border x:Name="PART_Border" 
                                             Width="16" Height="16"
                                             CornerRadius="3"
                                             BorderThickness="1"
                                             BorderBrush="{DynamicResource BaseSolidColorBrush}"
-                                            Background="{DynamicResource WhiteSolidColorBrush}">
+                                            Background="{DynamicResource WindowForegroundColorBrush}">
                                     <Grid>
                                         <Path x:Name="PART_CheckMark" SnapsToDevicePixels="False" 
                                               VerticalAlignment="Center" HorizontalAlignment="Center"
                                               Data="{StaticResource PathCheckMark}"
                                               RenderTransformOrigin=".5,.5"
-                                              Stretch="Fill" Fill="{DynamicResource WhiteSolidColorBrush}">
+                                              Stretch="Fill" Fill="{DynamicResource WindowForegroundColorBrush}">
                                             <Path.RenderTransform>
                                                 <ScaleTransform ScaleX="0" ScaleY="0"/>
                                             </Path.RenderTransform>
@@ -117,14 +116,14 @@
                                 <Condition Property="IsChecked" Value="False" />
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryMouseOverSolidColorBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                             <!--本来使用动画，但是动画会导致无法修改主题颜色-->
                             <!--<MultiTrigger.EnterActions>
                                 <BeginStoryboard x:Name="PART_BeginStoryboard">
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
                                                         Storyboard.TargetName="PART_Border"
-                                                        To="{DynamicResource PrimaryPressedColor}" 
+                                                        To="{StaticResource PrimaryNormalColor}" 
                                                         Duration="00:00:.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -138,5 +137,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource DefaultCheckBox}" />
 </ResourceDictionary>

@@ -22,8 +22,6 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Microsoft.Windows.Shell", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFDevelopers.Minimal.Net45x", "WPFDevelopers.Minimal.Net45x\WPFDevelopers.Minimal.Net45x.csproj", "{267504E7-DB8E-4EF8-BE50-983663C2D472}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf45", "Wpf45\Wpf45.csproj", "{4752F472-88F8-4AB3-ACC2-756148C5AB40}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		WPFDevelopers.Minimal.Sample.Shared\WPFDevelopers.Minimal.Sample.Shared.projitems*{018b1a33-3924-46fd-9429-6eac6ecc9aad}*SharedItemsImports = 13
@@ -51,10 +49,6 @@ Global
 		{267504E7-DB8E-4EF8-BE50-983663C2D472}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{267504E7-DB8E-4EF8-BE50-983663C2D472}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{267504E7-DB8E-4EF8-BE50-983663C2D472}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4752F472-88F8-4AB3-ACC2-756148C5AB40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4752F472-88F8-4AB3-ACC2-756148C5AB40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4752F472-88F8-4AB3-ACC2-756148C5AB40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4752F472-88F8-4AB3-ACC2-756148C5AB40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

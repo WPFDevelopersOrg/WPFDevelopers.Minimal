@@ -46,6 +46,7 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "WPFDevelopers.Minimal.Helpers")]
 [assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "WPFDevelopers.Minimal.Net40")]
 [assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "WPFDevelopers.Minimal.Controls")]
+[assembly: XmlnsDefinition("https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal", "Microsoft.Windows.Shell")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -57,5 +58,5 @@ using System.Windows.Markup;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值
 //通过使用 "*"，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.2.0.0")]
-[assembly: AssemblyFileVersion("3.2.0.0")]
+[assembly: AssemblyVersion("3.2.4.0")]
+[assembly: AssemblyFileVersion("3.2.4.0")]

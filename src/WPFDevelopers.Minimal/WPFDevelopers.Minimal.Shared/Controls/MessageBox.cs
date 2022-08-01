@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace WPFDevelopers.Minimal.Controls
 {
-    public static class MessageBox
+    public static partial class MessageBox
     {
         public static MessageBoxResult Show(string messageBoxText)
         {

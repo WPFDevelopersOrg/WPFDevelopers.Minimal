@@ -1,34 +1,157 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
+using WPFDevelopers.Minimal.Controls;
+using WPFDevelopers.Minimal.Helpers;
+using WPFDevelopers.Minimal.Models;
 using WPFDevelopers.Minimal.Sample.Models;
+using MessageBox = WPFDevelopers.Minimal.Controls.MessageBox;
+using Window = WPFDevelopers.Minimal.Net40.Window;
 
 namespace WPFDevelopers.Minimal.Sample.ExampleViews
 {
-    public partial class MainView : WPFDevelopers.Minimal.Net40.Window
+    public partial class MainView 
     {
-        #region DataSource
-        public ObservableCollection<UserModel> UserCollection
+        public static readonly DependencyProperty UserCollectionProperty =
+            DependencyProperty.Register("UserCollection", typeof(ObservableCollection<UserModel>), typeof(MainView),
+                new PropertyMetadata(null));
+
+        public static readonly DependencyProperty AllSelectedProperty =
+            DependencyProperty.Register("AllSelected", typeof(bool), typeof(MainView),
+                new PropertyMetadata(AllSelectedChangedCallback));
+
+        public static readonly DependencyProperty ThemesCollectionProperty =
+            DependencyProperty.Register("ThemesCollection", typeof(ObservableCollection<ThemeModel>), typeof(MainView),
+                new PropertyMetadata(null));
+
+        public MainView()
         {
-            get { return (ObservableCollection<UserModel>)GetValue(UserCollectionProperty); }
-            set { SetValue(UserCollectionProperty, value); }
+            InitializeComponent();
+            Loaded += MainView_Loaded;
         }
 
-        public static readonly DependencyProperty UserCollectionProperty =
-            DependencyProperty.Register("UserCollection", typeof(ObservableCollection<UserModel>), typeof(MainView), new PropertyMetadata(null));
+        public ObservableCollection<ThemeModel> ThemesCollection
+        {
+            get => (ObservableCollection<ThemeModel>)GetValue(ThemesCollectionProperty);
+            set => SetValue(ThemesCollectionProperty, value);
+        }
+
+        private void MainView_Loaded(object sender, RoutedEventArgs e)
+        {
+            var time = DateTime.Now;
+            UserCollection = new ObservableCollection<UserModel>();
+            for (var i = 0; i < 4; i++)
+            {
+                UserCollection.Add(new UserModel
+                {
+                    Date = time,
+                    Name = "WPFDevelopers",
+                    Address = "No. 189, Grove St, Los Angeles",
+                    Children = new List<UserModel>
+                    {
+                        new UserModel { Name = "WPFDevelopers.Minimal1.1" },
+                        new UserModel { Name = "WPFDevelopers.Minimal1.2" },
+                        new UserModel { Name = "WPFDevelopers.Minimal1.3" },
+                        new UserModel { Name = "WPFDevelopers.Minimal1.4" },
+                        new UserModel { Name = "WPFDevelopers.Minimal1.5" },
+                        new UserModel { Name = "WPFDevelopers.Minimal1.6" }
+                    }
+                });
+                time = time.AddDays(2);
+            }
+
+            if (ThemesCollection != null)
+                ThemesCollection.Add(new ThemeModel
+                {
+                    Color = "#B31B1B",
+                    ResourcePath =
+                        "pack://application:,,,/WPFDevelopers.Minimal.Sample.Net40;component/Light.Carmine.xaml"
+                });
+        }
+
+        private void btnInformation_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("文件删除成功。", "消息", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void btnWarning_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("当前文件不存在！", "警告", MessageBoxImage.Warning);
+        }
+
+        private void btnError_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("当前文件不存在。", "错误", MessageBoxImage.Error);
+        }
+
+        private void btnQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("当前文件不存在,是否继续?", "询问", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+        }
+
+        private void GithubHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
+        private void GiteeHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
+        private void QQHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            var uri = new Uri(@"https://qm.qq.com/cgi-bin/qm/qr?k=f2zl3nvoetItho8kGfe1eys0jDkqvvcL&jump_from=webapi");
+            Process.Start(new ProcessStartInfo(uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
+        private void Loading_Click(object sender, RoutedEventArgs e)
+        {
+            var task = new Task(() => { Thread.Sleep(5000); });
+            task.ContinueWith(previousTask => { Loading.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
+            Loading.Show();
+            task.Start();
+        }
+
+        private void LightDark_Checked(object sender, RoutedEventArgs e)
+        {
+            //var existingResourceDictionary = Application.Current.Resources.MergedDictionaries.FirstOrDefault(x => x.Source == null);
+            //if (existingResourceDictionary != null)
+            //    Application.Current.Resources.MergedDictionaries.Remove(existingResourceDictionary);
+
+            //var r = new WPFDevelopers.Minimal.Resources();
+            //r.Theme = Helpers.ThemeType.Light;
+            //Application.Current.Resources.MergedDictionaries.Add(r);
+            var lightDark = sender as ToggleButton;
+            if (lightDark == null) return;
+            ControlHelper.ToggleLightAndDark(lightDark.IsChecked == true);
+        }
+
+        #region DataSource
+
+        public ObservableCollection<UserModel> UserCollection
+        {
+            get => (ObservableCollection<UserModel>)GetValue(UserCollectionProperty);
+            set => SetValue(UserCollectionProperty, value);
+        }
 
 
         public bool AllSelected
         {
-            get { return (bool)GetValue(AllSelectedProperty); }
-            set { SetValue(AllSelectedProperty, value); }
+            get => (bool)GetValue(AllSelectedProperty);
+            set => SetValue(AllSelectedProperty, value);
         }
 
-        public static readonly DependencyProperty AllSelectedProperty =
-            DependencyProperty.Register("AllSelected", typeof(bool), typeof(MainView), new PropertyMetadata(AllSelectedChangedCallback));
 
         private static void AllSelectedChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -41,70 +164,5 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
         }
 
         #endregion
-
-        public MainView()
-        {
-            InitializeComponent();
-            this.Loaded += MainView_Loaded;
-        }
-
-        private void MainView_Loaded(object sender, RoutedEventArgs e)
-        {
-            var time = DateTime.Now;
-            UserCollection = new ObservableCollection<UserModel>();
-            for (int i = 0; i < 4; i++)
-            {
-                UserCollection.Add(new UserModel
-                {
-                    Date = time,
-                    Name = "WPFDevelopers",
-                    Address = "No. 189, Grove St, Los Angeles",
-                    Children = new System.Collections.Generic.List<UserModel>()
-                    {
-                         new UserModel { Name= "WPFDevelopers.Minimal1.1" },
-                         new UserModel { Name = "WPFDevelopers.Minimal1.2" },
-                         new UserModel { Name = "WPFDevelopers.Minimal1.3" },
-                          new UserModel { Name= "WPFDevelopers.Minimal1.4" },
-                         new UserModel { Name = "WPFDevelopers.Minimal1.5" },
-                         new UserModel { Name = "WPFDevelopers.Minimal1.6" },
-                    }
-                });
-                time = time.AddDays(2);
-            }
-        }
-
-        private void btnInformation_Click(object sender, RoutedEventArgs e)
-        {
-            WPFDevelopers.Minimal.Controls.MessageBox.Show("文件删除成功。", "消息",MessageBoxButton.OK,MessageBoxImage.Information);
-        }
-        private void btnWarning_Click(object sender, RoutedEventArgs e)
-        {
-            WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在！", "警告", MessageBoxImage.Warning);
-        }
-        private void btnError_Click(object sender, RoutedEventArgs e)
-        {
-            WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在。", "错误", MessageBoxImage.Error);
-        }
-        private void btnQuestion_Click(object sender, RoutedEventArgs e)
-        {
-            WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继续?", "询问", MessageBoxButton.OKCancel, MessageBoxImage.Question);
-        }
-        private void GithubHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
-        }
-
-        private void GiteeHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
-        }
-        private void QQHyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            var uri = new Uri(@"https://qm.qq.com/cgi-bin/qm/qr?k=f2zl3nvoetItho8kGfe1eys0jDkqvvcL&jump_from=webapi");
-            Process.Start(new ProcessStartInfo(uri.AbsoluteUri));
-            e.Handled = true;
-        }
     }
 }

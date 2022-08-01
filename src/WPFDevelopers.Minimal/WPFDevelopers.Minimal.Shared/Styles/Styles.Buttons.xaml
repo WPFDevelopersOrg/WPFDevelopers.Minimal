@@ -20,21 +20,12 @@
 
     
     <Style x:Key="PrimaryButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
-        <Setter Property="Foreground" Value="{DynamicResource WhiteSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
         <Setter Property="Template" >
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Border Name="PART_Border" 
-                                CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" 
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                Background="{DynamicResource PrimaryNormalSolidColorBrush}">
-                        </Border>
-
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          Margin="{TemplateBinding Padding}" 
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -51,22 +42,32 @@
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                                        Storyboard.TargetName="PART_Border"
-                                                        To="{DynamicResource PrimaryMouseOverColor}" 
-                                                        EasingFunction="{StaticResource ExponentialEaseOut}"/>
+                                        <ColorAnimation Storyboard.TargetName="PART_Border"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource PrimaryMouseOverColor}" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                                        Storyboard.TargetName="PART_Border"
-                                                        To="{DynamicResource PrimaryPressedColor}"
-                                                        EasingFunction="{StaticResource ExponentialEaseOut}"/>
+                                        <ColorAnimation Storyboard.TargetName="PART_Border"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
+                                                        To="{DynamicResource PrimaryPressedColor}"/>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        <Border Name="PART_Border" 
+                                CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}">
+                        </Border>
+
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <!--<Trigger Property="IsEnabled" Value="False">
@@ -84,7 +85,7 @@
 
 
     <Style x:Key="DefaultButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButton}">
-        <Setter Property="Background" Value="{DynamicResource WhiteSolidColorBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
         <Setter Property="Template" >
             <Setter.Value>

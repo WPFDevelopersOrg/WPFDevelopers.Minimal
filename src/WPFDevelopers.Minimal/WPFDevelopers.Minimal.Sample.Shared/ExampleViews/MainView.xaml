@@ -6,41 +6,57 @@
         xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"
 		xmlns:local="clr-namespace:WPFDevelopers.Minimal.Sample.ExampleViews"
         xmlns:app ="clr-namespace:WPFDevelopers.Minimal.Sample"
+        x:Name="_window"
         Icon="/WPFDevelopers.Minimal.Sample.Net40;component/Resources/WPFDevelopers.Minimal.png"
         Height="{x:Static app:App.Height}" Width="{x:Static app:App.Wdith}"
         WindowStartupLocation="CenterScreen" Title="WPFDevelopers.Minimal">
-	<Window.Resources>
+    <Window.Resources>
         <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{StaticResource PrimaryTextSolidColorBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
             <Setter Property="FontSize" Value="{StaticResource NormalFontSize}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </Window.Resources>
-    <ScrollViewer Margin="0,0,0,20">
+    <ScrollViewer>
         <Grid Margin="20,10">
             <VirtualizingStackPanel>
                 <WrapPanel Margin="0,10">
                     <Image Source="/WPFDevelopers.Minimal.Sample.Net40;component/Resources/WPFDevelopers.Minimal.png"
                        RenderOptions.BitmapScalingMode="HighQuality"
                        Width="100" Height="100"/>
-                    <TextBlock Text="WPFDevelopers.Minimal" FontSize="20" Margin="10,0"
-                               Foreground="{StaticResource PrimaryNormalSolidColorBrush}"/>
-                    <TextBlock Text="微信号公众号:WPFDevelopers" HorizontalAlignment="Center"
-                    Margin="0,0,10,0" FontSize="20" Foreground="{StaticResource PrimaryNormalSolidColorBrush}"/>
-                    <TextBlock FontSize="20"
-                       Foreground="{StaticResource PrimaryNormalSolidColorBrush}">
-            <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.git"
+                    <StackPanel Margin="10,0">
+                        <TextBlock Text="WPFDevelopers.Minimal" FontSize="20" 
+                                   HorizontalAlignment="Center"
+                                   Padding="0,4"
+                               Foreground="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                        <TextBlock Text="微信号公众号:WPFDevelopers" 
+                                   HorizontalAlignment="Center"
+                                   Padding="0,4"
+                                   FontSize="20" Foreground="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                        <TextBlock FontSize="20" Padding="0,10"
+                       Foreground="{DynamicResource PrimaryNormalSolidColorBrush}">
+            <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.Minimal.git"
                        RequestNavigate="GithubHyperlink_RequestNavigate"> Github 源码</Hyperlink>
             <Run/>
             <Run/>
             <Run/>
-            <Hyperlink NavigateUri="https://gitee.com/yanjinhua/WPFDevelopers.git"
+            <Hyperlink NavigateUri="https://gitee.com/WPFDevelopersOrg/WPFDevelopers.Minimal.git"
                        RequestNavigate="GiteeHyperlink_RequestNavigate"> 码云源码</Hyperlink>
                         <Run/>
             <Run/>
             <Run/>
                          <Hyperlink NavigateUri="https://gitee.com/yanjinhua/WPFDevelopers.git" RequestNavigate="QQHyperlink_RequestNavigate"> 加入QQ群：458041663</Hyperlink>
-                    </TextBlock>
+                        </TextBlock>
+                    </StackPanel>
+
+                </WrapPanel>
+                <TextBlock Text="Theme" FontSize="20" Margin="0,20,0,0"/>
+                <ws:ThemeControl Margin="0,10" ItemsSource="{Binding ThemesCollection,RelativeSource={RelativeSource AncestorType=local:MainView},Mode=OneWayToSource}"/>
+                <TextBlock Text="Light | Dark" FontSize="20" Margin="0,20,0,0"/>
+                <WrapPanel Margin="10">
+                    <TextBlock Text="Light"/>
+                    <ToggleButton Checked="LightDark_Checked" Margin="10,0" Unchecked="LightDark_Checked"/>
+                    <TextBlock Text="Dark"/>
                 </WrapPanel>
                 <TextBlock Text="Menu" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
@@ -69,12 +85,17 @@
                     </Menu>
                     <Menu  IsEnabled="False"/>
                 </WrapPanel>
+                
+                <TextBlock Text="Loading" FontSize="20" Margin="0,20,0,0"/>
+                <WrapPanel Margin="0,10">
+                    <Button Content="Loading" Click="Loading_Click" Style="{DynamicResource PrimaryButton}"/>
+                </WrapPanel>
                 <TextBlock Text="Button" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
                     <Button Content="Default"/>
                     <Button Content="Default" Margin="10,0" IsEnabled="False"/>
-                    <Button Content="Primary" Style="{StaticResource PrimaryButton}"/>
-                    <Button Content="Primary" Style="{StaticResource PrimaryButton}" Margin="10,0" IsEnabled="False"/>
+                    <Button Content="Primary" Style="{DynamicResource PrimaryButton}"/>
+                    <Button Content="Primary" Style="{DynamicResource PrimaryButton}" Margin="10,0" IsEnabled="False"/>
                 </WrapPanel>
                 <TextBlock Text="MessageBox" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
@@ -98,7 +119,7 @@
                 </WrapPanel>
                 <TextBlock Text="TextBox" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
-                    <TextBox/>
+                    <TextBox />
                     <TextBox Margin="10,0" ws:ElementHelper.Watermark="请输入内容"/>
                     <TextBox IsEnabled="False"/>
                 </WrapPanel>
@@ -149,7 +170,7 @@
 
                 <TextBlock Text="ProgressBar" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
-                    <ProgressBar Width="200" Value="50" />
+                    <ProgressBar Width="200" Value="50"/>
                     <ProgressBar Width="200" Margin="10,0"  Value="80" />
                     <ProgressBar Width="200" Margin="10,0" Height="10" IsIndeterminate="True" Value="10"/>
                     <!--<ProgressBar Width="6" Value="40" Orientation="Vertical"/>
@@ -180,17 +201,17 @@
                                   Margin="0,10">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn CanUserResize="False">
-                                <DataGridTemplateColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainView}, Path=AllSelected}" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.HeaderTemplate>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <CheckBox IsChecked="{Binding IsChecked}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainView}, Path=AllSelected}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding IsChecked}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
                                 <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
@@ -225,10 +246,15 @@
                     
                    
                 </UniformGrid>-->
-                
+
                 <TextBlock Text="ListBox" FontSize="20" Margin="0,20,0,0"/>
                 <UniformGrid Margin="0,10" Columns="2">
-                    <ListBox DisplayMemberPath="Name" IsEnabled="False"                        ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                    </ListBox>                    <ListBox  Margin="10,0"                             ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListBox.ItemTemplate>
+                    <ListBox DisplayMemberPath="Name" IsEnabled="False"
+                        ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                    </ListBox>
+                    <ListBox  Margin="10,0"
+                             ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                        <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <UniformGrid Columns="3">
                                     <TextBlock Text="{Binding Date}"/>
@@ -236,41 +262,54 @@
                                     <TextBlock Text="{Binding Address}"/>
                                 </UniformGrid>
                             </DataTemplate>
-                        </ListBox.ItemTemplate>                    </ListBox>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </UniformGrid>
 
                 <TextBlock Text="ListView" FontSize="20" Margin="0,20,0,0"/>
                 <UniformGrid Margin="0,10" Columns="2">
-                    <ListView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListView.View>
+                    <ListView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                        <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
                                 <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
                                 <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
                             </GridView>
-                        </ListView.View>                    </ListView>                    <ListView IsEnabled="False" Margin="10,0" BorderThickness="0"                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <ListView.View>
+                        </ListView.View>
+                    </ListView>
+                    <ListView IsEnabled="False" Margin="10,0" BorderThickness="0"
+                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                        <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
                                 <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
                                 <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
                             </GridView>
-                        </ListView.View>                    </ListView>
+                        </ListView.View>
+                    </ListView>
                 </UniformGrid>
 
                 <TextBlock Text="TreeView" FontSize="20" Margin="0,20,0,0"/>
                 <UniformGrid Margin="0,10" Columns="2">
-                    <TreeView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <TreeView.ItemTemplate>
+                    <TreeView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                        <TreeView.ItemTemplate>
                             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                                 <Border>
                                     <TextBlock Text="{Binding Path=Name}"/>
                                 </Border>
                             </HierarchicalDataTemplate>
-                        </TreeView.ItemTemplate>                    </TreeView>                    <TreeView IsEnabled="False" Margin="10,0" BorderThickness="0"                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">                        <TreeView.ItemTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                    <TreeView IsEnabled="False" Margin="10,0" BorderThickness="0"
+                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                        <TreeView.ItemTemplate>
                             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                                 <Border>
                                     <TextBlock Text="{Binding Path=Name}"/>
                                 </Border>
                             </HierarchicalDataTemplate>
-                        </TreeView.ItemTemplate>                    </TreeView>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
                 </UniformGrid>
 
                 <TextBlock Text="Expander" FontSize="20" Margin="0,20,0,0"/>
@@ -317,8 +356,8 @@
                                    Width="400" Height="300"/>
                     </GroupBox>
                 </UniformGrid>
-                
-                
+
+
                 <TextBlock Text="TabControl" FontSize="20" Margin="0,20,0,0"/>
                 <UniformGrid Columns="2" Rows="2" Margin="0,10">
                     <UniformGrid.Resources>
@@ -374,6 +413,5 @@
                 </UniformGrid>
             </VirtualizingStackPanel>
         </Grid>
-       
     </ScrollViewer>
 </ws:Window>

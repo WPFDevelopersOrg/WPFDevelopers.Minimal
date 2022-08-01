@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -15,7 +12,7 @@ namespace WPFDevelopers.Minimal.Controls
     [TemplatePart(Name = ButtonCancelTemplateName, Type = typeof(Button))]
     [TemplatePart(Name = ButtonCancelTemplateName, Type = typeof(Button))]
     [TemplatePart(Name = PathTemplateName, Type = typeof(Path))]
-    public sealed class WPFMessageBox : Window
+    internal sealed class WPFMessageBox : Window
     {
 
         private const string TitleTemplateName = "PART_Title";
@@ -181,7 +178,7 @@ namespace WPFDevelopers.Minimal.Controls
                     break;
                 case MessageBoxImage.Question:
                     _geometry = Application.Current.Resources["PathQuestion"] as Geometry;
-                    _solidColorBrush = Application.Current.Resources["PrimaryNormalSolidColorBrush"] as SolidColorBrush;
+                    _solidColorBrush = Application.Current.Resources["NormalSolidColorBrush"] as SolidColorBrush;
                     break;
                 default:
                     break;

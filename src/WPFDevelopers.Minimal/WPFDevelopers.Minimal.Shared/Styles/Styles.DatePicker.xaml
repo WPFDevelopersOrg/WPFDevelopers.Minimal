@@ -87,7 +87,7 @@
                             </TextElement.Foreground>
                         </ContentPresenter>
                         <Path x:Name="Blackout" Opacity="0"  Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                              Fill="#FF000000" Stretch="Fill"
+                              Fill="{DynamicResource WindowForegroundColorBrush}" Stretch="Fill"
                               Data="{StaticResource PathBlackout}" />
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -103,7 +103,7 @@
                             <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WhiteSolidColorBrush}"/>
+                            <Setter TargetName="NormalText" Property="TextElement.Foreground" Value="{DynamicResource WindowForegroundColorBrush}"/>
                             <Setter TargetName="SelectedBackground" Property="Opacity" Value="1"/>
                         </Trigger>
                         <Trigger Property="IsInactive" Value="True">
@@ -302,7 +302,7 @@
                       Margin="1,4,1,9"
                       ContentTemplate="{TemplateBinding ContentTemplate}"
                       Content="{TemplateBinding Content}"
-                      TextElement.Foreground="#FF333333"
+                      TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}"
                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
         </Grid>
@@ -342,7 +342,7 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Border Background="{DynamicResource WhiteSolidColorBrush}" 
+                        <Border Background="{DynamicResource BackgroundSolidColorBrush}" 
                                     BorderBrush="{DynamicResource BaseSolidColorBrush}"
                                     BorderThickness="1"
                                     CornerRadius="3" SnapsToDevicePixels="True" UseLayoutRounding="True">
@@ -462,7 +462,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type Calendar}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultCalendar" TargetType="{x:Type Calendar}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="CalendarButtonStyle"
           Value="{StaticResource CalendarButtonStyle}" />
         <Setter Property="CalendarDayButtonStyle"
@@ -471,7 +471,7 @@
           Value="{StaticResource CalendarItemStyle}" />
         <Setter Property="Foreground"
           Value="{DynamicResource PrimaryTextSolidColorBrush}" />
-        <Setter Property="Background" Value="{DynamicResource WhiteSolidColorBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Calendar}">
@@ -507,7 +507,7 @@
                         <Border x:Name="Border" 
                         Grid.ColumnSpan="2" 
                         BorderThickness="1" 
-                        Background="{DynamicResource WhiteSolidColorBrush}" >
+                        Background="{DynamicResource BackgroundSolidColorBrush}" >
                         </Border>
                         <Grid FlowDirection="LeftToRight"
                               HorizontalAlignment="Center" Height="18"  
@@ -543,7 +543,7 @@
                                     Opacity="1"
                                     Grid.Row="1"
                                     Grid.RowSpan="3"
-                                    Background="{DynamicResource WhiteSolidColorBrush}">
+                                    Background="{DynamicResource BackgroundSolidColorBrush}">
                             </Border>
                             <Border x:Name="BackgroundGradient"
                                     BorderBrush="{DynamicResource RegularTextSolidColorBrush}"
@@ -554,7 +554,7 @@
                                     Opacity="1"
                                     Grid.Row="1"
                                     Grid.RowSpan="3"
-                                    Background="{DynamicResource WhiteSolidColorBrush}">
+                                    Background="{DynamicResource BackgroundSolidColorBrush}">
                                 
                             </Border>
                             <Rectangle Grid.ColumnSpan="4" 
@@ -573,14 +573,14 @@
                                   Stretch="Fill"
                                   Data="{StaticResource PathDatePickerDropDown}" />
                             <Ellipse Grid.ColumnSpan="4"
-                     Fill="{DynamicResource WhiteSolidColorBrush}"
+                     Fill="{DynamicResource BackgroundSolidColorBrush}"
                      HorizontalAlignment="Center"
                      Height="3"
                      StrokeThickness="0"
                      VerticalAlignment="Center"
                      Width="3" />
                             <Border x:Name="DisabledVisual"
-                    BorderBrush="{DynamicResource WhiteSolidColorBrush}"
+                    BorderBrush="{DynamicResource BackgroundSolidColorBrush}"
                     BorderThickness="1"
                     Grid.ColumnSpan="4"
                     CornerRadius="0,0,.5,.5"
@@ -594,7 +594,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultDatePickerTextBox" TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
@@ -613,17 +613,12 @@
                             Opacity="1">
                             <Grid x:Name="WatermarkContent"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                <Border x:Name="ContentElement" BorderThickness="1">
-                                    <Border.BorderBrush>
-                                        <SolidColorBrush Color="{DynamicResource WhiteColor}"/>
-                                    </Border.BorderBrush>
-                                </Border>
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  Background="{x:Null}">
                                 <ScrollViewer x:Name="PART_ContentHost" 
                                           Margin="0"
                                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-                                <!--<Border x:Name="FocusVisual" BorderBrush="#FF45D6FA" CornerRadius="1" Opacity="0" IsHitTestVisible="False"/>-->
                             </Grid>
                         </Border>
                     </Grid>
@@ -635,7 +630,7 @@
 
 
 
-    <Style TargetType="{x:Type DatePicker}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultDatePicker" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="IsTodayHighlighted"
           Value="True" />
         <Setter Property="SelectedDateFormat"
@@ -660,8 +655,8 @@
                 Padding="{TemplateBinding Padding}" 
                             CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
                                 x:Name="PART_Border"
-                                BorderBrush="{StaticResource BaseSolidColorBrush}"
-                                Background="{StaticResource WhiteSolidColorBrush}">
+                                BorderBrush="{DynamicResource BaseSolidColorBrush}"
+                                Background="{DynamicResource BackgroundSolidColorBrush}">
 
                         <Grid x:Name="PART_Root"
                 HorizontalAlignment="Stretch"
@@ -693,6 +688,9 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+                        </Trigger>
                         <Trigger Property="IsDropDownOpen" Value="True">
                             <Setter Property="BorderBrush" TargetName="PART_Border" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
                         </Trigger>
@@ -701,5 +699,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <Style TargetType="{x:Type Calendar}" BasedOn="{StaticResource DefaultCalendar}" />
+    <Style TargetType="{x:Type DatePickerTextBox}" BasedOn="{StaticResource DefaultDatePickerTextBox}" />
+    <Style TargetType="{x:Type DatePicker}" BasedOn="{StaticResource DefaultDatePicker}" />
 </ResourceDictionary>

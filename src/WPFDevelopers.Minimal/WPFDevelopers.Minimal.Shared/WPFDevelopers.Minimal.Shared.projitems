@@ -77,7 +77,19 @@
     <None Include="$(MSBuildThisFileDirectory)Styles\Styles.MessageBox.xaml">
       <SubType>Designer</SubType>
     </None>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Hyperlink.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.Loading.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ThemeControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -105,14 +117,58 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Dark.Color.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Light.Color.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Red.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Purple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Orange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Green.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Blue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Light.Pink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\WPFMessageBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\Loading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\WPFLoading.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\MessageBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\WPFMessageBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ControlHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementConvert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MaskAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ObjectNullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\PasswordBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ThemeType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ThemeModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\Loading\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\MessageBox\" />
   </ItemGroup>
 </Project>

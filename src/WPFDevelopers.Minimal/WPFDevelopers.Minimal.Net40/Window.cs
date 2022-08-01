@@ -1,21 +1,14 @@
-﻿using Microsoft.Windows.Shell;
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
+using Microsoft.Windows.Shell;
 
 namespace WPFDevelopers.Minimal.Net40
 {
     public class Window : System.Windows.Window
     {
-
-        public double TitleHeight
-        {
-            get { return (double)GetValue(TitleHeightProperty); }
-            set { SetValue(TitleHeightProperty, value); }
-        }
-
         public static readonly DependencyProperty TitleHeightProperty =
             DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d));
 
@@ -26,12 +19,20 @@ namespace WPFDevelopers.Minimal.Net40
 
         public Window()
         {
-            this.Loaded += Window_Loaded;
+            Loaded += Window_Loaded;
             CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, CloseWindow));
-            CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, MaximizeWindow, CanResizeWindow));
-            CommandBindings.Add(new CommandBinding(SystemCommands.MinimizeWindowCommand, MinimizeWindow, CanMinimizeWindow));
-            CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow, CanResizeWindow));
-            //CommandBindings.Add(new CommandBinding(SystemCommands.ShowSystemMenuCommand, ShowSystemMenu));
+            CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, MaximizeWindow,
+                CanResizeWindow));
+            CommandBindings.Add(new CommandBinding(SystemCommands.MinimizeWindowCommand, MinimizeWindow,
+                CanMinimizeWindow));
+            CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow,
+                CanResizeWindow));
+        }
+
+        public double TitleHeight
+        {
+            get => (double)GetValue(TitleHeightProperty);
+            set => SetValue(TitleHeightProperty, value);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -93,10 +94,12 @@ namespace WPFDevelopers.Minimal.Net40
             public const int SC_MINIMIZE = 0xF020;
             public const int WM_SYSCOMMAND = 0x0112;
         }
+
         private IntPtr hWnd;
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
+
         private IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             if (msg == ApiCodes.WM_SYSCOMMAND)
@@ -114,6 +117,7 @@ namespace WPFDevelopers.Minimal.Net40
                     handled = true;
                 }
             }
+
             return IntPtr.Zero;
         }
 
@@ -123,13 +127,13 @@ namespace WPFDevelopers.Minimal.Net40
             if (element == null)
                 return;
 
-            var point = WindowState == WindowState.Maximized ? new Point(0, element.ActualHeight)
+            var point = WindowState == WindowState.Maximized
+                ? new Point(0, element.ActualHeight)
                 : new Point(Left + BorderThickness.Left, element.ActualHeight + Top + BorderThickness.Top);
             point = element.TransformToAncestor(this).Transform(point);
             SystemCommands.ShowSystemMenu(this, point);
         }
 
         #endregion
-
     }
 }

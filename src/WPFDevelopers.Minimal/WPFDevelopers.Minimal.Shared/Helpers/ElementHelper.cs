@@ -4,6 +4,14 @@ namespace WPFDevelopers.Minimal.Helpers
 {
     public class ElementHelper : DependencyObject
     {
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ElementHelper),
+                new PropertyMetadata(new CornerRadius(3)));
+
+        public static readonly DependencyProperty WatermarkProperty =
+            DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(ElementHelper),
+                new PropertyMetadata("Please input"));
+
         public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
             return (CornerRadius)obj.GetValue(CornerRadiusProperty);
@@ -13,10 +21,6 @@ namespace WPFDevelopers.Minimal.Helpers
         {
             obj.SetValue(CornerRadiusProperty, value);
         }
-
-        public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ElementHelper), new PropertyMetadata(new CornerRadius(3)));
-
 
 
         public static string GetWatermark(DependencyObject obj)
@@ -28,9 +32,5 @@ namespace WPFDevelopers.Minimal.Helpers
         {
             obj.SetValue(WatermarkProperty, value);
         }
-
-        public static readonly DependencyProperty WatermarkProperty =
-            DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(ElementHelper), new PropertyMetadata("Please input"));
-
     }
 }

@@ -5,26 +5,22 @@
                     xmlns:wpfsConvert="clr-namespace:WPFDevelopers.Minimal.Helpers">
 
     <wpfsConvert:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter"/>
-
+   
     <Style TargetType="{x:Type wpfdev:Window}" BasedOn="{x:Null}">
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
-        <Setter Property="Background"  Value="{DynamicResource WhiteSolidColorBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
+        <Setter Property="Background"  Value="{DynamicResource BackgroundSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WindowBorderBrushSolidColorBrush}" />
         <Setter Property="IsTabStop"  Value="False" />
         <Setter Property="BorderThickness" Value="1"/>
-        <!--<Setter Property="ResizeMode" Value="CanResizeWithGrip" />-->
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
         <Setter Property="WindowStyle"  Value="None" />
         <Setter Property="MaxHeight" Value="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}"/>
-        <!--<Setter Property="MaxWidth" Value="{x:Static SystemParameters.MaximizedPrimaryScreenWidth}"/>-->
         <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
-        <!--<Setter Property="RenderOptions.ClearTypeHint" Value="Enabled"/>-->
-        <!--<Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>-->
         <Setter Property="shell:WindowChrome.WindowChrome">
             <Setter.Value>
-                <shell:WindowChrome GlassFrameThickness="0,0,0,1"
+                <shell:WindowChrome GlassFrameThickness="0,0,0,.1"
                                     CaptionHeight="{Binding TitleHeight,RelativeSource={RelativeSource AncestorType=wpfdev:Window}}"/>
             </Setter.Value>
         </Setter>
@@ -52,44 +48,45 @@
                                     RenderOptions.BitmapScalingMode="HighQuality"
                                        Visibility="{TemplateBinding Icon,Converter={StaticResource ObjectNullToVisibilityConverter}}"/>
                                 <TextBlock Text="{TemplateBinding Title}" x:Name="PART_Title" Margin="6,0"
-                                       Foreground="{DynamicResource WhiteSolidColorBrush}" Grid.Column="1"
+                                       Foreground="{TemplateBinding Foreground}" Grid.Column="1"
                                        VerticalAlignment="Center" FontSize="{DynamicResource TitleFontSize}"/>
-                                <WrapPanel Grid.Column="2" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                                <WrapPanel Grid.Column="2" shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                           Margin="0,6">
                                     <WrapPanel x:Name="PART_MinAndMax">
-                                        <Button Name="PART_MinimizeButton"  IsTabStop="False"   Padding="0" Margin="0,6" 
+                                        <Button Name="PART_MinimizeButton"  IsTabStop="False"   Padding="0" 
                                             Style="{DynamicResource WindowButtonStyle}" ToolTip="Minimize"
                                             Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}">
                                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Rectangle x:Name="MinimizeGlyph"  Width="10"  Height="1"   Margin="0 7 0 0" 
-                                                   VerticalAlignment="Bottom" Fill="{DynamicResource WhiteSolidColorBrush}" />
+                                                   VerticalAlignment="Bottom" Fill="{TemplateBinding Foreground}" />
                                             </Grid>
                                         </Button>
                                         <Button Name="PART_MaximizeButton" IsTabStop="False"  Padding="0"
-                                            Style="{DynamicResource WindowButtonStyle}" Margin="0,6"
+                                            Style="{DynamicResource WindowButtonStyle}"
                                             ToolTip="Maximize"
                                             Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}">
                                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Path Width="10" Height="10"
                                               HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                              Data="{DynamicResource PathMetroWindowMaximize}" Fill="{DynamicResource WhiteSolidColorBrush}"
+                                              Data="{DynamicResource PathMetroWindowMaximize}" Fill="{TemplateBinding Foreground}"
                                               Stretch="Fill" UseLayoutRounding="False" />
                                             </Grid>
                                         </Button>
                                         <Button Name="PART_RestoreButton" IsTabStop="False"  Padding="0"
-                                            Style="{DynamicResource WindowButtonStyle}" Margin="0,6"
+                                            Style="{DynamicResource WindowButtonStyle}" 
                                             ToolTip="Restore"
                                             Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}"
                                             Visibility="Collapsed">
                                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Path Width="10" Height="10"
                                               HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                              Data="{DynamicResource PathMetroWindowRestore}" Fill="{DynamicResource WhiteSolidColorBrush}"
+                                              Data="{DynamicResource PathMetroWindowRestore}" Fill="{TemplateBinding Foreground}"
                                               Stretch="Fill" UseLayoutRounding="False" />
                                             </Grid>
                                         </Button>
                                     </WrapPanel>
 
-                                    <Button Name="PART_CloseButton" Margin="0,6" 
+                                    <Button Name="PART_CloseButton" 
                                             ToolTip="Close"
                                             IsTabStop="False" Style="{DynamicResource WindowButtonStyle}"
                                             Command="{Binding Source={x:Static shell:SystemCommands.CloseWindowCommand}}">
@@ -97,13 +94,13 @@
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Data="{DynamicResource PathMetroWindowClose}"
-                              Fill="{DynamicResource WhiteSolidColorBrush}"
+                              Fill="{TemplateBinding Foreground}"
                               Stretch="Fill" />
                                     </Button>
                                 </WrapPanel>
                             </Grid>
                             <AdornerDecorator Grid.Row="1" KeyboardNavigation.IsTabStop="False">
-                                <ContentPresenter x:Name="MainContentPresenter"/>
+                                <ContentPresenter x:Name="MainContentPresenter" ClipToBounds="True"/>
                             </AdornerDecorator>
                             <ResizeGrip x:Name="ResizeGrip" 
                                         HorizontalAlignment="Right" 

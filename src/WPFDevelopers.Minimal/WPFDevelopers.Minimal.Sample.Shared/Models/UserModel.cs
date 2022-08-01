@@ -6,15 +6,17 @@ namespace WPFDevelopers.Minimal.Sample.Models
     public class UserModel : ViewModelBase
     {
         private bool _isChecked;
-        public bool IsChecked 
+
+        public bool IsChecked
         {
-            get { return _isChecked; }
+            get => _isChecked;
             set
             {
                 _isChecked = value;
                 NotifyPropertyChange("IsChecked");
             }
         }
+
         public DateTime Date { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }

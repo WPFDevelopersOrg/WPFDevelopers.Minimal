@@ -16,7 +16,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{DynamicResource WhiteSolidColorBrush}"
+                    <Border Background="{DynamicResource BackgroundSolidColorBrush}"
                             BorderThickness="0,0,0,1"
                             BorderBrush="{DynamicResource BaseSolidColorBrush}">
                         <VisualStateManager.VisualStateGroups>
@@ -57,9 +57,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <!--Style and template for the DataGrid.-->
-    <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultDataGrid" TargetType="{x:Type DataGrid}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
         <Setter Property="BorderThickness" Value="1,1,1,0"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
@@ -82,7 +81,7 @@
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Padding="{TemplateBinding Padding}">
                         <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource WhiteColor}" />
+                            <SolidColorBrush Color="{DynamicResource BackgroundColor}" />
                         </Border.Background>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -177,7 +176,7 @@
     </Style>
 
     <!--Style and template for the DataGridCell.-->
-    <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultDataGridCell" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
@@ -217,7 +216,7 @@
     </Style>
 
     <!--Style and template for the DataGridRow.-->
-    <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultDataGridRow" TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
@@ -238,7 +237,7 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 SnapsToDevicePixels="True" >
                         <Border.Background>
-                            <SolidColorBrush Color="{DynamicResource WhiteColor}"/>
+                            <SolidColorBrush Color="{DynamicResource BackgroundColor}"/>
                         </Border.Background>
 
                         <VisualStateManager.VisualStateGroups>
@@ -444,7 +443,7 @@
     </Style>
 
     <!--Style and template for the DataGridColumnHeader.-->
-    <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultDataGridColumnHeader" TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
@@ -464,7 +463,7 @@
                     </ControlTemplate.Resources>
                     <Grid>
                         <Border x:Name="columnHeaderBorder" 
-                                    Background="{DynamicResource WhiteSolidColorBrush}"
+                                    Background="{DynamicResource BackgroundSolidColorBrush}"
                                     Padding="10"
                                     BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BaseSolidColorBrush}">
                             <Grid Name="HedearGrid">
@@ -527,7 +526,7 @@
     </Style>
 
     <!--Style and template for the DataGridColumnHeadersPresenter.-->
-    <Style TargetType="{x:Type DataGridColumnHeadersPresenter}" BasedOn="{StaticResource ControlBasicStyle}">
+    <Style x:Key="DefaultDataGridColumnHeadersPresenter" TargetType="{x:Type DataGridColumnHeadersPresenter}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeadersPresenter}">
@@ -541,4 +540,9 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource DefaultDataGrid}" />
+    <Style TargetType="{x:Type DataGridColumnHeadersPresenter}" BasedOn="{StaticResource DefaultDataGridColumnHeadersPresenter}" />
+    <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource DefaultDataGridColumnHeader}" />
+    <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DefaultDataGridRow}" />
+    <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource DefaultDataGridCell}" />
 </ResourceDictionary>
