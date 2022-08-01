@@ -449,9 +449,6 @@
 							</ScrollViewer>
 						</Border>
 						<Border Height="1.2" Background="{DynamicResource BackgroundSolidColorBrush}" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="1,0,0,0" Width="{Binding ElementName=Border,Path=ActualWidth}" />
-						<!--<Rectangle Height="1.2" Fill="{DynamicResource BackgroundSolidColorBrush}"
-                        VerticalAlignment="Top" HorizontalAlignment="Left" Margin="1,0"
-                                   Width="{Binding ElementName=Border,Path=ActualWidth}" />-->
 					</Grid>
 				</Popup>
 			</Grid>
@@ -462,8 +459,6 @@
 			</Trigger>
 			<Trigger Property="IsHighlighted" Value="True">
 				<Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" />
-				<!--<Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold"/>-->
-				<!--<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>-->
 			</Trigger>
 			<Trigger Property="IsSubmenuOpen" Value="True">
 				<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
@@ -480,8 +475,6 @@
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsHighlighted" Value="True">
 				<Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" />
-				<!--<Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold"/>-->
-				<!--<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>-->
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
@@ -516,8 +509,6 @@
 			</Trigger>
 			<Trigger Property="IsHighlighted" Value="True">
 				<Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" />
-				<!--<Setter TargetName="HeaderHost" Property="TextElement.FontWeight" Value="Bold"/>-->
-				<!--<Setter TargetName="HeaderHost" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>-->
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
@@ -535,7 +526,7 @@
 				<TextBlock x:Name="InputGestureText" Grid.Column="2" Text="{TemplateBinding InputGestureText}" Margin="5,2,2,2" DockPanel.Dock="Right" />
 				<Path Grid.Column="3" x:Name="PART_Path" Stretch="Fill" Height="12" Width="10" VerticalAlignment="Center" Data="{StaticResource PathMenuItem}" Fill="{TemplateBinding Foreground}" />
 				<Popup x:Name="Popup" Placement="Right" HorizontalOffset="10" VerticalOffset="-4" IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Fade">
-					<Border x:Name="SubmenuBorder" SnapsToDevicePixels="True" Background="{DynamicResource BackgroundSolidColorBrush}" Effect="{DynamicResource PopupShadowDepth}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" Margin="10,0,10,10" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
+					<Border x:Name="SubmenuBorder" SnapsToDevicePixels="True" Background="Transparent" Effect="{DynamicResource PopupShadowDepth}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" Margin="10,0,10,10" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
 						<ScrollViewer CanContentScroll="True" Margin="0,4">
 							<StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
 						</ScrollViewer>
@@ -549,9 +540,6 @@
 			</Trigger>
 			<Trigger Property="IsHighlighted" Value="True">
 				<Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}" />
-				<!--<Setter TargetName="HeaderHost" Property="TextElement.FontWeight" Value="Bold"/>-->
-				<!--<Setter TargetName="HeaderHost" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>-->
-				<!--<Setter TargetName="PART_path" Property="Fill" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>-->
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>

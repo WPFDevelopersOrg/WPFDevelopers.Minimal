@@ -78,9 +78,6 @@
                                        VerticalAlignment="Top" HorizontalAlignment="Left"
                                        BorderThickness="1,0,0,0" 
                                        Width="{Binding ElementName=Border,Path=ActualWidth}"/>
-                        <!--<Rectangle Height="1.2" Fill="{DynamicResource BackgroundSolidColorBrush}"
-                        VerticalAlignment="Top" HorizontalAlignment="Left" Margin="1,0"
-                                   Width="{Binding ElementName=Border,Path=ActualWidth}" />-->
                     </Grid>
                 </Popup>
             </Grid>
@@ -95,8 +92,6 @@
             <Trigger Property="IsHighlighted"
              Value="True">
                 <Setter Property="Background"  Value="{DynamicResource BaseSolidColorBrush}"/>
-                <!--<Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold"/>-->
-                <!--<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>-->
             </Trigger>
             <Trigger Property="IsSubmenuOpen" Value="True">
                 <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
@@ -122,8 +117,6 @@
             <Trigger Property="IsHighlighted"
              Value="True">
                 <Setter Property="Background"  Value="{DynamicResource BaseSolidColorBrush}"/>
-                <!--<Setter TargetName="PART_ContentPresenter" Property="TextElement.FontWeight" Value="Bold"/>-->
-                <!--<Setter TargetName="PART_ContentPresenter" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>-->
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -202,8 +195,6 @@
             <Trigger Property="IsHighlighted"
              Value="True">
                 <Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}"/>
-                <!--<Setter TargetName="HeaderHost" Property="TextElement.FontWeight" Value="Bold"/>-->
-                <!--<Setter TargetName="HeaderHost" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>-->
             </Trigger>
 
         </ControlTemplate.Triggers>
@@ -228,7 +219,7 @@
                         ContentSource="Icon" />
                 <ContentPresenter x:Name="HeaderHost"
                         Grid.Column="1"
-                                  VerticalAlignment="Center"
+                        VerticalAlignment="Center"
                         ContentSource="Header"
                         RecognizesAccessKey="True" />
                 <TextBlock x:Name="InputGestureText"
@@ -254,7 +245,7 @@
              PopupAnimation="Fade">
                     <Border x:Name="SubmenuBorder"
                 SnapsToDevicePixels="True"
-                Background="{DynamicResource BackgroundSolidColorBrush}"
+                Background="Transparent"
                             Effect="{DynamicResource PopupShadowDepth}"
                             BorderBrush="{DynamicResource BaseSolidColorBrush}"
                             BorderThickness="1" Margin="10,0,10,10"
@@ -277,9 +268,6 @@
             <Trigger Property="IsHighlighted"
              Value="True">
                 <Setter Property="Background" Value="{DynamicResource BaseSolidColorBrush}"/>
-                <!--<Setter TargetName="HeaderHost" Property="TextElement.FontWeight" Value="Bold"/>-->
-                <!--<Setter TargetName="HeaderHost" Property="TextElement.Foreground" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>-->
-                <!--<Setter TargetName="PART_path" Property="Fill" Value="{DynamicResource PrimaryPressedSolidColorBrush}"/>-->
             </Trigger>
 
         </ControlTemplate.Triggers>
