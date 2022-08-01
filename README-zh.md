@@ -333,6 +333,11 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                 <PasswordBox />
                     <PasswordBox Margin="10,0" ws:ElementHelper.Watermark="请输入密码"/>
                     <PasswordBox IsEnabled="False"/>
+                       <!--MVVM Binding-->
+                     <PasswordBox ws:PasswordBoxHelper.IsMonitoring="True"
+                         ws:ElementHelper.Watermark="请输入密码"
+                         helpers:PasswordBoxHelper.Attach="True"
+                         helpers:PasswordBoxHelper.Password="{Binding Path=Account.PassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,10"/>
  </WrapPanel>
 ```
 ![PasswordBox](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/PasswordBox.gif)
