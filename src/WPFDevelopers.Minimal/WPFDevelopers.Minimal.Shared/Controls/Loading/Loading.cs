@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -10,13 +11,21 @@ namespace WPFDevelopers.Minimal.Controls
     public static class Loading
     {
         /// <summary>
-        ///     Is Loading Run
+        /// End your current task after loading the control and exiting
+        /// </summary>
+        public static event EventHandler<EventArgs> LoadingQuitEvent;
+        /// <summary>
+        /// Is Loading Run
         /// </summary>
         public static bool IsLoadingRun;
 
         private static Window win;
 
-        public static void Show()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="showOff">Whether to enable the close button</param>
+        public static void Show(bool showOff = false)
         {
             if (Application.Current.Windows.Count > 0)
                 win = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
@@ -26,6 +35,27 @@ namespace WPFDevelopers.Minimal.Controls
                 layer.Children.Add(new Rectangle { Fill = ControlHelper.Brush, Opacity = .7 });
                 var ladoing = new WPFLoading();
                 layer.Children.Add(ladoing);
+                if (showOff)
+                {
+                    var btnClose = new Button()
+                    {
+                        Style = Application.Current.FindResource("PathButton") as Style,
+                        Content = new Path
+                        {
+                            Data = Application.Current.FindResource("PathMetroWindowClose") as Geometry,
+                            Stretch = Stretch.Fill,
+                            Width = 10,
+                            Height = 10,
+                            Fill = Application.Current.Resources["PrimaryTextSolidColorBrush"] as Brush,//ControlHelper.WindowForegroundBrush,
+                        }
+                    };
+                    btnClose.Click += delegate 
+                    {
+                        Close();
+                        LoadingQuitEvent?.Invoke(null, EventArgs.Empty);
+                    };
+                    layer.Children.Add(btnClose);
+                }
                 var original = win.Content as UIElement;
                 win.Content = null;
                 var container = new Grid();
@@ -38,8 +68,10 @@ namespace WPFDevelopers.Minimal.Controls
 
         public static void Close()
         {
+            if (!IsLoadingRun) return;
             if (win == null) return;
             var grid = win.Content as Grid;
+            if (grid == null) return;
             var original = VisualTreeHelper.GetChild(grid, 0) as UIElement;
             grid.Children.Remove(original);
             win.Content = original;

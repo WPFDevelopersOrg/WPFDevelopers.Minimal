@@ -89,6 +89,8 @@
                 <TextBlock Text="Loading" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">
                     <Button Content="Loading" Click="Loading_Click" Style="{DynamicResource PrimaryButton}"/>
+                    <Button Content="LoadingOff" Margin="10,0" Click="LoadingOff_Click" />
+                    <Button Content="LoadingOffTask" Margin="10,0" Click="LoadingOffTask_Click" />
                 </WrapPanel>
                 <TextBlock Text="Button" FontSize="20" Margin="0,20,0,0"/>
                 <WrapPanel Margin="0,10">

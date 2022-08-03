@@ -122,7 +122,46 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
             Loading.Show();
             task.Start();
         }
+        private void LoadingOff_Click(object sender, RoutedEventArgs e)
+        {
+            var task = new Task(() => { Thread.Sleep(5000); });
+            task.ContinueWith(previousTask => { Loading.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
+            Loading.Show(true);
+            task.Start();
+        }
+        /// <summary>
+        /// 此处演示关闭loading停止任务
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadingOffTask_Click(object sender, RoutedEventArgs e)
+        {
+            var tokenSource = new CancellationTokenSource();
+            var cancellationToken = tokenSource.Token;
 
+            var task = new Task(() =>
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    //这里做自己的事情
+                    if (tokenSource.IsCancellationRequested)
+                        return;
+                    Thread.Sleep(1000);
+                }
+            }, cancellationToken);
+            task.ContinueWith(previousTask =>
+            {
+                if (tokenSource.IsCancellationRequested)
+                    return;
+                Loading.Close();
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+            Loading.Show(true);
+            Loading.LoadingQuitEvent += delegate
+            {
+                tokenSource.Cancel();
+            };
+            task.Start();
+        }
         private void LightDark_Checked(object sender, RoutedEventArgs e)
         {
             //var existingResourceDictionary = Application.Current.Resources.MergedDictionaries.FirstOrDefault(x => x.Source == null);
@@ -163,6 +202,9 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
                 view.UserCollection.ToList().ForEach(y => y.IsChecked = isChecked);
         }
 
+
         #endregion
+
+        
     }
 }
