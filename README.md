@@ -228,6 +228,34 @@ task.ContinueWith((previousTask) =>
 WPFDevelopers.Minimal.Controls.Loading.Show();
 task.Start();
 ```
+2）Exit Task    
+``` C#
+var tokenSource = new CancellationTokenSource();
+            var cancellationToken = tokenSource.Token;
+
+            var task = new Task(() =>
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    //这里做自己的事情
+                    if (tokenSource.IsCancellationRequested)
+                        return;
+                    Thread.Sleep(1000);
+                }
+            }, cancellationToken);
+            task.ContinueWith(previousTask =>
+            {
+                if (tokenSource.IsCancellationRequested)
+                    return;
+                Loading.Close();
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+            Loading.Show(true);
+            Loading.LoadingQuitEvent += delegate
+            {
+                tokenSource.Cancel();
+            };
+            task.Start();
+```
 ![Loading](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/loading.gif)  
 
 ### <a id="MessageBox">MessageBox</a>
