@@ -355,6 +355,9 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                 <PasswordBox />
                     <PasswordBox Margin="10,0" ws:ElementHelper.Watermark="请输入密码"/>
                     <PasswordBox IsEnabled="False"/>
+                     <!--水印和密码重叠-->
+                     <PasswordBox Margin="10,0" ws:ElementHelper.Watermark="请输入密码"
+                     ws:PasswordBoxHelper.IsMonitoring="True"/>
                     <!--MVVM Binding-->
                      <PasswordBox ws:PasswordBoxHelper.IsMonitoring="True"
                          ws:ElementHelper.Watermark="请输入密码"
