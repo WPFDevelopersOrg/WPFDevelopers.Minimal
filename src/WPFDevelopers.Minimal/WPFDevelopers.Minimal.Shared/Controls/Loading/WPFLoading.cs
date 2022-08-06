@@ -60,7 +60,7 @@ namespace WPFDevelopers.Minimal.Controls
         {
             _storyboard = new Storyboard();
             _storyboard.RepeatBehavior = RepeatBehavior.Forever;
-            var animation = new DoubleAnimation(0, 45, new Duration(TimeSpan.FromSeconds(1.5)));
+            var animation = new DoubleAnimation(0, Width, new Duration(TimeSpan.FromSeconds(1.5)));
             _storyboard.Children.Add(animation);
             Storyboard.SetTarget(animation, this);
             Storyboard.SetTargetProperty(animation, new PropertyPath(StrokeValueProperty));

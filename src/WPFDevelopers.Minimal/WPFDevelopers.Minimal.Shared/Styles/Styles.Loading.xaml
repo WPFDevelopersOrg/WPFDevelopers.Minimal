@@ -11,6 +11,9 @@
     <Style TargetType="{x:Type wpfsc:WPFLoading}" BasedOn="{StaticResource ControlBasicStyle}">
         <Setter Property="Background"  Value="{x:Null}" />
         <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type wpfsc:WPFLoading}">
@@ -23,12 +26,12 @@
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <Grid Background="{TemplateBinding Background}">
-                        <Ellipse Stroke="{DynamicResource PrimaryNormalSolidColorBrush}"
+                        <Ellipse Stroke="{TemplateBinding BorderBrush}"
                                  x:Name="PART_Ellipse" 
                                  StrokeThickness="2" 
                                  StrokeDashArray="{TemplateBinding StrokeArray}" 
-                                 Height="40" 
-                                 Width="40"
+                                 Height="{TemplateBinding Height}" 
+                                 Width="{TemplateBinding Width}"
                                  RenderTransformOrigin=".5,.5">
                             <Ellipse.RenderTransform>
                                 <RotateTransform Angle="-90"/>

@@ -45,6 +45,7 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
 
         private void MainView_Loaded(object sender, RoutedEventArgs e)
         {
+            myPasswordBox.Password = "WPFDevelopers.Minimal";
             var time = DateTime.Now;
             UserCollection = new ObservableCollection<UserModel>();
             for (var i = 0; i < 4; i++)
@@ -129,6 +130,7 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
             Loading.Show(true);
             task.Start();
         }
+       
         /// <summary>
         /// 此处演示关闭loading停止任务
         /// </summary>
@@ -160,6 +162,13 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
             {
                 tokenSource.Cancel();
             };
+            task.Start();
+        }
+        private void BtnLoading_Click(object sender, RoutedEventArgs e)
+        {
+            var task = new Task(() => { Thread.Sleep(5000); });
+            task.ContinueWith(previousTask => { Loading.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());
+            Loading.Show(btnLoading,18.0d,System.Windows.Media.Brushes.White);
             task.Start();
         }
         private void LightDark_Checked(object sender, RoutedEventArgs e)
@@ -201,6 +210,7 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
             else
                 view.UserCollection.ToList().ForEach(y => y.IsChecked = isChecked);
         }
+
 
 
         #endregion

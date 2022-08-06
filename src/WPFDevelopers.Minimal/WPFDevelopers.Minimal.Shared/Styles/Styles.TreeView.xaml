@@ -137,8 +137,6 @@
                             </Border.RenderTransform>
                             <ItemsPresenter x:Name="ItemsHost"/>
                         </Border>
-                       
-                        <!--<ItemsPresenter x:Name="ItemsHost" Grid.Row="1"/>-->
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" SourceName="PART_Border" Value="True">

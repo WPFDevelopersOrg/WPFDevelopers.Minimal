@@ -19,22 +19,80 @@ namespace WPFDevelopers.Minimal.Controls
         /// </summary>
         public static bool IsLoadingRun;
 
-        private static Window win;
+        private static ContentControl win;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="contentControl">ContentControl</param>
+        /// <param name="size">LoadingSize</param>
+        /// <param name="borderBrush">LoadingBrush</param>
+        public static void Show(ContentControl contentControl,double size = 18d, Brush borderBrush = null)
+        {
+            if (contentControl == null || IsLoadingRun) return;
+            Close();
+            Console.WriteLine($"contentControl.ActualHeight:{contentControl.ActualHeight}");
+            win = contentControl;
+            var original = new Grid();
+            original.Opacity = .4;
+            if (win.Content is UIElement)
+            {
+                var uIElement = win.Content as UIElement;
+                win.Content = null;
+                original.Children.Add(uIElement);
+            }
+            else
+            {
+                if (win.Content.GetType() == typeof(string))
+                {
+                    var text = new TextBlock { Text = win.Content.ToString(),Foreground = win.Foreground };
+                    win.Content = null;
+                    original.Children.Add(new Border { Child = text });
+                }
+            }
 
+            var layer = new Grid();
+            var loading = new WPFLoading();
+            var _size = contentControl.ActualHeight < contentControl.ActualWidth ? contentControl.ActualHeight : contentControl.ActualWidth;
+            size = size < _size / 2 ? size : _size / 2 ;
+            loading.Width = size;
+            loading.Height = size;
+            if (borderBrush != null)
+                loading.BorderBrush = borderBrush;
+            layer.Children.Add(loading);
+            var container = new Grid();
+            container.Children.Add(original);
+            container.Children.Add(layer);
+            win.Content = container;
+            Console.WriteLine($"02win.ActualHeight:{win.ActualHeight}");
+            IsLoadingRun = true;
+          
+
+            //var loading = new WPFLoading();
+            //loading.Width = size;
+            //loading.Height = size;
+            //if (borderBrush != null)
+            //    loading.BorderBrush = borderBrush;
+            //layer.Children.Add(loading);
+
+            //win.Content = layer;
+            //IsLoadingRun = true;
+        }
+       
         /// <summary>
         /// 
         /// </summary>
         /// <param name="showOff">Whether to enable the close button</param>
         public static void Show(bool showOff = false)
         {
+            Close();
             if (Application.Current.Windows.Count > 0)
                 win = Application.Current.Windows.OfType<Window>().FirstOrDefault(o => o.IsActive);
             if (win != null)
             {
                 var layer = new Grid();
                 layer.Children.Add(new Rectangle { Fill = ControlHelper.Brush, Opacity = .7 });
-                var ladoing = new WPFLoading();
-                layer.Children.Add(ladoing);
+                var loading = new WPFLoading();
+                layer.Children.Add(loading);
                 if (showOff)
                 {
                     var btnClose = new Button()
@@ -49,7 +107,7 @@ namespace WPFDevelopers.Minimal.Controls
                             Fill = Application.Current.Resources["PrimaryTextSolidColorBrush"] as Brush,//ControlHelper.WindowForegroundBrush,
                         }
                     };
-                    btnClose.Click += delegate 
+                    btnClose.Click += delegate
                     {
                         Close();
                         LoadingQuitEvent?.Invoke(null, EventArgs.Empty);
@@ -65,7 +123,9 @@ namespace WPFDevelopers.Minimal.Controls
                 IsLoadingRun = true;
             }
         }
-
+        /// <summary>
+        /// Exit Loading
+        /// </summary>
         public static void Close()
         {
             if (!IsLoadingRun) return;
@@ -74,6 +134,7 @@ namespace WPFDevelopers.Minimal.Controls
             if (grid == null) return;
             var original = VisualTreeHelper.GetChild(grid, 0) as UIElement;
             grid.Children.Remove(original);
+            if(original.Opacity != 1)original.Opacity = 1;
             win.Content = original;
             IsLoadingRun = false;
         }
