@@ -62,6 +62,18 @@ Install-Package WPFDevelopers.Minimal
 
 
 ###  第二步：  App.xaml中增加节点：
+
+### 2022/08/28 更新程序 Nuget 版本 3.2.7-预览
+
+1）增加是否打开水印；
+
+2）datagrid和listview列标题居中；
+
+3）增加了 VirtualizingWrapPanel 控件；
+
+4）添加nuget包WPFDevelopers.Minimal.3.2.7-preview； 欢迎下载体验
+
+
 ### 2022/08/06 更新 Nuget 版本 3.2.6-preview  
 1）增加了对在ContentControl中添加Loading的支持； 
 
