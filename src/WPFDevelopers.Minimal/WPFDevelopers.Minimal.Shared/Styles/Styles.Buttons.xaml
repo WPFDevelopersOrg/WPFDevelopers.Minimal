@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:wpfs="clr-namespace:WPFDevelopers.Minimal.Helpers">
+                    xmlns:helpers="clr-namespace:WPFDevelopers.Minimal.Helpers">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
@@ -12,7 +12,7 @@
         <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="wpfs:ElementHelper.CornerRadius" Value="3"/>
+        <Setter Property="helpers:ElementHelper.CornerRadius" Value="3"/>
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="20,10" />
         <Setter Property="Cursor" Value="Hand"/>
@@ -59,7 +59,7 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Border Name="PART_Border" 
-                                CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" 
+                                CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" 
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 Background="{TemplateBinding Background}">
@@ -143,7 +143,7 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Border x:Name="PART_Border" 
-                                CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
+                                CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 Background="{TemplateBinding Background}"/>

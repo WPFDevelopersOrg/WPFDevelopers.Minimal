@@ -1,4 +1,6 @@
-﻿namespace WPFDevelopers.Minimal.Models
+﻿using WPFDevelopers.Minimal.Helpers;
+
+namespace WPFDevelopers.Minimal.Controls
 {
     public class ThemeModel : ViewModelBase
     {

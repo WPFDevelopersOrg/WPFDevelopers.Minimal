@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:wpfsConvert="clr-namespace:WPFDevelopers.Minimal.Helpers"
+                    xmlns:converts="clr-namespace:WPFDevelopers.Minimal.Converts"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
@@ -8,7 +8,7 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml"/>
         <ResourceDictionary Source="Styles.ScrollBar.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    <wpfsConvert:DoubleMinConverter x:Key="DoubleMinConverter"/>
+    <converts:DoubleMinConverter x:Key="DoubleMinConverter"/>
     <!--Style and template for the button in the upper left corner of the DataGrid.-->
     <Style x:Key="DefaultDataGridSelectAllButtonStyle"
            TargetType="{x:Type Button}" 
@@ -404,7 +404,7 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontWeight" Value="ExtraBlack"/>
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>

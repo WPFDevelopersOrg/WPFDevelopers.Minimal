@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:wpfs="clr-namespace:WPFDevelopers.Minimal.Helpers">
+                    xmlns:helpers="clr-namespace:WPFDevelopers.Minimal.Helpers">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
@@ -67,11 +67,11 @@
                     </ControlTemplate.Resources>
                     <Border x:Name="PART_Border" 
                             Background="{DynamicResource BaseSolidColorBrush}"
-                            CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
                         <Grid ClipToBounds="True">
                             <Border x:Name="PART_Track"/>
                             <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
-                                <Border x:Name="Indicator" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Foreground}"/>
+                                <Border x:Name="Indicator" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Foreground}"/>
                             </Decorator>
                             <Rectangle x:Name="ScaleXBorder" Visibility="Collapsed"
                                        Fill="{DynamicResource PrimaryNormalSolidColorBrush}">

@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:wpfs="clr-namespace:WPFDevelopers.Minimal.Helpers"
+                    xmlns:helpers="clr-namespace:WPFDevelopers.Minimal.Helpers"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <ResourceDictionary.MergedDictionaries>
@@ -249,7 +249,7 @@
                             Effect="{DynamicResource PopupShadowDepth}"
                             BorderBrush="{DynamicResource BaseSolidColorBrush}"
                             BorderThickness="1" Margin="10,0,10,10"
-                            CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
                         <ScrollViewer CanContentScroll="True" Margin="0,4">
                             <StackPanel IsItemsHost="True"
                         KeyboardNavigation.DirectionalNavigation="Cycle" />

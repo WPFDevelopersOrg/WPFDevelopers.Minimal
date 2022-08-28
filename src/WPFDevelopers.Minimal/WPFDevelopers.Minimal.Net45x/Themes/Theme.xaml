@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" po:Freeze="True" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:wpfs="clr-namespace:WPFDevelopers.Minimal.Helpers" xmlns:wpfdev="clr-namespace:WPFDevelopers.Minimal.Net45x" xmlns:wpfsc="clr-namespace:WPFDevelopers.Minimal.Controls" xmlns:model="clr-namespace:WPFDevelopers.Minimal.Models">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" po:Freeze="True" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:helpers="clr-namespace:WPFDevelopers.Minimal.Helpers" xmlns:wpfdev="clr-namespace:WPFDevelopers.Minimal.Net45x" xmlns:converts="clr-namespace:WPFDevelopers.Minimal.Converts" xmlns:controls="clr-namespace:WPFDevelopers.Minimal.Controls">
 	<Color x:Key="SecondaryTextColor" po:Freeze="True">#909399</Color>
 	<Color x:Key="PlaceholderTextColor" po:Freeze="True">#C0C4CC</Color>
 	<Color x:Key="NormalColor" po:Freeze="True">#409EFF</Color>
@@ -92,14 +92,14 @@
 	<sys:Double x:Key="MinDataGridRowHeight">48</sys:Double>
 	<DropShadowEffect x:Key="NormalShadowDepth" BlurRadius="5" ShadowDepth="1" Direction="270" Color="#AA000000" Opacity=".42" RenderingBias="Performance" />
 	<BooleanToVisibilityConverter x:Key="bool2VisibilityConverter" />
-	<wpfs:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter" />
+	<converts:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter" />
 	<sys:Double x:Key="ThumbWidth">16</sys:Double>
 	<sys:Double x:Key="ThumbCornerRadius">8</sys:Double>
 	<sys:Double x:Key="RepeatButtonSize">5</sys:Double>
 	<ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
 		<Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
 	</ControlTemplate>
-	<wpfs:DoubleMinConverter x:Key="DoubleMinConverter" />
+	<converts:DoubleMinConverter x:Key="DoubleMinConverter" />
 	<Thickness x:Key="BorderThickness">0,0,0,2</Thickness>
 	<Style x:Key="TreeViewItemFocusVisual">
 		<Setter Property="Control.Template">
@@ -164,7 +164,7 @@
 		<Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="wpfs:ElementHelper.CornerRadius" Value="3" />
+		<Setter Property="helpers:ElementHelper.CornerRadius" Value="3" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Padding" Value="20,10" />
 		<Setter Property="Cursor" Value="Hand" />
@@ -197,7 +197,7 @@
 								</VisualState>
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<Border Name="PART_Border" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
+						<Border Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
 						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 					</Grid>
 					<ControlTemplate.Triggers>
@@ -244,7 +244,7 @@
 								</VisualState>
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<Border x:Name="PART_Border" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
+						<Border x:Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" />
 						<ContentPresenter x:Name="PART_ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" RecognizesAccessKey="True" TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}" />
 					</Grid>
 					<ControlTemplate.Triggers>
@@ -528,7 +528,7 @@
 				<TextBlock x:Name="InputGestureText" Grid.Column="2" Text="{TemplateBinding InputGestureText}" Margin="5,2,2,2" DockPanel.Dock="Right" />
 				<Path Grid.Column="3" x:Name="PART_Path" Stretch="Fill" Height="12" Width="10" VerticalAlignment="Center" Data="{StaticResource PathMenuItem}" Fill="{TemplateBinding Foreground}" />
 				<Popup x:Name="Popup" Placement="Right" HorizontalOffset="10" VerticalOffset="-4" IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Fade">
-					<Border x:Name="SubmenuBorder" SnapsToDevicePixels="True" Background="Transparent" Effect="{DynamicResource PopupShadowDepth}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" Margin="10,0,10,10" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
+					<Border x:Name="SubmenuBorder" SnapsToDevicePixels="True" Background="Transparent" Effect="{DynamicResource PopupShadowDepth}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" Margin="10,0,10,10" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
 						<ScrollViewer CanContentScroll="True" Margin="0,4">
 							<StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
 						</ScrollViewer>
@@ -1312,7 +1312,7 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TextBox}">
-					<Border Name="PART_Border" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{DynamicResource BaseSolidColorBrush}">
+					<Border Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{DynamicResource BaseSolidColorBrush}">
 						<Border.Background>
 							<SolidColorBrush Color="{DynamicResource BackgroundColor}" />
 						</Border.Background>
@@ -1329,17 +1329,25 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Grid Margin="{TemplateBinding Padding}">
-							<TextBlock x:Name="PART_TextBlockWatermark" Text="{Binding Path=(wpfs:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="7.5,0" Visibility="Collapsed" />
+							<TextBlock x:Name="PART_TextBlockWatermark" Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="7.5,0" Visibility="Collapsed" />
 							<ScrollViewer x:Name="PART_ContentHost" />
 						</Grid>
 					</Border>
 					<ControlTemplate.Triggers>
-						<Trigger Property="Text" Value="">
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="Text" Value="" />
+								<Condition Property="helpers:ElementHelper.IsWatermark" Value="True" />
+							</MultiTrigger.Conditions>
 							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
-						</Trigger>
-						<Trigger Property="Text" Value="{x:Null}">
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="Text" Value="{x:Null}" />
+								<Condition Property="helpers:ElementHelper.IsWatermark" Value="True" />
+							</MultiTrigger.Conditions>
 							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
-						</Trigger>
+						</MultiTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -1439,14 +1447,14 @@
 								<Grid.RenderTransform>
 									<ScaleTransform ScaleY="0" />
 								</Grid.RenderTransform>
-								<Border Background="{DynamicResource BackgroundSolidColorBrush}" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" Effect="{StaticResource PopupShadowDepth}" />
-								<Border Name="PART_DropDownBorder" Background="{DynamicResource BackgroundSolidColorBrush}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+								<Border Background="{DynamicResource BackgroundSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" Effect="{StaticResource PopupShadowDepth}" />
+								<Border Name="PART_DropDownBorder" Background="{DynamicResource BackgroundSolidColorBrush}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
 								<ScrollViewer Padding="0,8" ScrollViewer.VerticalScrollBarVisibility="Auto">
 									<ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
 								</ScrollViewer>
 							</Grid>
 						</Popup>
-						<Border x:Name="PART_Border" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" SnapsToDevicePixels="True" />
+						<Border x:Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" SnapsToDevicePixels="True" />
 					</Grid>
 					<ControlTemplate.Triggers>
 						<Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
@@ -1472,7 +1480,7 @@
 							<Setter Property="ScrollViewer.CanContentScroll" Value="False" />
 						</Trigger>
 						<Trigger SourceName="PART_Popup" Property="AllowsTransparency" Value="True">
-							<Setter TargetName="PART_DropDownBorder" Property="CornerRadius" Value="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" />
+							<Setter TargetName="PART_DropDownBorder" Property="CornerRadius" Value="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" />
 							<Setter TargetName="PART_DropDownBorder" Property="Margin" Value="0,2,0,0" />
 						</Trigger>
 						<Trigger Property="ComboBox.IsEditable" Value="True">
@@ -2295,7 +2303,7 @@
 		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
@@ -2552,12 +2560,12 @@
 		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="Padding" Value="6,0" />
 		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="wpfs:PasswordBoxHelper.IsMonitoring" Value="True" />
+		<Setter Property="helpers:PasswordBoxHelper.IsMonitoring" Value="True" />
 		<Setter Property="SelectionBrush" Value="{DynamicResource WindowBorderBrushSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type PasswordBox}">
-					<Border x:Name="PART_Border" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{DynamicResource BaseSolidColorBrush}">
+					<Border x:Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderBrush="{DynamicResource BaseSolidColorBrush}">
 						<Border.Background>
 							<SolidColorBrush Color="{DynamicResource BackgroundColor}" />
 						</Border.Background>
@@ -2573,14 +2581,18 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<Grid Margin="{TemplateBinding Padding}">
-							<TextBlock x:Name="PART_TextBlockWatermark" Text="{Binding Path=(wpfs:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="7.5,0" Visibility="Collapsed" />
+							<TextBlock x:Name="PART_TextBlockWatermark" Text="{Binding Path=(helpers:ElementHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}}" Foreground="{DynamicResource RegularTextSolidColorBrush}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" FontSize="{StaticResource NormalFontSize}" Margin="7.5,0" Visibility="Collapsed" />
 							<ScrollViewer x:Name="PART_ContentHost" />
 						</Grid>
 					</Border>
 					<ControlTemplate.Triggers>
-						<Trigger Property="wpfs:PasswordBoxHelper.PasswordLength" Value="0">
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="helpers:PasswordBoxHelper.PasswordLength" Value="0" />
+								<Condition Property="helpers:ElementHelper.IsWatermark" Value="True" />
+							</MultiTrigger.Conditions>
 							<Setter Property="Visibility" TargetName="PART_TextBlockWatermark" Value="Visible" />
-						</Trigger>
+						</MultiTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -2995,7 +3007,7 @@ RenderTransformOrigin=".5,.5">
 		</Setter>
 	</Style>
 	<Style x:Key="DefaultGridViewColumnHeader" TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="HorizontalContentAlignment" Value="Center" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
@@ -3120,11 +3132,11 @@ RenderTransformOrigin=".5,.5">
 							</PointAnimationUsingKeyFrames>
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<Border x:Name="PART_Border" Background="{DynamicResource BaseSolidColorBrush}" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
+					<Border x:Name="PART_Border" Background="{DynamicResource BaseSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
 						<Grid ClipToBounds="True">
 							<Border x:Name="PART_Track" />
 							<Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
-								<Border x:Name="Indicator" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Foreground}" />
+								<Border x:Name="Indicator" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Foreground}" />
 							</Decorator>
 							<Rectangle x:Name="ScaleXBorder" Visibility="Collapsed" Fill="{DynamicResource PrimaryNormalSolidColorBrush}">
 								<Rectangle.RenderTransform>
@@ -3280,7 +3292,7 @@ RenderTransformOrigin=".5,.5">
 	</Style>
 	<Style TargetType="{x:Type TreeView}" BasedOn="{StaticResource DefaultTreeView}" />
 	<Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource DefaultTreeViewItem}" />
-	<Style TargetType="{x:Type wpfsc:WPFMessageBox}">
+	<Style TargetType="{x:Type controls:WPFMessageBox}">
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
@@ -3295,7 +3307,7 @@ RenderTransformOrigin=".5,.5">
 		<Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type wpfsc:WPFMessageBox}">
+				<ControlTemplate TargetType="{x:Type controls:WPFMessageBox}">
 					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
 						<Grid>
 							<Grid.RowDefinitions>
@@ -3329,7 +3341,7 @@ RenderTransformOrigin=".5,.5">
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style TargetType="{x:Type wpfsc:WPFLoading}" BasedOn="{StaticResource ControlBasicStyle}">
+	<Style TargetType="{x:Type controls:WPFLoading}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="Background" Value="{x:Null}" />
 		<Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
@@ -3337,7 +3349,7 @@ RenderTransformOrigin=".5,.5">
 		<Setter Property="Height" Value="40" />
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type wpfsc:WPFLoading}">
+				<ControlTemplate TargetType="{x:Type controls:WPFLoading}">
 					<ControlTemplate.Resources>
 						<Storyboard x:Key="StarStoryboard" RepeatBehavior="Forever">
 							<DoubleAnimation Duration="0:0:1.5" To="360" Storyboard.TargetName="PART_Ellipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" />
@@ -3364,11 +3376,11 @@ RenderTransformOrigin=".5,.5">
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style TargetType="{x:Type wpfsc:ThemeControl}">
+	<Style TargetType="{x:Type controls:ThemeControl}">
 		<Setter Property="Template">
 			<Setter.Value>
-				<ControlTemplate TargetType="{x:Type wpfsc:ThemeControl}">
-					<ItemsControl ItemsSource="{Binding ItemsSource,RelativeSource={RelativeSource AncestorType=wpfsc:ThemeControl}}">
+				<ControlTemplate TargetType="{x:Type controls:ThemeControl}">
+					<ItemsControl ItemsSource="{Binding ItemsSource,RelativeSource={RelativeSource AncestorType=controls:ThemeControl}}">
 						<ItemsControl.ItemTemplate>
 							<DataTemplate>
 								<RadioButton Height="40" Width="40" Margin="4,0" Cursor="Hand" IsChecked="{Binding IsChecked}">
@@ -3425,7 +3437,7 @@ RenderTransformOrigin=".5,.5">
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DatePicker}">
-					<Border BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="PART_Border" BorderBrush="{DynamicResource BaseSolidColorBrush}" Background="{DynamicResource BackgroundSolidColorBrush}">
+					<Border BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="PART_Border" BorderBrush="{DynamicResource BaseSolidColorBrush}" Background="{DynamicResource BackgroundSolidColorBrush}">
 						<Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
 							<Button x:Name="PART_Button" Foreground="{TemplateBinding Foreground}" Focusable="False" Margin="3,0,3,0" Style="{StaticResource DropDownButtonStyle}" VerticalAlignment="Top" />
 							<DatePickerTextBox x:Name="PART_TextBox" Grid.Column="1" Foreground="{TemplateBinding Foreground}" Focusable="True" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="34,2,2,2" Background="Transparent" />

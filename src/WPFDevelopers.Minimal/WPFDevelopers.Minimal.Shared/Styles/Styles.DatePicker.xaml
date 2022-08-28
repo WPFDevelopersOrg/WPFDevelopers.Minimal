@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:wpfs="clr-namespace:WPFDevelopers.Minimal.Helpers">
+                    xmlns:helpers="clr-namespace:WPFDevelopers.Minimal.Helpers">
     
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml"/>
@@ -653,7 +653,7 @@
                 <ControlTemplate TargetType="{x:Type DatePicker}">
                     <Border BorderThickness="{TemplateBinding BorderThickness}"
                 Padding="{TemplateBinding Padding}" 
-                            CornerRadius="{Binding Path=(wpfs:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
+                            CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}"
                                 x:Name="PART_Border"
                                 BorderBrush="{DynamicResource BaseSolidColorBrush}"
                                 Background="{DynamicResource BackgroundSolidColorBrush}">

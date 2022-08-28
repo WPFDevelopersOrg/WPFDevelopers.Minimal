@@ -7,7 +7,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WPFDevelopers.Minimal.Helpers;
-using WPFDevelopers.Minimal.Models;
 
 namespace WPFDevelopers.Minimal.Controls
 {

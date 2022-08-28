@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace WPFDevelopers.Minimal.Helpers
+namespace WPFDevelopers.Minimal.Converts
 {
     public class ObjectNullToVisibilityConverter : IValueConverter
     {

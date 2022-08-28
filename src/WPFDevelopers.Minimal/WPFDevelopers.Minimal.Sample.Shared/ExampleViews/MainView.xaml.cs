@@ -10,7 +10,6 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
 using WPFDevelopers.Minimal.Controls;
 using WPFDevelopers.Minimal.Helpers;
-using WPFDevelopers.Minimal.Models;
 using WPFDevelopers.Minimal.Sample.Models;
 using MessageBox = WPFDevelopers.Minimal.Controls.MessageBox;
 using Window = WPFDevelopers.Minimal.Net40.Window;
@@ -215,6 +214,10 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
 
         #endregion
 
-        
+
+        private void btnVirtualizingWrapPanel_Click(object sender, RoutedEventArgs e)
+        {
+            new VirtualizingWrapPanelExample().Show();
+        }
     }
 }

@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace WPFDevelopers.Minimal.Helpers
+namespace WPFDevelopers.Minimal.Converts
 {
     public class WidthConvert : IValueConverter
     {

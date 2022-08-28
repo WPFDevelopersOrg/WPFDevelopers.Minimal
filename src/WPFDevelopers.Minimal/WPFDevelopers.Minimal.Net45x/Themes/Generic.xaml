@@ -1,10 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
                     xmlns:wpfdev="clr-namespace:WPFDevelopers.Minimal.Net45x"
-                    xmlns:wpfsConvert="clr-namespace:WPFDevelopers.Minimal.Helpers">
+                    xmlns:converts="clr-namespace:WPFDevelopers.Minimal.Converts">
 
 
-    <wpfsConvert:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter"/>
+    <converts:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter"/>
     <Style x:Key="WPFDevelopersWindow" TargetType="{x:Type wpfdev:Window}" BasedOn="{x:Null}">
         <Setter Property="Foreground" Value="{DynamicResource WindowForegroundColorBrush}" />
         <Setter Property="Background"  Value="{DynamicResource BackgroundSolidColorBrush}" />

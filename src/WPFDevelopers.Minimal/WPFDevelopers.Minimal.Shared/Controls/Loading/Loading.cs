@@ -30,7 +30,6 @@ namespace WPFDevelopers.Minimal.Controls
         {
             if (contentControl == null || IsLoadingRun) return;
             Close();
-            Console.WriteLine($"contentControl.ActualHeight:{contentControl.ActualHeight}");
             win = contentControl;
             var original = new Grid();
             original.Opacity = .4;
