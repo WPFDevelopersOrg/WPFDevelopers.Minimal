@@ -152,23 +152,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\Loading.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Loading\WPFLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\MessageBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\WPFMessageBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\VirtualizingWrapPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ControlHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementConvert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\ElementConvert.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MaskAdorner.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ObjectNullToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\ObjectNullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\PasswordBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ThemeType.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\ThemeModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\ViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Controls\Loading\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controls\MessageBox\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Converts\" />
   </ItemGroup>
 </Project>
