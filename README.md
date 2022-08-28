@@ -114,6 +114,11 @@ Added the following:
     </Application.Resources>
 ```
 ###  Step 3: add namespace；
+Nuget Version >= 3.2.7-preview
+
+`xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal"` 
+
+Nuget Version < 3.2.7-preview
 
 `xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"`  
 
