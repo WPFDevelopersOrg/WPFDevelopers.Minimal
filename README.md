@@ -60,6 +60,12 @@ Install-Package WPFDevelopers.Minimal
 
 
 ###  Step 2：  App. Add node in Xaml；
+
+### 2022/08/28 Updater Nuget Version 3.2.7-preview
+1) Increase whether to open the watermark; 
+2) datagrid and listview column headers are centered; 
+3) Add the nuget package WPFDevelopers.Minimal.3.2.7-preview; welcome to download and experience
+
 ### 2022/08/06 Updater Nuget Version 3.2.6-preview
 1) Added support for adding Loading in ContentControl; 
 2) Repair the issues; 
