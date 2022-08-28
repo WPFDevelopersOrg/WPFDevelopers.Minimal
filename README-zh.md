@@ -132,6 +132,13 @@ Install-Package WPFDevelopers.Minimal
 ```
 ###  第三步：添加命名空间：
 
+Nuget 包版本 >= 3.2.7-preview
+
+`xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal"` 
+
+Nuget 包版本 < 3.2.7-preview
+
+`xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"`  
 `xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"`  
 
 ### 使用方法   
