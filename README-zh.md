@@ -73,6 +73,10 @@ Install-Package WPFDevelopers.Minimal
 
 4）添加nuget包WPFDevelopers.Minimal.3.2.7-preview； 欢迎下载体验
 
+**修改命名空间**
+``` XAML
+    xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal" 
+```
 
 ### 2022/08/06 更新 Nuget 版本 3.2.6-preview  
 1）增加了对在ContentControl中添加Loading的支持； 
