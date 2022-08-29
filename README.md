@@ -67,6 +67,10 @@ Install-Package WPFDevelopers.Minimal
 3) Added VirtualizingWrapPanel control; 
 4) Add the nuget package WPFDevelopers.Minimal.3.2.7-preview; welcome to download and experience
 
+``` XAML
+    xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal" 
+```
+
 ### 2022/08/06 Updater Nuget Version 3.2.6-preview
 1) Added support for adding Loading in ContentControl; 
 2) Repair the issues; 
