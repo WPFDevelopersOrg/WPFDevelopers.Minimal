@@ -219,5 +219,15 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
         {
             new VirtualizingWrapPanelExample().Show();
         }
+
+        private void Quit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            new AboutWindow().Show();
+        }
     }
 }

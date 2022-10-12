@@ -19,6 +19,14 @@
     </Window.Resources>
     <ScrollViewer>
         <Grid Margin="20,10">
+            <ws:NotifyIcon Title="WPF开发者">
+                <ws:NotifyIcon.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="关于" Click="About_Click"/>
+                        <MenuItem Header="退出" Click="Quit_Click"/>
+                    </ContextMenu>
+                </ws:NotifyIcon.ContextMenu>
+            </ws:NotifyIcon>
             <VirtualizingStackPanel>
                 <WrapPanel Margin="0,10">
                     <Image Source="/WPFDevelopers.Minimal.Sample.Net40;component/Resources/WPFDevelopers.Minimal.png"

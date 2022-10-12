@@ -97,7 +97,9 @@
 	<sys:Double x:Key="ThumbCornerRadius">8</sys:Double>
 	<sys:Double x:Key="RepeatButtonSize">5</sys:Double>
 	<ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
-		<Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+		<Border Focusable="False" Background="{TemplateBinding Background}">
+			<ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Background="Transparent" />
+		</Border>
 	</ControlTemplate>
 	<converts:DoubleMinConverter x:Key="DoubleMinConverter" />
 	<Thickness x:Key="BorderThickness">0,0,0,2</Thickness>
@@ -440,7 +442,7 @@
 	</Style>
 	<ControlTemplate x:Key="TopLevelHeaderTemplateKey" TargetType="{x:Type MenuItem}">
 		<Border x:Name="Border" SnapsToDevicePixels="True" Background="{TemplateBinding Background}" BorderThickness="1,1,1,0" BorderBrush="{TemplateBinding BorderBrush}">
-			<Grid Margin="{TemplateBinding Padding}">
+			<Grid Background="Transparent">
 				<ContentPresenter Margin="6,3,6,3" VerticalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True" x:Name="PART_ContentPresenter" />
 				<Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsSubmenuOpen}" PlacementTarget="{Binding ElementName=Border}" AllowsTransparency="True" Focusable="False">
 					<Grid Margin="10,0,10,10">
@@ -469,7 +471,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="TopLevelItemTemplateKey" TargetType="{x:Type MenuItem}">
 		<Border x:Name="Border" SnapsToDevicePixels="True" Background="{TemplateBinding Background}">
-			<Grid Margin="{TemplateBinding Padding}">
+			<Grid Background="Transparent">
 				<ContentPresenter Margin="6,3,6,3" VerticalAlignment="Center" ContentSource="Header" RecognizesAccessKey="True" x:Name="PART_ContentPresenter" />
 			</Grid>
 		</Border>
@@ -481,7 +483,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SubmenuItemTemplateKey" TargetType="{x:Type MenuItem}">
 		<Border x:Name="Border" SnapsToDevicePixels="True" Background="{TemplateBinding Background}">
-			<Grid Margin="{TemplateBinding Padding}">
+			<Grid Background="Transparent">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
 					<ColumnDefinition Width="*" />
@@ -515,7 +517,7 @@
 	</ControlTemplate>
 	<ControlTemplate x:Key="SubmenuHeaderTemplateKey" TargetType="{x:Type MenuItem}">
 		<Border x:Name="Border" SnapsToDevicePixels="True" Background="{TemplateBinding Background}">
-			<Grid Margin="{TemplateBinding Padding}">
+			<Grid Background="Transparent">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" SharedSizeGroup="Icon" />
 					<ColumnDefinition Width="*" />
@@ -545,7 +547,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="DefaultMenuItem" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="Height" Value="34" />
+		<Setter Property="MinHeight" Value="34" />
 		<Setter Property="Padding" Value="10,0" />
 		<Setter Property="Cursor" Value="Hand" />
 		<Style.Triggers>
@@ -1401,6 +1403,7 @@
 		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ComboBox}">
@@ -1412,7 +1415,7 @@
 							<DoubleAnimation Storyboard.TargetName="PART_DropDown" Storyboard.TargetProperty="(Grid.RenderTransform).(ScaleTransform.ScaleY)" To="0" Duration="00:00:.2" EasingFunction="{StaticResource ExponentialEaseOut}" />
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<Grid>
+					<Grid Width="{TemplateBinding Width}">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CommonStates">
 								<VisualState x:Name="Normal" />
@@ -1429,18 +1432,8 @@
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
 						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Style="{x:Null}" Grid.Column="2" Focusable="False" ClickMode="Press" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
-						<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" HorizontalAlignment="Left" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="4,3,30,3" />
-						<!--<TextBox x:Name="PART_EditableTextBox"  
-                                 HorizontalAlignment="Left"
-                                 Margin="2,3,30,3"
-                                 Focusable="True"
-                                 Background="Transparent" 
-                                 Visibility="Hidden"  
-                                 Text="{TemplateBinding ComboBox.SelectionBoxItem}"
-                                 Template="{StaticResource ComboBoxTextBox}"
-                                 IsReadOnly="{TemplateBinding IsReadOnly}" />-->
-						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3,3,30,3" Focusable="True" Background="Transparent" Visibility="Hidden" IsReadOnly="{TemplateBinding IsReadOnly}" />
-						<!--SelectionBrush="{DynamicResource PrimaryNormalSolidColorBrush}"/>-->
+						<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="14.5,3,30,3" />
+						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="14.5,3,30,3" Focusable="True" Background="{TemplateBinding Background}" Visibility="Hidden" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="{TemplateBinding IsReadOnly}" />
 						<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" StaysOpen="False">
 							<Grid x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
 								<Grid.RenderTransform>
@@ -1505,34 +1498,6 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ComboBoxItem}">
 					<Grid>
-						<!--<VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="SelectionStates">
-                                <VisualState x:Name="Unselected">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="PART_ContentPresenter" 
-                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{DynamicResource RegularTextColor}"
-                                                        Duration="00:00:.1"/>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Selected">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="PART_RectangleSelected" 
-                                                        Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
-                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{DynamicResource BaseColor}"
-                                                        Duration="00:00:.3"/>
-                                        <ColorAnimation Storyboard.TargetName="PART_ContentPresenter" 
-                                                        Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                        EasingFunction="{StaticResource ExponentialEaseOut}"
-                                                        To="{DynamicResource PrimaryPressedColor}"
-                                                        Duration="00:00:.1"/>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="SelectedUnfocused"/>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>-->
 						<Rectangle x:Name="PART_RectangleMouseOver" Fill="{DynamicResource BackgroundSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
 						<Rectangle x:Name="PART_RectangleSelected" Fill="{DynamicResource BaseSolidColorBrush}" Visibility="Collapsed" SnapsToDevicePixels="True" UseLayoutRounding="True" />
 						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentPresenter" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}" />
@@ -1562,9 +1527,6 @@
 						<Trigger Property="IsFocused" Value="True">
 							<Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource DefaultBackgroundSolidColorBrush}" />
 						</Trigger>
-						<!--<Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="{StaticResource DisabledOpacity}"/>
-                        </Trigger>-->
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -2129,7 +2091,7 @@
 	</Style>
 	<Style x:Key="DefaultDataGridCell" TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource ControlBasicStyle}">
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -2243,7 +2205,7 @@
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="Background" Value="Transparent" />
-		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type DataGridRowHeader}">
@@ -2302,7 +2264,7 @@
 		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
 		<Setter Property="BorderThickness" Value="0,0,0,1" />
@@ -3006,7 +2968,7 @@ RenderTransformOrigin=".5,.5">
 		</Setter>
 	</Style>
 	<Style x:Key="DefaultGridViewColumnHeader" TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="FontWeight" Value="ExtraBlack" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />

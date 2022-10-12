@@ -17,6 +17,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ExampleViews\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)ExampleViews\VirtualizingWrapPanelExample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -29,6 +33,9 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ExampleViews\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
