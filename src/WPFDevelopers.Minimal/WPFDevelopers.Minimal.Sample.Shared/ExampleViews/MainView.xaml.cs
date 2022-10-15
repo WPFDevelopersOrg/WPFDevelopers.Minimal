@@ -229,5 +229,10 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
         {
             new AboutWindow().Show();
         }
+
+        private void SendMessage_Click(object sender, RoutedEventArgs e)
+        {
+            NotifyIcon.ShowBalloonTip("Message", " Welcome to WPFDevelopers.Minimal ",NotifyIconInfoType.None);
+        }
     }
 }
