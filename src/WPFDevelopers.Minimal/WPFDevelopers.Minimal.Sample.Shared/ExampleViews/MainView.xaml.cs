@@ -34,8 +34,15 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
         {
             InitializeComponent();
             Loaded += MainView_Loaded;
+            Closing += MainWindow_Closing;
         }
-
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBox.Show("是否退出当前系统?", "询问", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
+            {
+                e.Cancel = true;
+            }
+        }
         public ObservableCollection<ThemeModel> ThemesCollection
         {
             get => (ObservableCollection<ThemeModel>)GetValue(ThemesCollectionProperty);
@@ -233,6 +240,12 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
             NotifyIcon.ShowBalloonTip("Message", " Welcome to WPFDevelopers.Minimal ",NotifyIconInfoType.None);
+        }
+
+        private void Twink_Click(object sender, RoutedEventArgs e)
+        {
+            WpfNotifyIcon.IsTwink = !WpfNotifyIcon.IsTwink;
+            menuItemTwink.IsChecked = WpfNotifyIcon.IsTwink;
         }
     }
 }
