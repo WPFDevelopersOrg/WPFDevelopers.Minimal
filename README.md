@@ -46,6 +46,9 @@
 | net5.0-windows  | ✅ |
 | net6.0-windows  | ✅ |
 
+# __Please use the preview version for the latest__
+
+
 ###  Preview  
 
 ![light](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/0.png)  
