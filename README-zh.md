@@ -45,6 +45,8 @@
 | net5.0-windows  | ✅ |
 | net6.0-windows  | ✅ |
 
+# __最新请使用预览版Nuget包__
+
 ###  效果展示  
 
 ![light](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/0.png)  
