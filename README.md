@@ -46,7 +46,7 @@
 | net5.0-windows  | ✅ |
 | net6.0-windows  | ✅ |
 
-# __Please use the preview version for the latest__
+# __Please use the preview Nuget package for the latest__
 
 
 ###  Preview  
