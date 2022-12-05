@@ -361,23 +361,23 @@
 								<TextBlock Text="{TemplateBinding Title}" x:Name="PART_Title" Margin="6,0" Foreground="{TemplateBinding Foreground}" Grid.Column="1" VerticalAlignment="Center" FontSize="{DynamicResource TitleFontSize}" />
 								<WrapPanel Grid.Column="2" WindowChrome.IsHitTestVisibleInChrome="True" Margin="0,6">
 									<WrapPanel x:Name="PART_MinAndMax">
-										<Button Name="PART_MinimizeButton" IsTabStop="False" Padding="0" Style="{DynamicResource WindowButtonStyle}" ToolTip="Minimize" Command="SystemCommands.MinimizeWindowCommand">
+										<Button Name="PART_MinimizeButton" IsTabStop="False" Padding="0" Style="{DynamicResource WindowButtonStyle}" Command="SystemCommands.MinimizeWindowCommand">
 											<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 												<Rectangle x:Name="MinimizeGlyph" Width="10" Height="1" Margin="0 7 0 0" VerticalAlignment="Bottom" Fill="{TemplateBinding Foreground}" />
 											</Grid>
 										</Button>
-										<Button Name="PART_MaximizeButton" IsTabStop="False" Padding="0" Style="{DynamicResource WindowButtonStyle}" ToolTip="Maximize" Command="SystemCommands.MaximizeWindowCommand">
+										<Button Name="PART_MaximizeButton" IsTabStop="False" Padding="0" Style="{DynamicResource WindowButtonStyle}" Command="SystemCommands.MaximizeWindowCommand">
 											<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 												<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource PathMetroWindowMaximize}" Fill="{TemplateBinding Foreground}" Stretch="Fill" UseLayoutRounding="False" />
 											</Grid>
 										</Button>
-										<Button Name="PART_RestoreButton" IsTabStop="False" Padding="0" Style="{DynamicResource WindowButtonStyle}" ToolTip="Restore" Command="SystemCommands.RestoreWindowCommand" Visibility="Collapsed">
+										<Button Name="PART_RestoreButton" IsTabStop="False" Padding="0" Style="{DynamicResource WindowButtonStyle}" Command="SystemCommands.RestoreWindowCommand" Visibility="Collapsed">
 											<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 												<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource PathMetroWindowRestore}" Fill="{TemplateBinding Foreground}" Stretch="Fill" UseLayoutRounding="False" />
 											</Grid>
 										</Button>
 									</WrapPanel>
-									<Button Name="PART_CloseButton" ToolTip="Close" IsTabStop="False" Style="{DynamicResource WindowButtonStyle}" Command="SystemCommands.CloseWindowCommand">
+									<Button Name="PART_CloseButton" IsTabStop="False" Style="{DynamicResource WindowButtonStyle}" Command="SystemCommands.CloseWindowCommand">
 										<Path Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center" Data="{DynamicResource PathMetroWindowClose}" Fill="{TemplateBinding Foreground}" Stretch="Fill" />
 									</Button>
 								</WrapPanel>

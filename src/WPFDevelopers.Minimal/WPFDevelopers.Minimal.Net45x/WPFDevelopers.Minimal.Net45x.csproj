@@ -12,6 +12,7 @@
     <FileVersion>1.0.0.1</FileVersion>
     <Version>1.0.0.1</Version>
     <RepositoryUrl>https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal</RepositoryUrl>
+	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
     <OutputPath></OutputPath>

@@ -54,7 +54,7 @@
                                            Margin="0,6">
                                     <WrapPanel x:Name="PART_MinAndMax">
                                         <Button Name="PART_MinimizeButton"  IsTabStop="False"   Padding="0" 
-                                            Style="{DynamicResource WindowButtonStyle}" ToolTip="Minimize"
+                                            Style="{DynamicResource WindowButtonStyle}" 
                                             Command="{Binding Source={x:Static shell:SystemCommands.MinimizeWindowCommand}}">
                                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Rectangle x:Name="MinimizeGlyph"  Width="10"  Height="1"   Margin="0 7 0 0" 
@@ -63,7 +63,6 @@
                                         </Button>
                                         <Button Name="PART_MaximizeButton" IsTabStop="False"  Padding="0"
                                             Style="{DynamicResource WindowButtonStyle}"
-                                            ToolTip="Maximize"
                                             Command="{Binding Source={x:Static shell:SystemCommands.MaximizeWindowCommand}}">
                                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Path Width="10" Height="10"
@@ -74,7 +73,6 @@
                                         </Button>
                                         <Button Name="PART_RestoreButton" IsTabStop="False"  Padding="0"
                                             Style="{DynamicResource WindowButtonStyle}" 
-                                            ToolTip="Restore"
                                             Command="{Binding Source={x:Static shell:SystemCommands.RestoreWindowCommand}}"
                                             Visibility="Collapsed">
                                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -87,7 +85,6 @@
                                     </WrapPanel>
 
                                     <Button Name="PART_CloseButton" 
-                                            ToolTip="Close"
                                             IsTabStop="False" Style="{DynamicResource WindowButtonStyle}"
                                             Command="{Binding Source={x:Static shell:SystemCommands.CloseWindowCommand}}">
                                         <Path Width="10" Height="10"

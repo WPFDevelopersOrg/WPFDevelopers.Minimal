@@ -46,6 +46,9 @@
 | net5.0-windows  | ✅ |
 | net6.0-windows  | ✅ |
 
+# __Please use the preview Nuget package for the latest__
+
+
 ###  Preview  
 
 ![light](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/0.png)  
@@ -133,6 +136,7 @@ Nuget Version < 3.2.7-preview
 ### Usage Method 
 
 [DataSource](#DataSource)     
+[NotifyIcon](#NotifyIcon)   
 [Window](#Window)   
 [Loading](#Loading)   
 [MessageBox](#MessageBox)   
@@ -234,6 +238,50 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
     }
 }
 ```
+### <a id="NotifyIcon">NotifyIcon</a>
+1）XAML
+``` XML
+ <ws:NotifyIcon Title="WPF开发者" Name="WpfNotifyIcon">
+                <ws:NotifyIcon.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="托盘消息" Click="SendMessage_Click"/>
+                        <MenuItem Header="闪烁" Name="menuItemTwink"  Click="Twink_Click"/>
+                        <MenuItem Header="关于" Click="About_Click">
+                            <MenuItem.Icon>
+                                <Path Data="{StaticResource PathWarning}" 
+                                      Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
+                                      Stretch="Uniform" Height="20" Width="20"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="退出" Click="Quit_Click"/>
+                    </ContextMenu>
+                </ws:NotifyIcon.ContextMenu>
+            </ws:NotifyIcon>
+```
+2）CS code  
+``` C#
+private void Quit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            new AboutWindow().Show();
+        }
+
+        private void SendMessage_Click(object sender, RoutedEventArgs e)
+        {
+            NotifyIcon.ShowBalloonTip("Message", " Welcome to WPFDevelopers.Minimal ",NotifyIconInfoType.None);
+        }
+
+        private void Twink_Click(object sender, RoutedEventArgs e)
+        {
+            WpfNotifyIcon.IsTwink = !WpfNotifyIcon.IsTwink;
+            menuItemTwink.IsChecked = WpfNotifyIcon.IsTwink;
+        }
+```
+![NotifyIcon](https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopersResource/NotifyIcon.gif)
 
 ### <a id="Window">Window</a>
 

@@ -35,8 +35,15 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
         {
             InitializeComponent();
             Loaded += MainView_Loaded;
+            Closing += MainWindow_Closing;
         }
-
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBox.Show("是否退出当前系统?", "询问", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK)
+            {
+                e.Cancel = true;
+            }
+        }
         public ObservableCollection<ThemeModel> ThemesCollection
         {
             get => (ObservableCollection<ThemeModel>)GetValue(ThemesCollectionProperty);
