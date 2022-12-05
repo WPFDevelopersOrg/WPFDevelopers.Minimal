@@ -50,8 +50,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFDevelopers.Minimal, Version=3.2.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.Minimal.3.2.8.1-preview\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
+    <Reference Include="WPFDevelopers.Minimal, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFDevelopers.Minimal.1.0.0.1-preview\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

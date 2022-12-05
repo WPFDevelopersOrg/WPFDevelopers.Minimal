@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Minimal.Controls"
                     xmlns:helpers="clr-namespace:WPFDevelopers.Minimal.Helpers">
     
     <ResourceDictionary.MergedDictionaries>
@@ -12,6 +13,7 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="4"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TreeView">
@@ -20,7 +22,7 @@
                             Background="{DynamicResource BackgroundSolidColorBrush}">
                         <ScrollViewer Focusable="False"
                                       CanContentScroll="False" 
-                                      Padding="4">
+                                      Padding="{TemplateBinding Padding}">
                             <ItemsPresenter />
                         </ScrollViewer>
                     </Border>
@@ -35,7 +37,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Grid Width="15" Height="13" Background="Transparent">
+                    <controls:SmallPanel Width="15" Height="13" Background="Transparent">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
                                 <VisualState x:Name="Checked">
@@ -55,7 +57,7 @@
                                 <VisualState x:Name="Indeterminate" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        
+
                         <Path x:Name="Expanded"
                               Stretch="Fill" Height="10" Width="6"
                               Data="{StaticResource PathNext}"
@@ -67,7 +69,7 @@
                                 <RotateTransform/>
                             </Path.RenderTransform>
                         </Path>
-                    </Grid>
+                    </controls:SmallPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -158,7 +160,7 @@
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" TargetName="PART_Border" Value="{DynamicResource BackgroundSolidColorBrush}"/>
                         </MultiTrigger>
-                       
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using WPFDevelopers.Minimal.Controls;
 using WPFDevelopers.Minimal.Helpers;
@@ -233,6 +234,25 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
         private void SendMessage_Click(object sender, RoutedEventArgs e)
         {
             NotifyIcon.ShowBalloonTip("Message", " Welcome to WPFDevelopers.Minimal ",NotifyIconInfoType.None);
+        }
+        private void tbGrayscale_Checked(object sender, RoutedEventArgs e)
+        {
+            Create(0);
+        }
+        void Create(double to)
+        {
+            var sineEase = new SineEase() { EasingMode = EasingMode.EaseOut };
+            var doubleAnimation = new DoubleAnimation
+            {
+                To = to,
+                Duration = TimeSpan.FromMilliseconds(1000),
+                EasingFunction = sineEase
+            };
+            grayscaleEffect.BeginAnimation(GrayscaleEffect.FactorProperty, doubleAnimation);
+        }
+        private void tbGrayscale_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Create(1);
         }
     }
 }

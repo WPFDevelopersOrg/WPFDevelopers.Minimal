@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 
@@ -70,4 +71,23 @@ namespace WPFDevelopers.Minimal.Helpers
             OnSubThemeChanged();
         }
     }
+    #region 是否设计时模式
+    public class DesignerHelper
+    {
+        private static bool? _isInDesignMode;
+
+        public static bool IsInDesignMode
+        {
+            get
+            {
+                if (!_isInDesignMode.HasValue)
+                {
+                    _isInDesignMode = (bool)DependencyPropertyDescriptor.FromProperty(DesignerProperties.IsInDesignModeProperty,
+                        typeof(FrameworkElement)).Metadata.DefaultValue;
+                }
+                return _isInDesignMode.Value;
+            }
+        }
+    }
+    #endregion
 }

@@ -10,6 +10,9 @@
         Icon="/WPFDevelopers.Minimal.Sample.Net40;component/Resources/WPFDevelopers.Minimal.png"
         Height="{x:Static app:App.Height}" Width="{x:Static app:App.Wdith}"
         WindowStartupLocation="CenterScreen" Title="WPFDevelopers.Minimal">
+    <ws:Window.Effect>
+        <ws:GrayscaleEffect x:Name="grayscaleEffect" Factor="1"/>
+    </ws:Window.Effect>
     <Window.Resources>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
@@ -59,6 +62,11 @@
                     </StackPanel>
 
                 </WrapPanel>
+                <TextBlock Text="开启程序灰度" FontSize="20" Margin="0,20,0,0"/>
+                <ToggleButton Margin="10" Name="tbGrayscale" 
+                              Checked="tbGrayscale_Checked"
+                              Unchecked="tbGrayscale_Unchecked"
+                              HorizontalAlignment="Left"/>
                 <TextBlock Text="Theme" FontSize="20" Margin="0,20,0,0"/>
                 <ws:ThemeControl Margin="0,10" ItemsSource="{Binding ThemesCollection,RelativeSource={RelativeSource AncestorType=local:MainView},Mode=OneWayToSource}"/>
                 <TextBlock Text="Light | Dark" FontSize="20" Margin="0,20,0,0"/>

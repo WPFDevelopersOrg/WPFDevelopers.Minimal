@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:controls="clr-namespace:WPFDevelopers.Minimal.Controls"
                     xmlns:helpers="clr-namespace:WPFDevelopers.Minimal.Helpers">
 
     <ResourceDictionary.MergedDictionaries>
@@ -32,7 +33,6 @@
                         <RotateTransform Angle="0"/>
                     </Path.RenderTransform>
                 </Path>
-
             </Grid>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">
@@ -88,6 +88,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}"/>
+        <Setter Property="Padding" Value="14.5,3,30,3"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -105,7 +106,7 @@
                                                          EasingFunction="{StaticResource ExponentialEaseOut}"/>
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Grid Width="{TemplateBinding Width}">
+                    <controls:SmallPanel Width="{TemplateBinding Width}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -140,7 +141,7 @@
                             ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Margin="14.5,3,30,3">
+                            Margin="{TemplateBinding Padding}">
                         </ContentPresenter>
                         <TextBox x:Name="PART_EditableTextBox" 
                                  Style="{x:Null}"
@@ -189,7 +190,7 @@
                                 BorderBrush="{DynamicResource BaseSolidColorBrush}"
                                 BorderThickness="1"  SnapsToDevicePixels="True"/>
 
-                    </Grid>
+                    </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
                             <Trigger.EnterActions>
@@ -240,7 +241,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                    <Grid>
+                    <controls:SmallPanel>
                         <Rectangle x:Name="PART_RectangleMouseOver" 
                                    Fill="{DynamicResource BackgroundSolidColorBrush}"
                                    SnapsToDevicePixels="True" UseLayoutRounding="True"/>
@@ -255,7 +256,7 @@
                                           x:Name="PART_ContentPresenter" 
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}"/>
-                    </Grid>
+                    </controls:SmallPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_RectangleMouseOver" Property="Fill" Value="{DynamicResource DefaultBackgroundSolidColorBrush}"/>
