@@ -242,6 +242,11 @@ namespace WPFDevelopers.Minimal.Sample.ExampleViews
         {
             NotifyIcon.ShowBalloonTip("Message", " Welcome to WPFDevelopers.Minimal ",NotifyIconInfoType.None);
         }
+        private void Twink_Click(object sender, RoutedEventArgs e)
+        {
+            WpfNotifyIcon.IsTwink = !WpfNotifyIcon.IsTwink;
+            menuItemTwink.IsChecked = WpfNotifyIcon.IsTwink;
+        }
         private void tbGrayscale_Checked(object sender, RoutedEventArgs e)
         {
             Create(0);

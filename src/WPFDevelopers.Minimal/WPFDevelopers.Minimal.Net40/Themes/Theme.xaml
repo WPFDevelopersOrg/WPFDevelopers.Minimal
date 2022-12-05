@@ -2946,14 +2946,7 @@
 							</Border.Background>
 							<ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
 						</Border>
-						<!--<Rectangle x:Name="PART_Rectangle" Height="2" VerticalAlignment="Bottom"
-Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
-RenderTransformOrigin=".5,.5">
-                            <Rectangle.RenderTransform>
-                                <ScaleTransform ScaleX="0" ScaleY="1"/>
-                            </Rectangle.RenderTransform>
-                        </Rectangle>-->
-					</Grid>
+					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
