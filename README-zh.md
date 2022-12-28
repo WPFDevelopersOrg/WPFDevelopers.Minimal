@@ -67,43 +67,6 @@ Install-Package WPFDevelopers.Minimal
 
 ###  第二步：  App.xaml中增加节点：
 
-### 2022/08/28 更新程序 Nuget 版本 3.2.7-预览
-
-1）增加是否打开水印；
-
-2）datagrid和listview列标题居中；
-
-3）增加了 VirtualizingWrapPanel 控件；
-
-4）添加nuget包WPFDevelopers.Minimal.3.2.7-preview； 欢迎下载体验
-
-**修改命名空间**
-``` XAML
-    xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal" 
-```
-
-### 2022/08/06 更新 Nuget 版本 3.2.6-preview  
-1）增加了对在ContentControl中添加Loading的支持； 
-
-2）修复问题； 
-
-3）添加nuget包WPFDevelopers.Minimal.3.2.6-preview；
-
-欢迎下载体验  
-
-### 2022/08/01 更新 Nuget 版本 3.2.5-preview
-添加了以下内容： 
-
-1） Loading 关闭后，发送事件通知，停止任务；  
-
-2）修复问题； 
-
-3）添加nuget包WPFDevelopers.Minimal.3.2.5-preview；
-
-欢迎下载体验  
-
-### 2022/06/20 更新 Nuget 版本 3.2.4
-### App.xaml 添加命名空间 
 `    xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal" `
 ``` XAML
     <Application.Resources>
@@ -117,37 +80,9 @@ Install-Package WPFDevelopers.Minimal
         </ResourceDictionary>
     </Application.Resources>
 ```
-### Nuget 版本等于 3.2.3
-``` XAML
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
-```
-### Nuget 版本小于 3.2.3
-``` XAML
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
-```
 ###  第三步：添加命名空间：
 
-Nuget 包版本 >= 3.2.7-preview
-
 `xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal"` 
-
-Nuget 包版本 < 3.2.7-preview
-
-`xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"`  
-`xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"`  
 
 ### 使用方法   
 
