@@ -68,28 +68,6 @@ Install-Package WPFDevelopers.Minimal
 
 ###  Step 2：  App. Add node in Xaml；
 
-### 2022/08/28 Updater Nuget Version 3.2.7-preview
-1) Increase whether to open the watermark; 
-2) datagrid and listview column headers are centered; 
-3) Added VirtualizingWrapPanel control; 
-4) Add the nuget package WPFDevelopers.Minimal.3.2.7-preview; welcome to download and experience
-
-``` XAML
-    xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal" 
-```
-
-### 2022/08/06 Updater Nuget Version 3.2.6-preview
-1) Added support for adding Loading in ContentControl; 
-2) Repair the issues; 
-3) Add the nuget package WPFDevelopers.Minimal.3.2.6-preview; welcome to download and experience
-
-### 2022/08/01 Updater Nuget Version 3.2.5-preview
-Added the following: 
-1) After the Loading is closed, send an event to…
-… the Task, and the Task will close the sample by itself; 
-2) Repair the issues; 
-3) Add the nuget package WPFDevelopers.Minimal.3.2.5-preview; welcome to download and experience
-### 2022/06/20 Updater Nuget Version 3.2.4
 ``` XAML
     xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal" 
     <Application.Resources>
@@ -103,37 +81,9 @@ Added the following:
         </ResourceDictionary>
     </Application.Resources>
 ```
-### Nuget Version = 3.2.3
-``` XAML
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
-```
-### Nuget Version < 3.2.3
-``` XAML
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
-```
 ###  Step 3: add namespace；
-Nuget Version >= 3.2.7-preview
 
 `xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal"` 
-
-Nuget Version < 3.2.7-preview
-
-`xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal"`  
-
-### Usage Method 
 
 [DataSource](#DataSource)     
 [NotifyIcon](#NotifyIcon)   
