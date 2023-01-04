@@ -9,6 +9,7 @@ namespace WPFDevelopers.Minimal.Net40
 {
     public class Window : System.Windows.Window
     {
+        private WindowStyle _windowStyle;
         public static readonly DependencyProperty TitleHeightProperty =
             DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d));
 
@@ -28,7 +29,11 @@ namespace WPFDevelopers.Minimal.Net40
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow,
                 CanResizeWindow));
         }
-
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            _windowStyle = WindowStyle;
+        }
         public double TitleHeight
         {
             get => (double)GetValue(TitleHeightProperty);
@@ -106,7 +111,9 @@ namespace WPFDevelopers.Minimal.Net40
             {
                 if (wParam.ToInt32() == ApiCodes.SC_MINIMIZE)
                 {
-                    WindowStyle = WindowStyle.SingleBorderWindow;
+                    _windowStyle = WindowStyle;
+                    if (WindowStyle != WindowStyle.SingleBorderWindow)
+                        WindowStyle = WindowStyle.SingleBorderWindow;
                     WindowState = WindowState.Minimized;
                     handled = true;
                 }
@@ -114,6 +121,8 @@ namespace WPFDevelopers.Minimal.Net40
                 {
                     WindowState = WindowState.Normal;
                     WindowStyle = WindowStyle.None;
+                    if (WindowStyle.None != _windowStyle)
+                        WindowStyle = _windowStyle;
                     handled = true;
                 }
             }

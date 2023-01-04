@@ -8,6 +8,7 @@
         xmlns:model="clr-namespace:WPFDevelopers.Minimal.Sample.Models"
         xmlns:converts="clr-namespace:WPFDevelopers.Minimal.Sample.Converts"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow"
         Title="System V1.0" Height="450" Width="900">
     <Window.Resources>
         <model:HospitalList x:Key="myHospitalList"/>
