@@ -51,7 +51,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFDevelopers.Minimal, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.Minimal.1.0.0.1-preview\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
+      <HintPath>..\packages\WPFDevelopers.Minimal.1.0.0.2-preview\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -394,6 +394,9 @@
 							<Setter Property="Visibility" Value="Collapsed" TargetName="PART_MaximizeButton" />
 							<Setter Property="Margin" TargetName="LayoutRoot" Value="7" />
 						</Trigger>
+						<Trigger Property="WindowStyle" Value="ToolWindow">
+							<Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
+						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
 								<Condition Property="ResizeMode" Value="CanResizeWithGrip" />
@@ -401,13 +404,13 @@
 							</MultiTrigger.Conditions>
 							<Setter TargetName="ResizeGrip" Property="Visibility" Value="Visible" />
 						</MultiTrigger>
-						<MultiTrigger>
-							<MultiTrigger.Conditions>
-								<Condition Property="ResizeMode" Value="NoResize" />
-								<Condition Property="WindowStyle" Value="ToolWindow" />
-							</MultiTrigger.Conditions>
-							<Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
-						</MultiTrigger>
+						<!--<MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ResizeMode"  Value="NoResize" />
+                                <Condition Property="WindowStyle"  Value="ToolWindow" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_MinAndMax" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>-->
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
@@ -1454,6 +1457,8 @@
 		<Setter Property="MinHeight" Value="{StaticResource MinHeight}" />
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BaseSolidColorBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="Background" Value="{DynamicResource BackgroundSolidColorBrush}" />
 		<Setter Property="Padding" Value="14.5,3,30,3" />
 		<Setter Property="Template">
@@ -1483,22 +1488,21 @@
 								<VisualState x:Name="Uneditable" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Style="{x:Null}" Grid.Column="2" Focusable="False" ClickMode="Press" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+						<Border x:Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True" />
+						<ToggleButton x:Name="PART_ToggleButton" Template="{StaticResource ComboBoxToggleButton}" Style="{x:Null}" Focusable="False" ClickMode="Press" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
 						<ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" />
-						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="14.5,3,30,3" Focusable="True" Background="{TemplateBinding Background}" Visibility="Hidden" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="{TemplateBinding IsReadOnly}" />
+						<TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" Template="{StaticResource ComboBoxTextBox}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Focusable="True" Background="{TemplateBinding Background}" Visibility="Hidden" SelectionBrush="{DynamicResource WindowBorderBrushSolidColorBrush}" IsReadOnly="{TemplateBinding IsReadOnly}" />
 						<Popup x:Name="PART_Popup" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" StaysOpen="False">
-							<Grid x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
-								<Grid.RenderTransform>
+							<controls:SmallPanel x:Name="PART_DropDown" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" Margin="24,2,24,24" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}" RenderTransformOrigin=".5,0" SnapsToDevicePixels="True">
+								<controls:SmallPanel.RenderTransform>
 									<ScaleTransform ScaleY="0" />
-								</Grid.RenderTransform>
-								<Border Background="{DynamicResource BackgroundSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" Effect="{StaticResource PopupShadowDepth}" />
-								<Border Name="PART_DropDownBorder" Background="{DynamicResource BackgroundSolidColorBrush}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
-								<ScrollViewer Padding="0,8" ScrollViewer.VerticalScrollBarVisibility="Auto">
+								</controls:SmallPanel.RenderTransform>
+								<Border Name="PART_DropDownBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+								<ScrollViewer Margin="0,8" ScrollViewer.VerticalScrollBarVisibility="Auto">
 									<ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
 								</ScrollViewer>
-							</Grid>
+							</controls:SmallPanel>
 						</Popup>
-						<Border x:Name="PART_Border" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{DynamicResource BaseSolidColorBrush}" BorderThickness="1" SnapsToDevicePixels="True" />
 					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<Trigger SourceName="PART_ToggleButton" Property="IsChecked" Value="True">
@@ -1543,6 +1547,7 @@
 		<Setter Property="Margin" Value="1,0" />
 		<Setter Property="Cursor" Value="Hand" />
 		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="FontSize" Value="{Binding FontSize, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
 		<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
@@ -1550,7 +1555,7 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ComboBoxItem}">
 					<controls:SmallPanel>
-						<Rectangle x:Name="PART_RectangleMouseOver" Fill="{DynamicResource BackgroundSolidColorBrush}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+						<Rectangle x:Name="PART_RectangleMouseOver" Fill="{TemplateBinding Background}" SnapsToDevicePixels="True" UseLayoutRounding="True" />
 						<Rectangle x:Name="PART_RectangleSelected" Fill="{DynamicResource BaseSolidColorBrush}" Visibility="Collapsed" SnapsToDevicePixels="True" UseLayoutRounding="True" />
 						<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentPresenter" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" TextElement.Foreground="{DynamicResource RegularTextSolidColorBrush}" />
 					</controls:SmallPanel>
@@ -3085,67 +3090,37 @@
 	<Style TargetType="{x:Type GridViewColumnHeader}" BasedOn="{StaticResource DefaultGridViewColumnHeader}" />
 	<Style TargetType="{x:Type ListView}" BasedOn="{StaticResource DefaultListView}" />
 	<Style x:Key="DefaultProgressBar" TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource ControlBasicStyle}">
-		<Setter Property="Foreground">
-			<Setter.Value>
-				<DrawingBrush Viewport="0,0,20,6" TileMode="Tile" ViewportUnits="Absolute" Stretch="None">
-					<DrawingBrush.Transform>
-						<TransformGroup>
-							<RotateTransform Angle="20" />
-							<TranslateTransform X="0" />
-						</TransformGroup>
-					</DrawingBrush.Transform>
-					<DrawingBrush.Drawing>
-						<GeometryDrawing>
-							<GeometryDrawing.Brush>
-								<LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-									<GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0" />
-									<GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0.5" />
-									<GradientStop Color="Transparent" Offset="0.5" />
-									<GradientStop Color="Transparent" Offset="1" />
-								</LinearGradientBrush>
-							</GeometryDrawing.Brush>
-							<GeometryDrawing.Geometry>
-								<RectangleGeometry Rect="0,0,20,6" />
-							</GeometryDrawing.Geometry>
-						</GeometryDrawing>
-					</DrawingBrush.Drawing>
-				</DrawingBrush>
-			</Setter.Value>
-		</Setter>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
 		<Setter Property="Height" Value="6" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type ProgressBar}">
 					<ControlTemplate.Resources>
-						<Storyboard x:Key="LoadedStoryboard" RepeatBehavior="Forever">
-							<DoubleAnimation Storyboard.TargetProperty="(Border.Background).(Brush.Transform).(TransformGroup.Children)[1].(TranslateTransform.X)" Storyboard.TargetName="Indicator" From="0" To="21" Duration="00:00:0.45" />
-						</Storyboard>
 						<Storyboard x:Key="IsIndeterminate" RepeatBehavior="Forever">
-							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" Storyboard.TargetName="ScaleXBorder">
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" Storyboard.TargetName="PART_Rectangle">
 								<EasingDoubleKeyFrame KeyTime="0" Value="0.3" />
 								<EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.3" />
 								<EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.3" />
 							</DoubleAnimationUsingKeyFrames>
-							<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="ScaleXBorder">
+							<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="PART_Rectangle">
 								<EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5" EasingFunction="{StaticResource SineEaseOut}" />
 								<EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5" />
 								<EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5" EasingFunction="{StaticResource SineEaseOut}" />
 							</PointAnimationUsingKeyFrames>
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<Border x:Name="PART_Border" Background="{DynamicResource BaseSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}">
-						<controls:SmallPanel ClipToBounds="True">
-							<Border x:Name="PART_Track" />
-							<Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
-								<Border x:Name="Indicator" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Foreground}" />
-							</Decorator>
-							<Rectangle x:Name="ScaleXBorder" Visibility="Collapsed" Fill="{DynamicResource PrimaryNormalSolidColorBrush}">
-								<Rectangle.RenderTransform>
-									<ScaleTransform />
-								</Rectangle.RenderTransform>
-							</Rectangle>
-						</controls:SmallPanel>
-					</Border>
+					<controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
+						<Border x:Name="PART_Border" Background="{DynamicResource BaseSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" />
+						<Rectangle x:Name="PART_Track" />
+						<Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
+							<Border x:Name="Indicator" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Foreground}" />
+						</Decorator>
+						<Rectangle x:Name="PART_Rectangle" Visibility="Collapsed" Fill="{DynamicResource PrimaryNormalSolidColorBrush}">
+							<Rectangle.RenderTransform>
+								<ScaleTransform />
+							</Rectangle.RenderTransform>
+						</Rectangle>
+					</controls:SmallPanel>
 					<ControlTemplate.Triggers>
 						<Trigger Property="Orientation" Value="Vertical">
 							<Setter Property="Height" Value="{x:Static sys:Double.NaN}" />
@@ -3157,21 +3132,54 @@
 						</Trigger>
 						<Trigger Property="IsIndeterminate" Value="True">
 							<Trigger.EnterActions>
-								<BeginStoryboard Storyboard="{StaticResource IsIndeterminate}" />
+								<BeginStoryboard x:Name="IndeterminateStoryboard" Storyboard="{StaticResource IsIndeterminate}" />
 							</Trigger.EnterActions>
 							<Setter Property="Visibility" TargetName="PART_Indicator" Value="Collapsed" />
-							<Setter Property="Visibility" TargetName="ScaleXBorder" Value="Visible" />
+							<Setter Property="Visibility" TargetName="PART_Rectangle" Value="Visible" />
 							<Setter Property="CornerRadius" TargetName="PART_Border" Value="0" />
+							<Trigger.ExitActions>
+								<StopStoryboard BeginStoryboardName="IndeterminateStoryboard" />
+							</Trigger.ExitActions>
+						</Trigger>
+						<Trigger Property="helpers:ElementHelper.IsStripe" Value="True">
+							<Setter Property="Foreground">
+								<Setter.Value>
+									<DrawingBrush Viewport="0,0,20,6" TileMode="Tile" ViewportUnits="Absolute" Stretch="None">
+										<DrawingBrush.Transform>
+											<TransformGroup>
+												<RotateTransform Angle="20" />
+												<TranslateTransform X="0" />
+											</TransformGroup>
+										</DrawingBrush.Transform>
+										<DrawingBrush.Drawing>
+											<GeometryDrawing>
+												<GeometryDrawing.Brush>
+													<LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+														<GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0" />
+														<GradientStop Color="{DynamicResource PrimaryNormalColor}" Offset="0.5" />
+														<GradientStop Color="Transparent" Offset="0.5" />
+														<GradientStop Color="Transparent" Offset="1" />
+													</LinearGradientBrush>
+												</GeometryDrawing.Brush>
+												<GeometryDrawing.Geometry>
+													<RectangleGeometry Rect="0,0,20,6" />
+												</GeometryDrawing.Geometry>
+											</GeometryDrawing>
+										</DrawingBrush.Drawing>
+									</DrawingBrush>
+								</Setter.Value>
+							</Setter>
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="LoadedBeginStoryboard">
+									<Storyboard RepeatBehavior="Forever">
+										<DoubleAnimation Storyboard.TargetProperty="(Border.Background).(Brush.Transform).(TransformGroup.Children)[1].(TranslateTransform.X)" Storyboard.TargetName="Indicator" From="0" To="21" Duration="00:00:0.45" />
+									</Storyboard>
+								</BeginStoryboard>
+							</Trigger.EnterActions>
 							<Trigger.ExitActions>
 								<StopStoryboard BeginStoryboardName="LoadedBeginStoryboard" />
 							</Trigger.ExitActions>
 						</Trigger>
-						<EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="Indicator">
-							<BeginStoryboard x:Name="LoadedBeginStoryboard" Storyboard="{StaticResource LoadedStoryboard}" />
-						</EventTrigger>
-						<EventTrigger RoutedEvent="FrameworkElement.Unloaded" SourceName="Indicator">
-							<StopStoryboard BeginStoryboardName="LoadedBeginStoryboard" />
-						</EventTrigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
