@@ -458,8 +458,8 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
 ``` XML
  <WrapPanel Margin="0,10">
          <ProgressBar Width="200" Value="50" />
-                    <ProgressBar Width="200" Margin="10,0"  Value="80" />
-                    <ProgressBar Width="200" Margin="10,0" Height="10" IsIndeterminate="True" Value="10"/>
+                    <ProgressBar Width="200" Margin="10,0"  Value="80" ws:ElementHelper.IsStripe="True"/>
+                    <ProgressBar Width="200" Margin="10,0" IsIndeterminate="True" Value="10"/>
  </WrapPanel>
 ```
 ![ProgressBar](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/ProgressBar.gif)
