@@ -32,3 +32,5 @@ Basic\ControlBasic.xaml
 ..\Styles\Styles.MessageBox.xaml
 ..\Styles\Styles.Loading.xaml
 ..\Styles\Styles.ThemeControl.xaml
+..\Styles\Styles.GridSplitter.xaml
+..\Styles\Styles.Label.xaml

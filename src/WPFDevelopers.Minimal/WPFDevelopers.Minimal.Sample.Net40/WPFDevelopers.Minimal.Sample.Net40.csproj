@@ -50,9 +50,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFDevelopers.Minimal, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPFDevelopers.Minimal.1.0.0.2-preview\lib\net40\WPFDevelopers.Minimal.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -72,7 +69,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -80,6 +76,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\WPFDevelopers.Minimal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WPFDevelopers.Minimal.Net40\WPFDevelopers.Minimal.Net40.csproj">
+      <Project>{86c7221c-07a6-48ed-a8ed-2e44bec7e2cc}</Project>
+      <Name>WPFDevelopers.Minimal.Net40</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\WPFDevelopers.Minimal.Sample.Shared\WPFDevelopers.Minimal.Sample.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
