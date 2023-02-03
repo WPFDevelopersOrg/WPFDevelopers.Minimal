@@ -159,6 +159,7 @@
                                  Focusable="True"
                                  Background="{TemplateBinding Background}"
                                  Visibility="Hidden"
+                                 Foreground="{DynamicResource PrimaryTextSolidColorBrush}"
                                  SelectionBrush ="{DynamicResource WindowBorderBrushSolidColorBrush}"
                                  IsReadOnly="{TemplateBinding IsReadOnly}" />
                         <Popup x:Name="PART_Popup" 
