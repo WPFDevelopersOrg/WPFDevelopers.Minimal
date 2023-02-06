@@ -109,6 +109,7 @@ Install-Package WPFDevelopers.Minimal
 [Expander](#Expander)   
 [GroupBox](#GroupBox)   
 [TabControl](#TabControl)   
+[GridSplitter](#GridSplitter) 
 
 
 ###  数据源  
@@ -711,6 +712,29 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
                 </UniformGrid>
 ```
 ![TabControl](https://gitee.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/WPFDevelopers.Minimal/TabControl.gif)
+
+### <a id="GridSplitter">GridSplitter</a>
+
+1）XAML  
+``` XML
+ <WrapPanel Margin="0,10">
+      <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+         <Rectangle Fill="AliceBlue" Grid.Column="0"/>
+          <GridSplitter Grid.Column="1"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Stretch"
+              ShowsPreview="True"
+              Width="5"
+              />
+         <Rectangle Fill="Pink" Grid.Column="2"/>
+
+ </WrapPanel>
+```
+![GridSplitter](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/GridSplitter.png)
 
 ### <a id="Blue">Blue</a>  
 ``` XAML
