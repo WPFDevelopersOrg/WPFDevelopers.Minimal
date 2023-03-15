@@ -107,7 +107,7 @@ Install-Package WPFDevelopers.Minimal
 [TreeView](#TreeView)   
 [Expander](#Expander)   
 [GroupBox](#GroupBox)   
-[TabControl](#TabControl) 
+[TabControl](#TabControl)   
 [GridSplitter](#GridSplitter) 
 
 
@@ -712,11 +712,12 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
 ```
 ![TabControl](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/TabControl.gif)
 
+
 ### <a id="GridSplitter">GridSplitter</a>
 
 1）XAML  
 ``` XML
- <WrapPanel Margin="0,10">
+ <Grid Margin="0,10">
       <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto" />
@@ -731,7 +732,7 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
               />
          <Rectangle Fill="Pink" Grid.Column="2"/>
 
- </WrapPanel>
+ </Grid>
 ```
 ![GridSplitter](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/GridSplitter.png)
 
