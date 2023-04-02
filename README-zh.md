@@ -66,8 +66,12 @@ Install-Package WPFDevelopers.Minimal
 
 
 ###  第二步：  App.xaml中增加节点：
+```xaml
+       注意：从旧版升级报错时把 xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal" 
+       改成xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal"
+```
 
-`    xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal" `
+`    xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal" `
 ``` XAML
     <Application.Resources>
         <ResourceDictionary>

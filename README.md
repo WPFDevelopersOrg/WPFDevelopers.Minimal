@@ -65,11 +65,15 @@
 Install-Package WPFDevelopers.Minimal
 ```
 
-
 ###  Step 2：  App. Add node in Xaml；
 
+```xaml
+       注意：从旧版升级报错时把 xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal" 
+       改成xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal"
+```
+
 ``` XAML
-    xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal" 
+    xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal" 
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
