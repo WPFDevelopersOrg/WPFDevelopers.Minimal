@@ -11,7 +11,7 @@
         <img alt="nuget-version" src="https://img.shields.io/nuget/vpre/WPFDevelopers.Minimal"></img>
     </a> <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=vqNCZyd2q2j0QvLkYYCNosK-TYXpoDyF&jump_from=webapi"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="WPFDevelopers.Minimal" title="WPFDevelopers.Minimal"></a>   ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers.Minimal?color=%23409EF)
 
-### [自定义高级控件](https://github.com/WPFDevelopersOrg/WPFDevelopers) https://github.com/WPFDevelopersOrg/WPFDevelopers  
+### 停止更新，不建议使用，请跳转[自定义控件库](https://github.com/WPFDevelopersOrg/WPFDevelopers) https://github.com/WPFDevelopersOrg/WPFDevelopers  
 
 ### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg  
 
