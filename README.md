@@ -13,6 +13,7 @@
     </a> 
     <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=vqNCZyd2q2j0QvLkYYCNosK-TYXpoDyF&jump_from=webapi"><img border="0" src="https://pub.idqqimg.com/wpa/images/group.png" alt="WPFDevelopers.Minimal" title="WPFDevelopers.Minimal"></a>  ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers.Minimal?color=%23409EF)
 
+### Stop updating, not recommended. Please skip to the custom library
 ### [自定义高级控件](https://github.com/WPFDevelopersOrg/WPFDevelopers) https://github.com/WPFDevelopersOrg/WPFDevelopers  
 
 ### [码云](https://gitee.com/WPFDevelopersOrg) https://gitee.com/WPFDevelopersOrg  
@@ -68,7 +69,7 @@ Install-Package WPFDevelopers.Minimal
 ###  Step 2：  App. Add node in Xaml；
 
 ```xaml
-       注意：从旧版升级报错时把 xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal" 
+       注意：从旧版升级报错时请把 xmlns:ws="https://github.com/WPFDevelopersOrg.WPFDevelopers.Minimal" 
        改成xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal"
 ```
 
