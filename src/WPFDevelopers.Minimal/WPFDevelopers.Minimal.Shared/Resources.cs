@@ -6,6 +6,7 @@ namespace WPFDevelopers.Minimal
 {
     public class Resources : ResourceDictionary
     {
+        public static event ThemeChangedEvent ThemeChanged;
         public ThemeType Theme
         {
             set => InitializeTheme(value);
@@ -16,6 +17,7 @@ namespace WPFDevelopers.Minimal
             MergedDictionaries.Clear();
             var path = GetResourceUri(GetThemeResourceName(themeType));
             MergedDictionaries.Add(new ResourceDictionary { Source = path });
+            ThemeChanged?.Invoke(themeType);
         }
 
         protected Uri GetResourceUri(string path)
@@ -28,4 +30,5 @@ namespace WPFDevelopers.Minimal
             return themeType == ThemeType.Light ? "Light.Color" : "Dark.Color";
         }
     }
+    public delegate void ThemeChangedEvent(ThemeType currentTheme);
 }
