@@ -2,7 +2,7 @@
   <PropertyGroup>
     <AssemblyName>WPFDevelopers.Minimal</AssemblyName>
     <RootNamespace>WPFDevelopers.Minimal</RootNamespace>
-    <TargetFrameworks>net45;net46;net47;net48;net5.0-windows;net6.0-windows;netcoreapp3.0</TargetFrameworks>
+	  <TargetFrameworks>net45;net46;net47;net48;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows;netcoreapp3.0</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <PackageId>WPFDevelopers.Minimal</PackageId>
     <IncludeSymbols>true</IncludeSymbols>
@@ -13,9 +13,7 @@
     <Version>1.0.0.1</Version>
     <RepositoryUrl>https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal</RepositoryUrl>
 	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
-    <OutputPath></OutputPath>
+	<Configurations>Debug;Release;.Net40;.Net45x</Configurations>
   </PropertyGroup>
   <Import Project="..\WPFDevelopers.Minimal.Shared\WPFDevelopers.Minimal.Shared.projitems" Label="Shared" />
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
