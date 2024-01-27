@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
@@ -96,14 +97,14 @@ namespace WPFDevelopers.Minimal.Controls
 
         public NotifyIcon()
         {
-            _TrayWndClassName = $"WPFDevelopers_{Guid.NewGuid()}";
+            _TrayWndClassName = $"WPFDevelopers_Minimal_{Guid.NewGuid()}";
             _TrayWndProc = WndProc_CallBack;
             _TrayWndMessage = "TrayWndMessageName";
             _TrayMouseMessage = (int)WM.USER + 1024;
             Start();
             if (Application.Current != null)
             {
-                //Application.Current.MainWindow.Closed += (s, e) => Dispose();
+                WPFDevelopers.Minimal.Resources.ThemeChanged += Resources_ThemeChanged;
                 Application.Current.Exit += (s, e) => Dispose();
             }
             NotifyIconCache = this;
@@ -113,6 +114,26 @@ namespace WPFDevelopers.Minimal.Controls
             DataContextProperty.OverrideMetadata(typeof(NotifyIcon), new FrameworkPropertyMetadata(DataContextPropertyChanged));
             ContextMenuProperty.OverrideMetadata(typeof(NotifyIcon), new FrameworkPropertyMetadata(ContextMenuPropertyChanged));
         }
+
+        private void Resources_ThemeChanged(ThemeType currentTheme)
+        {
+#if NET40
+            UpdateDefaultStyle();
+#else
+            ContextMenu.UpdateDefaultStyle();
+#endif
+        }
+
+        void UpdateDefaultStyle()
+        {
+            var currentContextMenu = ContextMenu;
+            var newContextMenu = new ContextMenu();
+            var itemsToMove = currentContextMenu.Items.OfType<MenuItem>().ToList();
+            currentContextMenu.Items.Clear();
+            itemsToMove.ForEach(item => newContextMenu.Items.Add(item));
+            ContextMenu = newContextMenu;
+        }
+
         private static void DataContextPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) =>
             ((NotifyIcon)d).OnDataContextPropertyChanged(e);
         private void OnDataContextPropertyChanged(DependencyPropertyChangedEventArgs e)
@@ -520,66 +541,6 @@ namespace WPFDevelopers.Minimal.Controls
                 return Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Modify, ref _NOTIFYICONDATA);
             }
         }
-        //private bool ChangeIcon()
-        //{
-        //    if (DesignerHelper.IsInDesignMode == true) return false;
-        //    var bitmapFrame = _icon as BitmapFrame;
-        //    if (bitmapFrame != null && bitmapFrame.Decoder != null)
-        //        if (bitmapFrame.Decoder is IconBitmapDecoder)
-        //        {
-        //            //var iconBitmapDecoder = new Rect(0, 0, _icon.Width, _icon.Height);
-        //            //var dv = new DrawingVisual();
-        //            //var dc = dv.RenderOpen();
-        //            //dc.DrawImage(_icon, iconBitmapDecoder);
-        //            //dc.Close();
-
-        //            //var bmp = new RenderTargetBitmap((int)_icon.Width, (int)_icon.Height, 96, 96,
-        //            //    PixelFormats.Pbgra32);
-        //            //bmp.Render(dv);
-
-
-        //            //BitmapSource bitmapSource = bmp;
-
-        //            //if (bitmapSource.Format != PixelFormats.Bgra32 && bitmapSource.Format != PixelFormats.Pbgra32)
-        //            //    bitmapSource = new FormatConvertedBitmap(bitmapSource, PixelFormats.Bgra32, null, 0.0);
-        //            var w = bitmapFrame.PixelWidth;
-        //            var h = bitmapFrame.PixelHeight;
-        //            var bpp = bitmapFrame.Format.BitsPerPixel;
-        //            var stride = (bpp * w + 31) / 32 * 4;
-        //            var sizeCopyPixels = stride * h;
-        //            var xor = new byte[sizeCopyPixels];
-        //            bitmapFrame.CopyPixels(xor, stride, 0);
-
-        //            var iconHandle = CreateIconCursor(xor, w, h, 0, 0, true);
-        //            _iconHandle = iconHandle.CriticalGetHandle();
-        //        }
-
-
-        //    if (Thread.VolatileRead(ref _IsShowIn) != 1)
-        //        return false;
-
-        //    if (_hIcon != IntPtr.Zero)
-        //    {
-        //        User32Interop.DestroyIcon(_hIcon);
-        //        _hIcon = IntPtr.Zero;
-        //    }
-
-        //    lock (this)
-        //    {
-        //        if (_iconHandle != IntPtr.Zero)
-        //        {
-        //            var hIcon = _iconHandle;
-        //            _NOTIFYICONDATA.hIcon = hIcon;
-        //            _hIcon = hIcon;
-        //        }
-        //        else
-        //        {
-        //            _NOTIFYICONDATA.hIcon = IntPtr.Zero;
-        //        }
-
-        //        return Shell32Interop.Shell_NotifyIcon(NotifyCommand.NIM_Modify, ref _NOTIFYICONDATA);
-        //    }
-        //}
 
         private bool ChangeTitle(string title)
         {
