@@ -1,4 +1,9 @@
-﻿using System;
+﻿#if NET40
+using Microsoft.Windows.Shell;
+#else
+using System.Windows.Shell;
+# endif
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -57,7 +62,6 @@ namespace WPFDevelopers.Minimal.Controls
         {
             _titleString = caption;
             _messageString = message;
-            ;
         }
 
         public WPFMessageBox(string message, string caption, MessageBoxImage image)
@@ -80,6 +84,7 @@ namespace WPFDevelopers.Minimal.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+
             _title = GetTemplateChild(TitleTemplateName) as TextBlock;
             _message = GetTemplateChild(MessageTemplateName) as TextBox;
 
@@ -97,19 +102,19 @@ namespace WPFDevelopers.Minimal.Controls
 
             _closeButton = GetTemplateChild(CloseButtonTemplateName) as Button;
             if (_closeButton != null)
-                _closeButton.Click += _closeButton_Click;
+                _closeButton.Click += CloseButton_Click;
             _buttonCancel = GetTemplateChild(ButtonCancelTemplateName) as Button;
             if (_buttonCancel != null)
             {
                 _buttonCancel.Visibility = _cancelVisibility;
-                _buttonCancel.Click += _buttonCancel_Click;
+                _buttonCancel.Click += ButtonCancel_Click;
             }
 
             _buttonOK = GetTemplateChild(ButtonOKTemplateName) as Button;
             if (_buttonOK != null)
             {
                 _buttonOK.Visibility = _okVisibility;
-                _buttonOK.Click += _buttonOK_Click;
+                _buttonOK.Click += ButtonOK_Click;
             }
 
             if (Owner == null)
@@ -117,21 +122,40 @@ namespace WPFDevelopers.Minimal.Controls
                 BorderThickness = new Thickness(1);
                 WindowStartupLocation = WindowStartupLocation.CenterScreen;
             }
+
+#if NET40
+            var chrome = new WindowChrome
+            {
+                CaptionHeight = 40,
+                GlassFrameThickness = new Thickness(1),
+            };
+            WindowChrome.SetIsHitTestVisibleInChrome(_closeButton, true);
+            WindowChrome.SetWindowChrome(this, chrome);
+#else
+            var chrome = new WindowChrome
+            {
+                CaptionHeight = 40,
+                GlassFrameThickness = new Thickness(1),
+                UseAeroCaptionButtons = false
+            };
+            WindowChrome.SetIsHitTestVisibleInChrome(_closeButton, true);
+            WindowChrome.SetWindowChrome(this, chrome);
+#endif
         }
 
-        private void _buttonOK_Click(object sender, RoutedEventArgs e)
+        private void ButtonOK_Click(object sender, RoutedEventArgs e)
         {
             Result = MessageBoxResult.OK;
             Close();
         }
 
-        private void _buttonCancel_Click(object sender, RoutedEventArgs e)
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             Result = MessageBoxResult.Cancel;
             Close();
         }
 
-        private void _closeButton_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
@@ -156,8 +180,6 @@ namespace WPFDevelopers.Minimal.Controls
                     _cancelVisibility = Visibility.Visible;
                     _okVisibility = Visibility.Visible;
                     break;
-                //case MessageBoxButton.YesNoCancel:
-                //    break;
                 default:
                     _okVisibility = Visibility.Visible;
                     break;
@@ -169,20 +191,24 @@ namespace WPFDevelopers.Minimal.Controls
             switch (image)
             {
                 case MessageBoxImage.Warning:
-                    _geometry = Application.Current.Resources["PathWarning"] as Geometry;
-                    _solidColorBrush = Application.Current.Resources["WarningSolidColorBrush"] as SolidColorBrush;
+                    _geometry = (Geometry)Application.Current.TryFindResource("WD.WarningGeometry");
+                    _solidColorBrush =
+                        (SolidColorBrush)Application.Current.TryFindResource("WD.WarningSolidColorBrush");
                     break;
                 case MessageBoxImage.Error:
-                    _geometry = Application.Current.Resources["PathError"] as Geometry;
-                    _solidColorBrush = Application.Current.Resources["DangerSolidColorBrush"] as SolidColorBrush;
+                    _geometry = (Geometry)Application.Current.TryFindResource("WD.ErrorGeometry");
+                    _solidColorBrush =
+                        (SolidColorBrush)Application.Current.TryFindResource("WD.DangerSolidColorBrush");
                     break;
                 case MessageBoxImage.Information:
-                    _geometry = Application.Current.Resources["PathWarning"] as Geometry;
-                    _solidColorBrush = Application.Current.Resources["SuccessSolidColorBrush"] as SolidColorBrush;
+                    _geometry = (Geometry)Application.Current.TryFindResource("WD.WarningGeometry");
+                    _solidColorBrush =
+                        (SolidColorBrush)Application.Current.TryFindResource("WD.SuccessSolidColorBrush");
                     break;
                 case MessageBoxImage.Question:
-                    _geometry = Application.Current.Resources["PathQuestion"] as Geometry;
-                    _solidColorBrush = Application.Current.Resources["NormalSolidColorBrush"] as SolidColorBrush;
+                    _geometry = (Geometry)Application.Current.TryFindResource("WD.QuestionGeometry");
+                    _solidColorBrush =
+                        (SolidColorBrush)Application.Current.TryFindResource("WD.NormalSolidColorBrush");
                     break;
             }
         }
