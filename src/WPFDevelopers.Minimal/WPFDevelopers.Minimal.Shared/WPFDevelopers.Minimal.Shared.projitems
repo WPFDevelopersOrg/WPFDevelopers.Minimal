@@ -61,9 +61,6 @@
     <None Include="$(MSBuildThisFileDirectory)Styles\Styles.TabControl.xaml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="$(MSBuildThisFileDirectory)Styles\Styles.TextBlock.xaml">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="$(MSBuildThisFileDirectory)Styles\Styles.TextBox.xaml">
       <SubType>Designer</SubType>
     </None>
@@ -94,6 +91,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.ProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Styles.RepeatButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -191,13 +192,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\MessageBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBox\WPFMessageBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\VirtualizingWrapPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converts\DatePickerToCurrentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Effects\GrayscaleEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ControlHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\ElementConvert.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DatePickerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MaskAdorner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converts\ObjectNullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\PasswordBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\TextBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ThemeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\ThemeModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ViewModelBase.cs" />
@@ -208,6 +212,5 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controls\MessageBox\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controls\ThemeControl\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controls\VirtualizingWrapPanel\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Converts\" />
   </ItemGroup>
 </Project>
