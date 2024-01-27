@@ -1,16 +1,18 @@
-﻿<Application x:Class="WPFDevelopers.Minimal.Sample.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal"
-             StartupUri="ExampleViews\MainView.xaml" ShutdownMode="OnMainWindowClose">
+﻿<Application
+    x:Class="WPFDevelopers.Minimal.Sample.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal"
+    ShutdownMode="OnMainWindowClose"
+    StartupUri="ExampleViews\MainView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Light.Blue.xaml" />
                 <!--<ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal.Sample.Net40;component/Light.Carmine.xaml"/>-->
-                 <!--需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤 -->
-                <ws:Resources Theme="Light"/>
-                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml"/>
+                <!--  需要注意ws:Resources 必须再配色主题后，Theme="Dark" 为黑色皮肤  -->
+                <ws:Resources Theme="Light" />
+                <ResourceDictionary Source="pack://application:,,,/WPFDevelopers.Minimal;component/Themes/Theme.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
