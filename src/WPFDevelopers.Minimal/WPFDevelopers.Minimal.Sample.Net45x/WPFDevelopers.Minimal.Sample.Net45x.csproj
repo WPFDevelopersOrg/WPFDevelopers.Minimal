@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<AssemblyName>WPFDevelopers.Minimal.Sample</AssemblyName>
+		<RootNamespace>WPFDevelopers.Minimal.Sample</RootNamespace>
+		<TargetFrameworks>net45;net46;net47;net48;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows;netcoreapp3.0</TargetFrameworks>
+		<UseWPF>true</UseWPF>
+		<ApplicationIcon>WPFDevelopers.Minimal.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<Import Project="..\WPFDevelopers.Minimal.Sample.Shared\WPFDevelopers.Minimal.Sample.Shared.projitems" Label="Shared" />
+
+	<ItemGroup>
+	  <None Remove="Resources\WPFDevelopers.Minimal.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="WPFDevelopers.Minimal.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\WPFDevelopers.Minimal.Net45x\WPFDevelopers.Minimal.Net45x.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Resources\WPFDevelopers.Minimal.ico" />
+	</ItemGroup>
+
+</Project>
