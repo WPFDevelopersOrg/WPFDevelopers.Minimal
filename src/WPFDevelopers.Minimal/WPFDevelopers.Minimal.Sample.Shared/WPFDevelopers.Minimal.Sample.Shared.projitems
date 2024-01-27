@@ -49,9 +49,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converts\StateConvert.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Resources\WPFDevelopers.Minimal.ico" />
+    <Folder Include="$(MSBuildThisFileDirectory)Converts\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Converts\" />
+    <Content Include="$(MSBuildThisFileDirectory)WPFDevelopers.Minimal.ico" />
   </ItemGroup>
 </Project>
