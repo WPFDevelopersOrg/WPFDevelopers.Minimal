@@ -1,177 +1,283 @@
-﻿<ws:Window x:Class="WPFDevelopers.Minimal.Sample.ExampleViews.MainView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal"
-		xmlns:local="clr-namespace:WPFDevelopers.Minimal.Sample.ExampleViews"
-        xmlns:app ="clr-namespace:WPFDevelopers.Minimal.Sample"
-        x:Name="_window"
-        Icon="/WPFDevelopers.Minimal.Sample.Net40;component/Resources/WPFDevelopers.Minimal.png"
-        Height="{x:Static app:App.Height}" Width="{x:Static app:App.Wdith}"
-        WindowStartupLocation="CenterScreen" Title="WPFDevelopers.Minimal">
+﻿<ws:Window
+    x:Class="WPFDevelopers.Minimal.Sample.ExampleViews.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFDevelopers.Minimal.Sample"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="clr-namespace:WPFDevelopers.Minimal.Sample.ExampleViews"
+    xmlns:ws="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal"
+    x:Name="_window"
+    Title="WPFDevelopers.Minimal"
+    Width="{x:Static local:App.Wdith}"
+    Height="{x:Static local:App.Height}"
+    Icon="pack://application:,,,/WPFDevelopers.Minimal.Sample;component/Resources/WPFDevelopers.Minimal.ico"
+    WindowStartupLocation="CenterScreen">
     <ws:Window.Effect>
-        <ws:GrayscaleEffect x:Name="grayscaleEffect" Factor="1"/>
+        <ws:GrayscaleEffect x:Name="grayscaleEffect" Factor="1" />
     </ws:Window.Effect>
-    <Window.Resources>
-        <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextSolidColorBrush}" />
-            <Setter Property="FontSize" Value="{StaticResource NormalFontSize}"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-    </Window.Resources>
     <ScrollViewer>
         <Grid Margin="20,10">
-            <ws:NotifyIcon Title="WPF开发者" Name="WpfNotifyIcon">
+            <ws:NotifyIcon Name="WpfNotifyIcon" Title="WPF开发者">
                 <ws:NotifyIcon.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="托盘消息" Click="SendMessage_Click"/>
-                        <MenuItem Header="闪烁" Name="menuItemTwink"  Click="Twink_Click"/>
-                        <MenuItem Header="关于" Click="About_Click">
+                        <MenuItem Click="SendMessage_Click" Header="托盘消息" />
+                        <MenuItem
+                            Name="menuItemTwink"
+                            Click="Twink_Click"
+                            Header="闪烁" />
+                        <MenuItem Click="About_Click" Header="关于">
                             <MenuItem.Icon>
-                                <Path Data="{StaticResource PathWarning}" 
-                                      Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
-                                      Stretch="Uniform" Height="20" Width="20"/>
+                                <Path
+                                    Width="20"
+                                    Height="20"
+                                    Data="{StaticResource WD.WarningGeometry}"
+                                    Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                    Stretch="Uniform" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="退出" Click="Quit_Click"/>
+                        <MenuItem Click="Quit_Click" Header="退出" />
                     </ContextMenu>
                 </ws:NotifyIcon.ContextMenu>
             </ws:NotifyIcon>
             <VirtualizingStackPanel>
                 <WrapPanel Margin="0,10">
-                    <Image Source="/WPFDevelopers.Minimal.Sample.Net40;component/Resources/WPFDevelopers.Minimal.png"
-                       RenderOptions.BitmapScalingMode="HighQuality"
-                       Width="100" Height="100"/>
+                    <Image
+                        Width="100"
+                        Height="100"
+                        RenderOptions.BitmapScalingMode="HighQuality"
+                        Source="pack://application:,,,/WPFDevelopers.Minimal.Sample;component/Resources/WPFDevelopers.Minimal.ico" />
                     <StackPanel Margin="10,0">
-                        <TextBlock Text="WPFDevelopers.Minimal" FontSize="20" 
-                                   HorizontalAlignment="Center"
-                                   Padding="0,4"
-                               Foreground="{DynamicResource PrimaryNormalSolidColorBrush}"/>
-                        <TextBlock Text="微信号公众号:WPFDevelopers" 
-                                   HorizontalAlignment="Center"
-                                   Padding="0,4"
-                                   FontSize="20" Foreground="{DynamicResource PrimaryNormalSolidColorBrush}"/>
-                        <TextBlock FontSize="20" Padding="0,10"
-                       Foreground="{DynamicResource PrimaryNormalSolidColorBrush}">
-            <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.Minimal.git"
-                       RequestNavigate="GithubHyperlink_RequestNavigate"> Github 源码</Hyperlink>
-            <Run/>
-            <Run/>
-            <Run/>
-            <Hyperlink NavigateUri="https://gitee.com/WPFDevelopersOrg/WPFDevelopers.Minimal.git"
-                       RequestNavigate="GiteeHyperlink_RequestNavigate"> 码云源码</Hyperlink>
-                        <Run/>
-            <Run/>
-            <Run/>
-                         <Hyperlink NavigateUri="https://gitee.com/yanjinhua/WPFDevelopers.git" RequestNavigate="QQHyperlink_RequestNavigate"> 加入QQ群：458041663</Hyperlink>
+                        <TextBlock
+                            Padding="0,4"
+                            HorizontalAlignment="Center"
+                            FontSize="20"
+                            Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                            Text="WPFDevelopers.Minimal" />
+                        <TextBlock
+                            Padding="0,4"
+                            HorizontalAlignment="Center"
+                            FontSize="20"
+                            Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                            Text="微信号公众号:WPFDevelopers" />
+                        <TextBlock
+                            Padding="0,10"
+                            FontSize="20"
+                            Foreground="{DynamicResource WD.PrimaryNormalSolidColorBrush}">
+                            <Hyperlink NavigateUri="https://github.com/yanjinhuagood/WPFDevelopers.Minimal.git" RequestNavigate="GithubHyperlink_RequestNavigate">Github 源码</Hyperlink>
+                            <Run />
+                            <Run />
+                            <Run />
+                            <Hyperlink NavigateUri="https://gitee.com/WPFDevelopersOrg/WPFDevelopers.Minimal.git" RequestNavigate="GiteeHyperlink_RequestNavigate">码云源码</Hyperlink>
+                            <Run />
+                            <Run />
+                            <Run />
+                            <Hyperlink NavigateUri="https://gitee.com/yanjinhua/WPFDevelopers.git" RequestNavigate="QQHyperlink_RequestNavigate">加入QQ群：458041663</Hyperlink>
                         </TextBlock>
                     </StackPanel>
 
                 </WrapPanel>
-                <TextBlock Text="开启程序灰度" FontSize="20" Margin="0,20,0,0"/>
-                <ToggleButton Margin="10" Name="tbGrayscale" 
-                              Checked="tbGrayscale_Checked"
-                              Unchecked="tbGrayscale_Unchecked"
-                              HorizontalAlignment="Left"/>
-                <TextBlock Text="Theme" FontSize="20" Margin="0,20,0,0"/>
-                <ws:ThemeControl Margin="0,10" ItemsSource="{Binding ThemesCollection,RelativeSource={RelativeSource AncestorType=local:MainView},Mode=OneWayToSource}"/>
-                <TextBlock Text="Light | Dark" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="开启程序灰度" />
+                <ToggleButton
+                    Name="tbGrayscale"
+                    Margin="10"
+                    HorizontalAlignment="Left"
+                    Checked="tbGrayscale_Checked"
+                    Unchecked="tbGrayscale_Unchecked" />
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Theme" />
+                <ws:ThemeControl Margin="0,10" ItemsSource="{Binding ThemesCollection, RelativeSource={RelativeSource AncestorType=view:MainView}, Mode=OneWayToSource}" />
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Light | Dark" />
                 <WrapPanel Margin="10">
-                    <TextBlock Text="Light"/>
-                    <ToggleButton Checked="LightDark_Checked" Margin="10,0" Unchecked="LightDark_Checked"/>
-                    <TextBlock Text="Dark"/>
+                    <TextBlock Text="Light" />
+                    <ToggleButton
+                        Margin="10,0"
+                        Checked="LightDark_Checked"
+                        Unchecked="LightDark_Checked" />
+                    <TextBlock Text="Dark" />
                 </WrapPanel>
-                <TextBlock Text="Menu" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Menu" />
                 <WrapPanel Margin="0,10">
                     <WrapPanel.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Menu1"/>
-                            <MenuItem Header="Menu2"/>
-                            <MenuItem Header="Menu3"/>
+                            <MenuItem Header="Menu1" />
+                            <MenuItem Header="Menu2" />
+                            <MenuItem Header="Menu3" />
                         </ContextMenu>
                     </WrapPanel.ContextMenu>
                     <Menu>
                         <MenuItem Header="MenuItem 1">
                             <MenuItem Header="MenuItem 1.1">
                                 <MenuItem.Icon>
-                                    <Path Data="{StaticResource PathWarning}" 
-                                      Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
-                                      Stretch="Uniform" Height="20" Width="20"/>
+                                    <Path
+                                        Width="20"
+                                        Height="20"
+                                        Data="{StaticResource WD.WarningGeometry}"
+                                        Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}"
+                                        Stretch="Uniform" />
                                 </MenuItem.Icon>
                                 <MenuItem Header="MenuItem 1.1.1">
-                                    <MenuItem Header="MenuItem 1.1.1.1"/>
-                                    <MenuItem Header="MenuItem 1.1.1.2"/>
+                                    <MenuItem Header="MenuItem 1.1.1.1" />
+                                    <MenuItem Header="MenuItem 1.1.1.2" />
                                 </MenuItem>
-                                <MenuItem Header="MenuItem 1.1.2"/>
+                                <MenuItem Header="MenuItem 1.1.2" />
                             </MenuItem>
-                            <Separator/>
-                            <MenuItem Header="MenuItem 1.2"/>
-                            <MenuItem Header="MenuItem 1.3"/>
-                            <MenuItem Header="MenuItem 1.4"/>
-                            <MenuItem Header="MenuItem 1.5"/>
+                            <Separator />
+                            <MenuItem Header="MenuItem 1.2" />
+                            <MenuItem Header="MenuItem 1.3" />
+                            <MenuItem Header="MenuItem 1.4" />
+                            <MenuItem Header="MenuItem 1.5" />
                         </MenuItem>
-                        <MenuItem Header="MenuItem 2"/>
-                        <MenuItem Header="MenuItem 3"/>
-                        <MenuItem Header="MenuItem 4"/>
+                        <MenuItem Header="MenuItem 2" />
+                        <MenuItem Header="MenuItem 3" />
+                        <MenuItem Header="MenuItem 4" />
                     </Menu>
-                    <Menu  IsEnabled="False"/>
+                    <Menu IsEnabled="False" />
                 </WrapPanel>
-                
-                <TextBlock Text="Loading" FontSize="20" Margin="0,20,0,0"/>
+
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Loading" />
                 <WrapPanel Margin="0,10">
-                    <Button Content="Loading" Click="Loading_Click" Style="{DynamicResource PrimaryButton}"/>
-                    <Button Content="LoadingOff" Margin="10,0" Click="LoadingOff_Click" Style="{DynamicResource PrimaryButton}"/>
-                    <Button Content="LoadingOffTask" Click="LoadingOffTask_Click" Style="{DynamicResource PrimaryButton}"/>
-                    <Button Name="btnLoading" Click="BtnLoading_Click" Margin="10,0" Content="AddLoading" Style="{DynamicResource PrimaryButton}"/>
+                    <Button
+                        Click="Loading_Click"
+                        Content="Loading"
+                        Style="{StaticResource WD.PrimaryButton}" />
+                    <Button
+                        Margin="10,0"
+                        Click="LoadingOff_Click"
+                        Content="LoadingOff"
+                        Style="{StaticResource WD.PrimaryButton}" />
+                    <Button
+                        Click="LoadingOffTask_Click"
+                        Content="LoadingOffTask"
+                        Style="{StaticResource WD.PrimaryButton}" />
+                    <Button
+                        Name="btnLoading"
+                        Margin="10,0"
+                        Click="BtnLoading_Click"
+                        Content="AddLoading"
+                        Style="{StaticResource WD.PrimaryButton}" />
                 </WrapPanel>
-                <TextBlock Text="Button" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Button" />
                 <WrapPanel Margin="0,10">
-                    <Button Content="Default"/>
-                    <Button Content="Default" Margin="10,0" IsEnabled="False"/>
-                    <Button Content="Primary" Style="{DynamicResource PrimaryButton}"/>
-                    <Button Content="Primary" Style="{DynamicResource PrimaryButton}" Margin="10,0" IsEnabled="False"/>
+                    <Button Content="Default" />
+                    <Button
+                        Margin="10,0"
+                        Content="Default"
+                        IsEnabled="False" />
+                    <Button Content="Primary" Style="{StaticResource WD.PrimaryButton}" />
+                    <Button
+                        Margin="10,0"
+                        Content="Primary"
+                        IsEnabled="False"
+                        Style="{StaticResource WD.PrimaryButton}" />
                 </WrapPanel>
-                <TextBlock Text="MessageBox" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="MessageBox" />
                 <WrapPanel Margin="0,10">
-                    <Button x:Name="btnInformation" Content="Info" Click="btnInformation_Click"/>
-                    <Button x:Name="btnWarning" Content="Warning" Margin="10,0" Click="btnWarning_Click"/>
-                    <Button x:Name="btnError" Content="Error" Click="btnError_Click"/>
-                    <Button x:Name="btnQuestion" Content="Question" Margin="10,0" Click="btnQuestion_Click"/>
+                    <Button
+                        x:Name="btnInformation"
+                        Click="btnInformation_Click"
+                        Content="Info"
+                        Style="{StaticResource WD.PrimaryButton}" />
+                    <Button
+                        x:Name="btnWarning"
+                        Margin="10,0"
+                        Click="btnWarning_Click"
+                        Content="Warning"
+                        Style="{StaticResource WD.WarningPrimaryButton}" />
+                    <Button
+                        x:Name="btnError"
+                        Click="btnError_Click"
+                        Content="Error"
+                        Style="{StaticResource WD.DangerPrimaryButton}" />
+                    <Button
+                        x:Name="btnQuestion"
+                        Margin="10,0"
+                        Click="btnQuestion_Click"
+                        Content="Question"
+                        Style="{StaticResource WD.SuccessPrimaryButton}" />
                 </WrapPanel>
-                <TextBlock Text="RadioButton" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="RadioButton" />
                 <WrapPanel Margin="0,10">
-                    <RadioButton Content="Option A"/>
-                    <RadioButton Content="Option B" Margin="10,0" IsChecked="True"/>
-                    <RadioButton Content="Option C" IsEnabled="False"/>
+                    <RadioButton Content="Option A" />
+                    <RadioButton
+                        Margin="10,0"
+                        Content="Option B"
+                        IsChecked="True" />
+                    <RadioButton Content="Option C" IsEnabled="False" />
                 </WrapPanel>
-                <TextBlock Text="Checkbox" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Checkbox" />
                 <WrapPanel Margin="0,10">
-                    <CheckBox Content="Option A"/>
-                    <CheckBox Content="Option B" Margin="10,0" IsChecked="True"/>
-                    <CheckBox Content="Option C" IsChecked="{x:Null}"/>
-                    <CheckBox Content="Option D" Margin="10,0" IsEnabled="False"/>
+                    <CheckBox Content="Option A" />
+                    <CheckBox
+                        Margin="10,0"
+                        Content="Option B"
+                        IsChecked="True" />
+                    <CheckBox Content="Option C" IsChecked="{x:Null}" />
+                    <CheckBox
+                        Margin="10,0"
+                        Content="Option D"
+                        IsEnabled="False" />
                 </WrapPanel>
-                <TextBlock Text="TextBox" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="TextBox" />
                 <WrapPanel Margin="0,10">
                     <TextBox />
-                    <TextBox Margin="10,0" 
-                             ws:ElementHelper.IsWatermark="True" 
-                             ws:ElementHelper.Watermark="请输入内容"/>
-                    <TextBox IsEnabled="False"/>
+                    <TextBox
+                        Margin="10,0"
+                        ws:ElementHelper.IsWatermark="True"
+                        ws:ElementHelper.Watermark="请输入内容" />
+                    <TextBox IsEnabled="False" />
                 </WrapPanel>
-                <TextBlock Text="PasswordBox" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="PasswordBox" />
                 <WrapPanel Margin="0,10">
                     <PasswordBox />
-                    <PasswordBox Margin="10,0" ws:ElementHelper.IsWatermark="true" ws:ElementHelper.Watermark="请输入密码"/>
-                    <PasswordBox IsEnabled="False"/>
-                    <PasswordBox x:Name="myPasswordBox"
-                                 ws:PasswordBoxHelper.IsMonitoring="True" 
-                                 Margin="10,0"
-                                 ws:ElementHelper.IsWatermark="True"
-                                 ws:ElementHelper.Watermark="请输入密码"/>
+                    <PasswordBox
+                        Margin="10,0"
+                        ws:ElementHelper.IsWatermark="true"
+                        ws:ElementHelper.Watermark="请输入密码" />
+                    <PasswordBox IsEnabled="False" />
+                    <PasswordBox
+                        x:Name="myPasswordBox"
+                        Margin="10,0"
+                        ws:ElementHelper.IsWatermark="True"
+                        ws:ElementHelper.Watermark="请输入密码"
+                        ws:PasswordBoxHelper.IsMonitoring="True" />
                 </WrapPanel>
-                <TextBlock Text="ComboBox" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="ComboBox" />
                 <WrapPanel Margin="0,10">
                     <ComboBox Width="200" Background="LightYellow">
                         <ComboBoxItem>Option 1</ComboBoxItem>
@@ -180,7 +286,10 @@
                         <ComboBoxItem>Option 4</ComboBoxItem>
                         <ComboBoxItem>Option 5</ComboBoxItem>
                     </ComboBox>
-                    <ComboBox Width="200" Margin="10,0" IsEnabled="False"/>
+                    <ComboBox
+                        Width="200"
+                        Margin="10,0"
+                        IsEnabled="False" />
                     <ComboBox Width="200" IsEditable="True">
                         <ComboBoxItem>Option 1</ComboBoxItem>
                         <ComboBoxItem>Option 2</ComboBoxItem>
@@ -189,283 +298,419 @@
                         <ComboBoxItem>Option 5</ComboBoxItem>
                     </ComboBox>
                 </WrapPanel>
-                <TextBlock Text="ToggleButton" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="ToggleButton" />
                 <WrapPanel Margin="0,10">
-                    <ToggleButton/>
-                    <ToggleButton Margin="10,0" IsEnabled="False"/>
-                    <ToggleButton IsChecked="True"/>
+                    <ToggleButton />
+                    <ToggleButton Margin="10,0" IsEnabled="False" />
+                    <ToggleButton IsChecked="True" />
                 </WrapPanel>
 
-                <TextBlock Text="DatePicker" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="DatePicker" />
                 <WrapPanel Margin="0,10">
-                    <DatePicker Width="200"/>
-                    <DatePicker Width="200" SelectedDateFormat="Long" Margin="10,0"/>
-                    <DatePicker Width="200" IsEnabled="False"/>
+                    <DatePicker ws:DatePickerHelper.Watermark="日期 yyyy/MM/dd" />
+                    <DatePicker
+                        Margin="10,0"
+                        ws:DatePickerHelper.Watermark="DatePicker"
+                        SelectedDateFormat="Long" />
+                    <DatePicker Width="120" ws:DatePickerHelper.Watermark="{x:Null}">
+                        <DatePicker.BlackoutDates>
+                            <CalendarDateRange End="2023-04-07" Start="2023-03-31" />
+                        </DatePicker.BlackoutDates>
+                    </DatePicker>
                 </WrapPanel>
 
-                <TextBlock Text="Slider" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Slider" />
                 <WrapPanel Margin="0,10">
-                    <Slider Width="200"/>
-                    <Slider Width="200" Value="50" Maximum="100"  Margin="10,0"/>
-                    <Slider Width="200" Value="50" Maximum="100" IsEnabled="False"/>
+                    <Slider Width="200" />
+                    <Slider
+                        Width="200"
+                        Margin="10,0"
+                        Maximum="100"
+                        Value="50" />
+                    <Slider
+                        Width="200"
+                        IsEnabled="False"
+                        Maximum="100"
+                        Value="50" />
                 </WrapPanel>
 
-                <TextBlock Text="ProgressBar" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="ProgressBar" />
                 <WrapPanel Margin="0,10">
-                    <ProgressBar Width="200" Value="50"/>
-                    <ProgressBar Width="200" Margin="10,0"  Value="80" ws:ElementHelper.IsStripe="True"/>
-                    <ProgressBar Width="200" Margin="10,0"  IsIndeterminate="True" Value="10"/>
+                    <ProgressBar Width="200" Value="50" />
+                    <ProgressBar
+                        Width="200"
+                        Margin="10,0"
+                        ws:ElementHelper.IsStripe="True"
+                        Value="80" />
+                    <ProgressBar
+                        Width="200"
+                        Margin="10,0"
+                        IsIndeterminate="True"
+                        Value="10" />
                     <!--<ProgressBar Width="6" Value="40" Orientation="Vertical"/>
                     <ProgressBar Width="6" Height="200" Margin="10,0" Orientation="Vertical" Value="80"/>-->
                 </WrapPanel>
 
-                <TextBlock Text="DataGrid" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="DataGrid" />
                 <TabControl Margin="0,10">
                     <TabItem Header="Mode 1">
-                        <DataGrid AutoGenerateColumns="False" HeadersVisibility="All" RowHeaderWidth="40"
-                                  ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}"
-                                  Margin="0,10">
+                        <DataGrid
+                            Margin="0,10"
+                            AutoGenerateColumns="False"
+                            HeadersVisibility="All"
+                            ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=view:MainView}}"
+                            RowHeaderWidth="40">
                             <DataGrid.RowHeaderTemplate>
                                 <DataTemplate>
-                                    <CheckBox IsChecked="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
+                                    <CheckBox IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}}" />
                                 </DataTemplate>
                             </DataGrid.RowHeaderTemplate>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                    Binding="{Binding Date}"
+                                    Header="Date"
+                                    IsReadOnly="True" />
+                                <DataGridTextColumn
+                                    Binding="{Binding Name}"
+                                    Header="Name"
+                                    IsReadOnly="True" />
+                                <DataGridTextColumn
+                                    Binding="{Binding Address}"
+                                    Header="Address"
+                                    IsReadOnly="True" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
                     <TabItem Header="Mode 2">
-                        <DataGrid AutoGenerateColumns="False" 
-                                  ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}"
-                                  Margin="0,10">
+                        <DataGrid
+                            Margin="0,10"
+                            AutoGenerateColumns="False"
+                            ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=view:MainView}}">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn CanUserResize="False">
                                     <DataGridTemplateColumn.HeaderTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainView}, Path=AllSelected}" />
+                                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=view:MainView}, Path=AllSelected}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding IsChecked}"/>
+                                            <CheckBox IsChecked="{Binding IsChecked}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                    Binding="{Binding Date}"
+                                    Header="Date"
+                                    IsReadOnly="True" />
+                                <DataGridTextColumn
+                                    Binding="{Binding Name}"
+                                    Header="Name"
+                                    IsReadOnly="True" />
+                                <DataGridTextColumn
+                                    Binding="{Binding Address}"
+                                    Header="Address"
+                                    IsReadOnly="True" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
                     <TabItem Header="Mode 3">
-                        <DataGrid Margin="0,10"
-                                  ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                        <DataGrid Margin="0,10" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=view:MainView}}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" />
-                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
+                                <DataGridTextColumn
+                                    Binding="{Binding Name}"
+                                    Header="Name"
+                                    IsReadOnly="True" />
+                                <DataGridTextColumn
+                                    Binding="{Binding Address}"
+                                    Header="Address"
+                                    IsReadOnly="True" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
                     <TabItem Header="Mode 4">
-                        <DataGrid IsEnabled="False" Margin="0,10"
-                                  ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                        <DataGrid
+                            Margin="0,10"
+                            IsEnabled="False"
+                            ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=view:MainView}}">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn CanUserResize="False">
                                     <DataGridTemplateColumn.HeaderTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainView}, Path=AllSelected}" />
+                                            <CheckBox IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=view:MainView}, Path=AllSelected}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.HeaderTemplate>
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox IsChecked="{Binding IsChecked}"/>
+                                            <CheckBox IsChecked="{Binding IsChecked}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Address" Binding="{Binding Address}" IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                    Binding="{Binding Date}"
+                                    Header="Date"
+                                    IsReadOnly="True" />
+                                <DataGridTextColumn
+                                    Binding="{Binding Name}"
+                                    Header="Name"
+                                    IsReadOnly="True" />
+                                <DataGridTextColumn
+                                    Binding="{Binding Address}"
+                                    Header="Address"
+                                    IsReadOnly="True" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
                 </TabControl>
                 <!--<UniformGrid Margin="0,10" Columns="2">
-                    
-                    
-                   
+
+
+
                 </UniformGrid>-->
                 <DockPanel Margin="0,20,0,0">
-                    <TextBlock Text="ListBox" FontSize="20" DockPanel.Dock="Left"/>
-                    <Button DockPanel.Dock="Right" 
-                            Width="200"
-                            Content="VirtualizingWrapPanel"
-                            Style="{StaticResource PrimaryButton}" 
-                            Click="btnVirtualizingWrapPanel_Click"></Button>
+                    <TextBlock
+                        DockPanel.Dock="Left"
+                        FontSize="20"
+                        Text="ListBox" />
+                    <Button
+                        Width="200"
+                        Click="btnVirtualizingWrapPanel_Click"
+                        Content="VirtualizingWrapPanel"
+                        DockPanel.Dock="Right"
+                        Style="{StaticResource WD.PrimaryButton}" />
                 </DockPanel>
                 <UniformGrid Margin="0,10" Columns="2">
-                    <ListBox DisplayMemberPath="Name" IsEnabled="False"
-                        ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
-                    </ListBox>
-                    <ListBox  Margin="10,0"
-                             ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                    <ListBox
+                        DisplayMemberPath="Name"
+                        IsEnabled="False"
+                        ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=view:MainView}}" />
+                    <ListBox Margin="10,0" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=view:MainView}}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <UniformGrid Columns="3">
-                                    <TextBlock Text="{Binding Date}"/>
-                                    <TextBlock Text="{Binding Name}"/>
-                                    <TextBlock Text="{Binding Address}"/>
+                                    <TextBlock Text="{Binding Date}" />
+                                    <TextBlock Text="{Binding Name}" />
+                                    <TextBlock Text="{Binding Address}" />
                                 </UniformGrid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </UniformGrid>
 
-                <TextBlock Text="ListView" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="ListView" />
                 <UniformGrid Margin="0,10" Columns="2">
-                    <ListView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                    <ListView ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=view:MainView}}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
-                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                                <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" />
+                                <GridViewColumn
+                                    Width="Auto"
+                                    DisplayMemberBinding="{Binding Address}"
+                                    Header="Address" />
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <ListView IsEnabled="False" Margin="10,0" BorderThickness="0"
-                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                    <ListView
+                        Margin="10,0"
+                        BorderThickness="0"
+                        IsEnabled="False"
+                        ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=view:MainView}}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" />
-                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                                <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" />
+                                <GridViewColumn
+                                    Width="Auto"
+                                    DisplayMemberBinding="{Binding Address}"
+                                    Header="Address" />
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </UniformGrid>
 
-                <TextBlock Text="TreeView" FontSize="20" Margin="0,20,0,0"/>
-                <UniformGrid Margin="0,10" Columns="2" Height="400">
-                    <TreeView ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="TreeView" />
+                <UniformGrid
+                    Height="400"
+                    Margin="0,10"
+                    Columns="2">
+                    <TreeView ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=view:MainView}}">
                         <TreeView.ItemTemplate>
                             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                                 <Border>
-                                    <TextBlock Text="{Binding Path=Name}"/>
+                                    <TextBlock Text="{Binding Path=Name}" />
                                 </Border>
                             </HierarchicalDataTemplate>
                         </TreeView.ItemTemplate>
                     </TreeView>
-                    <TreeView IsEnabled="False" Margin="10,0" BorderThickness="0"
-                              ItemsSource="{Binding UserCollection,RelativeSource={RelativeSource AncestorType=local:MainView}}">
+                    <TreeView
+                        Margin="10,0"
+                        BorderThickness="0"
+                        IsEnabled="False"
+                        ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=view:MainView}}">
                         <TreeView.ItemTemplate>
                             <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                                 <Border>
-                                    <TextBlock Text="{Binding Path=Name}"/>
+                                    <TextBlock Text="{Binding Path=Name}" />
                                 </Border>
                             </HierarchicalDataTemplate>
                         </TreeView.ItemTemplate>
                     </TreeView>
                 </UniformGrid>
 
-                <TextBlock Text="Expander" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="Expander" />
                 <UniformGrid Margin="0,10" Columns="2">
                     <Expander Header="Expander1">
-                        <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                        <Rectangle
+                            Width="400"
+                            Height="300"
+                            Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                     </Expander>
-                    <Expander Header="Expander1" ExpandDirection="Up" Margin="10,0" FlowDirection="RightToLeft" IsExpanded="True">
-                        <Rectangle Fill="{DynamicResource LightSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                    <Expander
+                        Margin="10,0"
+                        ExpandDirection="Up"
+                        FlowDirection="RightToLeft"
+                        Header="Expander1"
+                        IsExpanded="True">
+                        <Rectangle
+                            Width="400"
+                            Height="300"
+                            Fill="{DynamicResource WD.SuccessBorderBrushSolidColorBrush}" />
                     </Expander>
-                    <Expander ExpandDirection="Right" Margin="0,10">
+                    <Expander Margin="0,10" ExpandDirection="Right">
                         <Expander.Header>
                             <TextBlock Text="Expander1">
                                 <TextBlock.LayoutTransform>
-                                    <RotateTransform Angle="90"/>
+                                    <RotateTransform Angle="90" />
                                 </TextBlock.LayoutTransform>
                             </TextBlock>
                         </Expander.Header>
-                        <Rectangle Fill="{DynamicResource CircularSingularSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                        <Rectangle
+                            Width="400"
+                            Height="300"
+                            Fill="{DynamicResource WD.SuccessBorderBrushSolidColorBrush}" />
                     </Expander>
-                    <Expander ExpandDirection="Left" Margin="10" IsExpanded="True">
+                    <Expander
+                        Margin="10"
+                        ExpandDirection="Left"
+                        IsExpanded="True">
                         <Expander.Header>
                             <TextBlock Text="Expander1">
                                 <TextBlock.LayoutTransform>
-                                    <RotateTransform Angle="90"/>
+                                    <RotateTransform Angle="90" />
                                 </TextBlock.LayoutTransform>
                             </TextBlock>
                         </Expander.Header>
-                        <Rectangle Fill="{DynamicResource PrimaryNormalSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                        <Rectangle
+                            Width="400"
+                            Height="300"
+                            Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
                     </Expander>
                 </UniformGrid>
-                <TextBlock Text="GroupBox" FontSize="20" Margin="0,20,0,0"/>
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="GroupBox" />
                 <UniformGrid Margin="0,10" Columns="2">
                     <GroupBox Header="GroupBox1">
-                        <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                        <Rectangle
+                            Width="400"
+                            Height="300"
+                            Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                     </GroupBox>
-                    <GroupBox Header="GroupBox1" Margin="10,0" IsEnabled="False">
-                        <Rectangle Fill="{DynamicResource LightSolidColorBrush}"
-                                   Width="400" Height="300"/>
+                    <GroupBox
+                        Margin="10,0"
+                        Header="GroupBox1"
+                        IsEnabled="False">
+                        <Rectangle
+                            Width="400"
+                            Height="300"
+                            Fill="{DynamicResource WD.SuccessBorderBrushSolidColorBrush}" />
                     </GroupBox>
                 </UniformGrid>
 
 
-                <TextBlock Text="TabControl" FontSize="20" Margin="0,20,0,0"/>
-                <UniformGrid Columns="2" Rows="2" Margin="0,10">
+                <TextBlock
+                    Margin="0,20,0,0"
+                    FontSize="20"
+                    Text="TabControl" />
+                <UniformGrid
+                    Margin="0,10"
+                    Columns="2"
+                    Rows="2">
                     <UniformGrid.Resources>
                         <Style TargetType="{x:Type Rectangle}">
-                            <Setter Property="Width" Value="{x:Static SystemParameters.PrimaryScreenWidth}"/>
-                            <Setter Property="Height" Value="400"/>
+                            <Setter Property="Width" Value="{x:Static SystemParameters.PrimaryScreenWidth}" />
+                            <Setter Property="Height" Value="400" />
                         </Style>
                     </UniformGrid.Resources>
                     <TabControl>
                         <TabItem Header="TabItem1">
-                            <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"/>
+                            <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                         </TabItem>
                         <TabItem Header="TabItem2">
-                            <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                            <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                         </TabItem>
-                        <TabItem Header="TabItem3" >
-                            <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                        <TabItem Header="TabItem3">
+                            <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                         </TabItem>
                     </TabControl>
                     <TabControl TabStripPlacement="Bottom">
                         <TabItem Header="TabItem1">
-                            <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                            <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                         </TabItem>
                         <TabItem Header="TabItem2">
-                            <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"/>
+                            <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                         </TabItem>
-                        <TabItem Header="TabItem3" >
-                            <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                        <TabItem Header="TabItem3">
+                            <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                         </TabItem>
                     </TabControl>
                     <TabControl TabStripPlacement="Left">
                         <TabItem Header="TabItem1">
-                            <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                            <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                         </TabItem>
                         <TabItem Header="TabItem2">
-                            <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                            <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                         </TabItem>
-                        <TabItem Header="TabItem3" >
-                            <Rectangle Fill="{DynamicResource DangerSolidColorBrush}"/>
+                        <TabItem Header="TabItem3">
+                            <Rectangle Fill="{DynamicResource WD.DangerSolidColorBrush}" />
                         </TabItem>
                     </TabControl>
-                    <TabControl TabStripPlacement="Right" IsEnabled="False">
+                    <TabControl IsEnabled="False" TabStripPlacement="Right">
                         <TabItem Header="TabItem1">
-                            <Rectangle Fill="{DynamicResource SuccessSolidColorBrush}"/>
+                            <Rectangle Fill="{DynamicResource WD.SuccessSolidColorBrush}" />
                         </TabItem>
                         <TabItem Header="TabItem2">
-                            <Rectangle Fill="{DynamicResource InfoSolidColorBrush}"/>
+                            <Rectangle Fill="{DynamicResource WD.InfoSolidColorBrush}" />
                         </TabItem>
-                        <TabItem Header="TabItem3" >
-                            <Rectangle Fill="{DynamicResource WarningSolidColorBrush}"/>
+                        <TabItem Header="TabItem3">
+                            <Rectangle Fill="{DynamicResource WD.WarningSolidColorBrush}" />
                         </TabItem>
                     </TabControl>
                 </UniformGrid>
