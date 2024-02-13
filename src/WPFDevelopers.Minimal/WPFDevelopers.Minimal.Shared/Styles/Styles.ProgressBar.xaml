@@ -4,7 +4,6 @@
     xmlns:controls="clr-namespace:WPFDevelopers.Minimal.Controls"
     xmlns:helpers="clr-namespace:WPFDevelopers.Minimal.Helpers"
     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="../Themes/Basic/ControlBasic.xaml" />
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
@@ -14,7 +13,7 @@
         BasedOn="{StaticResource WD.ControlBasicStyle}"
         TargetType="{x:Type ProgressBar}">
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
-        <Setter Property="Height" Value="6" />
+        <Setter Property="Height" Value="{StaticResource WD.RepeatButtonSize}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ProgressBar}">
