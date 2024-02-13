@@ -6,7 +6,7 @@ namespace WPFDevelopers.Minimal.Helpers
     {
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ElementHelper),
-                new PropertyMetadata(new CornerRadius(3)));
+                new PropertyMetadata(new CornerRadius(0)));
 
         public static readonly DependencyProperty IsWatermarkProperty =
             DependencyProperty.RegisterAttached("IsWatermark", typeof(bool), typeof(ElementHelper),
