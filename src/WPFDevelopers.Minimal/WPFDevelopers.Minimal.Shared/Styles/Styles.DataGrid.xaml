@@ -513,5 +513,4 @@
     <Style BasedOn="{StaticResource WD.DefaultDataGridRow}" TargetType="{x:Type DataGridRow}" />
     <Style BasedOn="{StaticResource WD.DefaultDataGridCell}" TargetType="{x:Type DataGridCell}" />
     <Style BasedOn="{StaticResource WD.DefaultDataGrid}" TargetType="{x:Type DataGrid}" />
-
 </ResourceDictionary>
