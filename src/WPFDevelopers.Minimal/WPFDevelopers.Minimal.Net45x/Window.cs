@@ -3,14 +3,25 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Media;
 
 namespace WPFDevelopers.Minimal.Net45x
 {
     public class Window : System.Windows.Window
     {
         private WindowStyle _windowStyle;
+
         public static readonly DependencyProperty TitleHeightProperty =
             DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d));
+
+        public static readonly DependencyProperty NoChromeProperty =
+            DependencyProperty.Register("NoChrome", typeof(bool), typeof(Window), new PropertyMetadata(false));
+
+        public static readonly DependencyProperty TitleBarProperty =
+            DependencyProperty.Register("TitleBar", typeof(object), typeof(Window), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty TitleBackgroundProperty =
+          DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(Window), new PropertyMetadata(null));
 
         static Window()
         {
@@ -28,7 +39,6 @@ namespace WPFDevelopers.Minimal.Net45x
                 CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow,
                 CanResizeWindow));
-            //CommandBindings.Add(new CommandBinding(SystemCommands.ShowSystemMenuCommand, ShowSystemMenu));
         }
         public override void OnApplyTemplate()
         {
@@ -39,6 +49,21 @@ namespace WPFDevelopers.Minimal.Net45x
         {
             get => (double)GetValue(TitleHeightProperty);
             set => SetValue(TitleHeightProperty, value);
+        }
+        public bool NoChrome
+        {
+            get => (bool)GetValue(NoChromeProperty);
+            set => SetValue(NoChromeProperty, value);
+        }
+        public object TitleBar
+        {
+            get => (object)GetValue(TitleBarProperty);
+            set => SetValue(TitleBarProperty, value);
+        }
+        public Brush TitleBackground
+        {
+            get => (Brush)GetValue(TitleBackgroundProperty);
+            set => SetValue(TitleBackgroundProperty, value);
         }
 
         private static T GetResourceKey<T>(string key)
@@ -75,7 +100,6 @@ namespace WPFDevelopers.Minimal.Net45x
 
         private void CloseWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            //Close();
             SystemCommands.CloseWindow(this);
         }
 
@@ -86,7 +110,6 @@ namespace WPFDevelopers.Minimal.Net45x
 
         private void MinimizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            //SystemCommands.MinimizeWindow(this);
             SendMessage(hWnd, ApiCodes.WM_SYSCOMMAND, new IntPtr(ApiCodes.SC_MINIMIZE), IntPtr.Zero);
         }
 
