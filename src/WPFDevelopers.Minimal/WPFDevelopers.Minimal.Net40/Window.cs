@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Media;
 using Microsoft.Windows.Shell;
 
 namespace WPFDevelopers.Minimal.Net40
@@ -10,8 +11,18 @@ namespace WPFDevelopers.Minimal.Net40
     public class Window : System.Windows.Window
     {
         private WindowStyle _windowStyle;
+
         public static readonly DependencyProperty TitleHeightProperty =
             DependencyProperty.Register("TitleHeight", typeof(double), typeof(Window), new PropertyMetadata(50d));
+
+        public static readonly DependencyProperty NoChromeProperty =
+            DependencyProperty.Register("NoChrome", typeof(bool), typeof(Window), new PropertyMetadata(false));
+
+        public static readonly DependencyProperty TitleBarProperty =
+            DependencyProperty.Register("TitleBar", typeof(object), typeof(Window), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty TitleBackgroundProperty =
+           DependencyProperty.Register("TitleBackground", typeof(Brush), typeof(Window), new PropertyMetadata(null));
 
         static Window()
         {
@@ -28,6 +39,7 @@ namespace WPFDevelopers.Minimal.Net40
                 CanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, RestoreWindow,
                 CanResizeWindow));
+
         }
         public override void OnApplyTemplate()
         {
@@ -38,6 +50,24 @@ namespace WPFDevelopers.Minimal.Net40
         {
             get => (double)GetValue(TitleHeightProperty);
             set => SetValue(TitleHeightProperty, value);
+        }
+
+        public bool NoChrome
+        {
+            get => (bool)GetValue(NoChromeProperty);
+            set => SetValue(NoChromeProperty, value);
+        }
+
+        public object TitleBar
+        {
+            get => (object)GetValue(TitleBarProperty);
+            set => SetValue(TitleBarProperty, value);
+        }
+
+        public Brush TitleBackground
+        {
+            get => (Brush)GetValue(TitleBackgroundProperty);
+            set => SetValue(TitleBackgroundProperty, value);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -67,23 +97,16 @@ namespace WPFDevelopers.Minimal.Net40
 
         private void CloseWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            //Close();
             SystemCommands.CloseWindow(this);
         }
 
         private void MaximizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
             SystemCommands.MaximizeWindow(this);
-            //var window = sender as Window;
-            //window.WindowState = WindowState.Maximized;
-            //WindowState = WindowState.Maximized;
         }
 
         private void MinimizeWindow(object sender, ExecutedRoutedEventArgs e)
         {
-            //SystemCommands.MinimizeWindow(this);
-            //WindowStyle = WindowStyle.SingleBorderWindow;
-            //WindowState = WindowState.Minimized;
             SendMessage(hWnd, ApiCodes.WM_SYSCOMMAND, new IntPtr(ApiCodes.SC_MINIMIZE), IntPtr.Zero);
         }
 
@@ -126,7 +149,6 @@ namespace WPFDevelopers.Minimal.Net40
                     handled = true;
                 }
             }
-
             return IntPtr.Zero;
         }
 
