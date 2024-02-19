@@ -5,11 +5,13 @@ Basic\Geometrys.xaml
 Basic\Animations.xaml
 Basic\ControlBasic.xaml
 
+
 ..\Styles\Styles.Buttons.xaml
 ..\..\WPFDevelopers.Minimal.Net45x\Themes\Generic.xaml
 
 ..\Styles\Styles.Menu.xaml
 ..\Styles\Styles.ContextMenu.xaml
+..\Styles\Styles.Buttons.xaml
 ..\Styles\Styles.RadioButton.xaml
 ..\Styles\Styles.ScrollBar.xaml
 ..\Styles\Styles.Slider.xaml
