@@ -1111,7 +1111,7 @@
 							<DoubleAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="1.2" To="1.4" Duration="00:00:0.1" />
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<Border Name="PART_Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6" RenderTransformOrigin=".5,.5" SnapsToDevicePixels="True">
+					<Border Name="PART_Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6" RenderTransformOrigin=".5,.5" SnapsToDevicePixels="True">
 						<Border.RenderTransform>
 							<ScaleTransform ScaleX="1.2" ScaleY="1.2" />
 						</Border.RenderTransform>
@@ -1154,13 +1154,13 @@
 				<TickBar x:Name="BottomTick" Grid.Row="2" Height="4" Margin="0,2,0,0" Fill="{TemplateBinding Foreground}" Placement="Bottom" Visibility="Collapsed" />
 				<Track x:Name="PART_Track" Grid.Row="1">
 					<Track.DecreaseRepeatButton>
-						<RepeatButton Height="{StaticResource WD.RepeatButtonSize}" Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Command="{x:Static Slider.DecreaseLarge}" Style="{DynamicResource WD.SliderRepeatButtonStyle}" />
+						<RepeatButton Height="{StaticResource WD.RepeatButtonSize}" Margin="0,2,0,0" Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Command="{x:Static Slider.DecreaseLarge}" Style="{DynamicResource WD.SliderRepeatButtonStyle}" />
 					</Track.DecreaseRepeatButton>
 					<Track.IncreaseRepeatButton>
-						<RepeatButton Height="{StaticResource WD.RepeatButtonSize}" Background="{DynamicResource WD.BaseSolidColorBrush}" Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
+						<RepeatButton Height="{StaticResource WD.RepeatButtonSize}" Margin="0,2,0,0" Background="{DynamicResource WD.BaseSolidColorBrush}" Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
 					</Track.IncreaseRepeatButton>
 					<Track.Thumb>
-						<Thumb x:Name="PART_Thumb" VerticalAlignment="Center" Style="{StaticResource WD.SliderThumbStyle}" />
+						<Thumb Style="{StaticResource WD.SliderThumbStyle}" />
 					</Track.Thumb>
 				</Track>
 			</Grid>
@@ -1196,7 +1196,7 @@
 						<RepeatButton Width="{StaticResource WD.RepeatButtonSize}" Background="{DynamicResource WD.LightSolidColorBrush}" Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
 					</Track.IncreaseRepeatButton>
 					<Track.Thumb>
-						<Thumb HorizontalAlignment="Center" Style="{StaticResource WD.SliderThumbStyle}" />
+						<Thumb Style="{StaticResource WD.SliderThumbStyle}" />
 					</Track.Thumb>
 				</Track>
 			</Grid>
@@ -3209,22 +3209,24 @@
 							</PointAnimationUsingKeyFrames>
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
-						<Border x:Name="PART_Border" Background="{DynamicResource WD.BaseSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-						<Rectangle x:Name="PART_Track" />
-						<Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
-							<Border x:Name="Indicator" Background="{TemplateBinding Foreground}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-						</Decorator>
-						<Rectangle x:Name="PART_Rectangle" Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Visibility="Collapsed">
-							<Rectangle.RenderTransform>
-								<ScaleTransform />
-							</Rectangle.RenderTransform>
-						</Rectangle>
-					</controls:SmallPanel>
+					<Border x:Name="PART_TemplateRoot">
+						<controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
+							<Border x:Name="PART_Border" Background="{DynamicResource WD.BaseSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+							<Rectangle x:Name="PART_Track" />
+							<Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
+								<Border x:Name="Indicator" Background="{TemplateBinding Foreground}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+							</Decorator>
+							<Rectangle x:Name="PART_Rectangle" Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Visibility="Collapsed">
+								<Rectangle.RenderTransform>
+									<ScaleTransform />
+								</Rectangle.RenderTransform>
+							</Rectangle>
+						</controls:SmallPanel>
+					</Border>
 					<ControlTemplate.Triggers>
 						<Trigger Property="Orientation" Value="Vertical">
 							<Setter Property="Height" Value="{x:Static sys:Double.NaN}" />
-							<Setter TargetName="PART_Border" Property="LayoutTransform">
+							<Setter TargetName="PART_TemplateRoot" Property="LayoutTransform">
 								<Setter.Value>
 									<RotateTransform Angle="-90" />
 								</Setter.Value>
