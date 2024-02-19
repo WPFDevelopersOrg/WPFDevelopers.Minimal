@@ -20,11 +20,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\WPFDevelopers.Minimal.Net45x\WPFDevelopers.Minimal.Net45x.csproj" />
+	  <PackageReference Include="WPFDevelopers.Minimal" Version="1.0.0.3-preview1" />
 	</ItemGroup>
-
 	<ItemGroup>
 	  <Resource Include="Resources\WPFDevelopers.Minimal.ico" />
 	</ItemGroup>
-
 </Project>
