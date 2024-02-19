@@ -1113,7 +1113,7 @@
 							<DoubleAnimation Storyboard.TargetName="PART_Border" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="1.2" To="1.4" Duration="00:00:0.1" />
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<Border Name="PART_Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6" RenderTransformOrigin=".5,.5" SnapsToDevicePixels="True">
+					<Border Name="PART_Border" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6" RenderTransformOrigin=".5,.5" SnapsToDevicePixels="True">
 						<Border.RenderTransform>
 							<ScaleTransform ScaleX="1.2" ScaleY="1.2" />
 						</Border.RenderTransform>
@@ -1156,13 +1156,13 @@
 				<TickBar x:Name="BottomTick" Grid.Row="2" Height="4" Margin="0,2,0,0" Fill="{TemplateBinding Foreground}" Placement="Bottom" Visibility="Collapsed" />
 				<Track x:Name="PART_Track" Grid.Row="1">
 					<Track.DecreaseRepeatButton>
-						<RepeatButton Height="{StaticResource WD.RepeatButtonSize}" Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Command="{x:Static Slider.DecreaseLarge}" Style="{DynamicResource WD.SliderRepeatButtonStyle}" />
+						<RepeatButton Height="{StaticResource WD.RepeatButtonSize}" Margin="0,2,0,0" Background="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Command="{x:Static Slider.DecreaseLarge}" Style="{DynamicResource WD.SliderRepeatButtonStyle}" />
 					</Track.DecreaseRepeatButton>
 					<Track.IncreaseRepeatButton>
-						<RepeatButton Height="{StaticResource WD.RepeatButtonSize}" Background="{DynamicResource WD.BaseSolidColorBrush}" Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
+						<RepeatButton Height="{StaticResource WD.RepeatButtonSize}" Margin="0,2,0,0" Background="{DynamicResource WD.BaseSolidColorBrush}" Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
 					</Track.IncreaseRepeatButton>
 					<Track.Thumb>
-						<Thumb x:Name="PART_Thumb" VerticalAlignment="Center" Style="{StaticResource WD.SliderThumbStyle}" />
+						<Thumb Style="{StaticResource WD.SliderThumbStyle}" />
 					</Track.Thumb>
 				</Track>
 			</Grid>
@@ -1198,7 +1198,7 @@
 						<RepeatButton Width="{StaticResource WD.RepeatButtonSize}" Background="{DynamicResource WD.LightSolidColorBrush}" Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource WD.SliderRepeatButtonStyle}" />
 					</Track.IncreaseRepeatButton>
 					<Track.Thumb>
-						<Thumb HorizontalAlignment="Center" Style="{StaticResource WD.SliderThumbStyle}" />
+						<Thumb Style="{StaticResource WD.SliderThumbStyle}" />
 					</Track.Thumb>
 				</Track>
 			</Grid>
@@ -3211,22 +3211,24 @@
 							</PointAnimationUsingKeyFrames>
 						</Storyboard>
 					</ControlTemplate.Resources>
-					<controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
-						<Border x:Name="PART_Border" Background="{DynamicResource WD.BaseSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-						<Rectangle x:Name="PART_Track" />
-						<Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
-							<Border x:Name="Indicator" Background="{TemplateBinding Foreground}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
-						</Decorator>
-						<Rectangle x:Name="PART_Rectangle" Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Visibility="Collapsed">
-							<Rectangle.RenderTransform>
-								<ScaleTransform />
-							</Rectangle.RenderTransform>
-						</Rectangle>
-					</controls:SmallPanel>
+					<Border x:Name="PART_TemplateRoot">
+						<controls:SmallPanel ClipToBounds="True" SnapsToDevicePixels="True">
+							<Border x:Name="PART_Border" Background="{DynamicResource WD.BaseSolidColorBrush}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+							<Rectangle x:Name="PART_Track" />
+							<Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
+								<Border x:Name="Indicator" Background="{TemplateBinding Foreground}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" />
+							</Decorator>
+							<Rectangle x:Name="PART_Rectangle" Fill="{DynamicResource WD.PrimaryNormalSolidColorBrush}" Visibility="Collapsed">
+								<Rectangle.RenderTransform>
+									<ScaleTransform />
+								</Rectangle.RenderTransform>
+							</Rectangle>
+						</controls:SmallPanel>
+					</Border>
 					<ControlTemplate.Triggers>
 						<Trigger Property="Orientation" Value="Vertical">
 							<Setter Property="Height" Value="{x:Static sys:Double.NaN}" />
-							<Setter TargetName="PART_Border" Property="LayoutTransform">
+							<Setter TargetName="PART_TemplateRoot" Property="LayoutTransform">
 								<Setter.Value>
 									<RotateTransform Angle="-90" />
 								</Setter.Value>
@@ -3298,8 +3300,8 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="TreeView">
-					<Border Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-						<ScrollViewer CanContentScroll="False" Focusable="False">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<ScrollViewer Padding="{TemplateBinding Padding}" CanContentScroll="False" Focusable="False">
 							<ItemsPresenter />
 						</ScrollViewer>
 					</Border>
@@ -3312,15 +3314,17 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="ToggleButton">
-					<controls:SmallPanel Width="15" Height="13" Background="Transparent">
-						<Path x:Name="Expanded" Width="6" Height="10" Data="{StaticResource WD.NextGeometry}" RenderTransformOrigin=".5,.5" Stretch="Fill">
-							<Path.Fill>
-								<SolidColorBrush Color="{DynamicResource WD.PrimaryTextColor}" />
-							</Path.Fill>
-							<Path.RenderTransform>
-								<RotateTransform />
-							</Path.RenderTransform>
-						</Path>
+					<Border x:Name="PART_Border" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+						<controls:SmallPanel Width="15" Height="13" Background="Transparent">
+							<Path x:Name="Expanded" Width="6" Height="10" Data="{StaticResource WD.NextGeometry}" RenderTransformOrigin=".5,.5" Stretch="Uniform">
+								<Path.Fill>
+									<SolidColorBrush Color="{DynamicResource WD.PrimaryTextColor}" />
+								</Path.Fill>
+								<Path.RenderTransform>
+									<RotateTransform />
+								</Path.RenderTransform>
+							</Path>
+						</controls:SmallPanel>
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup x:Name="CheckStates">
 								<VisualState x:Name="Checked">
@@ -3336,7 +3340,12 @@
 								<VisualState x:Name="Indeterminate" />
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-					</controls:SmallPanel>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Background" Value="{DynamicResource WD.BaseMoveSolidColorBrush}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -3362,17 +3371,20 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="{x:Type TreeViewItem}">
 					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" MinWidth="19" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto" />
-							<RowDefinition />
+							<RowDefinition Height="Auto" />
 						</Grid.RowDefinitions>
-						<Border x:Name="PART_Border" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-							<DockPanel LastChildFill="True">
-								<ToggleButton x:Name="Expander" ClickMode="Press" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource WD.ExpandCollapseToggleStyle}" />
-								<ContentPresenter x:Name="PART_Header" VerticalAlignment="Center" ContentSource="Header" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-							</DockPanel>
+						<ToggleButton x:Name="Expander" ClickMode="Press" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource WD.ExpandCollapseToggleStyle}" />
+						<Border x:Name="PART_Border" Grid.Column="1" Grid.ColumnSpan="2" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(helpers:ElementHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
+							<ContentPresenter x:Name="PART_Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" />
 						</Border>
-						<Border x:Name="PART_ItemsHost" Grid.Row="1" RenderTransformOrigin=".5,0">
+						<Border x:Name="PART_ItemsHost" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" RenderTransformOrigin=".5,0">
 							<Border.RenderTransform>
 								<ScaleTransform ScaleY="0" />
 							</Border.RenderTransform>
