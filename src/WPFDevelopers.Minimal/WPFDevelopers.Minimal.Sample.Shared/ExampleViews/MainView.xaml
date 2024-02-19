@@ -368,7 +368,10 @@
                     FontSize="20"
                     Text="DataGrid" />
                 <TabControl Margin="0,10">
-                    <TabItem Header="Mode 1">
+                    <TabItem
+                        Height="38"
+                        Padding="20,0"
+                        Header="Mode 1">
                         <DataGrid
                             Margin="0,10"
                             AutoGenerateColumns="False"
@@ -396,7 +399,10 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
-                    <TabItem Header="Mode 2">
+                    <TabItem
+                        Height="38"
+                        Padding="20,0"
+                        Header="Mode 2">
                         <DataGrid
                             Margin="0,10"
                             AutoGenerateColumns="False"
@@ -429,7 +435,10 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
-                    <TabItem Header="Mode 3">
+                    <TabItem
+                        Height="38"
+                        Padding="20,0"
+                        Header="Mode 3">
                         <DataGrid Margin="0,10" ItemsSource="{Binding UserCollection, RelativeSource={RelativeSource AncestorType=view:MainView}}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Date}" Header="Date" />
@@ -444,7 +453,10 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
-                    <TabItem Header="Mode 4">
+                    <TabItem
+                        Height="38"
+                        Padding="20,0"
+                        Header="Mode 4">
                         <DataGrid
                             Margin="0,10"
                             IsEnabled="False"
