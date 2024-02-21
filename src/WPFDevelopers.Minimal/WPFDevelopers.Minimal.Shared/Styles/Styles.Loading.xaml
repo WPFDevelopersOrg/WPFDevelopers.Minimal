@@ -9,10 +9,9 @@
         <ResourceDictionary Source="../Themes/Basic/Animations.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource ControlBasicStyle}" TargetType="{x:Type controls:WPFLoading}">
+    <Style BasedOn="{StaticResource WD.ControlBasicStyle}" TargetType="{x:Type controls:WPFLoading}">
         <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="FontFamily" Value="{DynamicResource NormalFontFamily}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryNormalSolidColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryNormalSolidColorBrush}" />
         <Setter Property="Width" Value="40" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Template">
