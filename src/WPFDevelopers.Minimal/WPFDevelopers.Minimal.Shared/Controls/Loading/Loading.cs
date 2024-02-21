@@ -96,14 +96,14 @@ namespace WPFDevelopers.Minimal.Controls
                 {
                     var btnClose = new Button()
                     {
-                        Style = Application.Current.FindResource("PathButton") as Style,
+                        Style = Application.Current.FindResource("WD.PathButton") as Style,
                         Content = new Path
                         {
-                            Data = Application.Current.FindResource("PathMetroWindowClose") as Geometry,
+                            Data = Application.Current.FindResource("WD.WindowCloseGeometry") as Geometry,
                             Stretch = Stretch.Fill,
                             Width = 10,
                             Height = 10,
-                            Fill = Application.Current.Resources["PrimaryTextSolidColorBrush"] as Brush,//ControlHelper.WindowForegroundBrush,
+                            Fill = Application.Current.Resources["WD.PrimaryTextSolidColorBrush"] as Brush,//ControlHelper.WindowForegroundBrush,
                         }
                     };
                     btnClose.Click += delegate
